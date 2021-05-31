@@ -1,9 +1,9 @@
-name: FTask of Branch Hao
+name: PRO FTask
 
 on:
   push:
     branch:
-      - hao
+      - main
 
 jobs:
   build:
