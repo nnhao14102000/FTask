@@ -59,7 +59,7 @@ namespace FTaskAPI.Controllers
             return CreatedAtRoute(nameof(GetStudentByStudentId), new { id = studentReadModel.Id }, studentReadModel);
         }
 
-        [HttpPut]
+        [HttpPut("{id}")]
         [MapToApiVersion("1.0")]
         public ActionResult UpdateStudent(string id, StudentUpdateDto student)
         {
@@ -73,7 +73,7 @@ namespace FTaskAPI.Controllers
             return NoContent();
         }
 
-        [HttpPatch]
+        [HttpPatch("{id}")]
         [MapToApiVersion("1.0")]
         public ActionResult PartialStudentUpdate(string id, JsonPatchDocument<StudentUpdateDto> patchDoc)
         {
@@ -94,7 +94,7 @@ namespace FTaskAPI.Controllers
             return NoContent();
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         [MapToApiVersion("1.0")]
         public ActionResult RemoveStudent(string id)
         {
