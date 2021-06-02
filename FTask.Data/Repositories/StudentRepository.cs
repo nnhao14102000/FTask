@@ -16,15 +16,28 @@ namespace FTask.Data.Repositories
         {
             if(studentParameters.MajorId is null)
             {
-                return PagedList<Student>.ToPagedList(FindAll().OrderBy(st => st.Name),
-                studentParameters.PageNumber, studentParameters.PageSize);
+                var allStudent = FindAll();
+                SearchByName(ref allStudent, studentParameters.Name);
+
+                return PagedList<Student>.ToPagedList(allStudent,
+                    studentParameters.PageNumber, studentParameters.PageSize);
             }
 
-            var students = FindByCondition(st => st.MajorId.Equals(studentParameters.MajorId))
-                    .OrderBy(st => st.Name);
+            var students = FindByCondition(st => st.MajorId.Equals(studentParameters.MajorId));
+
+            SearchByName(ref students, studentParameters.Name);
+
             return PagedList<Student>.ToPagedList(students,
                 studentParameters.PageNumber, studentParameters.PageSize);
+        }
 
+        private void SearchByName(ref IQueryable<Student> students, string name)
+        {
+            if(!students.Any() || string.IsNullOrWhiteSpace(name))
+            {
+                return;
+            }
+            students = students.Where(st => st.Name.ToLower().Contains(name.Trim().ToLower()));
         }
 
         public Student GetStudentByStudentId(string id)
