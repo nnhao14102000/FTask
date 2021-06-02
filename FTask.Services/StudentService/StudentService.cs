@@ -20,7 +20,7 @@ namespace FTask.Services.StudentService
         public IEnumerable<Student> GetAllStudents()
         {
             _log.LogInformation("Get all students...");
-            var students = _unitOfWork.Students.GetAll();
+            var students = _unitOfWork.Students.GetStudents();
             if (students is null)
             {
                 _log.LogInformation("Have no students...");

@@ -49,7 +49,7 @@ namespace FTaskAPI.Controllers
             var isExisted = _studentService.GetStudentByStudentId(student.Id);
             if (isExisted is not null)
             {
-                return BadRequest();
+                return BadRequest("Student Id is existed....");
             }
 
             var studentModel = _mapper.Map<Student>(student);

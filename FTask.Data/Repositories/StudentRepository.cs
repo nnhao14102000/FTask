@@ -1,21 +1,25 @@
 ﻿using FTask.Data.Models;
 using FTask.Data.Repositories.IRepository;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace FTask.Data.Repositories
 {
     public class StudentRepository : GenericRepository<Student>, IStudentRepository
     {
-        private readonly FTaskContext _context;
         public StudentRepository(FTaskContext context) : base (context)
         {
-            _context = context;
+        }
+
+        public IEnumerable<Student> GetStudents()
+        {
+            return FindAll().OrderBy(st => st.Name);
         }
 
         public Student GetStudentByStudentId(string id)
         {
-            var student = _context.Students.FirstOrDefault(s => s.Id.ToUpper() == id.ToUpper());
-            return student;
+            return FindByCondition(student => student.Id.Equals(id)).FirstOrDefault();
         }
+                
     }
 }

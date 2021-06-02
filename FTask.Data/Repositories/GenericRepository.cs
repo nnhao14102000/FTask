@@ -1,7 +1,9 @@
 ﻿using FTask.Data.Repositories.IRepository;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 
 namespace FTask.Data.Repositories
 {
@@ -17,9 +19,14 @@ namespace FTask.Data.Repositories
             DbSet = DbContext.Set<T>();
         }
 
-        public IEnumerable<T> GetAll()
+        public IQueryable<T> FindAll()
         {
-            return DbSet.ToList();
+            return DbSet.AsNoTracking();
+        }
+
+        public IQueryable<T> FindByCondition(Expression<Func<T, bool>> expression)
+        {
+            return DbSet.Where(expression).AsNoTracking();
         }
 
         public void Add(T obj)
