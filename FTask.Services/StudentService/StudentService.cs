@@ -1,4 +1,6 @@
-﻿using FTask.Data.Models;
+﻿using FTask.Data.Helpers;
+using FTask.Data.Models;
+using FTask.Data.Parameters;
 using FTask.Data.Repositories.IRepository;
 using Microsoft.Extensions.Logging;
 using System;
@@ -17,10 +19,9 @@ namespace FTask.Services.StudentService
             _log = log;
         }        
 
-        public IEnumerable<Student> GetAllStudents()
-        {
-            _log.LogInformation("Get all students...");
-            var students = _unitOfWork.Students.GetStudents();
+        public PagedList<Student> GetAllStudents(StudentParameters studentParameters)
+        {            
+            var students = _unitOfWork.Students.GetStudents(studentParameters);
             if (students is null)
             {
                 _log.LogInformation("Have no students...");
@@ -28,6 +29,7 @@ namespace FTask.Services.StudentService
             }
             else
             {
+                _log.LogInformation($"Get {students.TotalCount} students from database...");
                 return students;
             }
         }

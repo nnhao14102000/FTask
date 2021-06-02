@@ -1,6 +1,7 @@
-﻿using FTask.Data.Models;
+﻿using FTask.Data.Helpers;
+using FTask.Data.Models;
+using FTask.Data.Parameters;
 using FTask.Data.Repositories.IRepository;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace FTask.Data.Repositories
@@ -11,9 +12,19 @@ namespace FTask.Data.Repositories
         {
         }
 
-        public IEnumerable<Student> GetStudents()
+        public PagedList<Student> GetStudents(StudentParameters studentParameters)
         {
-            return FindAll().OrderBy(st => st.Name);
+            if(studentParameters.MajorId is null)
+            {
+                return PagedList<Student>.ToPagedList(FindAll().OrderBy(st => st.Name),
+                studentParameters.PageNumber, studentParameters.PageSize);
+            }
+
+            var students = FindByCondition(st => st.MajorId.Equals(studentParameters.MajorId))
+                    .OrderBy(st => st.Name);
+            return PagedList<Student>.ToPagedList(students,
+                studentParameters.PageNumber, studentParameters.PageSize);
+
         }
 
         public Student GetStudentByStudentId(string id)

@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
 using FTask.Api.Dtos.StudentDtos;
 using FTask.Data.Models;
+using FTask.Data.Parameters;
 using FTask.Services.StudentService;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 
 namespace FTaskAPI.Controllers
@@ -24,9 +26,20 @@ namespace FTaskAPI.Controllers
 
         [HttpGet]
         [MapToApiVersion("1.0")]
-        public ActionResult<IEnumerable<StudentReadDto>> GetAllStudents()
+        public ActionResult<IEnumerable<StudentReadDto>> GetAllStudents([FromQuery] StudentParameters studentParameters)
         {
-            var students = _studentService.GetAllStudents();
+            var students = _studentService.GetAllStudents(studentParameters);
+
+            var metaData = new
+            {
+                students.TotalCount,
+                students.PageSize,
+                students.CurrentPage,
+                students.HasNext,
+                students.HasPrevious
+            };
+            Response.Headers.Add("Student-Pagination", JsonConvert.SerializeObject(metaData));
+
             return Ok(_mapper.Map<IEnumerable<StudentReadDto>>(students));
         }
 
