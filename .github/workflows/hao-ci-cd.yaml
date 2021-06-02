@@ -3,7 +3,7 @@ name: FTask of branch hao
 on:
   push:
     branch:
-      - main
+      - hao
 
 jobs:
   build:

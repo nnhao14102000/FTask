@@ -67,6 +67,7 @@ namespace FTask.Api
 
             // config for service            
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+
             services.AddTransient<IStudentService, StudentService>();
         }
 
