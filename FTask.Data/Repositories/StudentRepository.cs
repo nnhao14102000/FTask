@@ -8,8 +8,10 @@ namespace FTask.Data.Repositories
 {
     public class StudentRepository : GenericRepository<Student>, IStudentRepository
     {
+        public FTaskContext context { get; set; }
         public StudentRepository(FTaskContext context) : base (context)
         {
+            this.context = context;
         }
 
         public PagedList<Student> GetStudents(StudentParameters studentParameters)

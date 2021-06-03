@@ -54,5 +54,10 @@ namespace FTask.Data.Repositories
         {
             DbSet.RemoveRange(entities);
         }
+
+        public bool SaveChanges()
+        {
+            return (DbContext.SaveChanges() >= 0);
+        }
     }
 }

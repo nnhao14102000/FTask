@@ -4,24 +4,23 @@ using FTask.Data.Parameters;
 using FTask.Data.Repositories.IRepository;
 using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
 
 namespace FTask.Services.StudentService
 {
     public class StudentService : IStudentService
     {
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly IStudentRepository _studentRepository;
         private readonly ILogger<StudentService> _log;
 
-        public StudentService(IUnitOfWork unitOfWork, ILogger<StudentService> log)
+        public StudentService(IStudentRepository studentRepository, ILogger<StudentService> log)
         {
-            _unitOfWork = unitOfWork;
+            _studentRepository = studentRepository;
             _log = log;
         }        
 
         public PagedList<Student> GetAllStudents(StudentParameters studentParameters)
         {            
-            var students = _unitOfWork.Students.GetStudents(studentParameters);
+            var students = _studentRepository.GetStudents(studentParameters);
             if (students is null)
             {
                 _log.LogInformation("Have no students...");
@@ -37,7 +36,7 @@ namespace FTask.Services.StudentService
         public Student GetStudentByStudentId(string id)
         {
             _log.LogInformation($"Search student {id}...");
-            var student = _unitOfWork.Students.GetStudentByStudentId(id);
+            var student = _studentRepository.GetStudentByStudentId(id);
             if (student is null)
             {
                 _log.LogInformation($"Can not found student {id}...");
@@ -53,10 +52,10 @@ namespace FTask.Services.StudentService
         public void AddStudent(Student student)
         {
             _log.LogInformation($"Add student {student.Id} into database...");
-            _unitOfWork.Students.Add(student);
+            _studentRepository.Add(student);
             try
             {
-                if (_unitOfWork.SaveChanges())
+                if (_studentRepository.SaveChanges())
                 {
                     _log.LogInformation($"Add student {student.Id} success...");
                 }
@@ -71,10 +70,10 @@ namespace FTask.Services.StudentService
         public void UpdateStudent(Student student)
         {
             _log.LogInformation($"Update student {student.Id}...");
-            _unitOfWork.Students.Update(student);
+            _studentRepository.Update(student);
             try
             {
-                if (_unitOfWork.SaveChanges())
+                if (_studentRepository.SaveChanges())
                 {
                     _log.LogInformation($"Update student {student.Id} success...");
                 }
@@ -88,10 +87,10 @@ namespace FTask.Services.StudentService
         public void RemoveStudent(Student student)
         {
             _log.LogInformation($"Remove student {student.Id}...");
-            _unitOfWork.Students.Remove(student);
+            _studentRepository.Remove(student);
             try
             {
-                if (_unitOfWork.SaveChanges())
+                if (_studentRepository.SaveChanges())
                 {
                     _log.LogInformation($"Remove student {student.Id} success...");
                 }

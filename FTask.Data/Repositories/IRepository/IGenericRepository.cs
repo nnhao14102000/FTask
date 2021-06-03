@@ -16,5 +16,7 @@ namespace FTask.Data.Repositories.IRepository
 
         void AddRange(IEnumerable<T> entities);
         void RemoveRange(IEnumerable<T> entities);
+
+        bool SaveChanges();
     }
 }

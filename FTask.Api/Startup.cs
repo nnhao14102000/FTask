@@ -65,10 +65,9 @@ namespace FTask.Api
             // Config for AutoMapper...
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-            // config for service            
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
-
-            services.AddTransient<IStudentService, StudentService>();
+            // config for service for student         
+            services.AddScoped<IStudentRepository, StudentRepository>();
+            services.AddScoped<IStudentService, StudentService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
