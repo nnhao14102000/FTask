@@ -12,11 +12,11 @@ namespace FTask.Data.Models
             PlanSubjects = new HashSet<PlanSubject>();
         }
 
-        public int Id { get; set; }
-        public string Name { get; set; }
+        public int PlanSemesterId { get; set; }
+        public string PlanSemesterName { get; set; }
         public string StudentId { get; set; }
         public string SemesterId { get; set; }
-        public DateTime CreateDate { get; set; }
+        public DateTime? CreateDate { get; set; }
         public int? Status { get; set; }
 
         public virtual Semester Semester { get; set; }

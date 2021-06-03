@@ -12,8 +12,8 @@ namespace FTask.Data.Models
             Subjects = new HashSet<Subject>();
         }
 
-        public int Id { get; set; }
-        public string Name { get; set; }
+        public int SubjectGroupId { get; set; }
+        public string SubjectGroupName { get; set; }
 
         public virtual ICollection<Subject> Subjects { get; set; }
     }

@@ -13,10 +13,10 @@ namespace FTask.Data.Models
             Topics = new HashSet<Topic>();
         }
 
-        public string Id { get; set; }
-        public string Name { get; set; }
+        public string SubjectId { get; set; }
+        public string SubjectName { get; set; }
         public string Source { get; set; }
-        public int SubjectGroupId { get; set; }
+        public int? SubjectGroupId { get; set; }
 
         public virtual SubjectGroup SubjectGroup { get; set; }
         public virtual ICollection<PlanSubject> PlanSubjects { get; set; }

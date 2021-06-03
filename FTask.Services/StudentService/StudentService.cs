@@ -51,53 +51,53 @@ namespace FTask.Services.StudentService
 
         public void AddStudent(Student student)
         {
-            _log.LogInformation($"Add student {student.Id} into database...");
+            _log.LogInformation($"Add student {student.StudentId} into database...");
             _studentRepository.Add(student);
             try
             {
                 if (_studentRepository.SaveChanges())
                 {
-                    _log.LogInformation($"Add student {student.Id} success...");
+                    _log.LogInformation($"Add student {student.StudentId} success...");
                 }
             }
             catch (Exception e)
             {
-                _log.LogError($"Add student {student.Id} fail with error: {e.Message}");
+                _log.LogError($"Add student {student.StudentId} fail with error: {e.Message}");
             }
 
         }
 
         public void UpdateStudent(Student student)
         {
-            _log.LogInformation($"Update student {student.Id}...");
+            _log.LogInformation($"Update student {student.StudentId}...");
             _studentRepository.Update(student);
             try
             {
                 if (_studentRepository.SaveChanges())
                 {
-                    _log.LogInformation($"Update student {student.Id} success...");
+                    _log.LogInformation($"Update student {student.StudentId} success...");
                 }
             }
             catch(Exception e)
             {
-                _log.LogError($"Update student {student.Id} fail with error: {e.Message}");
+                _log.LogError($"Update student {student.StudentId} fail with error: {e.Message}");
             }            
         }
 
         public void RemoveStudent(Student student)
         {
-            _log.LogInformation($"Remove student {student.Id}...");
+            _log.LogInformation($"Remove student {student.StudentId}...");
             _studentRepository.Remove(student);
             try
             {
                 if (_studentRepository.SaveChanges())
                 {
-                    _log.LogInformation($"Remove student {student.Id} success...");
+                    _log.LogInformation($"Remove student {student.StudentId} success...");
                 }
             }
             catch (Exception e)
             {
-                _log.LogError($"Remove student {student.Id} fail with error: {e.Message}");
+                _log.LogError($"Remove student {student.StudentId} fail with error: {e.Message}");
             }
         }        
     }

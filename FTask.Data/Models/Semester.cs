@@ -12,10 +12,11 @@ namespace FTask.Data.Models
             PlanSemesters = new HashSet<PlanSemester>();
         }
 
-        public string Id { get; set; }
-        public string Name { get; set; }
+        public string SemesterId { get; set; }
+        public string SemesterName { get; set; }
         public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; }
+        public int? Status { get; set; }
 
         public virtual ICollection<PlanSemester> PlanSemesters { get; set; }
     }

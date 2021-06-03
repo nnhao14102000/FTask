@@ -12,11 +12,11 @@ namespace FTask.Data.Models
             PlanTopics = new HashSet<PlanTopic>();
         }
 
-        public int Id { get; set; }
+        public int PlanSubjectId { get; set; }
         public int? Priority { get; set; }
         public int? Progress { get; set; }
         public DateTime CreateDate { get; set; }
-        public int? Status { get; set; }
+        public int? Statsus { get; set; }
         public int PlanSemesterId { get; set; }
         public string SubjectId { get; set; }
 

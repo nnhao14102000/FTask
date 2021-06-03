@@ -59,7 +59,7 @@ namespace FTaskAPI.Controllers
         [MapToApiVersion("1.0")]
         public ActionResult<StudentReadDto> AddStudent(StudentAddDto student)
         {
-            var isExisted = _studentService.GetStudentByStudentId(student.Id);
+            var isExisted = _studentService.GetStudentByStudentId(student.StudentId);
             if (isExisted is not null)
             {
                 return BadRequest("Student Id is existed....");
@@ -69,7 +69,7 @@ namespace FTaskAPI.Controllers
             _studentService.AddStudent(studentModel);
             var studentReadModel = _mapper.Map<StudentReadDto>(studentModel);
 
-            return CreatedAtRoute(nameof(GetStudentByStudentId), new { id = studentReadModel.Id }, studentReadModel);
+            return CreatedAtRoute(nameof(GetStudentByStudentId), new { id = studentReadModel.StudentId }, studentReadModel);
         }
 
         [HttpPut("{id}")]

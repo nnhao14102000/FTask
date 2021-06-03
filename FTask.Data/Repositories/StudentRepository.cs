@@ -39,12 +39,12 @@ namespace FTask.Data.Repositories
             {
                 return;
             }
-            students = students.Where(st => st.Name.ToLower().Contains(name.Trim().ToLower()));
+            students = students.Where(st => st.StudentName.ToLower().Contains(name.Trim().ToLower()));
         }
 
         public Student GetStudentByStudentId(string id)
         {
-            return FindByCondition(student => student.Id.Equals(id)).FirstOrDefault();
+            return FindByCondition(student => student.StudentId.Equals(id)).FirstOrDefault();
         }
                 
     }
