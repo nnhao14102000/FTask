@@ -45,12 +45,12 @@ namespace FTaskAPI.Controllers
 
         [HttpGet("{id}", Name = "GetStudentByStudentId")]
         [MapToApiVersion("1.0")]
-        public ActionResult<StudentReadDto> GetStudentByStudentId(string id)
+        public ActionResult<StudentReadDetailDto> GetStudentByStudentId(string id)
         {
             var student = _studentService.GetStudentByStudentId(id);
             if (student is not null)
             {
-                return Ok(_mapper.Map<StudentReadDto>(student));
+                return Ok(_mapper.Map<StudentReadDetailDto>(student));
             }
             return NotFound();
         }

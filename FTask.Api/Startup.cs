@@ -1,6 +1,7 @@
 using FTask.Data.Models;
 using FTask.Data.Repositories;
 using FTask.Data.Repositories.IRepository;
+using FTask.Services.MajorService;
 using FTask.Services.StudentService;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -68,6 +69,10 @@ namespace FTask.Api
             // config for service for student         
             services.AddScoped<IStudentRepository, StudentRepository>();
             services.AddScoped<IStudentService, StudentService>();
+
+            // config for service for major         
+            services.AddScoped<IMajorRepository, MajorRepository>();
+            services.AddScoped<IMajorService, MajorService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

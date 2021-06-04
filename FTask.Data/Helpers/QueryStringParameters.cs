@@ -2,10 +2,10 @@
 {
     public abstract class QueryStringParameters
 	{
-		const int maxPageSize = 50;
+		const int maxPageSize = 250;
 		public int PageNumber { get; set; } = 1;
 
-		private int _pageSize = 10;
+		private int _pageSize = 200;
 		public int PageSize
 		{
 			get

@@ -19,7 +19,7 @@ namespace FTask.Data.Repositories
             if(studentParameters.MajorId is null)
             {
                 var allStudent = FindAll();
-                SearchByName(ref allStudent, studentParameters.Name);
+                SearchByName(ref allStudent, studentParameters.StudentName);
 
                 return PagedList<Student>.ToPagedList(allStudent,
                     studentParameters.PageNumber, studentParameters.PageSize);
@@ -27,7 +27,7 @@ namespace FTask.Data.Repositories
 
             var students = FindByCondition(st => st.MajorId.Equals(studentParameters.MajorId));
 
-            SearchByName(ref students, studentParameters.Name);
+            SearchByName(ref students, studentParameters.StudentName);
 
             return PagedList<Student>.ToPagedList(students,
                 studentParameters.PageNumber, studentParameters.PageSize);
