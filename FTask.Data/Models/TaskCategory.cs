@@ -12,8 +12,8 @@ namespace FTask.Data.Models
             Tasks = new HashSet<Task>();
         }
 
-        public int Id { get; set; }
-        public string TaskType { get; set; }
+        public int TaskCategoryId { get; set; }
+        public string TaskeType { get; set; }
 
         public virtual ICollection<Task> Tasks { get; set; }
     }

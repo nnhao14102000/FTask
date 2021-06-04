@@ -12,9 +12,9 @@ namespace FTask.Data.Models
             PlanTopics = new HashSet<PlanTopic>();
         }
 
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
+        public int TopicId { get; set; }
+        public string TopicName { get; set; }
+        public string Decription { get; set; }
         public string SubjectId { get; set; }
 
         public virtual Subject Subject { get; set; }

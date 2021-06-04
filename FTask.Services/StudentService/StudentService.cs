@@ -1,26 +1,26 @@
-﻿using FTask.Data.Models;
+﻿using FTask.Data.Helpers;
+using FTask.Data.Models;
+using FTask.Data.Parameters;
 using FTask.Data.Repositories.IRepository;
 using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
 
 namespace FTask.Services.StudentService
 {
     public class StudentService : IStudentService
     {
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly IStudentRepository _studentRepository;
         private readonly ILogger<StudentService> _log;
 
-        public StudentService(IUnitOfWork unitOfWork, ILogger<StudentService> log)
+        public StudentService(IStudentRepository studentRepository, ILogger<StudentService> log)
         {
-            _unitOfWork = unitOfWork;
+            _studentRepository = studentRepository;
             _log = log;
         }        
 
-        public IEnumerable<Student> GetAllStudents()
-        {
-            _log.LogInformation("Get all students...");
-            var students = _unitOfWork.Students.GetAll();
+        public PagedList<Student> GetAllStudents(StudentParameters studentParameters)
+        {            
+            var students = _studentRepository.GetStudents(studentParameters);
             if (students is null)
             {
                 _log.LogInformation("Have no students...");
@@ -28,6 +28,7 @@ namespace FTask.Services.StudentService
             }
             else
             {
+                _log.LogInformation($"Get {students.TotalCount} students from database...");
                 return students;
             }
         }
@@ -35,7 +36,7 @@ namespace FTask.Services.StudentService
         public Student GetStudentByStudentId(string id)
         {
             _log.LogInformation($"Search student {id}...");
-            var student = _unitOfWork.Students.GetStudentByStudentId(id);
+            var student = _studentRepository.GetStudentByStudentId(id);
             if (student is null)
             {
                 _log.LogInformation($"Can not found student {id}...");
@@ -50,53 +51,53 @@ namespace FTask.Services.StudentService
 
         public void AddStudent(Student student)
         {
-            _log.LogInformation($"Add student {student.Id} into database...");
-            _unitOfWork.Students.Add(student);
+            _log.LogInformation($"Add student {student.StudentId} into database...");
+            _studentRepository.Add(student);
             try
             {
-                if (_unitOfWork.SaveChanges())
+                if (_studentRepository.SaveChanges())
                 {
-                    _log.LogInformation($"Add student {student.Id} success...");
+                    _log.LogInformation($"Add student {student.StudentId} success...");
                 }
             }
             catch (Exception e)
             {
-                _log.LogError($"Add student {student.Id} fail with error: {e.Message}");
+                _log.LogError($"Add student {student.StudentId} fail with error: {e.Message}");
             }
 
         }
 
         public void UpdateStudent(Student student)
         {
-            _log.LogInformation($"Update student {student.Id}...");
-            _unitOfWork.Students.Update(student);
+            _log.LogInformation($"Update student {student.StudentId}...");
+            _studentRepository.Update(student);
             try
             {
-                if (_unitOfWork.SaveChanges())
+                if (_studentRepository.SaveChanges())
                 {
-                    _log.LogInformation($"Update student {student.Id} success...");
+                    _log.LogInformation($"Update student {student.StudentId} success...");
                 }
             }
             catch(Exception e)
             {
-                _log.LogError($"Update student {student.Id} fail with error: {e.Message}");
+                _log.LogError($"Update student {student.StudentId} fail with error: {e.Message}");
             }            
         }
 
         public void RemoveStudent(Student student)
         {
-            _log.LogInformation($"Remove student {student.Id}...");
-            _unitOfWork.Students.Remove(student);
+            _log.LogInformation($"Remove student {student.StudentId}...");
+            _studentRepository.Remove(student);
             try
             {
-                if (_unitOfWork.SaveChanges())
+                if (_studentRepository.SaveChanges())
                 {
-                    _log.LogInformation($"Remove student {student.Id} success...");
+                    _log.LogInformation($"Remove student {student.StudentId} success...");
                 }
             }
             catch (Exception e)
             {
-                _log.LogError($"Remove student {student.Id} fail with error: {e.Message}");
+                _log.LogError($"Remove student {student.StudentId} fail with error: {e.Message}");
             }
         }        
     }

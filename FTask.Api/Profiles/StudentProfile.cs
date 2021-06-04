@@ -10,6 +10,7 @@ namespace FTaskAPI.Profiles
         {
             // Mapper from Source --> Target
             CreateMap<Student, StudentReadDto>();
+            CreateMap<Student, StudentReadDetailDto>();
             CreateMap<StudentAddDto, Student>();
             CreateMap<StudentUpdateDto, Student>();
             CreateMap<Student, StudentUpdateDto>();

@@ -12,7 +12,7 @@ namespace FTask.Data.Models
             Tasks = new HashSet<Task>();
         }
 
-        public int Id { get; set; }
+        public int PlanTopicId { get; set; }
         public int? Progress { get; set; }
         public int? Status { get; set; }
         public int TopicId { get; set; }

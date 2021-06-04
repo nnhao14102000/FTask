@@ -2,7 +2,7 @@
 {
     public class StudentUpdateDto
     {
-        public string Name { get; set; }
+        public string StudentName { get; set; }
         public string MajorId { get; set; }
     }
 }

@@ -37,9 +37,9 @@ namespace FTask.Data.Models
             {
                 entity.ToTable("Major");
 
-                entity.Property(e => e.Id).HasMaxLength(10);
+                entity.Property(e => e.MajorId).HasMaxLength(20);
 
-                entity.Property(e => e.Name)
+                entity.Property(e => e.MajorName)
                     .IsRequired()
                     .HasMaxLength(50);
             });
@@ -48,44 +48,30 @@ namespace FTask.Data.Models
             {
                 entity.ToTable("PlanSemester");
 
-                entity.HasIndex(e => e.SemesterId, "IX_PlanSemester_SemesterID");
+                entity.Property(e => e.CreateDate).HasColumnType("datetime");
 
-                entity.HasIndex(e => e.StudentId, "IX_PlanSemester_StudentCode");
+                entity.Property(e => e.PlanSemesterName).HasMaxLength(50);
 
-                entity.Property(e => e.CreateDate).HasColumnType("date");
+                entity.Property(e => e.SemesterId).HasMaxLength(10);
 
-                entity.Property(e => e.Name).HasMaxLength(50);
-
-                entity.Property(e => e.SemesterId)
-                    .IsRequired()
-                    .HasMaxLength(10);
-
-                entity.Property(e => e.StudentId)
-                    .IsRequired()
-                    .HasMaxLength(20);
+                entity.Property(e => e.StudentId).HasMaxLength(20);
 
                 entity.HasOne(d => d.Semester)
                     .WithMany(p => p.PlanSemesters)
                     .HasForeignKey(d => d.SemesterId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_PlanSemester_Semester");
+                    .HasConstraintName("FK__PlanSemes__Semes__412EB0B6");
 
                 entity.HasOne(d => d.Student)
                     .WithMany(p => p.PlanSemesters)
                     .HasForeignKey(d => d.StudentId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_PlanSemester_Student");
+                    .HasConstraintName("FK__PlanSemes__Stude__403A8C7D");
             });
 
             modelBuilder.Entity<PlanSubject>(entity =>
             {
                 entity.ToTable("PlanSubject");
 
-                entity.HasIndex(e => e.PlanSemesterId, "IX_PlanSubject_PlanSemesterID");
-
-                entity.HasIndex(e => e.SubjectId, "IX_PlanSubject_SubjectID");
-
-                entity.Property(e => e.CreateDate).HasColumnType("date");
+                entity.Property(e => e.CreateDate).HasColumnType("datetime");
 
                 entity.Property(e => e.SubjectId)
                     .IsRequired()
@@ -95,157 +81,139 @@ namespace FTask.Data.Models
                     .WithMany(p => p.PlanSubjects)
                     .HasForeignKey(d => d.PlanSemesterId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_PlanSubject_PlanSemester");
+                    .HasConstraintName("FK__PlanSubje__PlanS__4E88ABD4");
 
                 entity.HasOne(d => d.Subject)
                     .WithMany(p => p.PlanSubjects)
                     .HasForeignKey(d => d.SubjectId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_PlanSubject_Subject");
+                    .HasConstraintName("FK__PlanSubje__Subje__4F7CD00D");
             });
 
             modelBuilder.Entity<PlanTopic>(entity =>
             {
                 entity.ToTable("PlanTopic");
 
-                entity.HasIndex(e => e.TopicId, "IX_PlanTopic_TopicID");
-
                 entity.HasOne(d => d.PlanSubject)
                     .WithMany(p => p.PlanTopics)
                     .HasForeignKey(d => d.PlanSubjectId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_PlanTopic_PlanSubject1");
+                    .HasConstraintName("FK__PlanTopic__PlanS__5BE2A6F2");
 
                 entity.HasOne(d => d.Topic)
                     .WithMany(p => p.PlanTopics)
                     .HasForeignKey(d => d.TopicId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_PlanTopic_Topic");
+                    .HasConstraintName("FK__PlanTopic__Topic__5AEE82B9");
             });
 
             modelBuilder.Entity<Semester>(entity =>
             {
                 entity.ToTable("Semester");
 
-                entity.Property(e => e.Id).HasMaxLength(10);
+                entity.Property(e => e.SemesterId).HasMaxLength(10);
 
-                entity.Property(e => e.EndDate).HasColumnType("date");
+                entity.Property(e => e.EndDate).HasColumnType("datetime");
 
-                entity.Property(e => e.Name)
+                entity.Property(e => e.SemesterName)
                     .IsRequired()
                     .HasMaxLength(50);
 
-                entity.Property(e => e.StartDate).HasColumnType("date");
+                entity.Property(e => e.StartDate).HasColumnType("datetime");
             });
 
             modelBuilder.Entity<Student>(entity =>
             {
                 entity.ToTable("Student");
 
-                entity.Property(e => e.Id).HasMaxLength(20);
+                entity.Property(e => e.StudentId).HasMaxLength(20);
 
-                entity.Property(e => e.Email)
+                entity.Property(e => e.MajorId).HasMaxLength(20);
+
+                entity.Property(e => e.StudentEmail)
                     .IsRequired()
                     .HasMaxLength(50);
 
-                entity.Property(e => e.MajorId)
-                    .IsRequired()
-                    .HasMaxLength(10);
-
-                entity.Property(e => e.Name)
+                entity.Property(e => e.StudentName)
                     .IsRequired()
                     .HasMaxLength(50);
 
                 entity.HasOne(d => d.Major)
                     .WithMany(p => p.Students)
                     .HasForeignKey(d => d.MajorId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Student_Major");
+                    .HasConstraintName("FK__Student__MajorId__3B75D760");
             });
 
             modelBuilder.Entity<Subject>(entity =>
             {
                 entity.ToTable("Subject");
 
-                entity.HasIndex(e => e.SubjectGroupId, "IX_Subject_SubjectGroupID");
-
-                entity.Property(e => e.Id).HasMaxLength(10);
-
-                entity.Property(e => e.Name)
-                    .IsRequired()
-                    .HasMaxLength(50);
+                entity.Property(e => e.SubjectId).HasMaxLength(10);
 
                 entity.Property(e => e.Source).HasMaxLength(50);
+
+                entity.Property(e => e.SubjectName)
+                    .IsRequired()
+                    .HasMaxLength(50);
 
                 entity.HasOne(d => d.SubjectGroup)
                     .WithMany(p => p.Subjects)
                     .HasForeignKey(d => d.SubjectGroupId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Subject_SubjectGroup");
+                    .HasConstraintName("FK__Subject__Subject__4BAC3F29");
             });
 
             modelBuilder.Entity<SubjectGroup>(entity =>
             {
                 entity.ToTable("SubjectGroup");
 
-                entity.Property(e => e.Name)
-                    .IsRequired()
-                    .HasMaxLength(50);
+                entity.Property(e => e.SubjectGroupName).HasMaxLength(50);
             });
 
             modelBuilder.Entity<Task>(entity =>
             {
                 entity.ToTable("Task");
 
-                entity.HasIndex(e => e.PlanTopicId, "IX_Task_PlanTopicID");
+                entity.Property(e => e.CreateDate).HasColumnType("datetime");
 
-                entity.HasIndex(e => e.TaskCategoryId, "IX_Task_TaskCategoryID");
-
-                entity.Property(e => e.CreateDate).HasColumnType("date");
-
-                entity.Property(e => e.Description).IsRequired();
+                entity.Property(e => e.Decription).HasMaxLength(100);
 
                 entity.HasOne(d => d.PlanTopic)
                     .WithMany(p => p.Tasks)
                     .HasForeignKey(d => d.PlanTopicId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Task_PlanTopic");
+                    .HasConstraintName("FK__Task__PlanTopicI__5EBF139D");
 
                 entity.HasOne(d => d.TaskCategory)
                     .WithMany(p => p.Tasks)
                     .HasForeignKey(d => d.TaskCategoryId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Task_TaskCategory");
+                    .HasConstraintName("FK__Task__TaskCatego__5FB337D6");
             });
 
             modelBuilder.Entity<TaskCategory>(entity =>
             {
                 entity.ToTable("TaskCategory");
 
-                entity.Property(e => e.TaskType)
-                    .IsRequired()
-                    .HasMaxLength(30);
+                entity.Property(e => e.TaskeType).HasMaxLength(50);
             });
 
             modelBuilder.Entity<Topic>(entity =>
             {
                 entity.ToTable("Topic");
 
-                entity.HasIndex(e => e.SubjectId, "IX_Topic_SubjectID");
-
-                entity.Property(e => e.Name)
-                    .IsRequired()
-                    .HasMaxLength(50);
+                entity.Property(e => e.Decription).HasMaxLength(200);
 
                 entity.Property(e => e.SubjectId)
                     .IsRequired()
                     .HasMaxLength(10);
 
+                entity.Property(e => e.TopicName)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
                 entity.HasOne(d => d.Subject)
                     .WithMany(p => p.Topics)
                     .HasForeignKey(d => d.SubjectId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Topic_Subject");
+                    .HasConstraintName("FK__Topic__SubjectId__52593CB8");
             });
 
             OnModelCreatingPartial(modelBuilder);

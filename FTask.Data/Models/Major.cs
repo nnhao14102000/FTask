@@ -12,8 +12,8 @@ namespace FTask.Data.Models
             Students = new HashSet<Student>();
         }
 
-        public string Id { get; set; }
-        public string Name { get; set; }
+        public string MajorId { get; set; }
+        public string MajorName { get; set; }
 
         public virtual ICollection<Student> Students { get; set; }
     }

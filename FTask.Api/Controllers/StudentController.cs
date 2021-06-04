@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
 using FTask.Api.Dtos.StudentDtos;
 using FTask.Data.Models;
+using FTask.Data.Parameters;
 using FTask.Services.StudentService;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 
 namespace FTaskAPI.Controllers
@@ -24,20 +26,31 @@ namespace FTaskAPI.Controllers
 
         [HttpGet]
         [MapToApiVersion("1.0")]
-        public ActionResult<IEnumerable<StudentReadDto>> GetAllStudents()
+        public ActionResult<IEnumerable<StudentReadDto>> GetAllStudents([FromQuery] StudentParameters studentParameters)
         {
-            var students = _studentService.GetAllStudents();
+            var students = _studentService.GetAllStudents(studentParameters);
+
+            var metaData = new
+            {
+                students.TotalCount,
+                students.PageSize,
+                students.CurrentPage,
+                students.HasNext,
+                students.HasPrevious
+            };
+            Response.Headers.Add("Student-Pagination", JsonConvert.SerializeObject(metaData));
+
             return Ok(_mapper.Map<IEnumerable<StudentReadDto>>(students));
         }
 
         [HttpGet("{id}", Name = "GetStudentByStudentId")]
         [MapToApiVersion("1.0")]
-        public ActionResult<StudentReadDto> GetStudentByStudentId(string id)
+        public ActionResult<StudentReadDetailDto> GetStudentByStudentId(string id)
         {
             var student = _studentService.GetStudentByStudentId(id);
             if (student is not null)
             {
-                return Ok(_mapper.Map<StudentReadDto>(student));
+                return Ok(_mapper.Map<StudentReadDetailDto>(student));
             }
             return NotFound();
         }
@@ -46,17 +59,17 @@ namespace FTaskAPI.Controllers
         [MapToApiVersion("1.0")]
         public ActionResult<StudentReadDto> AddStudent(StudentAddDto student)
         {
-            var isExisted = _studentService.GetStudentByStudentId(student.Id);
+            var isExisted = _studentService.GetStudentByStudentId(student.StudentId);
             if (isExisted is not null)
             {
-                return BadRequest();
+                return BadRequest("Student Id is existed....");
             }
 
             var studentModel = _mapper.Map<Student>(student);
             _studentService.AddStudent(studentModel);
             var studentReadModel = _mapper.Map<StudentReadDto>(studentModel);
 
-            return CreatedAtRoute(nameof(GetStudentByStudentId), new { id = studentReadModel.Id }, studentReadModel);
+            return CreatedAtRoute(nameof(GetStudentByStudentId), new { id = studentReadModel.StudentId }, studentReadModel);
         }
 
         [HttpPut("{id}")]
