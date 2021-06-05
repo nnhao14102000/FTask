@@ -3,10 +3,12 @@ using FTask.Data.Repositories;
 using FTask.Data.Repositories.IRepository;
 using FTask.Services.MajorService;
 using FTask.Services.StudentService;
+using FTaskAPI.Controllers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Versioning;
+using Microsoft.AspNetCore.Mvc.Versioning.Conventions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -34,16 +36,17 @@ namespace FTask.Api
             services.AddControllers();
 
             // Add API Versioning to the service container
-            services.AddApiVersioning(config =>
+            services.AddApiVersioning(options =>
             {
                 // Specify the default API Version
-                config.DefaultApiVersion = new ApiVersion(1, 0);
+                options.DefaultApiVersion = new ApiVersion(1, 0);
                 // If the client hasn't specified the API version in the request, use the default API version number 
-                config.AssumeDefaultVersionWhenUnspecified = true;
+                options.AssumeDefaultVersionWhenUnspecified = true;                
                 // Advertise the API versions supported for the particular endpoint
-                config.ReportApiVersions = true;
-
-                config.ApiVersionReader = new HeaderApiVersionReader("api-version");
+                options.ReportApiVersions = true;
+                options.ApiVersionReader = ApiVersionReader.Combine(
+                    new MediaTypeApiVersionReader("version"),
+                    new HeaderApiVersionReader("X-Version"));
             });
 
             services.AddControllers().AddNewtonsoftJson(s =>

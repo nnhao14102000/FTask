@@ -10,8 +10,8 @@ using System.Collections.Generic;
 
 namespace FTaskAPI.Controllers
 {
-    [Route("api/v{version:apiVersion}/majors")]
     [ApiController]
+    [Route("api/majors")]
     [ApiVersion("1.0")]
     public class MajorController : ControllerBase
     {
@@ -25,7 +25,6 @@ namespace FTaskAPI.Controllers
         }
 
         [HttpGet]
-        [MapToApiVersion("1.0")]
         public ActionResult<IEnumerable<MajorReadDto>> GetAllMajors([FromQuery] MajorParameters majorParameter)
         {
             var majors = _majorService.GetAllMajors(majorParameter);
@@ -44,7 +43,6 @@ namespace FTaskAPI.Controllers
         }
 
         [HttpGet("{id}", Name = "GetMajorByMajorId")]
-        [MapToApiVersion("1.0")]
         public ActionResult<MajorReadDetailDto> GetMajorByMajorId(string id)
         {
             var major = _majorService.GetMajorByMajorId(id);
@@ -56,7 +54,6 @@ namespace FTaskAPI.Controllers
         }
 
         [HttpPost]
-        [MapToApiVersion("1.0")]
         public ActionResult<MajorReadDto> AddMajor(MajorAddDto major)
         {
             var isExisted = _majorService.GetMajorByMajorId(major.MajorId);
@@ -73,7 +70,6 @@ namespace FTaskAPI.Controllers
         }
 
         [HttpPut("{id}")]
-        [MapToApiVersion("1.0")]
         public ActionResult UpdateMajor(string id, MajorUpdateDto major)
         {
             var majorModel = _majorService.GetMajorByMajorId(id);
@@ -87,7 +83,6 @@ namespace FTaskAPI.Controllers
         }
 
         [HttpPatch("{id}")]
-        [MapToApiVersion("1.0")]
         public ActionResult PartialMajorUpdate(string id, JsonPatchDocument<MajorUpdateDto> patchDoc)
         {
             var majorModel = _majorService.GetMajorByMajorId(id);
@@ -108,7 +103,6 @@ namespace FTaskAPI.Controllers
         }
 
         [HttpDelete("{id}")]
-        [MapToApiVersion("1.0")]
         public ActionResult RemoveMajor(string id)
         {
             var majorModel = _majorService.GetMajorByMajorId(id);

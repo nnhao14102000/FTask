@@ -10,8 +10,8 @@ using System.Collections.Generic;
 
 namespace FTaskAPI.Controllers
 {
-    [Route("api/v{version:apiVersion}/students")]
     [ApiController]
+    [Route("api/students")]
     [ApiVersion("1.0")]
     public class StudentController : ControllerBase
     {
@@ -25,7 +25,6 @@ namespace FTaskAPI.Controllers
         }
 
         [HttpGet]
-        [MapToApiVersion("1.0")]
         public ActionResult<IEnumerable<StudentReadDto>> GetAllStudents([FromQuery] StudentParameters studentParameters)
         {
             var students = _studentService.GetAllStudents(studentParameters);
@@ -44,7 +43,6 @@ namespace FTaskAPI.Controllers
         }
 
         [HttpGet("{id}", Name = "GetStudentByStudentId")]
-        [MapToApiVersion("1.0")]
         public ActionResult<StudentReadDetailDto> GetStudentByStudentId(string id)
         {
             var student = _studentService.GetStudentByStudentId(id);
@@ -56,7 +54,6 @@ namespace FTaskAPI.Controllers
         }
 
         [HttpPost]
-        [MapToApiVersion("1.0")]
         public ActionResult<StudentReadDto> AddStudent(StudentAddDto student)
         {
             var isExisted = _studentService.GetStudentByStudentId(student.StudentId);
@@ -73,7 +70,6 @@ namespace FTaskAPI.Controllers
         }
 
         [HttpPut("{id}")]
-        [MapToApiVersion("1.0")]
         public ActionResult UpdateStudent(string id, StudentUpdateDto student)
         {
             var studentModel = _studentService.GetStudentByStudentId(id);
@@ -87,7 +83,6 @@ namespace FTaskAPI.Controllers
         }
 
         [HttpPatch("{id}")]
-        [MapToApiVersion("1.0")]
         public ActionResult PartialStudentUpdate(string id, JsonPatchDocument<StudentUpdateDto> patchDoc)
         {
             var studentModel = _studentService.GetStudentByStudentId(id);
@@ -108,7 +103,6 @@ namespace FTaskAPI.Controllers
         }
 
         [HttpDelete("{id}")]
-        [MapToApiVersion("1.0")]
         public ActionResult RemoveStudent(string id)
         {
             var studentModel = _studentService.GetStudentByStudentId(id);
