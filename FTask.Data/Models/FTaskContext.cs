@@ -177,6 +177,8 @@ namespace FTask.Data.Models
 
                 entity.Property(e => e.Decription).HasMaxLength(100);
 
+                entity.Property(e => e.DueDate).HasColumnType("datetime");
+
                 entity.HasOne(d => d.PlanTopic)
                     .WithMany(p => p.Tasks)
                     .HasForeignKey(d => d.PlanTopicId)
