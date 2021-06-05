@@ -12,6 +12,7 @@ namespace FTask.Data.Models
         public DateTime CreateDate { get; set; }
         public long? EstimateTime { get; set; }
         public long? EffortTime { get; set; }
+        public DateTime? DueDate { get; set; }
         public int? Priority { get; set; }
         public int? Status { get; set; }
         public int? PlanTopicId { get; set; }
