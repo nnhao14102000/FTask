@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace FTask.Data.Repositories
 {
-    class SubjectGroupRepository : GenericRepository<SubjectGroup>, ISubjectGroupRepository
+    public class SubjectGroupRepository : GenericRepository<SubjectGroup>, ISubjectGroupRepository
     {
         public FTaskContext context { get; set; }
 
@@ -14,6 +14,7 @@ namespace FTask.Data.Repositories
         {
             this.context = context;
         }
+
         public SubjectGroup GetSubjectGroupBySubjectGroupId(int Id)
         {
             return FindByCondition(subjectGroup => subjectGroup.SubjectGroupId.Equals(Id)).FirstOrDefault();
@@ -21,19 +22,19 @@ namespace FTask.Data.Repositories
 
         public PagedList<SubjectGroup> GetSubjectGroups(SubjectGroupParametes subjectGroupParametes)
         {
-            var subjectGroup = FindAll();
-            SearchByName(ref subjectGroup, subjectGroupParametes.SubjectGroupName);
+            var subjectGroups = FindAll();
+            SearchByName(ref subjectGroups, subjectGroupParametes.SubjectGroupName);
 
-            return PagedList<SubjectGroup>.ToPagedList(subjectGroup, subjectGroupParametes.PageNumber, subjectGroupParametes.PageSize);
+            return PagedList<SubjectGroup>.ToPagedList(subjectGroups, subjectGroupParametes.PageNumber, subjectGroupParametes.PageSize);
         }
 
-        private void SearchByName(ref IQueryable<SubjectGroup> subjectGroup, string name)
+        private void SearchByName(ref IQueryable<SubjectGroup> subjectGroups, string name)
         {
-            if(!subjectGroup.Any() || string.IsNullOrWhiteSpace(name))
+            if(!subjectGroups.Any() || string.IsNullOrWhiteSpace(name))
             {
                 return;
             }
-            subjectGroup = subjectGroup.Where(sg => sg.SubjectGroupName.ToLower().Contains(name.Trim().ToLower()));
+            subjectGroups = subjectGroups.Where(sg => sg.SubjectGroupName.ToLower().Contains(name.Trim().ToLower()));
         }
 
         

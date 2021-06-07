@@ -11,25 +11,27 @@ namespace FTask.Services.SubjectGroupService
     {
         private readonly ISubjectGroupRepository _subjectGroupRepository;
         private readonly ILogger<SubjectGroupService> _log;
-        public SubjectGroupService(ISubjectGroupRepository subjectGroupRepository, ILogger<SubjectGroup> log)
+
+        public SubjectGroupService(ISubjectGroupRepository subjectGroupRepository, ILogger<SubjectGroupService> log)
         {
             _subjectGroupRepository = subjectGroupRepository;
-            _log = (ILogger<SubjectGroupService>)log;
+            _log = log;
         }
+
         public void AddSubjectGroup(SubjectGroup subjectGroup)
         {
-            _log.LogInformation($"Add SubjectGroup {subjectGroup.SubjectGroupId} into database...");
+            _log.LogInformation($"Add SubjectGroup {subjectGroup.SubjectGroupName} into database...");
             _subjectGroupRepository.Add(subjectGroup);
             try
             {
                 if (_subjectGroupRepository.SaveChanges())
                 {
-                    _log.LogInformation($"Add SubjectGroup {subjectGroup.SubjectGroupId} sucess...");
+                    _log.LogInformation($"Add SubjectGroup {subjectGroup.SubjectGroupName} success...");
                 }
             }
             catch(Exception e)
             {
-                _log.LogInformation($"Add SubjectGroup {subjectGroup.SubjectGroupId} fail with error: {e.Message}");
+                _log.LogInformation($"Add SubjectGroup {subjectGroup.SubjectGroupName} fail with error: {e.Message}");
             }
         }
 

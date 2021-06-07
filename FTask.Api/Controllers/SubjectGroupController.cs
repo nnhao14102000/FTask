@@ -11,7 +11,7 @@ using System.Collections.Generic;
 namespace FTask.Api.Controllers
 {
     [ApiController]
-    [Route("api/subject-group")]
+    [Route("api/subject-groups")]
     [ApiVersion("1.0")]
     public class SubjectGroupController : Controller
     {
@@ -37,7 +37,7 @@ namespace FTask.Api.Controllers
                 subjectGroup.HasNext,
                 subjectGroup.HasPrevious
             };
-            Response.Headers.Add("subjectGroup-Pagination", JsonConvert.SerializeObject(metaData));
+            Response.Headers.Add("SubjectGroup-Pagination", JsonConvert.SerializeObject(metaData));
 
             return Ok(_mapper.Map<IEnumerable<SubjectGroupReadDTO>>(subjectGroup));
         } 
@@ -56,17 +56,11 @@ namespace FTask.Api.Controllers
         [HttpPost]
         public ActionResult<SubjectGroupReadDTO> AddSubjectGroup(SubjectGroupAddDTO subjectGroup)
         {
-            var isExisted = _subjectGroupService.GetSubjectGroupBySubjectGroupId(subjectGroup.subjectGroupId);
-            if (isExisted is not null)
-            {
-                return BadRequest("subjectGroup Id is existed....");
-            }
-
             var subjectGroupModel = _mapper.Map<SubjectGroup>(subjectGroup);
             _subjectGroupService.AddSubjectGroup(subjectGroupModel);
             var subjectGroupReadModel = _mapper.Map<SubjectGroupReadDTO>(subjectGroupModel);
 
-            return CreatedAtRoute(nameof(GetSubjectGroupBySubjectGroupId), new { id = subjectGroupReadModel.subjectGroupId }, subjectGroupReadModel);
+            return CreatedAtRoute(nameof(GetSubjectGroupBySubjectGroupId), new { id = subjectGroupReadModel.SubjectGroupId }, subjectGroupReadModel);
         }
 
         [HttpPut("{id}")]
