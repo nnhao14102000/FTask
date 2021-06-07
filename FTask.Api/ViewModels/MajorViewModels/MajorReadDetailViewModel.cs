@@ -1,6 +1,6 @@
-﻿namespace FTask.Api.Dtos.MajorDtos
+﻿namespace FTask.Api.Dtos.MajorViewModels
 {
-    public class MajorReadDto
+    public class MajorReadDetailViewModel
     {
         public string MajorId { get; set; }
         public string MajorName { get; set; }

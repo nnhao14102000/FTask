@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using FTask.Api.Dtos.SubjectGroupDtos;
+using FTask.Api.Dtos.SubjectGroupViewModels;
 using FTask.Data.Models;
 using FTask.Data.Parameters;
 using FTask.Services.SubjectGroupService;
@@ -25,7 +25,7 @@ namespace FTask.Api.Controllers
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<SubjectGroupReadDTO>> GetAllSubjectGroups([FromQuery] SubjectGroupParametes subjectGroupParameter)
+        public ActionResult<IEnumerable<SubjectGroupReadViewModel>> GetAllSubjectGroups([FromQuery] SubjectGroupParametes subjectGroupParameter)
         {
             var subjectGroup = _subjectGroupService.GetAllSubjectGroups(subjectGroupParameter);
 
@@ -39,32 +39,32 @@ namespace FTask.Api.Controllers
             };
             Response.Headers.Add("SubjectGroup-Pagination", JsonConvert.SerializeObject(metaData));
 
-            return Ok(_mapper.Map<IEnumerable<SubjectGroupReadDTO>>(subjectGroup));
+            return Ok(_mapper.Map<IEnumerable<SubjectGroupReadViewModel>>(subjectGroup));
         } 
 
         [HttpGet("{id}", Name = "GetSubjectGroupBySubjectGroupId")]
-        public ActionResult<SubjectGroupReadDetailDTO> GetSubjectGroupBySubjectGroupId(int id)
+        public ActionResult<SubjectGroupReadDetailViewModel> GetSubjectGroupBySubjectGroupId(int id)
         {
             var subjectGroup = _subjectGroupService.GetSubjectGroupBySubjectGroupId(id);
             if (subjectGroup is not null)
             {
-                return Ok(_mapper.Map<SubjectGroupReadDetailDTO>(subjectGroup));
+                return Ok(_mapper.Map<SubjectGroupReadDetailViewModel>(subjectGroup));
             }
             return NotFound();
         }
 
         [HttpPost]
-        public ActionResult<SubjectGroupReadDTO> AddSubjectGroup(SubjectGroupAddDTO subjectGroup)
+        public ActionResult<SubjectGroupReadViewModel> AddSubjectGroup(SubjectGroupAddViewModel subjectGroup)
         {
             var subjectGroupModel = _mapper.Map<SubjectGroup>(subjectGroup);
             _subjectGroupService.AddSubjectGroup(subjectGroupModel);
-            var subjectGroupReadModel = _mapper.Map<SubjectGroupReadDTO>(subjectGroupModel);
+            var subjectGroupReadModel = _mapper.Map<SubjectGroupReadViewModel>(subjectGroupModel);
 
             return CreatedAtRoute(nameof(GetSubjectGroupBySubjectGroupId), new { id = subjectGroupReadModel.SubjectGroupId }, subjectGroupReadModel);
         }
 
         [HttpPut("{id}")]
-        public ActionResult UpdateSubjectGroup (int id, SubjectGroupUpdateDTO subjectGroup)
+        public ActionResult UpdateSubjectGroup (int id, SubjectGroupUpdateViewModel subjectGroup)
         {
             var subjectGroupModel = _subjectGroupService.GetSubjectGroupBySubjectGroupId(id);
             if (subjectGroupModel is null)
@@ -77,14 +77,14 @@ namespace FTask.Api.Controllers
         }
 
         [HttpPatch("{id}")]
-        public ActionResult PartialSubjectGroupUpdate(int id, JsonPatchDocument<SubjectGroupUpdateDTO> patchDoc)
+        public ActionResult PartialSubjectGroupUpdate(int id, JsonPatchDocument<SubjectGroupUpdateViewModel> patchDoc)
         {
             var subjectGroupModel = _subjectGroupService.GetSubjectGroupBySubjectGroupId(id);
             if (subjectGroupModel is null)
             {
                 return NotFound();
             }
-            var subjectGroupToPatch = _mapper.Map<SubjectGroupUpdateDTO>(subjectGroupModel);
+            var subjectGroupToPatch = _mapper.Map<SubjectGroupUpdateViewModel>(subjectGroupModel);
             patchDoc.ApplyTo(subjectGroupToPatch, ModelState);
             if (!TryValidateModel(subjectGroupToPatch))
             {

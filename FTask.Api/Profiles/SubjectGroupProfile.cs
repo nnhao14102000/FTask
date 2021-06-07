@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using FTask.Api.Dtos.SubjectGroupDtos;
+using FTask.Api.Dtos.SubjectGroupViewModels;
 using FTask.Data.Models;
 
 namespace FTask.Api.Profiles
@@ -9,11 +9,11 @@ namespace FTask.Api.Profiles
         public SubjectGroupProfile()
         {
             // Mapper from Source --> Target
-            CreateMap<SubjectGroup, SubjectGroupReadDTO>();
-            CreateMap<SubjectGroup, SubjectGroupReadDetailDTO>();
-            CreateMap<SubjectGroupAddDTO, SubjectGroup>();
-            CreateMap<SubjectGroupUpdateDTO, SubjectGroup>();
-            CreateMap<SubjectGroup, SubjectGroupUpdateDTO>();
+            CreateMap<SubjectGroup, SubjectGroupReadViewModel>();
+            CreateMap<SubjectGroup, SubjectGroupReadDetailViewModel>();
+            CreateMap<SubjectGroupAddViewModel, SubjectGroup>();
+            CreateMap<SubjectGroupUpdateViewModel, SubjectGroup>();
+            CreateMap<SubjectGroup, SubjectGroupUpdateViewModel>();
         }
     
     }
