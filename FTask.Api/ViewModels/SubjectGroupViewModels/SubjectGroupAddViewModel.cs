@@ -1,4 +1,4 @@
-﻿namespace FTask.Api.Dtos.SubjectGroupViewModels
+﻿namespace FTask.Api.ViewModels.SubjectGroupViewModels
 {
     public class SubjectGroupAddViewModel
     {

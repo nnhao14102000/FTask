@@ -1,4 +1,4 @@
-﻿namespace FTask.Api.Dtos.MajorViewModels
+﻿namespace FTask.Api.ViewModels.MajorViewModels
 {
     public class MajorUpdateViewModel
     {

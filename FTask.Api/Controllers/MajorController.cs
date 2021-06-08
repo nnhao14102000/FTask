@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using FTask.Api.Dtos.MajorViewModels;
+using FTask.Api.ViewModels.MajorViewModels;
 using FTask.Data.Models;
 using FTask.Data.Parameters;
 using FTask.Services.MajorService;

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
-using FTask.Api.Dtos.StudentViewModels;
+using FTask.Api.ViewModels.MajorViewModels;
+using FTask.Api.ViewModels.StudentViewModels;
 using FTask.Data.Models;
 
 namespace FTaskAPI.Profiles
@@ -10,10 +11,13 @@ namespace FTaskAPI.Profiles
         {
             // Mapper from Source --> Target
             CreateMap<Student, StudentReadViewModel>();
-            CreateMap<Student, StudentReadDetailViewModel>();
+            CreateMap<Student, StudentReadDetailViewModel>();            
             CreateMap<StudentAddViewModel, Student>();
             CreateMap<StudentUpdateViewModel, Student>();
             CreateMap<Student, StudentUpdateViewModel>();
+
+            // Mapping for Student get in Major
+            CreateMap<Student, StudentOfMajorViewModel>();
         }
     }
 }

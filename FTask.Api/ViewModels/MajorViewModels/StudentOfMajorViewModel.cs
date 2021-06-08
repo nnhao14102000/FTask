@@ -1,11 +1,9 @@
-﻿namespace FTask.Api.ViewModels.StudentViewModels
+﻿namespace FTask.Api.ViewModels.MajorViewModels
 {
-    public class StudentReadDetailViewModel
+    public class StudentOfMajorViewModel
     {
         public string StudentId { get; set; }
         public string StudentName { get; set; }
         public string StudentEmail { get; set; }
-        public string MajorId { get; set; }
     }
 }
-    

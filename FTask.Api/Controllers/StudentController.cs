@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using FTask.Api.Dtos.StudentViewModels;
+using FTask.Api.ViewModels.StudentViewModels;
 using FTask.Data.Models;
 using FTask.Data.Parameters;
 using FTask.Services.StudentService;
