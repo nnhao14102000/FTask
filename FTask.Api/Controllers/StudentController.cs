@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using FTask.Api.Dtos.StudentDtos;
+using FTask.Api.Dtos.StudentViewModels;
 using FTask.Data.Models;
 using FTask.Data.Parameters;
 using FTask.Services.StudentService;
@@ -25,7 +25,7 @@ namespace FTaskAPI.Controllers
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<StudentReadDto>> GetAllStudents([FromQuery] StudentParameters studentParameters)
+        public ActionResult<IEnumerable<StudentReadViewModel>> GetAllStudents([FromQuery] StudentParameters studentParameters)
         {
             var students = _studentService.GetAllStudents(studentParameters);
 
@@ -39,22 +39,22 @@ namespace FTaskAPI.Controllers
             };
             Response.Headers.Add("Student-Pagination", JsonConvert.SerializeObject(metaData));
 
-            return Ok(_mapper.Map<IEnumerable<StudentReadDto>>(students));
+            return Ok(_mapper.Map<IEnumerable<StudentReadViewModel>>(students));
         }
 
         [HttpGet("{id}", Name = "GetStudentByStudentId")]
-        public ActionResult<StudentReadDetailDto> GetStudentByStudentId(string id)
+        public ActionResult<StudentReadDetailViewModel> GetStudentByStudentId(string id)
         {
             var student = _studentService.GetStudentByStudentId(id);
             if (student is not null)
             {
-                return Ok(_mapper.Map<StudentReadDetailDto>(student));
+                return Ok(_mapper.Map<StudentReadDetailViewModel>(student));
             }
             return NotFound();
         }
 
         [HttpPost]
-        public ActionResult<StudentReadDto> AddStudent(StudentAddDto student)
+        public ActionResult<StudentReadViewModel> AddStudent(StudentAddViewModel student)
         {
             var isExisted = _studentService.GetStudentByStudentId(student.StudentId);
             if (isExisted is not null)
@@ -64,13 +64,13 @@ namespace FTaskAPI.Controllers
 
             var studentModel = _mapper.Map<Student>(student);
             _studentService.AddStudent(studentModel);
-            var studentReadModel = _mapper.Map<StudentReadDto>(studentModel);
+            var studentReadModel = _mapper.Map<StudentReadViewModel>(studentModel);
 
             return CreatedAtRoute(nameof(GetStudentByStudentId), new { id = studentReadModel.StudentId }, studentReadModel);
         }
 
         [HttpPut("{id}")]
-        public ActionResult UpdateStudent(string id, StudentUpdateDto student)
+        public ActionResult UpdateStudent(string id, StudentUpdateViewModel student)
         {
             var studentModel = _studentService.GetStudentByStudentId(id);
             if(studentModel is null)
@@ -83,14 +83,14 @@ namespace FTaskAPI.Controllers
         }
 
         [HttpPatch("{id}")]
-        public ActionResult PartialStudentUpdate(string id, JsonPatchDocument<StudentUpdateDto> patchDoc)
+        public ActionResult PartialStudentUpdate(string id, JsonPatchDocument<StudentUpdateViewModel> patchDoc)
         {
             var studentModel = _studentService.GetStudentByStudentId(id);
             if(studentModel is null)
             {
                 return NotFound();
             }
-            var studentToPatch = _mapper.Map<StudentUpdateDto>(studentModel);
+            var studentToPatch = _mapper.Map<StudentUpdateViewModel>(studentModel);
             patchDoc.ApplyTo(studentToPatch, ModelState);
             if (!TryValidateModel(studentToPatch))
             {

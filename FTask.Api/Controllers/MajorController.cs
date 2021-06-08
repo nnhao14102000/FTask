@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using FTask.Api.Dtos.MajorDtos;
+using FTask.Api.Dtos.MajorViewModels;
 using FTask.Data.Models;
 using FTask.Data.Parameters;
 using FTask.Services.MajorService;
@@ -25,7 +25,7 @@ namespace FTaskAPI.Controllers
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<MajorReadDto>> GetAllMajors([FromQuery] MajorParameters majorParameter)
+        public ActionResult<IEnumerable<MajorReadViewModel>> GetAllMajors([FromQuery] MajorParameters majorParameter)
         {
             var majors = _majorService.GetAllMajors(majorParameter);
 
@@ -39,22 +39,22 @@ namespace FTaskAPI.Controllers
             };
             Response.Headers.Add("Major-Pagination", JsonConvert.SerializeObject(metaData));
 
-            return Ok(_mapper.Map<IEnumerable<MajorReadDto>>(majors));
+            return Ok(_mapper.Map<IEnumerable<MajorReadViewModel>>(majors));
         }
 
         [HttpGet("{id}", Name = "GetMajorByMajorId")]
-        public ActionResult<MajorReadDetailDto> GetMajorByMajorId(string id)
+        public ActionResult<MajorReadDetailViewModel> GetMajorByMajorId(string id)
         {
             var major = _majorService.GetMajorByMajorId(id);
             if (major is not null)
             {
-                return Ok(_mapper.Map<MajorReadDetailDto>(major));
+                return Ok(_mapper.Map<MajorReadDetailViewModel>(major));
             }
             return NotFound();
         }
 
         [HttpPost]
-        public ActionResult<MajorReadDto> AddMajor(MajorAddDto major)
+        public ActionResult<MajorReadViewModel> AddMajor(MajorAddViewModel major)
         {
             var isExisted = _majorService.GetMajorByMajorId(major.MajorId);
             if (isExisted is not null)
@@ -64,13 +64,13 @@ namespace FTaskAPI.Controllers
 
             var majorModel = _mapper.Map<Major>(major);
             _majorService.AddMajor(majorModel);
-            var majorReadModel = _mapper.Map<MajorReadDto>(majorModel);
+            var majorReadModel = _mapper.Map<MajorReadViewModel>(majorModel);
 
             return CreatedAtRoute(nameof(GetMajorByMajorId), new { id = majorReadModel.MajorId }, majorReadModel);
         }
 
         [HttpPut("{id}")]
-        public ActionResult UpdateMajor(string id, MajorUpdateDto major)
+        public ActionResult UpdateMajor(string id, MajorUpdateViewModel major)
         {
             var majorModel = _majorService.GetMajorByMajorId(id);
             if (majorModel is null)
@@ -83,14 +83,14 @@ namespace FTaskAPI.Controllers
         }
 
         [HttpPatch("{id}")]
-        public ActionResult PartialMajorUpdate(string id, JsonPatchDocument<MajorUpdateDto> patchDoc)
+        public ActionResult PartialMajorUpdate(string id, JsonPatchDocument<MajorUpdateViewModel> patchDoc)
         {
             var majorModel = _majorService.GetMajorByMajorId(id);
             if (majorModel is null)
             {
                 return NotFound();
             }
-            var majorToPatch = _mapper.Map<MajorUpdateDto>(majorModel);
+            var majorToPatch = _mapper.Map<MajorUpdateViewModel>(majorModel);
             patchDoc.ApplyTo(majorToPatch, ModelState);
             if (!TryValidateModel(majorToPatch))
             {
