@@ -25,7 +25,7 @@ namespace FTask.Data.Repositories
             var subjectGroups = FindAll();
             SearchByName(ref subjectGroups, subjectGroupParametes.SubjectGroupName);
 
-            return PagedList<SubjectGroup>.ToPagedList(subjectGroups, subjectGroupParametes.PageNumber, subjectGroupParametes.PageSize);
+            return PagedList<SubjectGroup>.ToPagedList(subjectGroups.OrderBy(sg => sg.SubjectGroupName), subjectGroupParametes.PageNumber, subjectGroupParametes.PageSize);
         }
 
         private void SearchByName(ref IQueryable<SubjectGroup> subjectGroups, string name)

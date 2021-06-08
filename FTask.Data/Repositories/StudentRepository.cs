@@ -21,7 +21,7 @@ namespace FTask.Data.Repositories
                 var allStudent = FindAll();
                 SearchByName(ref allStudent, studentParameters.StudentName);
 
-                return PagedList<Student>.ToPagedList(allStudent,
+                return PagedList<Student>.ToPagedList(allStudent.OrderBy(s => s.StudentName),
                     studentParameters.PageNumber, studentParameters.PageSize);
             }
 

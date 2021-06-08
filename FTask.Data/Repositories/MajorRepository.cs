@@ -24,7 +24,7 @@ namespace FTask.Data.Repositories
             var major = FindAll();
             SearchByName(ref major, majorParameters.MajorName);
 
-            return PagedList<Major>.ToPagedList(major,
+            return PagedList<Major>.ToPagedList(major.OrderBy(m => m.MajorName),
                 majorParameters.PageNumber, majorParameters.PageSize);
         }
 
