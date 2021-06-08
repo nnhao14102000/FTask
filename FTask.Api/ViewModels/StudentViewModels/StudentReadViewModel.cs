@@ -1,6 +1,6 @@
-﻿namespace FTask.Api.Dtos.StudentDtos
+﻿namespace FTask.Api.Dtos.StudentViewModels
 {
-    public class StudentReadDto
+    public class StudentReadViewModel
     {
         public string StudentId { get; set; }
         public string StudentName { get; set; }

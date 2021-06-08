@@ -1,8 +1,8 @@
 ﻿using FTask.Data.Helpers;
 using FTask.Data.Models;
-using FTask.Data.Parameters;
 using FTask.Data.Repositories.IRepository;
 using System.Linq;
+using FTask.Data.Parameters;
 
 namespace FTask.Data.Repositories
 {

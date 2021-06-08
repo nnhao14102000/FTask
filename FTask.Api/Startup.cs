@@ -3,12 +3,11 @@ using FTask.Data.Repositories;
 using FTask.Data.Repositories.IRepository;
 using FTask.Services.MajorService;
 using FTask.Services.StudentService;
-using FTaskAPI.Controllers;
+using FTask.Services.SubjectGroupService;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Versioning;
-using Microsoft.AspNetCore.Mvc.Versioning.Conventions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -76,6 +75,10 @@ namespace FTask.Api
             // config for service for major         
             services.AddScoped<IMajorRepository, MajorRepository>();
             services.AddScoped<IMajorService, MajorService>();
+
+            // config for service for SubjectGroup         
+            services.AddScoped<ISubjectGroupRepository, SubjectGroupRepository>();
+            services.AddScoped<ISubjectGroupService, SubjectGroupService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

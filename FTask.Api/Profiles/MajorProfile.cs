@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using FTask.Api.Dtos.MajorDtos;
+using FTask.Api.Dtos.MajorViewModels;
 using FTask.Data.Models;
 
 namespace FTask.Api.Profiles
@@ -9,11 +9,11 @@ namespace FTask.Api.Profiles
         public MajorProfile()
         {
             // Mapper from Source --> Target
-            CreateMap<Major, MajorReadDto>();
-            CreateMap<Major, MajorReadDetailDto>();
-            CreateMap<MajorAddDto, Major>();
-            CreateMap<MajorUpdateDto, Major>();
-            CreateMap<Major, MajorUpdateDto>();
+            CreateMap<Major, MajorReadViewModel>();
+            CreateMap<Major, MajorReadDetailViewModel>();
+            CreateMap<MajorAddViewModel, Major>();
+            CreateMap<MajorUpdateViewModel, Major>();
+            CreateMap<Major, MajorUpdateViewModel>();
         }
     }
 }
