@@ -107,6 +107,5 @@ namespace FTask.Api.Controllers
             _subjectGroupService.RemoveSubjectGroup(subjectGroupModel);
             return NoContent();
         }
-
     }
 }
