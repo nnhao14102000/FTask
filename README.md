@@ -1,3 +1,5 @@
+[![FTask of branch main](https://github.com/nnhao14102000/FTask/actions/workflows/main-ci-cd.yaml/badge.svg)](https://github.com/nnhao14102000/FTask/actions/workflows/main-ci-cd.yaml)
+
 # FTask
 
 ## Technology and tools
