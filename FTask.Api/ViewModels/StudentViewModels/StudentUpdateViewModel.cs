@@ -1,4 +1,4 @@
-﻿namespace FTask.Api.Dtos.StudentViewModels
+﻿namespace FTask.Api.ViewModels.StudentViewModels
 {
     public class StudentUpdateViewModel
     {

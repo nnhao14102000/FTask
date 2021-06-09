@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using FTask.Api.Dtos.SubjectGroupViewModels;
+using FTask.Api.ViewModels.SubjectGroupViewModels;
 using FTask.Data.Models;
 using FTask.Data.Parameters;
 using FTask.Services.SubjectGroupService;

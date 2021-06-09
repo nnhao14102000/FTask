@@ -2,6 +2,7 @@
 using FTask.Data.Models;
 using FTask.Data.Parameters;
 using FTask.Data.Repositories.IRepository;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
 namespace FTask.Data.Repositories
@@ -16,7 +17,13 @@ namespace FTask.Data.Repositories
 
         public Major GetMajorByMajorId(string id)
         {
-            return FindByCondition(major => major.MajorId.Equals(id)).FirstOrDefault();
+            var major = FindByCondition(major => major.MajorId.Equals(id)).FirstOrDefault();
+            context.Entry(major)
+                .Collection(m => m.Students)
+                .Query()
+                .OrderBy(st => st.StudentName)
+                .Load();
+            return major;
         }
 
         public PagedList<Major> GetMajors(MajorParameters majorParameters)
@@ -24,7 +31,7 @@ namespace FTask.Data.Repositories
             var major = FindAll();
             SearchByName(ref major, majorParameters.MajorName);
 
-            return PagedList<Major>.ToPagedList(major,
+            return PagedList<Major>.ToPagedList(major.OrderBy(m => m.MajorId),
                 majorParameters.PageNumber, majorParameters.PageSize);
         }
 
