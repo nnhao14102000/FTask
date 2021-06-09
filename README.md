@@ -1,3 +1,5 @@
+[![FTask of branch hao](https://github.com/nnhao14102000/FTask/actions/workflows/hao-ci-cd.yaml/badge.svg)](https://github.com/nnhao14102000/FTask/actions/workflows/hao-ci-cd.yaml)
+
 # FTask
 
 ## Technology and tools
