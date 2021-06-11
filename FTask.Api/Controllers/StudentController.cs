@@ -2,7 +2,7 @@
 using FTask.Api.ViewModels.StudentViewModels;
 using FTask.Data.Models;
 using FTask.Data.Parameters;
-using FTask.Services.StudentService;
+using FTask.Services.StudentBusinessService;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -10,6 +10,9 @@ using System.Collections.Generic;
 
 namespace FTaskAPI.Controllers
 {
+    /// <summary>
+    /// Student controller
+    /// </summary>
     [ApiController]
     [Route("api/students")]
     [ApiVersion("1.0")]
@@ -18,12 +21,22 @@ namespace FTaskAPI.Controllers
         private readonly IMapper _mapper;
         private readonly IStudentService _studentService;
 
+        /// <summary>
+        /// Constructor DI AutoMapper and Student service
+        /// </summary>
+        /// <param name="mapper"></param>
+        /// <param name="studentService"></param>
         public StudentController(IMapper mapper, IStudentService studentService)
         {
             _mapper = mapper;
             _studentService = studentService;
         }
 
+        /// <summary>
+        /// Get all student
+        /// </summary>
+        /// <param name="studentParameters"></param>
+        /// <returns></returns>
         [HttpGet]
         public ActionResult<IEnumerable<StudentReadViewModel>> GetAllStudents([FromQuery] StudentParameters studentParameters)
         {
@@ -42,6 +55,11 @@ namespace FTaskAPI.Controllers
             return Ok(_mapper.Map<IEnumerable<StudentReadViewModel>>(students));
         }
 
+        /// <summary>
+        /// Get student by student ID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("{id}", Name = "GetStudentByStudentId")]
         public ActionResult<StudentReadDetailViewModel> GetStudentByStudentId(string id)
         {
@@ -53,6 +71,11 @@ namespace FTaskAPI.Controllers
             return NotFound();
         }
 
+        /// <summary>
+        /// Add a new student
+        /// </summary>
+        /// <param name="student"></param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult<StudentReadViewModel> AddStudent(StudentAddViewModel student)
         {
@@ -69,6 +92,12 @@ namespace FTaskAPI.Controllers
             return CreatedAtRoute(nameof(GetStudentByStudentId), new { id = studentReadModel.StudentId }, studentReadModel);
         }
 
+        /// <summary>
+        /// Update student
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="student"></param>
+        /// <returns></returns>
         [HttpPut("{id}")]
         public ActionResult UpdateStudent(string id, StudentUpdateViewModel student)
         {
@@ -82,6 +111,12 @@ namespace FTaskAPI.Controllers
             return NoContent();
         }
 
+        /// <summary>
+        /// Update student by PATCH method...Allow update a single attribute
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="patchDoc"></param>
+        /// <returns></returns>
         [HttpPatch("{id}")]
         public ActionResult PartialStudentUpdate(string id, JsonPatchDocument<StudentUpdateViewModel> patchDoc)
         {
@@ -102,6 +137,11 @@ namespace FTaskAPI.Controllers
             return NoContent();
         }
 
+        /// <summary>
+        /// Remove student
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
         public ActionResult RemoveStudent(string id)
         {

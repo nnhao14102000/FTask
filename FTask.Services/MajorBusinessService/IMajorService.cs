@@ -2,7 +2,7 @@
 using FTask.Data.Models;
 using FTask.Data.Parameters;
 
-namespace FTask.Services.MajorService
+namespace FTask.Services.MajorBusinessService
 {
     public interface IMajorService
     {

@@ -5,7 +5,7 @@ using FTask.Data.Repositories.IRepository;
 using Microsoft.Extensions.Logging;
 using System;
 
-namespace FTask.Services.SubjectGroupService
+namespace FTask.Services.SubjectGroupBusinessService
 {
     public class SubjectGroupService : ISubjectGroupService
     {

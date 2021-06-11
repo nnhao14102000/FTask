@@ -2,7 +2,7 @@
 using FTask.Data.Models;
 using FTask.Data.Parameters;
 
-namespace FTask.Services.StudentService
+namespace FTask.Services.StudentBusinessService
 {
     public interface IStudentService
     {

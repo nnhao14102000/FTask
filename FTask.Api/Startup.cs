@@ -1,9 +1,5 @@
 using FTask.Data.Models;
-using FTask.Data.Repositories;
-using FTask.Data.Repositories.IRepository;
-using FTask.Services.MajorService;
-using FTask.Services.StudentService;
-using FTask.Services.SubjectGroupService;
+using FTask.Services.DependencyInjection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -16,23 +12,37 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json.Serialization;
 using System;
+using System.IO;
 
 namespace FTask.Api
 {
+    /// <summary>
+    /// Config service and middleware
+    /// </summary>
     public class Startup
     {
+        /// <summary>
+        /// Constructor 
+        /// </summary>
+        /// <param name="configuration"></param>
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
 
+        /// <summary>
+        /// Get configuration from appsettings files
+        /// </summary>
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+        /// <summary>
+        /// This method gets called by the runtime. Use this method to add services to the container.
+        /// </summary>
+        /// <param name="services"></param>
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.AddControllers();
+            services.AddCors();
 
             // Add API Versioning to the service container
             services.AddApiVersioning(options =>
@@ -48,6 +58,7 @@ namespace FTask.Api
                     new HeaderApiVersionReader("X-Version"));
             });
 
+            // Setting json for PATCH Api...
             services.AddControllers().AddNewtonsoftJson(s =>
             {
                 s.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
@@ -56,6 +67,8 @@ namespace FTask.Api
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "FTask.Api", Version = "v1" });
+                var filePath = Path.Combine(System.AppContext.BaseDirectory, "FTask.Api.xml");
+                c.IncludeXmlComments(filePath);
             });
 
             // Config to connect with SQL Server
@@ -68,20 +81,16 @@ namespace FTask.Api
             // Config for AutoMapper...
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-            // config for service for student         
-            services.AddScoped<IStudentRepository, StudentRepository>();
-            services.AddScoped<IStudentService, StudentService>();
-
-            // config for service for major         
-            services.AddScoped<IMajorRepository, MajorRepository>();
-            services.AddScoped<IMajorService, MajorService>();
-
-            // config for service for SubjectGroup         
-            services.AddScoped<ISubjectGroupRepository, SubjectGroupRepository>();
-            services.AddScoped<ISubjectGroupService, SubjectGroupService>();
+            // Register Service...
+            services.IntializerDI();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        /// <summary>
+        /// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        /// </summary>
+        /// <param name="app"></param>
+        /// <param name="env"></param>
+        /// <param name="loggerFactory"></param>
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
             if (env.IsDevelopment())
@@ -89,6 +98,7 @@ namespace FTask.Api
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "FTask.Api v1"));
+                
             }
 
             //Config for create log file...
@@ -102,6 +112,7 @@ namespace FTask.Api
             {
                 endpoints.MapControllers();
             });
+            app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
         }
     }
 }

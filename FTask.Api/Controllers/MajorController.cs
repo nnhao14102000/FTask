@@ -2,7 +2,7 @@
 using FTask.Api.ViewModels.MajorViewModels;
 using FTask.Data.Models;
 using FTask.Data.Parameters;
-using FTask.Services.MajorService;
+using FTask.Services.MajorBusinessService;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -10,6 +10,9 @@ using System.Collections.Generic;
 
 namespace FTaskAPI.Controllers
 {
+    /// <summary>
+    /// Major Controller
+    /// </summary>
     [ApiController]
     [Route("api/majors")]
     [ApiVersion("1.0")]
@@ -17,13 +20,22 @@ namespace FTaskAPI.Controllers
     {
         private readonly IMapper _mapper;
         private readonly IMajorService _majorService;
-
+        /// <summary>
+        /// Constructor DI AutoMapper and MajorService
+        /// </summary>
+        /// <param name="mapper"></param>
+        /// <param name="MajorService"></param>
         public MajorController(IMapper mapper, IMajorService MajorService)
         {
             _mapper = mapper;
             _majorService = MajorService;
         }
 
+        /// <summary>
+        /// Get all majors in database
+        /// </summary>
+        /// <param name="majorParameter"></param>
+        /// <returns></returns>
         [HttpGet]
         public ActionResult<IEnumerable<MajorReadViewModel>> GetAllMajors([FromQuery] MajorParameters majorParameter)
         {
@@ -42,6 +54,11 @@ namespace FTaskAPI.Controllers
             return Ok(_mapper.Map<IEnumerable<MajorReadViewModel>>(majors));
         }
 
+        /// <summary>
+        /// Get major and relevant student in this major by ID 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("{id}", Name = "GetMajorByMajorId")]
         public ActionResult<MajorReadDetailViewModel> GetMajorByMajorId(string id)
         {
@@ -53,6 +70,11 @@ namespace FTaskAPI.Controllers
             return NotFound();
         }
 
+        /// <summary>
+        /// Add new major into databas
+        /// </summary>
+        /// <param name="major"></param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult<MajorReadViewModel> AddMajor(MajorAddViewModel major)
         {
@@ -69,6 +91,12 @@ namespace FTaskAPI.Controllers
             return CreatedAtRoute(nameof(GetMajorByMajorId), new { id = majorReadModel.MajorId }, majorReadModel);
         }
 
+        /// <summary>
+        /// Update infomation of a major
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="major"></param>
+        /// <returns></returns>
         [HttpPut("{id}")]
         public ActionResult UpdateMajor(string id, MajorUpdateViewModel major)
         {
@@ -82,6 +110,12 @@ namespace FTaskAPI.Controllers
             return NoContent();
         }
 
+        /// <summary>
+        /// Update major by PATCH method...Allow update a single attribute
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="patchDoc"></param>
+        /// <returns></returns>
         [HttpPatch("{id}")]
         public ActionResult PartialMajorUpdate(string id, JsonPatchDocument<MajorUpdateViewModel> patchDoc)
         {
@@ -102,6 +136,11 @@ namespace FTaskAPI.Controllers
             return NoContent();
         }
 
+        /// <summary>
+        /// Remove a major
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
         public ActionResult RemoveMajor(string id)
         {

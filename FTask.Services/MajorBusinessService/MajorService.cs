@@ -5,7 +5,7 @@ using FTask.Data.Repositories.IRepository;
 using Microsoft.Extensions.Logging;
 using System;
 
-namespace FTask.Services.MajorService
+namespace FTask.Services.MajorBusinessService
 {
     public class MajorService : IMajorService
     {

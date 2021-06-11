@@ -5,7 +5,7 @@ using FTask.Data.Repositories.IRepository;
 using Microsoft.Extensions.Logging;
 using System;
 
-namespace FTask.Services.StudentService
+namespace FTask.Services.StudentBusinessService
 {
     public class StudentService : IStudentService
     {

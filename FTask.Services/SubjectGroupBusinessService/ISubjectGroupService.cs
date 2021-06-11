@@ -1,7 +1,7 @@
 ﻿using FTask.Data.Helpers;
 using FTask.Data.Models;
 using FTask.Data.Parameters;
-namespace FTask.Services.SubjectGroupService
+namespace FTask.Services.SubjectGroupBusinessService
 {
     public interface ISubjectGroupService
     {
