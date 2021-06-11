@@ -6,7 +6,7 @@ namespace FTask.Data.Repositories.IRepository
 {
     public interface ISubjectGroupRepository : IGenericRepository<SubjectGroup>
     {
-        PagedList<SubjectGroup> GetSubjectGroups(SubjectGroupParametes subjectGroupParameters);
+        PagedList<SubjectGroup> GetSubjectGroups(SubjectGroupParameters subjectGroupParameters);
 
         SubjectGroup GetSubjectGroupBySubjectGroupId(int id);
     }

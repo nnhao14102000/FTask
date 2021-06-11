@@ -16,10 +16,10 @@ namespace FTask.Services.StudentBusinessService
         {
             _studentRepository = studentRepository;
             _log = log;
-        }        
+        }
 
         public PagedList<Student> GetAllStudents(StudentParameters studentParameters)
-        {            
+        {
             var students = _studentRepository.GetStudents(studentParameters);
             if (students is null)
             {
@@ -78,10 +78,10 @@ namespace FTask.Services.StudentBusinessService
                     _log.LogInformation($"Update student {student.StudentId} success...");
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 _log.LogError($"Update student {student.StudentId} fail with error: {e.Message}");
-            }            
+            }
         }
 
         public void RemoveStudent(Student student)
@@ -99,6 +99,22 @@ namespace FTask.Services.StudentBusinessService
             {
                 _log.LogError($"Remove student {student.StudentId} fail with error: {e.Message}");
             }
-        }        
+        }
+
+        public Student GetStudentByStudentEmail(string email)
+        {
+            _log.LogInformation($"Search student {email}...");
+            var student = _studentRepository.GetStudentByStudentEmail(email);
+            if (student is null)
+            {
+                _log.LogInformation($"Can not found student {email}...");
+                return null;
+            }
+            else
+            {
+                _log.LogInformation($"Found success student {email}...");
+                return student;
+            }
+        }
     }
 }

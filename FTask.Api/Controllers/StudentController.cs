@@ -72,6 +72,22 @@ namespace FTaskAPI.Controllers
         }
 
         /// <summary>
+        /// Get student by student Email
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns></returns>
+        [HttpGet("email/{email}", Name = "GetStudentByStudentEmail")]
+        public ActionResult<StudentReadDetailViewModel> GetStudentByStudentEmail(string email)
+        {
+            var student = _studentService.GetStudentByStudentEmail(email);
+            if (student is not null)
+            {
+                return Ok(_mapper.Map<StudentReadDetailViewModel>(student));
+            }
+            return NotFound();
+        }
+
+        /// <summary>
         /// Add a new student
         /// </summary>
         /// <param name="student"></param>
@@ -102,7 +118,7 @@ namespace FTaskAPI.Controllers
         public ActionResult UpdateStudent(string id, StudentUpdateViewModel student)
         {
             var studentModel = _studentService.GetStudentByStudentId(id);
-            if(studentModel is null)
+            if (studentModel is null)
             {
                 return NotFound();
             }
@@ -121,7 +137,7 @@ namespace FTaskAPI.Controllers
         public ActionResult PartialStudentUpdate(string id, JsonPatchDocument<StudentUpdateViewModel> patchDoc)
         {
             var studentModel = _studentService.GetStudentByStudentId(id);
-            if(studentModel is null)
+            if (studentModel is null)
             {
                 return NotFound();
             }

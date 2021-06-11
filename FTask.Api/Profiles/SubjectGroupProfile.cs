@@ -4,11 +4,16 @@ using FTask.Data.Models;
 
 namespace FTask.Api.Profiles
 {
+    /// <summary>
+    /// Subject group mapping profile
+    /// </summary>
     public class SubjectGroupProfile : Profile
     {
+        /// <summary>
+        /// Constructor Mapper from Source --> Target
+        /// </summary>
         public SubjectGroupProfile()
         {
-            // Mapper from Source --> Target
             CreateMap<SubjectGroup, SubjectGroupReadViewModel>();
             CreateMap<SubjectGroup, SubjectGroupReadDetailViewModel>();
             CreateMap<SubjectGroupAddViewModel, SubjectGroup>();

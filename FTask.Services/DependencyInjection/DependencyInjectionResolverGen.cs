@@ -2,6 +2,7 @@
 using FTask.Data.Repositories.IRepository;
 using FTask.Services.MajorBusinessService;
 using FTask.Services.StudentBusinessService;
+using FTask.Services.SubjectBusinessService;
 using FTask.Services.SubjectGroupBusinessService;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -22,6 +23,10 @@ namespace FTask.Services.DependencyInjection
             // config for service for SubjectGroup         
             services.AddScoped<ISubjectGroupRepository, SubjectGroupRepository>();
             services.AddScoped<ISubjectGroupService, SubjectGroupService>();
+
+            // config for service for SubjectGroup       
+            services.AddScoped<ISubjectRepository, SubjectRepository>();
+            services.AddScoped<ISubjectService, SubjectService>();
         }
     }
 }

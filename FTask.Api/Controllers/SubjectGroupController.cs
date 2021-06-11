@@ -38,7 +38,7 @@ namespace FTask.Api.Controllers
         /// <param name="subjectGroupParameter"></param>
         /// <returns></returns>
         [HttpGet]
-        public ActionResult<IEnumerable<SubjectGroupReadViewModel>> GetAllSubjectGroups([FromQuery] SubjectGroupParametes subjectGroupParameter)
+        public ActionResult<IEnumerable<SubjectGroupReadViewModel>> GetAllSubjectGroups([FromQuery] SubjectGroupParameters subjectGroupParameter)
         {
             var subjectGroup = _subjectGroupService.GetAllSubjectGroups(subjectGroupParameter);
 

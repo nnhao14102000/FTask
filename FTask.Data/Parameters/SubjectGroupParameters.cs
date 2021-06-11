@@ -2,7 +2,7 @@
 
 namespace FTask.Data.Parameters
 {
-    public class SubjectGroupParametes : QueryStringParameters
+    public class SubjectGroupParameters : QueryStringParameters
     {      
         public string SubjectGroupName { get; set; }
     }

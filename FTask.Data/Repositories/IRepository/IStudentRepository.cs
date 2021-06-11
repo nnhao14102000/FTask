@@ -8,5 +8,6 @@ namespace FTask.Data.Repositories.IRepository
     {
         PagedList<Student> GetStudents(StudentParameters studentParameters);
         Student GetStudentByStudentId(string id);
+        Student GetStudentByStudentEmail(string email);
     }
 }

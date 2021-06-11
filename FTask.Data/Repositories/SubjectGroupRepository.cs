@@ -2,6 +2,7 @@
 using FTask.Data.Models;
 using FTask.Data.Parameters;
 using FTask.Data.Repositories.IRepository;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
 namespace FTask.Data.Repositories
@@ -17,15 +18,28 @@ namespace FTask.Data.Repositories
 
         public SubjectGroup GetSubjectGroupBySubjectGroupId(int Id)
         {
-            return FindByCondition(subjectGroup => subjectGroup.SubjectGroupId.Equals(Id)).FirstOrDefault();
+            var subjectGroup = FindByCondition(subjectGroup 
+                => subjectGroup.SubjectGroupId.Equals(Id)).FirstOrDefault();
+
+            context.Entry(subjectGroup)
+                .Collection(sg => sg.Subjects)
+                .Query()
+                .OrderBy(s => s.SubjectName)
+                .Load();
+
+            return subjectGroup;
         }
 
-        public PagedList<SubjectGroup> GetSubjectGroups(SubjectGroupParametes subjectGroupParametes)
+        public PagedList<SubjectGroup> GetSubjectGroups(
+            SubjectGroupParameters subjectGroupParameters)
         {
             var subjectGroups = FindAll();
-            SearchByName(ref subjectGroups, subjectGroupParametes.SubjectGroupName);
+            SearchByName(ref subjectGroups, subjectGroupParameters.SubjectGroupName);
 
-            return PagedList<SubjectGroup>.ToPagedList(subjectGroups.OrderBy(sg => sg.SubjectGroupName), subjectGroupParametes.PageNumber, subjectGroupParametes.PageSize);
+            return PagedList<SubjectGroup>
+                .ToPagedList(subjectGroups.OrderBy(sg => sg.SubjectGroupName)
+                    , subjectGroupParameters.PageNumber
+                    , subjectGroupParameters.PageSize);
         }
 
         private void SearchByName(ref IQueryable<SubjectGroup> subjectGroups, string name)
@@ -34,7 +48,9 @@ namespace FTask.Data.Repositories
             {
                 return;
             }
-            subjectGroups = subjectGroups.Where(sg => sg.SubjectGroupName.ToLower().Contains(name.Trim().ToLower()));
+            subjectGroups = subjectGroups
+                .Where(sg => sg.SubjectGroupName.ToLower()
+                .Contains(name.Trim().ToLower()));
         }
 
         

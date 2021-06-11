@@ -17,12 +17,15 @@ namespace FTask.Data.Repositories
 
         public Major GetMajorByMajorId(string id)
         {
-            var major = FindByCondition(major => major.MajorId.Equals(id)).FirstOrDefault();
+            var major = FindByCondition(major 
+                => major.MajorId.Equals(id)).FirstOrDefault();
+
             context.Entry(major)
                 .Collection(m => m.Students)
                 .Query()
                 .OrderBy(st => st.StudentName)
                 .Load();
+
             return major;
         }
 
@@ -41,7 +44,9 @@ namespace FTask.Data.Repositories
             {
                 return;
             }
-            majors = majors.Where(st => st.MajorName.ToLower().Contains(name.Trim().ToLower()));
+            majors = majors
+                .Where(st => st.MajorName.ToLower()
+                .Contains(name.Trim().ToLower()));
         }
     }
 }

@@ -86,6 +86,13 @@
             <param name="id"></param>
             <returns></returns>
         </member>
+        <member name="M:FTaskAPI.Controllers.StudentController.GetStudentByStudentEmail(System.String)">
+            <summary>
+            Get student by student Email
+            </summary>
+            <param name="email"></param>
+            <returns></returns>
+        </member>
         <member name="M:FTaskAPI.Controllers.StudentController.AddStudent(FTask.Api.ViewModels.StudentViewModels.StudentAddViewModel)">
             <summary>
             Add a new student
@@ -116,6 +123,72 @@
             <param name="id"></param>
             <returns></returns>
         </member>
+        <member name="T:FTaskAPI.Controllers.SubjectController">
+            <summary>
+            Subject controller
+            </summary>
+        </member>
+        <member name="M:FTaskAPI.Controllers.SubjectController.#ctor(AutoMapper.IMapper,FTask.Services.SubjectBusinessService.ISubjectService)">
+            <summary>
+            Constructor DI AutoMapper and subject service
+            </summary>
+            <param name="mapper"></param>
+            <param name="subjectService"></param>
+        </member>
+        <member name="M:FTaskAPI.Controllers.SubjectController.GetAllSubjects(FTask.Data.Parameters.SubjectParameters)">
+            <summary>
+            Get all Subject
+            </summary>
+            <param name="subjectParameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FTaskAPI.Controllers.SubjectController.GetSubjectBySubjectId(System.String)">
+            <summary>
+            Get Subject by Subject ID
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FTaskAPI.Controllers.SubjectController.AddSubject(FTask.Api.ViewModels.SubjectViewModels.SubjectAddViewModel)">
+            <summary>
+            Add a new Subject
+            </summary>
+            <param name="subject"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FTaskAPI.Controllers.SubjectController.UpdateSubject(System.String,FTask.Api.ViewModels.SubjectViewModels.SubjectUpdateViewModel)">
+            <summary>
+            Update Subject
+            </summary>
+            <param name="id"></param>
+            <param name="subject"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FTaskAPI.Controllers.SubjectController.PartialSubjectUpdate(System.String,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{FTask.Api.ViewModels.SubjectViewModels.SubjectUpdateViewModel})">
+            <summary>
+            Update Subject by PATCH method...Allow update a single attribute
+            </summary>
+            <param name="id"></param>
+            <param name="patchDoc"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FTaskAPI.Controllers.SubjectController.RemoveSubject(System.String)">
+            <summary>
+            Remove Subject
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:FTaskAPI.Profiles.StudentProfile">
+            <summary>
+            Student mapping profile
+            </summary>
+        </member>
+        <member name="M:FTaskAPI.Profiles.StudentProfile.#ctor">
+            <summary>
+            Constructor Mapper from Source --> Target
+            </summary>
+        </member>
         <member name="T:FTask.Api.Controllers.SubjectGroupController">
             <summary>
             Subject group controller
@@ -128,7 +201,7 @@
             <param name="mapper"></param>
             <param name="SubjectGroupService"></param>
         </member>
-        <member name="M:FTask.Api.Controllers.SubjectGroupController.GetAllSubjectGroups(FTask.Data.Parameters.SubjectGroupParametes)">
+        <member name="M:FTask.Api.Controllers.SubjectGroupController.GetAllSubjectGroups(FTask.Data.Parameters.SubjectGroupParameters)">
             <summary>
             Get all Subject group
             </summary>
@@ -172,6 +245,36 @@
             <param name="id"></param>
             <returns></returns>
         </member>
+        <member name="T:FTask.Api.Profiles.MajorProfile">
+            <summary>
+            Major mapping profile
+            </summary>
+        </member>
+        <member name="M:FTask.Api.Profiles.MajorProfile.#ctor">
+            <summary>
+            Constructor Mapper from Source --> Target
+            </summary>
+        </member>
+        <member name="T:FTask.Api.Profiles.SubjectGroupProfile">
+            <summary>
+            Subject group mapping profile
+            </summary>
+        </member>
+        <member name="M:FTask.Api.Profiles.SubjectGroupProfile.#ctor">
+            <summary>
+            Constructor Mapper from Source --> Target
+            </summary>
+        </member>
+        <member name="T:FTask.Api.Profiles.SubjectProfile">
+            <summary>
+            Subject mapping profile
+            </summary>
+        </member>
+        <member name="M:FTask.Api.Profiles.SubjectProfile.#ctor">
+            <summary>
+            Constructor Mapper from Source --> Target
+            </summary>
+        </member>
         <member name="T:FTask.Api.Startup">
             <summary>
             Config service and middleware
@@ -201,6 +304,326 @@
             <param name="app"></param>
             <param name="env"></param>
             <param name="loggerFactory"></param>
+        </member>
+        <member name="T:FTask.Api.ViewModels.MajorViewModels.MajorAddViewModel">
+            <summary>
+            Major add model
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.MajorViewModels.MajorAddViewModel.MajorId">
+            <summary>
+            Major Id
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.MajorViewModels.MajorAddViewModel.MajorName">
+            <summary>
+            Major Name
+            </summary>
+        </member>
+        <member name="T:FTask.Api.ViewModels.MajorViewModels.MajorReadDetailViewModel">
+            <summary>
+            Read major detail model
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.MajorViewModels.MajorReadDetailViewModel.MajorId">
+            <summary>
+            Major Id
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.MajorViewModels.MajorReadDetailViewModel.MajorName">
+            <summary>
+            Major name
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.MajorViewModels.MajorReadDetailViewModel.Students">
+            <summary>
+            List of Student in belong to major
+            </summary>
+        </member>
+        <member name="T:FTask.Api.ViewModels.MajorViewModels.MajorReadViewModel">
+            <summary>
+            Major read model
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.MajorViewModels.MajorReadViewModel.MajorId">
+            <summary>
+            Major Id
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.MajorViewModels.MajorReadViewModel.MajorName">
+            <summary>
+            Major name
+            </summary>
+        </member>
+        <member name="T:FTask.Api.ViewModels.MajorViewModels.MajorUpdateViewModel">
+            <summary>
+            Major update model
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.MajorViewModels.MajorUpdateViewModel.MajorName">
+            <summary>
+            Major name
+            </summary>
+        </member>
+        <member name="T:FTask.Api.ViewModels.MajorViewModels.StudentOfMajorViewModel">
+            <summary>
+            Student belong to major view models
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.MajorViewModels.StudentOfMajorViewModel.StudentId">
+            <summary>
+            Student Id
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.MajorViewModels.StudentOfMajorViewModel.StudentName">
+            <summary>
+            Student name
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.MajorViewModels.StudentOfMajorViewModel.StudentEmail">
+            <summary>
+            Student email
+            </summary>
+        </member>
+        <member name="T:FTask.Api.ViewModels.StudentViewModels.StudentAddViewModel">
+            <summary>
+            Student add model
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.StudentViewModels.StudentAddViewModel.StudentId">
+            <summary>
+            Student Id
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.StudentViewModels.StudentAddViewModel.StudentName">
+            <summary>
+            Student name
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.StudentViewModels.StudentAddViewModel.StudentEmail">
+            <summary>
+            Student email
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.StudentViewModels.StudentAddViewModel.MajorId">
+            <summary>
+            Student Major Id
+            </summary>
+        </member>
+        <member name="T:FTask.Api.ViewModels.StudentViewModels.StudentReadDetailViewModel">
+            <summary>
+            Student read detail view model
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.StudentViewModels.StudentReadDetailViewModel.StudentId">
+            <summary>
+            Student Id
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.StudentViewModels.StudentReadDetailViewModel.StudentName">
+            <summary>
+            Student name
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.StudentViewModels.StudentReadDetailViewModel.StudentEmail">
+            <summary>
+            Student email
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.StudentViewModels.StudentReadDetailViewModel.MajorId">
+            <summary>
+            Student Major Id
+            </summary>
+        </member>
+        <member name="T:FTask.Api.ViewModels.StudentViewModels.StudentReadViewModel">
+            <summary>
+            Student read view model
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.StudentViewModels.StudentReadViewModel.StudentId">
+            <summary>
+            Student Id
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.StudentViewModels.StudentReadViewModel.StudentName">
+            <summary>
+            Student name
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.StudentViewModels.StudentReadViewModel.StudentEmail">
+            <summary>
+            Student email
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.StudentViewModels.StudentReadViewModel.MajorId">
+            <summary>
+            Student Major Id
+            </summary>
+        </member>
+        <member name="T:FTask.Api.ViewModels.StudentViewModels.StudentUpdateViewModel">
+            <summary>
+            Student update model
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.StudentViewModels.StudentUpdateViewModel.StudentName">
+            <summary>
+            Student name
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.StudentViewModels.StudentUpdateViewModel.MajorId">
+            <summary>
+            Student Major Id
+            </summary>
+        </member>
+        <member name="T:FTask.Api.ViewModels.SubjectGroupViewModels.SubjectGroupAddViewModel">
+            <summary>
+            Subject add model
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.SubjectGroupViewModels.SubjectGroupAddViewModel.SubjectGroupName">
+            <summary>
+            Subject group name
+            </summary>
+        </member>
+        <member name="T:FTask.Api.ViewModels.SubjectGroupViewModels.SubjectGroupReadDetailViewModel">
+            <summary>
+            Subject group read detail view model
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.SubjectGroupViewModels.SubjectGroupReadDetailViewModel.SubjectGroupId">
+            <summary>
+            Subject group Id
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.SubjectGroupViewModels.SubjectGroupReadDetailViewModel.SubjectGroupName">
+            <summary>
+            Subject group name
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.SubjectGroupViewModels.SubjectGroupReadDetailViewModel.Subjects">
+            <summary>
+            List of subject belong to subject group
+            </summary>
+        </member>
+        <member name="T:FTask.Api.ViewModels.SubjectGroupViewModels.SubjectGroupReadViewModel">
+            <summary>
+            Subject groud view model
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.SubjectGroupViewModels.SubjectGroupReadViewModel.SubjectGroupId">
+            <summary>
+            Subject group Id
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.SubjectGroupViewModels.SubjectGroupReadViewModel.SubjectGroupName">
+            <summary>
+            Subject group name
+            </summary>
+        </member>
+        <member name="T:FTask.Api.ViewModels.SubjectGroupViewModels.SubjectGroupUpdateViewModel">
+            <summary>
+            Subject group view model
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.SubjectGroupViewModels.SubjectGroupUpdateViewModel.SubjectGroupName">
+            <summary>
+            Subject group name
+            </summary>
+        </member>
+        <member name="T:FTask.Api.ViewModels.SubjectGroupViewModels.SubjectsOfSubjectGroupViewModel">
+            <summary>
+            Subject view model in Subject group
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.SubjectGroupViewModels.SubjectsOfSubjectGroupViewModel.SubjectId">
+            <summary>
+            Subject Id
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.SubjectGroupViewModels.SubjectsOfSubjectGroupViewModel.SubjectName">
+            <summary>
+            Subject name
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.SubjectGroupViewModels.SubjectsOfSubjectGroupViewModel.Source">
+            <summary>
+            Subject source
+            </summary>
+        </member>
+        <member name="T:FTask.Api.ViewModels.SubjectViewModels.SubjectAddViewModel">
+            <summary>
+            Subject add model
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.SubjectViewModels.SubjectAddViewModel.SubjectId">
+            <summary>
+            Subject Id
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.SubjectViewModels.SubjectAddViewModel.SubjectName">
+            <summary>
+            Subject name
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.SubjectViewModels.SubjectAddViewModel.Source">
+            <summary>
+            Subject source
+            </summary>
+        </member>
+        <member name="T:FTask.Api.ViewModels.SubjectViewModels.SubjectReadDetailViewModel">
+            <summary>
+            Read Subject detail model
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.SubjectViewModels.SubjectReadDetailViewModel.SubjectId">
+            <summary>
+            Subject Id
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.SubjectViewModels.SubjectReadDetailViewModel.SubjectName">
+            <summary>
+            Subject name
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.SubjectViewModels.SubjectReadDetailViewModel.Source">
+            <summary>
+            Subject source
+            </summary>
+        </member>
+        <member name="T:FTask.Api.ViewModels.SubjectViewModels.SubjectReadViewModel">
+            <summary>
+            Read subject model
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.SubjectViewModels.SubjectReadViewModel.SubjectId">
+            <summary>
+            Subject Id
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.SubjectViewModels.SubjectReadViewModel.SubjectName">
+            <summary>
+            Subject name
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.SubjectViewModels.SubjectReadViewModel.Source">
+            <summary>
+            Subject source
+            </summary>
+        </member>
+        <member name="T:FTask.Api.ViewModels.SubjectViewModels.SubjectUpdateViewModel">
+            <summary>
+            Subject update model
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.SubjectViewModels.SubjectUpdateViewModel.SubjectName">
+            <summary>
+            Subject name
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.SubjectViewModels.SubjectUpdateViewModel.Source">
+            <summary>
+            Subject source
+            </summary>
         </member>
     </members>
 </doc>

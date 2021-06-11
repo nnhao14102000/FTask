@@ -7,7 +7,8 @@ namespace FTask.Services.StudentBusinessService
     public interface IStudentService
     {
         PagedList<Student> GetAllStudents(StudentParameters studentParameters);
-        Student GetStudentByStudentId(string code);
+        Student GetStudentByStudentId(string id);
+        Student GetStudentByStudentEmail(string email);
         void AddStudent(Student student);
         void UpdateStudent(Student student);
         void RemoveStudent(Student student);

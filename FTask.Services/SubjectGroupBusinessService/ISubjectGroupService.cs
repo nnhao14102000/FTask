@@ -5,7 +5,7 @@ namespace FTask.Services.SubjectGroupBusinessService
 {
     public interface ISubjectGroupService
     {
-        PagedList<SubjectGroup> GetAllSubjectGroups(SubjectGroupParametes subjectGroupPrameters);
+        PagedList<SubjectGroup> GetAllSubjectGroups(SubjectGroupParameters subjectGroupPrameters);
         SubjectGroup GetSubjectGroupBySubjectGroupId(int Id);
         void AddSubjectGroup(SubjectGroup subjectGroup);
         void UpdateSubjectGroup(SubjectGroup subjectGroup);

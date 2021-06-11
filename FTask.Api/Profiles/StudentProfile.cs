@@ -5,11 +5,16 @@ using FTask.Data.Models;
 
 namespace FTaskAPI.Profiles
 {
+    /// <summary>
+    /// Student mapping profile
+    /// </summary>
     public class StudentProfile : Profile
     {
+        /// <summary>
+        /// Constructor Mapper from Source --> Target
+        /// </summary>
         public StudentProfile()
         {
-            // Mapper from Source --> Target
             CreateMap<Student, StudentReadViewModel>();
             CreateMap<Student, StudentReadDetailViewModel>();            
             CreateMap<StudentAddViewModel, Student>();

@@ -35,7 +35,7 @@ namespace FTask.Services.SubjectGroupBusinessService
             }
         }
 
-        public PagedList<SubjectGroup> GetAllSubjectGroups(SubjectGroupParametes subjectGroupPrameters)
+        public PagedList<SubjectGroup> GetAllSubjectGroups(SubjectGroupParameters subjectGroupPrameters)
         {
             var subjectGroup = _subjectGroupRepository.GetSubjectGroups(subjectGroupPrameters);
             if (subjectGroup is null)
