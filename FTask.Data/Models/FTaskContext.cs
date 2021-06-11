@@ -59,12 +59,12 @@ namespace FTask.Data.Models
                 entity.HasOne(d => d.Semester)
                     .WithMany(p => p.PlanSemesters)
                     .HasForeignKey(d => d.SemesterId)
-                    .HasConstraintName("FK__PlanSemes__Semes__412EB0B6");
+                    .HasConstraintName("FK__PlanSemes__Semes__37A5467C");
 
                 entity.HasOne(d => d.Student)
                     .WithMany(p => p.PlanSemesters)
                     .HasForeignKey(d => d.StudentId)
-                    .HasConstraintName("FK__PlanSemes__Stude__403A8C7D");
+                    .HasConstraintName("FK__PlanSemes__Stude__38996AB5");
             });
 
             modelBuilder.Entity<PlanSubject>(entity =>
@@ -81,13 +81,13 @@ namespace FTask.Data.Models
                     .WithMany(p => p.PlanSubjects)
                     .HasForeignKey(d => d.PlanSemesterId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__PlanSubje__PlanS__4E88ABD4");
+                    .HasConstraintName("FK__PlanSubje__PlanS__398D8EEE");
 
                 entity.HasOne(d => d.Subject)
                     .WithMany(p => p.PlanSubjects)
                     .HasForeignKey(d => d.SubjectId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__PlanSubje__Subje__4F7CD00D");
+                    .HasConstraintName("FK__PlanSubje__Subje__3A81B327");
             });
 
             modelBuilder.Entity<PlanTopic>(entity =>
@@ -98,13 +98,13 @@ namespace FTask.Data.Models
                     .WithMany(p => p.PlanTopics)
                     .HasForeignKey(d => d.PlanSubjectId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__PlanTopic__PlanS__5BE2A6F2");
+                    .HasConstraintName("FK__PlanTopic__PlanS__3B75D760");
 
                 entity.HasOne(d => d.Topic)
                     .WithMany(p => p.PlanTopics)
                     .HasForeignKey(d => d.TopicId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__PlanTopic__Topic__5AEE82B9");
+                    .HasConstraintName("FK__PlanTopic__Topic__3C69FB99");
             });
 
             modelBuilder.Entity<Semester>(entity =>
@@ -141,7 +141,7 @@ namespace FTask.Data.Models
                 entity.HasOne(d => d.Major)
                     .WithMany(p => p.Students)
                     .HasForeignKey(d => d.MajorId)
-                    .HasConstraintName("FK__Student__MajorId__3B75D760");
+                    .HasConstraintName("FK__Student__MajorId__3D5E1FD2");
             });
 
             modelBuilder.Entity<Subject>(entity =>
@@ -159,7 +159,7 @@ namespace FTask.Data.Models
                 entity.HasOne(d => d.SubjectGroup)
                     .WithMany(p => p.Subjects)
                     .HasForeignKey(d => d.SubjectGroupId)
-                    .HasConstraintName("FK__Subject__Subject__4BAC3F29");
+                    .HasConstraintName("FK__Subject__Subject__3E52440B");
             });
 
             modelBuilder.Entity<SubjectGroup>(entity =>
@@ -182,12 +182,12 @@ namespace FTask.Data.Models
                 entity.HasOne(d => d.PlanTopic)
                     .WithMany(p => p.Tasks)
                     .HasForeignKey(d => d.PlanTopicId)
-                    .HasConstraintName("FK__Task__PlanTopicI__5EBF139D");
+                    .HasConstraintName("FK__Task__PlanTopicI__5BE2A6F2");
 
                 entity.HasOne(d => d.TaskCategory)
                     .WithMany(p => p.Tasks)
                     .HasForeignKey(d => d.TaskCategoryId)
-                    .HasConstraintName("FK__Task__TaskCatego__5FB337D6");
+                    .HasConstraintName("FK__Task__TaskCatego__5CD6CB2B");
             });
 
             modelBuilder.Entity<TaskCategory>(entity =>
@@ -201,7 +201,7 @@ namespace FTask.Data.Models
             {
                 entity.ToTable("Topic");
 
-                entity.Property(e => e.Decription).HasMaxLength(200);
+                entity.Property(e => e.Decription).HasMaxLength(100);
 
                 entity.Property(e => e.SubjectId)
                     .IsRequired()
@@ -215,7 +215,7 @@ namespace FTask.Data.Models
                     .WithMany(p => p.Topics)
                     .HasForeignKey(d => d.SubjectId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Topic__SubjectId__52593CB8");
+                    .HasConstraintName("FK__Topic__SubjectId__412EB0B6");
             });
 
             OnModelCreatingPartial(modelBuilder);
