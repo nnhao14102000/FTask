@@ -14,7 +14,7 @@ namespace FTask.Api.Controllers
     /// Subject group controller
     /// </summary>
     [ApiController]
-    [Route("api/subject-groups")]
+    [Route("api/v{version:apiVersion}/subject-groups")]
     [ApiVersion("1.0")]
     public class SubjectGroupController : Controller
     {
@@ -38,6 +38,7 @@ namespace FTask.Api.Controllers
         /// <param name="subjectGroupParameter"></param>
         /// <returns></returns>
         [HttpGet]
+        [MapToApiVersion("1.0")]
         public ActionResult<IEnumerable<SubjectGroupReadViewModel>> GetAllSubjectGroups([FromQuery] SubjectGroupParameters subjectGroupParameter)
         {
             var subjectGroup = _subjectGroupService.GetAllSubjectGroups(subjectGroupParameter);
@@ -61,6 +62,7 @@ namespace FTask.Api.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}", Name = "GetSubjectGroupBySubjectGroupId")]
+        [MapToApiVersion("1.0")]
         public ActionResult<SubjectGroupReadDetailViewModel> GetSubjectGroupBySubjectGroupId(int id)
         {
             var subjectGroup = _subjectGroupService.GetSubjectGroupBySubjectGroupId(id);
@@ -77,6 +79,7 @@ namespace FTask.Api.Controllers
         /// <param name="subjectGroup"></param>
         /// <returns></returns>
         [HttpPost]
+        [MapToApiVersion("1.0")]
         public ActionResult<SubjectGroupReadViewModel> AddSubjectGroup(SubjectGroupAddViewModel subjectGroup)
         {
             var subjectGroupModel = _mapper.Map<SubjectGroup>(subjectGroup);
@@ -93,6 +96,7 @@ namespace FTask.Api.Controllers
         /// <param name="subjectGroup"></param>
         /// <returns></returns>
         [HttpPut("{id}")]
+        [MapToApiVersion("1.0")]
         public ActionResult UpdateSubjectGroup (int id, SubjectGroupUpdateViewModel subjectGroup)
         {
             var subjectGroupModel = _subjectGroupService.GetSubjectGroupBySubjectGroupId(id);
@@ -112,6 +116,7 @@ namespace FTask.Api.Controllers
         /// <param name="patchDoc"></param>
         /// <returns></returns>
         [HttpPatch("{id}")]
+        [MapToApiVersion("1.0")]
         public ActionResult PartialSubjectGroupUpdate(int id, JsonPatchDocument<SubjectGroupUpdateViewModel> patchDoc)
         {
             var subjectGroupModel = _subjectGroupService.GetSubjectGroupBySubjectGroupId(id);
@@ -137,6 +142,7 @@ namespace FTask.Api.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}")]
+        [MapToApiVersion("1.0")]
         public ActionResult RemoveSubjectGroup(int id)
         {
             var subjectGroupModel = _subjectGroupService.GetSubjectGroupBySubjectGroupId(id);

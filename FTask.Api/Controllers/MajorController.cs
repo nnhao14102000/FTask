@@ -14,7 +14,7 @@ namespace FTaskAPI.Controllers
     /// Major Controller
     /// </summary>
     [ApiController]
-    [Route("api/majors")]
+    [Route("api/v{version:apiVersion}/majors")]
     [ApiVersion("1.0")]
     public class MajorController : ControllerBase
     {
@@ -37,6 +37,7 @@ namespace FTaskAPI.Controllers
         /// <param name="majorParameter"></param>
         /// <returns></returns>
         [HttpGet]
+        [MapToApiVersion("1.0")]
         public ActionResult<IEnumerable<MajorReadViewModel>> GetAllMajors([FromQuery] MajorParameters majorParameter)
         {
             var majors = _majorService.GetAllMajors(majorParameter);
@@ -60,6 +61,7 @@ namespace FTaskAPI.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}", Name = "GetMajorByMajorId")]
+        [MapToApiVersion("1.0")]
         public ActionResult<MajorReadDetailViewModel> GetMajorByMajorId(string id)
         {
             var major = _majorService.GetMajorByMajorId(id);
@@ -76,6 +78,7 @@ namespace FTaskAPI.Controllers
         /// <param name="major"></param>
         /// <returns></returns>
         [HttpPost]
+        [MapToApiVersion("1.0")]
         public ActionResult<MajorReadViewModel> AddMajor(MajorAddViewModel major)
         {
             var isExisted = _majorService.GetMajorByMajorId(major.MajorId);
@@ -98,6 +101,7 @@ namespace FTaskAPI.Controllers
         /// <param name="major"></param>
         /// <returns></returns>
         [HttpPut("{id}")]
+        [MapToApiVersion("1.0")]
         public ActionResult UpdateMajor(string id, MajorUpdateViewModel major)
         {
             var majorModel = _majorService.GetMajorByMajorId(id);
@@ -117,6 +121,7 @@ namespace FTaskAPI.Controllers
         /// <param name="patchDoc"></param>
         /// <returns></returns>
         [HttpPatch("{id}")]
+        [MapToApiVersion("1.0")]
         public ActionResult PartialMajorUpdate(string id, JsonPatchDocument<MajorUpdateViewModel> patchDoc)
         {
             var majorModel = _majorService.GetMajorByMajorId(id);
@@ -142,6 +147,7 @@ namespace FTaskAPI.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}")]
+        [MapToApiVersion("1.0")]
         public ActionResult RemoveMajor(string id)
         {
             var majorModel = _majorService.GetMajorByMajorId(id);

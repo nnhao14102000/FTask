@@ -14,8 +14,9 @@ namespace FTaskAPI.Controllers
     /// Student controller
     /// </summary>
     [ApiController]
-    [Route("api/students")]
+    [Route("api/v{version:apiVersion}/students")]
     [ApiVersion("1.0")]
+    [ApiVersion("1.1")]
     public class StudentController : ControllerBase
     {
         private readonly IMapper _mapper;
@@ -38,6 +39,7 @@ namespace FTaskAPI.Controllers
         /// <param name="studentParameters"></param>
         /// <returns></returns>
         [HttpGet]
+        [MapToApiVersion("1.0")]
         public ActionResult<IEnumerable<StudentReadViewModel>> GetAllStudents([FromQuery] StudentParameters studentParameters)
         {
             var students = _studentService.GetAllStudents(studentParameters);
@@ -61,6 +63,7 @@ namespace FTaskAPI.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}", Name = "GetStudentByStudentId")]
+        [MapToApiVersion("1.0")]
         public ActionResult<StudentReadDetailViewModel> GetStudentByStudentId(string id)
         {
             var student = _studentService.GetStudentByStudentId(id);
@@ -76,7 +79,8 @@ namespace FTaskAPI.Controllers
         /// </summary>
         /// <param name="email"></param>
         /// <returns></returns>
-        [HttpGet("email/{email}", Name = "GetStudentByStudentEmail")]
+        [HttpGet("{email}", Name = "GetStudentByStudentEmail")]
+        [MapToApiVersion("1.1")]
         public ActionResult<StudentReadDetailViewModel> GetStudentByStudentEmail(string email)
         {
             var student = _studentService.GetStudentByStudentEmail(email);
@@ -93,6 +97,7 @@ namespace FTaskAPI.Controllers
         /// <param name="student"></param>
         /// <returns></returns>
         [HttpPost]
+        [MapToApiVersion("1.0")]
         public ActionResult<StudentReadViewModel> AddStudent(StudentAddViewModel student)
         {
             var isExisted = _studentService.GetStudentByStudentId(student.StudentId);
@@ -115,6 +120,7 @@ namespace FTaskAPI.Controllers
         /// <param name="student"></param>
         /// <returns></returns>
         [HttpPut("{id}")]
+        [MapToApiVersion("1.0")]
         public ActionResult UpdateStudent(string id, StudentUpdateViewModel student)
         {
             var studentModel = _studentService.GetStudentByStudentId(id);
@@ -134,6 +140,7 @@ namespace FTaskAPI.Controllers
         /// <param name="patchDoc"></param>
         /// <returns></returns>
         [HttpPatch("{id}")]
+        [MapToApiVersion("1.0")]
         public ActionResult PartialStudentUpdate(string id, JsonPatchDocument<StudentUpdateViewModel> patchDoc)
         {
             var studentModel = _studentService.GetStudentByStudentId(id);
@@ -159,6 +166,7 @@ namespace FTaskAPI.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}")]
+        [MapToApiVersion("1.0")]
         public ActionResult RemoveStudent(string id)
         {
             var studentModel = _studentService.GetStudentByStudentId(id);

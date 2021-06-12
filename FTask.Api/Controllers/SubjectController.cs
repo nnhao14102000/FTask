@@ -14,7 +14,7 @@ namespace FTaskAPI.Controllers
     /// Subject controller
     /// </summary>
     [ApiController]
-    [Route("api/subjects")]
+    [Route("api/v{version:apiVersion}/subjects")]
     [ApiVersion("1.0")]
     public class SubjectController : ControllerBase
     {
@@ -38,6 +38,7 @@ namespace FTaskAPI.Controllers
         /// <param name="subjectParameters"></param>
         /// <returns></returns>
         [HttpGet]
+        [MapToApiVersion("1.0")]
         public ActionResult<IEnumerable<SubjectReadViewModel>> GetAllSubjects([FromQuery] SubjectParameters subjectParameters)
         {
             var subject = _subjectService.GetAllSubjects(subjectParameters);
@@ -61,6 +62,7 @@ namespace FTaskAPI.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}", Name = "GetSubjectBySubjectId")]
+        [MapToApiVersion("1.0")]
         public ActionResult<SubjectReadDetailViewModel> GetSubjectBySubjectId(string id)
         {
             var subject = _subjectService.GetSubjectBySubjectId(id);
@@ -77,6 +79,7 @@ namespace FTaskAPI.Controllers
         /// <param name="subject"></param>
         /// <returns></returns>
         [HttpPost]
+        [MapToApiVersion("1.0")]
         public ActionResult<SubjectReadViewModel> AddSubject(SubjectAddViewModel subject)
         {
             var isExisted = _subjectService.GetSubjectBySubjectId(subject.SubjectId);
@@ -99,6 +102,7 @@ namespace FTaskAPI.Controllers
         /// <param name="subject"></param>
         /// <returns></returns>
         [HttpPut("{id}")]
+        [MapToApiVersion("1.0")]
         public ActionResult UpdateSubject(string id, SubjectUpdateViewModel subject)
         {
             var subjectModel = _subjectService.GetSubjectBySubjectId(id);
@@ -118,6 +122,7 @@ namespace FTaskAPI.Controllers
         /// <param name="patchDoc"></param>
         /// <returns></returns>
         [HttpPatch("{id}")]
+        [MapToApiVersion("1.0")]
         public ActionResult PartialSubjectUpdate(string id, JsonPatchDocument<SubjectUpdateViewModel> patchDoc)
         {
             var subjectModel = _subjectService.GetSubjectBySubjectId(id);
@@ -143,6 +148,7 @@ namespace FTaskAPI.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}")]
+        [MapToApiVersion("1.0")]
         public ActionResult RemoveSubject(string id)
         {
             var subjectModel = _subjectService.GetSubjectBySubjectId(id);

@@ -55,7 +55,7 @@ namespace FTask.Api
                 options.ReportApiVersions = true;
                 options.ApiVersionReader = ApiVersionReader.Combine(
                     new MediaTypeApiVersionReader("version"),
-                    new HeaderApiVersionReader("X-Version"));
+                    new HeaderApiVersionReader("api-version"));
             });
 
             // Setting json for PATCH Api...
