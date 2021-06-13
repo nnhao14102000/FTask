@@ -194,7 +194,7 @@ namespace FTask.Data.Models
             {
                 entity.ToTable("TaskCategory");
 
-                entity.Property(e => e.TaskeType).HasMaxLength(50);
+                entity.Property(e => e.TaskType).HasMaxLength(50);
             });
 
             modelBuilder.Entity<Topic>(entity =>

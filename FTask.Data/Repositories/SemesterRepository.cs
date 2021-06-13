@@ -8,7 +8,7 @@ namespace FTask.Data.Repositories
 {
     public class SemesterRepository : GenericRepository<Semester>, ISemesterRepository
     {
-        public FTaskContext context { get; set; }
+        private FTaskContext context { get; set; }
         public SemesterRepository(FTaskContext context) : base(context)
         {
             this.context = context;

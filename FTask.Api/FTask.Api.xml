@@ -301,6 +301,62 @@
             <param name="id"></param>
             <returns></returns>
         </member>
+        <member name="T:FTask.Api.Controllers.TaskCategoryController">
+            <summary>
+            Subject group controller
+            </summary>
+        </member>
+        <member name="M:FTask.Api.Controllers.TaskCategoryController.#ctor(AutoMapper.IMapper,FTask.Services.TaskCategoryBusinessService.ITaskCategoryService)">
+            <summary>
+            Constructor DI AutoMapper and Subject group service
+            </summary>
+            <param name="mapper"></param>
+            <param name="taskCategoryService"></param>
+        </member>
+        <member name="M:FTask.Api.Controllers.TaskCategoryController.GetAllTaskCategorys(FTask.Data.Parameters.TaskCategoryParameters)">
+            <summary>
+            Get all Task Category
+            </summary>
+            <param name="taskCategoryParameter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FTask.Api.Controllers.TaskCategoryController.GetTaskCategoryByTaskCategoryId(System.Int32)">
+            <summary>
+            Get Task Category by ID 
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FTask.Api.Controllers.TaskCategoryController.AddTaskCategory(FTask.Api.ViewModels.TaskCategoryViewModels.TaskCategoryAddViewModel)">
+            <summary>
+            Add a Task Category into database
+            </summary>
+            <param name="taskCategory"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FTask.Api.Controllers.TaskCategoryController.UpdateTaskCategory(System.Int32,FTask.Api.ViewModels.TaskCategoryViewModels.TaskCategoryUpdateViewModel)">
+            <summary>
+            Update Task Category
+            </summary>
+            <param name="id"></param>
+            <param name="taskCategory"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FTask.Api.Controllers.TaskCategoryController.PartialTaskCategoryUpdate(System.Int32,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{FTask.Api.ViewModels.TaskCategoryViewModels.TaskCategoryUpdateViewModel})">
+            <summary>
+            Update Task Category by PATCH method...Allow update a single attribute
+            </summary>
+            <param name="id"></param>
+            <param name="patchDoc"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FTask.Api.Controllers.TaskCategoryController.RemoveTaskCategory(System.Int32)">
+            <summary>
+            Remove a Task Category
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
         <member name="T:FTask.Api.Profiles.MajorProfile">
             <summary>
             Major mapping profile

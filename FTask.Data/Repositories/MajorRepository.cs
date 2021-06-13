@@ -9,7 +9,7 @@ namespace FTask.Data.Repositories
 {
     public class MajorRepository : GenericRepository<Major>, IMajorRepository
     {
-        public FTaskContext context { get; set; }
+        private FTaskContext context { get; set; }
         public MajorRepository(FTaskContext context) : base(context)
         {
             this.context = context;

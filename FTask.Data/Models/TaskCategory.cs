@@ -13,7 +13,7 @@ namespace FTask.Data.Models
         }
 
         public int TaskCategoryId { get; set; }
-        public string TaskeType { get; set; }
+        public string TaskType { get; set; }
 
         public virtual ICollection<Task> Tasks { get; set; }
     }

@@ -8,7 +8,7 @@ namespace FTask.Data.Repositories
 {
     public class SubjectRepository : GenericRepository<Subject>, ISubjectRepository
     {
-        public FTaskContext context { get; set; }
+        private FTaskContext context { get; set; }
 
         public SubjectRepository(FTaskContext context) : base(context)
         {
