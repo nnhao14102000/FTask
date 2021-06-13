@@ -6,6 +6,7 @@ using FTask.Services.StudentBusinessService;
 using FTask.Services.SubjectBusinessService;
 using FTask.Services.SubjectGroupBusinessService;
 using FTask.Services.TaskCategoryBusinessService;
+using FTask.Services.TopicBusinessService;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace FTask.Services.DependencyInjection
@@ -37,6 +38,10 @@ namespace FTask.Services.DependencyInjection
             // config for service for TaskCategory       
             services.AddScoped<ITaskCategoryRepository, TaskCategoryRepository>();
             services.AddScoped<ITaskCategoryService, TaskCategoryService>();
+
+            // config for service for Topic
+            services.AddScoped<ITopicRepository, TopicRepository>();
+            services.AddScoped<ITopicService, TopicService>();
         }
     }
 }

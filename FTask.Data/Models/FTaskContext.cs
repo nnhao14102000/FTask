@@ -175,9 +175,9 @@ namespace FTask.Data.Models
 
                 entity.Property(e => e.CreateDate).HasColumnType("datetime");
 
-                entity.Property(e => e.Decription).HasMaxLength(100);
-
                 entity.Property(e => e.DueDate).HasColumnType("datetime");
+
+                entity.Property(e => e.TaskDecription).HasMaxLength(200);
 
                 entity.HasOne(d => d.PlanTopic)
                     .WithMany(p => p.Tasks)
@@ -201,11 +201,11 @@ namespace FTask.Data.Models
             {
                 entity.ToTable("Topic");
 
-                entity.Property(e => e.Decription).HasMaxLength(100);
-
                 entity.Property(e => e.SubjectId)
                     .IsRequired()
                     .HasMaxLength(10);
+
+                entity.Property(e => e.TopicDecription).HasMaxLength(200);
 
                 entity.Property(e => e.TopicName)
                     .IsRequired()

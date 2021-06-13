@@ -303,12 +303,12 @@
         </member>
         <member name="T:FTask.Api.Controllers.TaskCategoryController">
             <summary>
-            Subject group controller
+            Task Category controller
             </summary>
         </member>
         <member name="M:FTask.Api.Controllers.TaskCategoryController.#ctor(AutoMapper.IMapper,FTask.Services.TaskCategoryBusinessService.ITaskCategoryService)">
             <summary>
-            Constructor DI AutoMapper and Subject group service
+            Constructor DI AutoMapper and Task Category service
             </summary>
             <param name="mapper"></param>
             <param name="taskCategoryService"></param>
@@ -351,6 +351,62 @@
             <returns></returns>
         </member>
         <member name="M:FTask.Api.Controllers.TaskCategoryController.RemoveTaskCategory(System.Int32)">
+            <summary>
+            Remove a Task Category
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:FTask.Api.Controllers.TopicController">
+            <summary>
+            Task Category controller
+            </summary>
+        </member>
+        <member name="M:FTask.Api.Controllers.TopicController.#ctor(AutoMapper.IMapper,FTask.Services.TopicBusinessService.ITopicService)">
+            <summary>
+            Constructor DI AutoMapper and Topic service
+            </summary>
+            <param name="mapper"></param>
+            <param name="topicService"></param>
+        </member>
+        <member name="M:FTask.Api.Controllers.TopicController.GetAllTopics(FTask.Data.Parameters.TopicParameters)">
+            <summary>
+            Get all Topic
+            </summary>
+            <param name="topicParameter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FTask.Api.Controllers.TopicController.GetTopicByTopicId(System.Int32)">
+            <summary>
+            Get Task Category by ID 
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FTask.Api.Controllers.TopicController.AddTopic(FTask.Api.ViewModels.TopicViewModels.TopicAddViewModel)">
+            <summary>
+            Add a Topic into database
+            </summary>
+            <param name="topic"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FTask.Api.Controllers.TopicController.UpdateTopic(System.Int32,FTask.Api.ViewModels.TopicViewModels.TopicUpdateViewModel)">
+            <summary>
+            Update Topic
+            </summary>
+            <param name="id"></param>
+            <param name="topic"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FTask.Api.Controllers.TopicController.PartialTopicUpdate(System.Int32,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{FTask.Api.ViewModels.TopicViewModels.TopicUpdateViewModel})">
+            <summary>
+            Update Task Category by PATCH method...Allow update a single attribute
+            </summary>
+            <param name="id"></param>
+            <param name="patchDoc"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FTask.Api.Controllers.TopicController.RemoveTopic(System.Int32)">
             <summary>
             Remove a Task Category
             </summary>

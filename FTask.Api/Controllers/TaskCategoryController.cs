@@ -11,7 +11,7 @@ using System.Collections.Generic;
 namespace FTask.Api.Controllers
 {
     /// <summary>
-    /// Subject group controller
+    /// Task Category controller
     /// </summary>
     [ApiController]
     [Route("api/v{version:apiVersion}/task-category")]
@@ -22,7 +22,7 @@ namespace FTask.Api.Controllers
         private readonly ITaskCategoryService _taskCategoryService;
 
         /// <summary>
-        /// Constructor DI AutoMapper and Subject group service
+        /// Constructor DI AutoMapper and Task Category service
         /// </summary>
         /// <param name="mapper"></param>
         /// <param name="taskCategoryService"></param>
