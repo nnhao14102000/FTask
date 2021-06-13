@@ -60,6 +60,62 @@
             <param name="id"></param>
             <returns></returns>
         </member>
+        <member name="T:FTaskAPI.Controllers.SemesterController">
+            <summary>
+            Semester Controller
+            </summary>
+        </member>
+        <member name="M:FTaskAPI.Controllers.SemesterController.#ctor(AutoMapper.IMapper,FTask.Services.SemesterBusinessService.ISemesterService)">
+            <summary>
+            Constructor DI AutoMapper and SemesterService
+            </summary>
+            <param name="mapper"></param>
+            <param name="SemesterService"></param>
+        </member>
+        <member name="M:FTaskAPI.Controllers.SemesterController.GetAllSemesters(FTask.Data.Parameters.SemesterParameters)">
+            <summary>
+            Get all Semesters in database
+            </summary>
+            <param name="semesterParameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FTaskAPI.Controllers.SemesterController.GetSemesterBySemesterId(System.String)">
+            <summary>
+            Get Semester by ID 
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FTaskAPI.Controllers.SemesterController.AddSemester(FTask.Api.ViewModels.SemesterViewModels.SemesterAddViewModel)">
+            <summary>
+            Add new Semester into databas
+            </summary>
+            <param name="semester"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FTaskAPI.Controllers.SemesterController.UpdateSemester(System.String,FTask.Api.ViewModels.SemesterViewModels.SemesterUpdateViewModel)">
+            <summary>
+            Update infomation of a Semester
+            </summary>
+            <param name="id"></param>
+            <param name="semester"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FTaskAPI.Controllers.SemesterController.PartialSemesterUpdate(System.String,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{FTask.Api.ViewModels.SemesterViewModels.SemesterUpdateViewModel})">
+            <summary>
+            Update Semester by PATCH method...Allow update a single attribute
+            </summary>
+            <param name="id"></param>
+            <param name="patchDoc"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FTaskAPI.Controllers.SemesterController.RemoveSemester(System.String)">
+            <summary>
+            Remove a Semester
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
         <member name="T:FTaskAPI.Controllers.StudentController">
             <summary>
             Student controller
