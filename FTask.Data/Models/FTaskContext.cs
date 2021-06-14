@@ -104,7 +104,7 @@ namespace FTask.Data.Models
                     .WithMany(p => p.PlanTopics)
                     .HasForeignKey(d => d.TopicId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__PlanTopic__Topic__3C69FB99");
+                    .HasConstraintName("FK_PlanTopic_Topic");
             });
 
             modelBuilder.Entity<Semester>(entity =>
@@ -205,7 +205,7 @@ namespace FTask.Data.Models
                     .IsRequired()
                     .HasMaxLength(10);
 
-                entity.Property(e => e.TopicDecription).HasMaxLength(200);
+                entity.Property(e => e.TopicDescription).HasMaxLength(200);
 
                 entity.Property(e => e.TopicName)
                     .IsRequired()
@@ -215,7 +215,7 @@ namespace FTask.Data.Models
                     .WithMany(p => p.Topics)
                     .HasForeignKey(d => d.SubjectId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Topic__SubjectId__412EB0B6");
+                    .HasConstraintName("FK_Topic_Subject");
             });
 
             OnModelCreatingPartial(modelBuilder);
