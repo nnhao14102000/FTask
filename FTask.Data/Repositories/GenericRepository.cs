@@ -21,7 +21,7 @@ namespace FTask.Data.Repositories
 
         public IQueryable<T> FindAll()
         {
-            return DbSet.AsNoTracking();
+            return DbSet;
         }
 
         public IQueryable<T> FindByCondition(Expression<Func<T, bool>> expression)
