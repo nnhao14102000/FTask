@@ -70,7 +70,7 @@
             Constructor DI AutoMapper and SemesterService
             </summary>
             <param name="mapper"></param>
-            <param name="SemesterService"></param>
+            <param name="semesterService"></param>
         </member>
         <member name="M:FTaskAPI.Controllers.SemesterController.GetAllSemesters(FTask.Data.Parameters.SemesterParameters)">
             <summary>
@@ -423,6 +423,16 @@
             Constructor Mapper from Source --> Target
             </summary>
         </member>
+        <member name="T:FTask.Api.Profiles.SemesterProfile">
+            <summary>
+            Semester mapping profile
+            </summary>
+        </member>
+        <member name="M:FTask.Api.Profiles.SemesterProfile.#ctor">
+            <summary>
+            Constructor Mapper from Source --> Target
+            </summary>
+        </member>
         <member name="T:FTask.Api.Profiles.SubjectGroupProfile">
             <summary>
             Subject group mapping profile
@@ -442,6 +452,44 @@
             <summary>
             Constructor Mapper from Source --> Target
             </summary>
+        </member>
+        <member name="T:FTask.Api.Profiles.TaskCategoryProfile">
+            <summary>
+            Task Category mapping profile
+            </summary>
+        </member>
+        <member name="M:FTask.Api.Profiles.TaskCategoryProfile.#ctor">
+            <summary>
+            Constructor Mapper from Source --> Target
+            </summary>
+        </member>
+        <member name="T:FTask.Api.Profiles.TopicProfile">
+            <summary>
+            Topic mapping profile
+            </summary>
+        </member>
+        <member name="M:FTask.Api.Profiles.TopicProfile.#ctor">
+            <summary>
+            Constructor Mapper from Source --> Target
+            </summary>
+        </member>
+        <member name="T:FTask.Api.Program">
+            <summary>
+            Program class
+            </summary>
+        </member>
+        <member name="M:FTask.Api.Program.Main(System.String[])">
+            <summary>
+            Run api if Db is existed...if not will be create Db and run
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="M:FTask.Api.Program.CreateHostBuilder(System.String[])">
+            <summary>
+            Use config in Startup class to create host
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
         </member>
         <member name="T:FTask.Api.Startup">
             <summary>
@@ -551,6 +599,121 @@
         <member name="P:FTask.Api.ViewModels.MajorViewModels.StudentOfMajorViewModel.StudentEmail">
             <summary>
             Student email
+            </summary>
+        </member>
+        <member name="T:FTask.Api.ViewModels.SemesterViewModels.SemesterAddViewModel">
+            <summary>
+            Semester add view model
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.SemesterViewModels.SemesterAddViewModel.SemesterId">
+            <summary>
+            Semester Id
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.SemesterViewModels.SemesterAddViewModel.SemesterName">
+            <summary>
+            Semester Name
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.SemesterViewModels.SemesterAddViewModel.StartDate">
+            <summary>
+            The begin day of semester
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.SemesterViewModels.SemesterAddViewModel.EndDate">
+            <summary>
+            The end day of semester
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.SemesterViewModels.SemesterAddViewModel.Status">
+            <summary>
+            Status: done or not
+            </summary>
+        </member>
+        <member name="T:FTask.Api.ViewModels.SemesterViewModels.SemesterReadDetailViewModel">
+            <summary>
+            Semester read detail view model
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.SemesterViewModels.SemesterReadDetailViewModel.SemesterId">
+            <summary>
+            Semester Id
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.SemesterViewModels.SemesterReadDetailViewModel.SemesterName">
+            <summary>
+            Semester Name
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.SemesterViewModels.SemesterReadDetailViewModel.StartDate">
+            <summary>
+            The begin day of semester
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.SemesterViewModels.SemesterReadDetailViewModel.EndDate">
+            <summary>
+            The end day of semester
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.SemesterViewModels.SemesterReadDetailViewModel.Status">
+            <summary>
+            Status: done or not
+            </summary>
+        </member>
+        <member name="T:FTask.Api.ViewModels.SemesterViewModels.SemesterReadViewModel">
+            <summary>
+            Semester Read view model
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.SemesterViewModels.SemesterReadViewModel.SemesterId">
+            <summary>
+            Semester Id
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.SemesterViewModels.SemesterReadViewModel.SemesterName">
+            <summary>
+            Semester Name
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.SemesterViewModels.SemesterReadViewModel.StartDate">
+            <summary>
+            The begin day of semester
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.SemesterViewModels.SemesterReadViewModel.EndDate">
+            <summary>
+            The end day of semester
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.SemesterViewModels.SemesterReadViewModel.Status">
+            <summary>
+            Status: done or not
+            </summary>
+        </member>
+        <member name="T:FTask.Api.ViewModels.SemesterViewModels.SemesterUpdateViewModel">
+            <summary>
+            Semester update view model
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.SemesterViewModels.SemesterUpdateViewModel.SemesterName">
+            <summary>
+            Semester Name
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.SemesterViewModels.SemesterUpdateViewModel.StartDate">
+            <summary>
+            The begin day of semester
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.SemesterViewModels.SemesterUpdateViewModel.EndDate">
+            <summary>
+            The end day of semester
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.SemesterViewModels.SemesterUpdateViewModel.Status">
+            <summary>
+            Status: done or not
             </summary>
         </member>
         <member name="T:FTask.Api.ViewModels.StudentViewModels.StudentAddViewModel">
@@ -791,6 +954,146 @@
         <member name="P:FTask.Api.ViewModels.SubjectViewModels.SubjectUpdateViewModel.Source">
             <summary>
             Subject source
+            </summary>
+        </member>
+        <member name="T:FTask.Api.ViewModels.TaskCategoryViewModels.TaskCategoryAddViewModel">
+            <summary>
+            Task category add view model
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.TaskCategoryViewModels.TaskCategoryAddViewModel.TaskType">
+            <summary>
+            Task type
+            </summary>
+        </member>
+        <member name="T:FTask.Api.ViewModels.TaskCategoryViewModels.TaskCategoryReadDetailViewModel">
+            <summary>
+            Task category read detail view model
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.TaskCategoryViewModels.TaskCategoryReadDetailViewModel.TaskCategoryId">
+            <summary>
+            Task category Id
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.TaskCategoryViewModels.TaskCategoryReadDetailViewModel.TaskType">
+            <summary>
+            Task type
+            </summary>
+        </member>
+        <member name="T:FTask.Api.ViewModels.TaskCategoryViewModels.TaskCategoryReadViewModel">
+            <summary>
+            Task category read view model
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.TaskCategoryViewModels.TaskCategoryReadViewModel.TaskCategoryId">
+            <summary>
+            Task category Id
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.TaskCategoryViewModels.TaskCategoryReadViewModel.TaskType">
+            <summary>
+            Task type
+            </summary>
+        </member>
+        <member name="T:FTask.Api.ViewModels.TaskCategoryViewModels.TaskCategoryUpdateViewModel">
+            <summary>
+            Task category update view model
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.TaskCategoryViewModels.TaskCategoryUpdateViewModel.TaskType">
+            <summary>
+            Task type
+            </summary>
+        </member>
+        <member name="T:FTask.Api.ViewModels.TopicViewModels.TopicAddViewModel">
+            <summary>
+            Topic add view model
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.TopicViewModels.TopicAddViewModel.TopicName">
+            <summary>
+            Topic name
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.TopicViewModels.TopicAddViewModel.TopicDescription">
+            <summary>
+            Topic description, can be null
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.TopicViewModels.TopicAddViewModel.SubjectId">
+            <summary>
+            Subject Id
+            </summary>
+        </member>
+        <member name="T:FTask.Api.ViewModels.TopicViewModels.TopicReadDetailViewModel">
+            <summary>
+            Topic read detail view model
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.TopicViewModels.TopicReadDetailViewModel.TopicId">
+            <summary>
+            Topic Id
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.TopicViewModels.TopicReadDetailViewModel.TopicName">
+            <summary>
+            Topic name
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.TopicViewModels.TopicReadDetailViewModel.TopicDescription">
+            <summary>
+            Topic description, can be null
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.TopicViewModels.TopicReadDetailViewModel.SubjectId">
+            <summary>
+            Subject Id
+            </summary>
+        </member>
+        <member name="T:FTask.Api.ViewModels.TopicViewModels.TopicReadViewModel">
+            <summary>
+            Topic read view model
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.TopicViewModels.TopicReadViewModel.TopicId">
+            <summary>
+            Topic Id
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.TopicViewModels.TopicReadViewModel.TopicName">
+            <summary>
+            Topic name
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.TopicViewModels.TopicReadViewModel.TopicDescription">
+            <summary>
+            Topic description, can be null
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.TopicViewModels.TopicReadViewModel.SubjectId">
+            <summary>
+            Subject Id
+            </summary>
+        </member>
+        <member name="T:FTask.Api.ViewModels.TopicViewModels.TopicUpdateViewModel">
+            <summary>
+            Topic update view model
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.TopicViewModels.TopicUpdateViewModel.TopicName">
+            <summary>
+            Topic name
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.TopicViewModels.TopicUpdateViewModel.TopicDescription">
+            <summary>
+            Topic description, can be null
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.TopicViewModels.TopicUpdateViewModel.SubjectId">
+            <summary>
+            Subject Id
             </summary>
         </member>
     </members>

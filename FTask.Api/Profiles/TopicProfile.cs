@@ -4,8 +4,14 @@ using FTask.Data.Models;
 
 namespace FTask.Api.Profiles
 {
+    /// <summary>
+    /// Topic mapping profile
+    /// </summary>
     public class TopicProfile : Profile
     {
+        /// <summary>
+        /// Constructor Mapper from Source --> Target
+        /// </summary>
         public TopicProfile()
         {
             CreateMap<Topic, TopicReadViewModel>();

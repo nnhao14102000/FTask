@@ -8,8 +8,15 @@ using System;
 
 namespace FTask.Api
 {
+    /// <summary>
+    /// Program class
+    /// </summary>
     public class Program
     {
+        /// <summary>
+        /// Run api if Db is existed...if not will be create Db and run
+        /// </summary>
+        /// <param name="args"></param>
         public static void Main(string[] args)
         {
             var host = CreateHostBuilder(args).Build();
@@ -42,7 +49,11 @@ namespace FTask.Api
                 }
             }
         }
-
+        /// <summary>
+        /// Use config in Startup class to create host
+        /// </summary>
+        /// <param name="args"></param>
+        /// <returns></returns>
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>

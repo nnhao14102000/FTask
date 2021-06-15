@@ -24,7 +24,7 @@ namespace FTaskAPI.Controllers
         /// Constructor DI AutoMapper and SemesterService
         /// </summary>
         /// <param name="mapper"></param>
-        /// <param name="SemesterService"></param>
+        /// <param name="semesterService"></param>
         public SemesterController(IMapper mapper, ISemesterService semesterService)
         {
             _mapper = mapper;

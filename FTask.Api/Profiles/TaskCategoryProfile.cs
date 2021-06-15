@@ -4,8 +4,14 @@ using FTask.Data.Models;
 
 namespace FTask.Api.Profiles
 {
+    /// <summary>
+    /// Task Category mapping profile
+    /// </summary>
     public class TaskCategoryProfile : Profile
     {
+        /// <summary>
+        /// Constructor Mapper from Source --> Target
+        /// </summary>
         public TaskCategoryProfile()
         {
             CreateMap<TaskCategory, TaskCategoryReadViewModel>();
