@@ -34,7 +34,7 @@ namespace FTaskAPI.Controllers
         }
 
         /// <summary>
-        /// Get all student
+        /// Get all student, allow search by name, filter by Major Id | api version v1
         /// </summary>
         /// <param name="studentParameters"></param>
         /// <returns></returns>
@@ -58,7 +58,7 @@ namespace FTaskAPI.Controllers
         }
 
         /// <summary>
-        /// Get student by student ID
+        /// Get student by student ID | api version v1
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -75,7 +75,7 @@ namespace FTaskAPI.Controllers
         }
 
         /// <summary>
-        /// Get student by student Email
+        /// Get student by student Email | api version v1.1
         /// </summary>
         /// <param name="email"></param>
         /// <returns></returns>
@@ -92,7 +92,7 @@ namespace FTaskAPI.Controllers
         }
 
         /// <summary>
-        /// Add a new student
+        /// Add a new student | api version v1
         /// </summary>
         /// <param name="student"></param>
         /// <returns></returns>
@@ -114,7 +114,7 @@ namespace FTaskAPI.Controllers
         }
 
         /// <summary>
-        /// Update student
+        /// Update student | api version v1
         /// </summary>
         /// <param name="id"></param>
         /// <param name="student"></param>
@@ -134,7 +134,7 @@ namespace FTaskAPI.Controllers
         }
 
         /// <summary>
-        /// Update student by PATCH method...Allow update a single attribute
+        /// Update student by PATCH method...Allow update a single attribute | api version v1
         /// </summary>
         /// <param name="id"></param>
         /// <param name="patchDoc"></param>
@@ -161,7 +161,7 @@ namespace FTaskAPI.Controllers
         }
 
         /// <summary>
-        /// Remove student
+        /// Remove student | api version v1
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>

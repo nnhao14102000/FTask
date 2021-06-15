@@ -33,7 +33,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// Get all Task Category
+        /// Get all Task Category, allow search by name | api version v1
         /// </summary>
         /// <param name="taskCategoryParameter"></param>
         /// <returns></returns>
@@ -57,7 +57,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// Get Task Category by ID 
+        /// Get Task Category by ID | api version v1
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -74,7 +74,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// Add a Task Category into database
+        /// Add a Task Category into database | api version v1
         /// </summary>
         /// <param name="taskCategory"></param>
         /// <returns></returns>
@@ -90,7 +90,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// Update Task Category
+        /// Update Task Category | api version v1
         /// </summary>
         /// <param name="id"></param>
         /// <param name="taskCategory"></param>
@@ -110,7 +110,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// Update Task Category by PATCH method...Allow update a single attribute
+        /// Update Task Category by PATCH method...Allow update a single attribute | api version v1
         /// </summary>
         /// <param name="id"></param>
         /// <param name="patchDoc"></param>
@@ -137,7 +137,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// Remove a Task Category
+        /// Remove a Task Category | api version v1
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>

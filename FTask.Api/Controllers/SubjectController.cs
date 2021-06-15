@@ -33,7 +33,7 @@ namespace FTaskAPI.Controllers
         }
 
         /// <summary>
-        /// Get all Subject
+        /// Get all Subject, allow search by name | api version v1
         /// </summary>
         /// <param name="subjectParameters"></param>
         /// <returns></returns>
@@ -57,7 +57,7 @@ namespace FTaskAPI.Controllers
         }
 
         /// <summary>
-        /// Get Subject by Subject ID
+        /// Get Subject by Subject ID | api version v1
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -74,7 +74,7 @@ namespace FTaskAPI.Controllers
         }
 
         /// <summary>
-        /// Add a new Subject
+        /// Add a new Subject | api version v1
         /// </summary>
         /// <param name="subject"></param>
         /// <returns></returns>
@@ -96,7 +96,7 @@ namespace FTaskAPI.Controllers
         }
 
         /// <summary>
-        /// Update Subject
+        /// Update Subject | api version v1
         /// </summary>
         /// <param name="id"></param>
         /// <param name="subject"></param>
@@ -116,7 +116,7 @@ namespace FTaskAPI.Controllers
         }
 
         /// <summary>
-        /// Update Subject by PATCH method...Allow update a single attribute
+        /// Update Subject by PATCH method...Allow update a single attribute | api version v1
         /// </summary>
         /// <param name="id"></param>
         /// <param name="patchDoc"></param>
@@ -143,7 +143,7 @@ namespace FTaskAPI.Controllers
         }
 
         /// <summary>
-        /// Remove Subject
+        /// Remove Subject | api version v1
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>

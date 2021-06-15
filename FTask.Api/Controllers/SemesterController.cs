@@ -32,7 +32,7 @@ namespace FTaskAPI.Controllers
         }
 
         /// <summary>
-        /// Get all Semesters in database
+        /// Get all Semesters in database, allow search by name | api version v1
         /// </summary>
         /// <param name="semesterParameters"></param>
         /// <returns></returns>
@@ -56,7 +56,7 @@ namespace FTaskAPI.Controllers
         }
 
         /// <summary>
-        /// Get Semester by ID 
+        /// Get Semester by ID | api version v1
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -73,7 +73,7 @@ namespace FTaskAPI.Controllers
         }
 
         /// <summary>
-        /// Add new Semester into databas
+        /// Add new Semester into database | api version v1
         /// </summary>
         /// <param name="semester"></param>
         /// <returns></returns>
@@ -95,7 +95,7 @@ namespace FTaskAPI.Controllers
         }
 
         /// <summary>
-        /// Update infomation of a Semester
+        /// Update infomation of a Semester | api version v1
         /// </summary>
         /// <param name="id"></param>
         /// <param name="semester"></param>
@@ -115,7 +115,7 @@ namespace FTaskAPI.Controllers
         }
 
         /// <summary>
-        /// Update Semester by PATCH method...Allow update a single attribute
+        /// Update Semester by PATCH method...Allow update a single attribute | api version v1
         /// </summary>
         /// <param name="id"></param>
         /// <param name="patchDoc"></param>
@@ -142,7 +142,7 @@ namespace FTaskAPI.Controllers
         }
 
         /// <summary>
-        /// Remove a Semester
+        /// Remove a Semester | api version v1
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>

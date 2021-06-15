@@ -11,35 +11,35 @@
         </member>
         <member name="M:FTaskAPI.Controllers.MajorController.#ctor(AutoMapper.IMapper,FTask.Services.MajorBusinessService.IMajorService)">
             <summary>
-            Constructor DI AutoMapper and MajorService
+            Constructor DI AutoMapper and MajorService | api version v1
             </summary>
             <param name="mapper"></param>
             <param name="MajorService"></param>
         </member>
         <member name="M:FTaskAPI.Controllers.MajorController.GetAllMajors(FTask.Data.Parameters.MajorParameters)">
             <summary>
-            Get all majors in database
+            Get all majors in database, allow search by name | api version v1
             </summary>
             <param name="majorParameter"></param>
             <returns></returns>
         </member>
         <member name="M:FTaskAPI.Controllers.MajorController.GetMajorByMajorId(System.String)">
             <summary>
-            Get major and relevant student in this major by ID 
+            Get major and relevant student in this major by ID | api version v1
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
         <member name="M:FTaskAPI.Controllers.MajorController.AddMajor(FTask.Api.ViewModels.MajorViewModels.MajorAddViewModel)">
             <summary>
-            Add new major into databas
+            Add new major into database | api version v1
             </summary>
             <param name="major"></param>
             <returns></returns>
         </member>
         <member name="M:FTaskAPI.Controllers.MajorController.UpdateMajor(System.String,FTask.Api.ViewModels.MajorViewModels.MajorUpdateViewModel)">
             <summary>
-            Update infomation of a major
+            Update infomation of a major | api version v1
             </summary>
             <param name="id"></param>
             <param name="major"></param>
@@ -47,7 +47,7 @@
         </member>
         <member name="M:FTaskAPI.Controllers.MajorController.PartialMajorUpdate(System.String,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{FTask.Api.ViewModels.MajorViewModels.MajorUpdateViewModel})">
             <summary>
-            Update major by PATCH method...Allow update a single attribute
+            Update major by PATCH method...Allow update a single attribute | api version v1
             </summary>
             <param name="id"></param>
             <param name="patchDoc"></param>
@@ -55,7 +55,7 @@
         </member>
         <member name="M:FTaskAPI.Controllers.MajorController.RemoveMajor(System.String)">
             <summary>
-            Remove a major
+            Remove a major | api version v1
             </summary>
             <param name="id"></param>
             <returns></returns>
@@ -74,28 +74,28 @@
         </member>
         <member name="M:FTaskAPI.Controllers.SemesterController.GetAllSemesters(FTask.Data.Parameters.SemesterParameters)">
             <summary>
-            Get all Semesters in database
+            Get all Semesters in database, allow search by name | api version v1
             </summary>
             <param name="semesterParameters"></param>
             <returns></returns>
         </member>
         <member name="M:FTaskAPI.Controllers.SemesterController.GetSemesterBySemesterId(System.String)">
             <summary>
-            Get Semester by ID 
+            Get Semester by ID | api version v1
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
         <member name="M:FTaskAPI.Controllers.SemesterController.AddSemester(FTask.Api.ViewModels.SemesterViewModels.SemesterAddViewModel)">
             <summary>
-            Add new Semester into databas
+            Add new Semester into database | api version v1
             </summary>
             <param name="semester"></param>
             <returns></returns>
         </member>
         <member name="M:FTaskAPI.Controllers.SemesterController.UpdateSemester(System.String,FTask.Api.ViewModels.SemesterViewModels.SemesterUpdateViewModel)">
             <summary>
-            Update infomation of a Semester
+            Update infomation of a Semester | api version v1
             </summary>
             <param name="id"></param>
             <param name="semester"></param>
@@ -103,7 +103,7 @@
         </member>
         <member name="M:FTaskAPI.Controllers.SemesterController.PartialSemesterUpdate(System.String,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{FTask.Api.ViewModels.SemesterViewModels.SemesterUpdateViewModel})">
             <summary>
-            Update Semester by PATCH method...Allow update a single attribute
+            Update Semester by PATCH method...Allow update a single attribute | api version v1
             </summary>
             <param name="id"></param>
             <param name="patchDoc"></param>
@@ -111,7 +111,7 @@
         </member>
         <member name="M:FTaskAPI.Controllers.SemesterController.RemoveSemester(System.String)">
             <summary>
-            Remove a Semester
+            Remove a Semester | api version v1
             </summary>
             <param name="id"></param>
             <returns></returns>
@@ -130,35 +130,35 @@
         </member>
         <member name="M:FTaskAPI.Controllers.StudentController.GetAllStudents(FTask.Data.Parameters.StudentParameters)">
             <summary>
-            Get all student
+            Get all student, allow search by name, filter by Major Id | api version v1
             </summary>
             <param name="studentParameters"></param>
             <returns></returns>
         </member>
         <member name="M:FTaskAPI.Controllers.StudentController.GetStudentByStudentId(System.String)">
             <summary>
-            Get student by student ID
+            Get student by student ID | api version v1
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
         <member name="M:FTaskAPI.Controllers.StudentController.GetStudentByStudentEmail(System.String)">
             <summary>
-            Get student by student Email
+            Get student by student Email | api version v1.1
             </summary>
             <param name="email"></param>
             <returns></returns>
         </member>
         <member name="M:FTaskAPI.Controllers.StudentController.AddStudent(FTask.Api.ViewModels.StudentViewModels.StudentAddViewModel)">
             <summary>
-            Add a new student
+            Add a new student | api version v1
             </summary>
             <param name="student"></param>
             <returns></returns>
         </member>
         <member name="M:FTaskAPI.Controllers.StudentController.UpdateStudent(System.String,FTask.Api.ViewModels.StudentViewModels.StudentUpdateViewModel)">
             <summary>
-            Update student
+            Update student | api version v1
             </summary>
             <param name="id"></param>
             <param name="student"></param>
@@ -166,7 +166,7 @@
         </member>
         <member name="M:FTaskAPI.Controllers.StudentController.PartialStudentUpdate(System.String,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{FTask.Api.ViewModels.StudentViewModels.StudentUpdateViewModel})">
             <summary>
-            Update student by PATCH method...Allow update a single attribute
+            Update student by PATCH method...Allow update a single attribute | api version v1
             </summary>
             <param name="id"></param>
             <param name="patchDoc"></param>
@@ -174,7 +174,7 @@
         </member>
         <member name="M:FTaskAPI.Controllers.StudentController.RemoveStudent(System.String)">
             <summary>
-            Remove student
+            Remove student | api version v1
             </summary>
             <param name="id"></param>
             <returns></returns>
@@ -193,28 +193,28 @@
         </member>
         <member name="M:FTaskAPI.Controllers.SubjectController.GetAllSubjects(FTask.Data.Parameters.SubjectParameters)">
             <summary>
-            Get all Subject
+            Get all Subject, allow search by name | api version v1
             </summary>
             <param name="subjectParameters"></param>
             <returns></returns>
         </member>
         <member name="M:FTaskAPI.Controllers.SubjectController.GetSubjectBySubjectId(System.String)">
             <summary>
-            Get Subject by Subject ID
+            Get Subject by Subject ID | api version v1
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
         <member name="M:FTaskAPI.Controllers.SubjectController.AddSubject(FTask.Api.ViewModels.SubjectViewModels.SubjectAddViewModel)">
             <summary>
-            Add a new Subject
+            Add a new Subject | api version v1
             </summary>
             <param name="subject"></param>
             <returns></returns>
         </member>
         <member name="M:FTaskAPI.Controllers.SubjectController.UpdateSubject(System.String,FTask.Api.ViewModels.SubjectViewModels.SubjectUpdateViewModel)">
             <summary>
-            Update Subject
+            Update Subject | api version v1
             </summary>
             <param name="id"></param>
             <param name="subject"></param>
@@ -222,7 +222,7 @@
         </member>
         <member name="M:FTaskAPI.Controllers.SubjectController.PartialSubjectUpdate(System.String,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{FTask.Api.ViewModels.SubjectViewModels.SubjectUpdateViewModel})">
             <summary>
-            Update Subject by PATCH method...Allow update a single attribute
+            Update Subject by PATCH method...Allow update a single attribute | api version v1
             </summary>
             <param name="id"></param>
             <param name="patchDoc"></param>
@@ -230,7 +230,7 @@
         </member>
         <member name="M:FTaskAPI.Controllers.SubjectController.RemoveSubject(System.String)">
             <summary>
-            Remove Subject
+            Remove Subject | api version v1
             </summary>
             <param name="id"></param>
             <returns></returns>
@@ -259,28 +259,28 @@
         </member>
         <member name="M:FTask.Api.Controllers.SubjectGroupController.GetAllSubjectGroups(FTask.Data.Parameters.SubjectGroupParameters)">
             <summary>
-            Get all Subject group
+            Get all Subject group, allow search by name | api version v1
             </summary>
             <param name="subjectGroupParameter"></param>
             <returns></returns>
         </member>
         <member name="M:FTask.Api.Controllers.SubjectGroupController.GetSubjectGroupBySubjectGroupId(System.Int32)">
             <summary>
-            Get Subject group by ID and it Relevant subject
+            Get Subject group by ID and it Relevant subject | api version v1
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
         <member name="M:FTask.Api.Controllers.SubjectGroupController.AddSubjectGroup(FTask.Api.ViewModels.SubjectGroupViewModels.SubjectGroupAddViewModel)">
             <summary>
-            Add a subject group into database
+            Add a subject group into database | api version v1
             </summary>
             <param name="subjectGroup"></param>
             <returns></returns>
         </member>
         <member name="M:FTask.Api.Controllers.SubjectGroupController.UpdateSubjectGroup(System.Int32,FTask.Api.ViewModels.SubjectGroupViewModels.SubjectGroupUpdateViewModel)">
             <summary>
-            Update Subject group
+            Update Subject group | api version v1
             </summary>
             <param name="id"></param>
             <param name="subjectGroup"></param>
@@ -288,7 +288,7 @@
         </member>
         <member name="M:FTask.Api.Controllers.SubjectGroupController.PartialSubjectGroupUpdate(System.Int32,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{FTask.Api.ViewModels.SubjectGroupViewModels.SubjectGroupUpdateViewModel})">
             <summary>
-            Update Subject group by PATCH method...Allow update a single attribute
+            Update Subject group by PATCH method...Allow update a single attribute | api version v1
             </summary>
             <param name="id"></param>
             <param name="patchDoc"></param>
@@ -296,7 +296,7 @@
         </member>
         <member name="M:FTask.Api.Controllers.SubjectGroupController.RemoveSubjectGroup(System.Int32)">
             <summary>
-            Remove a Subject group
+            Remove a Subject group | api version v1
             </summary>
             <param name="id"></param>
             <returns></returns>
@@ -315,28 +315,28 @@
         </member>
         <member name="M:FTask.Api.Controllers.TaskCategoryController.GetAllTaskCategorys(FTask.Data.Parameters.TaskCategoryParameters)">
             <summary>
-            Get all Task Category
+            Get all Task Category, allow search by name | api version v1
             </summary>
             <param name="taskCategoryParameter"></param>
             <returns></returns>
         </member>
         <member name="M:FTask.Api.Controllers.TaskCategoryController.GetTaskCategoryByTaskCategoryId(System.Int32)">
             <summary>
-            Get Task Category by ID 
+            Get Task Category by ID | api version v1
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
         <member name="M:FTask.Api.Controllers.TaskCategoryController.AddTaskCategory(FTask.Api.ViewModels.TaskCategoryViewModels.TaskCategoryAddViewModel)">
             <summary>
-            Add a Task Category into database
+            Add a Task Category into database | api version v1
             </summary>
             <param name="taskCategory"></param>
             <returns></returns>
         </member>
         <member name="M:FTask.Api.Controllers.TaskCategoryController.UpdateTaskCategory(System.Int32,FTask.Api.ViewModels.TaskCategoryViewModels.TaskCategoryUpdateViewModel)">
             <summary>
-            Update Task Category
+            Update Task Category | api version v1
             </summary>
             <param name="id"></param>
             <param name="taskCategory"></param>
@@ -344,7 +344,7 @@
         </member>
         <member name="M:FTask.Api.Controllers.TaskCategoryController.PartialTaskCategoryUpdate(System.Int32,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{FTask.Api.ViewModels.TaskCategoryViewModels.TaskCategoryUpdateViewModel})">
             <summary>
-            Update Task Category by PATCH method...Allow update a single attribute
+            Update Task Category by PATCH method...Allow update a single attribute | api version v1
             </summary>
             <param name="id"></param>
             <param name="patchDoc"></param>
@@ -352,7 +352,7 @@
         </member>
         <member name="M:FTask.Api.Controllers.TaskCategoryController.RemoveTaskCategory(System.Int32)">
             <summary>
-            Remove a Task Category
+            Remove a Task Category | api version v1
             </summary>
             <param name="id"></param>
             <returns></returns>
@@ -371,28 +371,28 @@
         </member>
         <member name="M:FTask.Api.Controllers.TopicController.GetAllTopics(FTask.Data.Parameters.TopicParameters)">
             <summary>
-            Get all Topic
+            Get all Topic, allow search by name | api version v1
             </summary>
             <param name="topicParameter"></param>
             <returns></returns>
         </member>
         <member name="M:FTask.Api.Controllers.TopicController.GetTopicByTopicId(System.Int32)">
             <summary>
-            Get Task Category by ID 
+            Get Task Category by ID | api version v1
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
         <member name="M:FTask.Api.Controllers.TopicController.AddTopic(FTask.Api.ViewModels.TopicViewModels.TopicAddViewModel)">
             <summary>
-            Add a Topic into database
+            Add a Topic into database | api version v1
             </summary>
             <param name="topic"></param>
             <returns></returns>
         </member>
         <member name="M:FTask.Api.Controllers.TopicController.UpdateTopic(System.Int32,FTask.Api.ViewModels.TopicViewModels.TopicUpdateViewModel)">
             <summary>
-            Update Topic
+            Update Topic | api version v1
             </summary>
             <param name="id"></param>
             <param name="topic"></param>
@@ -400,7 +400,7 @@
         </member>
         <member name="M:FTask.Api.Controllers.TopicController.PartialTopicUpdate(System.Int32,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{FTask.Api.ViewModels.TopicViewModels.TopicUpdateViewModel})">
             <summary>
-            Update Task Category by PATCH method...Allow update a single attribute
+            Update Task Category by PATCH method...Allow update a single attribute | api version v1
             </summary>
             <param name="id"></param>
             <param name="patchDoc"></param>
@@ -408,7 +408,7 @@
         </member>
         <member name="M:FTask.Api.Controllers.TopicController.RemoveTopic(System.Int32)">
             <summary>
-            Remove a Task Category
+            Remove a Task Category | api version v1
             </summary>
             <param name="id"></param>
             <returns></returns>

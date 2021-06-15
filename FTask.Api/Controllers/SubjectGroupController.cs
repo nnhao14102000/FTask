@@ -33,7 +33,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// Get all Subject group
+        /// Get all Subject group, allow search by name | api version v1
         /// </summary>
         /// <param name="subjectGroupParameter"></param>
         /// <returns></returns>
@@ -54,10 +54,10 @@ namespace FTask.Api.Controllers
             Response.Headers.Add("SubjectGroup-Pagination", JsonConvert.SerializeObject(metaData));
 
             return Ok(_mapper.Map<IEnumerable<SubjectGroupReadViewModel>>(subjectGroup));
-        } 
+        }
 
         /// <summary>
-        /// Get Subject group by ID and it Relevant subject
+        /// Get Subject group by ID and it Relevant subject | api version v1
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -74,7 +74,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// Add a subject group into database
+        /// Add a subject group into database | api version v1
         /// </summary>
         /// <param name="subjectGroup"></param>
         /// <returns></returns>
@@ -90,7 +90,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// Update Subject group
+        /// Update Subject group | api version v1
         /// </summary>
         /// <param name="id"></param>
         /// <param name="subjectGroup"></param>
@@ -110,7 +110,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// Update Subject group by PATCH method...Allow update a single attribute
+        /// Update Subject group by PATCH method...Allow update a single attribute | api version v1
         /// </summary>
         /// <param name="id"></param>
         /// <param name="patchDoc"></param>
@@ -137,7 +137,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// Remove a Subject group
+        /// Remove a Subject group | api version v1
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
