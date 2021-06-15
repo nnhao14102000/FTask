@@ -16,7 +16,7 @@ namespace FTask.Data.Models
         public int? Priority { get; set; }
         public int? Progress { get; set; }
         public DateTime CreateDate { get; set; }
-        public int? Statsus { get; set; }
+        public bool Statsus { get; set; }
         public int PlanSemesterId { get; set; }
         public string SubjectId { get; set; }
 

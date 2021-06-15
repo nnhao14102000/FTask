@@ -13,10 +13,10 @@ namespace FTask.Data.Models
         public long? EstimateTime { get; set; }
         public long? EffortTime { get; set; }
         public DateTime? DueDate { get; set; }
-        public int? Priority { get; set; }
-        public int? Status { get; set; }
-        public int? PlanTopicId { get; set; }
-        public int? TaskCategoryId { get; set; }
+        public int Priority { get; set; }
+        public bool Status { get; set; }
+        public int PlanTopicId { get; set; }
+        public int TaskCategoryId { get; set; }
 
         public virtual PlanTopic PlanTopic { get; set; }
         public virtual TaskCategory TaskCategory { get; set; }
