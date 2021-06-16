@@ -1,6 +1,7 @@
 ﻿using FTask.Data.Repositories;
 using FTask.Data.Repositories.IRepository;
 using FTask.Services.MajorBusinessService;
+using FTask.Services.PlanSemesterBusinessService;
 using FTask.Services.SemesterBusinessService;
 using FTask.Services.StudentBusinessService;
 using FTask.Services.SubjectBusinessService;
@@ -42,6 +43,10 @@ namespace FTask.Services.DependencyInjection
             // config for service for Topic
             services.AddScoped<ITopicRepository, TopicRepository>();
             services.AddScoped<ITopicService, TopicService>();
+
+            // config for service for PlanSemester
+            services.AddScoped<IPlanSemesterRepository, PlanSemesterRepository>();
+            services.AddScoped<IPlanSemesterService, PlanSemesterService>();
         }
     }
 }

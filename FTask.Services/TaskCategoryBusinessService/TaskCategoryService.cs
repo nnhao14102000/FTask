@@ -40,12 +40,12 @@ namespace FTask.Services.TaskCategoryBusinessService
             var taskCategory = _taskCategoryRepository.GetTaskCategorys(taskCategoryPrameters);
             if (taskCategory is null)
             {
-                _log.LogInformation("Have no TaskCategory...");
+                _log.LogInformation("Have no Task Category...");
                 return null;
             }
             else
             {
-                _log.LogInformation($"Get {taskCategory.TotalCount} TaskCategory from database...");
+                _log.LogInformation($"Get {taskCategory.TotalCount} Task Category from database...");
                 return taskCategory;
             }
 
@@ -53,7 +53,7 @@ namespace FTask.Services.TaskCategoryBusinessService
 
         public TaskCategory GetTaskCategoryByTaskCategoryId(int Id)
         {
-            _log.LogInformation($"Search task category {Id}...");
+            _log.LogInformation($"Search Task Category {Id}...");
             var taskCategory = _taskCategoryRepository.GetTaskCategoryByTaskCategoryId(Id);
             if (taskCategory is null)
             {
@@ -69,18 +69,18 @@ namespace FTask.Services.TaskCategoryBusinessService
 
         public void RemoveTaskCategory(TaskCategory taskCategory)
         {
-            _log.LogInformation($"Remove TaskCategory {taskCategory.TaskCategoryId}...");
+            _log.LogInformation($"Remove Task Category {taskCategory.TaskCategoryId}...");
             _taskCategoryRepository.Remove(taskCategory);
             try
             {
                 if (_taskCategoryRepository.SaveChanges())
                 {
-                    _log.LogInformation($"Remove TaskCategory {taskCategory.TaskCategoryId} success...");
+                    _log.LogInformation($"Remove Task Category {taskCategory.TaskCategoryId} success...");
                 }
             }
             catch (Exception e)
             {
-                _log.LogError($"Remove TaskCategory {taskCategory.TaskCategoryId} fail with error: {e.Message}");
+                _log.LogError($"Remove Task Category {taskCategory.TaskCategoryId} fail with error: {e.Message}");
             }
         }
 

@@ -245,6 +245,62 @@
             Constructor Mapper from Source --> Target
             </summary>
         </member>
+        <member name="T:FTask.Api.Controllers.PlanSemesterController">
+            <summary>
+            PlanSemester controller
+            </summary>
+        </member>
+        <member name="M:FTask.Api.Controllers.PlanSemesterController.#ctor(AutoMapper.IMapper,FTask.Services.PlanSemesterBusinessService.IPlanSemesterService)">
+            <summary>
+            Constructor DI AutoMapper and Task Category service
+            </summary>
+            <param name="mapper"></param>
+            <param name="planSemesterService"></param>
+        </member>
+        <member name="M:FTask.Api.Controllers.PlanSemesterController.GetAllPlanSemesters(FTask.Data.Parameters.PlanSemesterParameters)">
+            <summary>
+            Get all PlanSemester, allow search by name | api version v1
+            </summary>
+            <param name="planSemesterParameter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FTask.Api.Controllers.PlanSemesterController.GetPlanSemesterByPlanSemesterId(System.Int32)">
+            <summary>
+            Get PlanSemester by ID | api version v1
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FTask.Api.Controllers.PlanSemesterController.AddPlanSemester(FTask.Api.ViewModels.PlanSemesterViewModels.PlanSemesterAddViewModel)">
+            <summary>
+            Add a PlanSemester into database | api version v1
+            </summary>
+            <param name="planSemester"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FTask.Api.Controllers.PlanSemesterController.UpdatePlanSemester(System.Int32,FTask.Api.ViewModels.PlanSemesterViewModels.PlanSemesterUpdateViewModel)">
+            <summary>
+            Update PlanSemester | api version v1
+            </summary>
+            <param name="id"></param>
+            <param name="planSemester"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FTask.Api.Controllers.PlanSemesterController.PartialPlanSemesterUpdate(System.Int32,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{FTask.Api.ViewModels.PlanSemesterViewModels.PlanSemesterUpdateViewModel})">
+            <summary>
+            Update PlanSemester by PATCH method...Allow update a single attribute | api version v1
+            </summary>
+            <param name="id"></param>
+            <param name="patchDoc"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FTask.Api.Controllers.PlanSemesterController.RemovePlanSemester(System.Int32)">
+            <summary>
+            Remove a PlanSemester | api version v1
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
         <member name="T:FTask.Api.Controllers.SubjectGroupController">
             <summary>
             Subject group controller
@@ -419,6 +475,16 @@
             </summary>
         </member>
         <member name="M:FTask.Api.Profiles.MajorProfile.#ctor">
+            <summary>
+            Constructor Mapper from Source --> Target
+            </summary>
+        </member>
+        <member name="T:FTask.Api.Profiles.PlanSemesterProfile">
+            <summary>
+            PlanSemester mapping profile
+            </summary>
+        </member>
+        <member name="M:FTask.Api.Profiles.PlanSemesterProfile.#ctor">
             <summary>
             Constructor Mapper from Source --> Target
             </summary>
