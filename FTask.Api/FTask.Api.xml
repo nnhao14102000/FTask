@@ -357,6 +357,62 @@
             <param name="id"></param>
             <returns></returns>
         </member>
+        <member name="T:FTask.Api.Controllers.PlanTopicController">
+            <summary>
+            PlanTopic controller
+            </summary>
+        </member>
+        <member name="M:FTask.Api.Controllers.PlanTopicController.#ctor(AutoMapper.IMapper,FTask.Services.PlanTopicBusinessService.IPlanTopicService)">
+            <summary>
+            Constructor DI AutoMapper and Task Category service
+            </summary>
+            <param name="mapper"></param>
+            <param name="planTopicService"></param>
+        </member>
+        <member name="M:FTask.Api.Controllers.PlanTopicController.GetAllPlanTopics(FTask.Data.Parameters.PlanTopicParameters)">
+            <summary>
+            Get all PlanTopic, allow search by name | api version v1
+            </summary>
+            <param name="planTopicParameter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FTask.Api.Controllers.PlanTopicController.GetPlanTopicByPlanTopicId(System.Int32)">
+            <summary>
+            Get PlanTopic by ID | api version v1
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FTask.Api.Controllers.PlanTopicController.AddPlanTopic(FTask.Api.ViewModels.PlanTopicViewModels.PlanTopicAddViewModel)">
+            <summary>
+            Add a PlanTopic into database | api version v1
+            </summary>
+            <param name="planTopic"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FTask.Api.Controllers.PlanTopicController.UpdatePlanTopic(System.Int32,FTask.Api.ViewModels.PlanTopicViewModels.PlanTopicUpdateViewModel)">
+            <summary>
+            Update PlanTopic | api version v1
+            </summary>
+            <param name="id"></param>
+            <param name="planTopic"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FTask.Api.Controllers.PlanTopicController.PartialPlanTopicUpdate(System.Int32,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{FTask.Api.ViewModels.PlanTopicViewModels.PlanTopicUpdateViewModel})">
+            <summary>
+            Update PlanTopic by PATCH method...Allow update a single attribute | api version v1
+            </summary>
+            <param name="id"></param>
+            <param name="patchDoc"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FTask.Api.Controllers.PlanTopicController.RemovePlanTopic(System.Int32)">
+            <summary>
+            Remove a PlanTopic | api version v1
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
         <member name="T:FTask.Api.Controllers.SubjectGroupController">
             <summary>
             Subject group controller
