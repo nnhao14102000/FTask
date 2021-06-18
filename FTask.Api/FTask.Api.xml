@@ -301,6 +301,62 @@
             <param name="id"></param>
             <returns></returns>
         </member>
+        <member name="T:FTask.Api.Controllers.PlanSubjectController">
+            <summary>
+            PlanSubject controller
+            </summary>
+        </member>
+        <member name="M:FTask.Api.Controllers.PlanSubjectController.#ctor(AutoMapper.IMapper,FTask.Services.PlanSubjectBusinessService.IPlanSubjectService)">
+            <summary>
+            Constructor DI AutoMapper and Task Category service
+            </summary>
+            <param name="mapper"></param>
+            <param name="planSubjectService"></param>
+        </member>
+        <member name="M:FTask.Api.Controllers.PlanSubjectController.GetAllPlanSubjects(FTask.Data.Parameters.PlanSubjectParameters)">
+            <summary>
+            Get all PlanSubject, allow search by name | api version v1
+            </summary>
+            <param name="planSubjectParameter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FTask.Api.Controllers.PlanSubjectController.GetPlanSubjectByPlanSubjectId(System.Int32)">
+            <summary>
+            Get PlanSubject by ID | api version v1
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FTask.Api.Controllers.PlanSubjectController.AddPlanSubject(FTask.Api.ViewModels.PlanSubjectViewModels.PlanSubjectAddViewModel)">
+            <summary>
+            Add a PlanSubject into database | api version v1
+            </summary>
+            <param name="planSubject"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FTask.Api.Controllers.PlanSubjectController.UpdatePlanSubject(System.Int32,FTask.Api.ViewModels.PlanSubjectViewModels.PlanSubjectUpdateViewModel)">
+            <summary>
+            Update PlanSubject | api version v1
+            </summary>
+            <param name="id"></param>
+            <param name="planSubject"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FTask.Api.Controllers.PlanSubjectController.PartialPlanSubjectUpdate(System.Int32,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{FTask.Api.ViewModels.PlanSubjectViewModels.PlanSubjectUpdateViewModel})">
+            <summary>
+            Update PlanSubject by PATCH method...Allow update a single attribute | api version v1
+            </summary>
+            <param name="id"></param>
+            <param name="patchDoc"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FTask.Api.Controllers.PlanSubjectController.RemovePlanSubject(System.Int32)">
+            <summary>
+            Remove a PlanSubject | api version v1
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
         <member name="T:FTask.Api.Controllers.SubjectGroupController">
             <summary>
             Subject group controller
