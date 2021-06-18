@@ -31,7 +31,7 @@ namespace FTask.Data.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.HasAnnotation("Relational:Collation", "Vietnamese_CI_AS");
+            modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
 
             modelBuilder.Entity<Major>(entity =>
             {
@@ -183,7 +183,9 @@ namespace FTask.Data.Models
 
                 entity.Property(e => e.DueDate).HasColumnType("datetime");
 
-                entity.Property(e => e.TaskDecription).HasMaxLength(200);
+                entity.Property(e => e.TaskDecription)
+                    .IsRequired()
+                    .HasMaxLength(200);
 
                 entity.HasOne(d => d.PlanTopic)
                     .WithMany(p => p.Tasks)

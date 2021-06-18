@@ -525,6 +525,62 @@
             <param name="id"></param>
             <returns></returns>
         </member>
+        <member name="T:FTask.Api.Controllers.TaskController">
+            <summary>
+            Task controller
+            </summary>
+        </member>
+        <member name="M:FTask.Api.Controllers.TaskController.#ctor(AutoMapper.IMapper,FTask.Services.TaskBusinessService.ITaskService)">
+            <summary>
+            Constructor DI AutoMapper and Task Category service
+            </summary>
+            <param name="mapper"></param>
+            <param name="taskService"></param>
+        </member>
+        <member name="M:FTask.Api.Controllers.TaskController.GetAllTasks(FTask.Data.Parameters.TaskParameters)">
+            <summary>
+            Get all Task, allow search by name | api version v1
+            </summary>
+            <param name="taskParameter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FTask.Api.Controllers.TaskController.GetTaskByTaskId(System.Int32)">
+            <summary>
+            Get Task by ID | api version v1
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FTask.Api.Controllers.TaskController.AddTask(FTask.Api.ViewModels.TaskViewModels.TaskAddViewModel)">
+            <summary>
+            Add a Task into database | api version v1
+            </summary>
+            <param name="task"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FTask.Api.Controllers.TaskController.UpdateTask(System.Int32,FTask.Api.ViewModels.TaskViewModels.TaskUpdateViewModel)">
+            <summary>
+            Update Task | api version v1
+            </summary>
+            <param name="id"></param>
+            <param name="task"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FTask.Api.Controllers.TaskController.PartialTaskUpdate(System.Int32,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{FTask.Api.ViewModels.TaskViewModels.TaskUpdateViewModel})">
+            <summary>
+            Update Task by PATCH method...Allow update a single attribute | api version v1
+            </summary>
+            <param name="id"></param>
+            <param name="patchDoc"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FTask.Api.Controllers.TaskController.RemoveTask(System.Int32)">
+            <summary>
+            Remove a Task | api version v1
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
         <member name="T:FTask.Api.Controllers.TopicController">
             <summary>
             Task Category controller

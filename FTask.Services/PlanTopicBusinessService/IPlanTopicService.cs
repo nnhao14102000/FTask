@@ -8,8 +8,8 @@ namespace FTask.Services.PlanTopicBusinessService
     {
         PagedList<PlanTopic> GetAllPlanTopics(PlanTopicParameters planTopicPrameters);
         PlanTopic GetPlanTopicByPlanTopicId(int id);
-        void AddPlanTopic(PlanTopic PlanTopic);
-        void UpdatePlanTopic(PlanTopic PlanTopic);
-        void RemovePlanTopic(PlanTopic PlanTopic);
+        void AddPlanTopic(PlanTopic planTopic);
+        void UpdatePlanTopic(PlanTopic planTopic);
+        void RemovePlanTopic(PlanTopic planTopic);
     }
 }
