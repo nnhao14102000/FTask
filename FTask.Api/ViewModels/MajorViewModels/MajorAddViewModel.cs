@@ -19,6 +19,7 @@ namespace FTask.Api.ViewModels.MajorViewModels
         /// </summary>
         [Required]
         [StringLength(50)]
+        [RegularExpression(@"^[A-Z]+[a-zA-Z\s]*$")]
         public string MajorName { get; set; }
     }
 }

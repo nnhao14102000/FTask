@@ -19,6 +19,7 @@ namespace FTask.Api.ViewModels.StudentViewModels
         /// </summary>
         [Required]
         [StringLength(50)]
+        [RegularExpression(@"^[A-Z]+[a-zA-Z\s]*$")]
         public string StudentName { get; set; }
 
         /// <summary>

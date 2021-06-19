@@ -12,6 +12,7 @@ namespace FTask.Api.ViewModels.TaskCategoryViewModels
         /// </summary>
         [Required]
         [StringLength(50)]
+        [RegularExpression(@"^[A-Z]+[a-zA-Z\s]*$")]
         public string TaskType { get; set; }
     }
 }
