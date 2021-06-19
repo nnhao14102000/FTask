@@ -1,4 +1,6 @@
-﻿namespace FTask.Api.ViewModels.StudentViewModels
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace FTask.Api.ViewModels.StudentViewModels
 {
     /// <summary>
     /// Student add model
@@ -6,20 +8,31 @@
     public class StudentAddViewModel
     {
         /// <summary>
-        /// Student Id
+        /// Student Id, not null, max length = 20
         /// </summary>
+        [Required]
+        [StringLength(20)]
         public string StudentId { get; set; }
+
         /// <summary>
-        /// Student name
+        /// Student name, not null, max length = 50
         /// </summary>
+        [Required]
+        [StringLength(50)]
         public string StudentName { get; set; }
+
         /// <summary>
-        /// Student email
+        /// Student email, not null, max length = 50
         /// </summary>
+        [Required]
+        [StringLength(50)]
         public string StudentEmail { get; set; }
+
         /// <summary>
-        /// Student Major Id
+        /// Major Id this student belong to, not null, max length = 20
         /// </summary>
+        [Required]
+        [StringLength(20)]
         public string MajorId { get; set; }
     }
 }

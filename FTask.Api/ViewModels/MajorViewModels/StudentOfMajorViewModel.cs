@@ -9,10 +9,12 @@
         /// Student Id
         /// </summary>
         public string StudentId { get; set; }
+
         /// <summary>
         /// Student name
         /// </summary>
         public string StudentName { get; set; }
+
         /// <summary>
         /// Student email
         /// </summary>

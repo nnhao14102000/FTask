@@ -134,7 +134,9 @@ namespace FTask.Data.Models
 
                 entity.Property(e => e.StudentId).HasMaxLength(20);
 
-                entity.Property(e => e.MajorId).HasMaxLength(20);
+                entity.Property(e => e.MajorId)
+                    .IsRequired()
+                    .HasMaxLength(20);
 
                 entity.Property(e => e.StudentEmail)
                     .IsRequired()
@@ -147,6 +149,7 @@ namespace FTask.Data.Models
                 entity.HasOne(d => d.Major)
                     .WithMany(p => p.Students)
                     .HasForeignKey(d => d.MajorId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__Student__MajorId__3D5E1FD2");
             });
 
@@ -165,6 +168,7 @@ namespace FTask.Data.Models
                 entity.HasOne(d => d.SubjectGroup)
                     .WithMany(p => p.Subjects)
                     .HasForeignKey(d => d.SubjectGroupId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__Subject__Subject__3E52440B");
             });
 
@@ -172,7 +176,9 @@ namespace FTask.Data.Models
             {
                 entity.ToTable("SubjectGroup");
 
-                entity.Property(e => e.SubjectGroupName).HasMaxLength(50);
+                entity.Property(e => e.SubjectGroupName)
+                    .IsRequired()
+                    .HasMaxLength(50);
             });
 
             modelBuilder.Entity<Task>(entity =>
@@ -204,7 +210,9 @@ namespace FTask.Data.Models
             {
                 entity.ToTable("TaskCategory");
 
-                entity.Property(e => e.TaskType).HasMaxLength(50);
+                entity.Property(e => e.TaskType)
+                    .IsRequired()
+                    .HasMaxLength(50);
             });
 
             modelBuilder.Entity<Topic>(entity =>

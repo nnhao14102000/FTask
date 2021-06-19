@@ -14,7 +14,7 @@ namespace FTask.Data.Models
         public long? EffortTime { get; set; }
         public DateTime? DueDate { get; set; }
         public int? Priority { get; set; }
-        public bool? IsComplete { get; set; }
+        public bool IsComplete { get; set; }
         public int PlanTopicId { get; set; }
         public int TaskCategoryId { get; set; }
 

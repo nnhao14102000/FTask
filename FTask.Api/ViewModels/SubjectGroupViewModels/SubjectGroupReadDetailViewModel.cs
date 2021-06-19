@@ -11,10 +11,12 @@ namespace FTask.Api.ViewModels.SubjectGroupViewModels
         /// Subject group Id
         /// </summary>
         public int SubjectGroupId { get; set; }
+
         /// <summary>
         /// Subject group name
         /// </summary>
         public string SubjectGroupName { get; set; }
+
         /// <summary>
         /// List of subject belong to subject group
         /// </summary>

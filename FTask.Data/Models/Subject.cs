@@ -16,7 +16,7 @@ namespace FTask.Data.Models
         public string SubjectId { get; set; }
         public string SubjectName { get; set; }
         public string Source { get; set; }
-        public int? SubjectGroupId { get; set; }
+        public int SubjectGroupId { get; set; }
 
         public virtual SubjectGroup SubjectGroup { get; set; }
         public virtual ICollection<PlanSubject> PlanSubjects { get; set; }

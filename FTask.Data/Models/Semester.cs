@@ -16,7 +16,7 @@ namespace FTask.Data.Models
         public string SemesterName { get; set; }
         public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; }
-        public int? Status { get; set; }
+        public bool IsComplete { get; set; }
 
         public virtual ICollection<PlanSemester> PlanSemesters { get; set; }
     }

@@ -1,4 +1,6 @@
-﻿namespace FTask.Api.ViewModels.MajorViewModels
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace FTask.Api.ViewModels.MajorViewModels
 {
     /// <summary>
     /// Major add model
@@ -6,12 +8,17 @@
     public class MajorAddViewModel
     {
         /// <summary>
-        /// Major Id
+        /// Major Id, required, max length 20 
         /// </summary>
+        [Required]
+        [StringLength(20)]
         public string MajorId { get; set; }
+
         /// <summary>
-        /// Major Name
+        /// Major Name, required, max length 50
         /// </summary>
+        [Required]
+        [StringLength(50)]
         public string MajorName { get; set; }
     }
 }

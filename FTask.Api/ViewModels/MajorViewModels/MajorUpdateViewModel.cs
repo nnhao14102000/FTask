@@ -1,4 +1,6 @@
-﻿namespace FTask.Api.ViewModels.MajorViewModels
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace FTask.Api.ViewModels.MajorViewModels
 {
     /// <summary>
     /// Major update model
@@ -6,8 +8,10 @@
     public class MajorUpdateViewModel
     {
         /// <summary>
-        /// Major name
+        /// Major Name, required, max length 50
         /// </summary>
+        [Required]
+        [StringLength(50)]
         public string MajorName { get; set; }
     }
 }

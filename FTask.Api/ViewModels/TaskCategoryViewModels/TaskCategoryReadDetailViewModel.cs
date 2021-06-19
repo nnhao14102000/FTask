@@ -9,6 +9,7 @@
         /// Task category Id
         /// </summary>
         public int TaskCategoryId { get; set; }
+
         /// <summary>
         /// Task type
         /// </summary>

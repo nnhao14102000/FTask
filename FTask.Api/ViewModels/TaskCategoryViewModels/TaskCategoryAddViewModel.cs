@@ -1,4 +1,6 @@
-﻿namespace FTask.Api.ViewModels.TaskCategoryViewModels
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace FTask.Api.ViewModels.TaskCategoryViewModels
 {
     /// <summary>
     /// Task category add view model
@@ -6,8 +8,10 @@
     public class TaskCategoryAddViewModel
     {
         /// <summary>
-        /// Task type
+        /// Task type, not null, max length 50
         /// </summary>
+        [Required]
+        [StringLength(50)]
         public string TaskType { get; set; }
     }
 }

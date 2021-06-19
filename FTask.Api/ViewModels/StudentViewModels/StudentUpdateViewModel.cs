@@ -9,8 +9,9 @@
         /// Student name
         /// </summary>
         public string StudentName { get; set; }
+
         /// <summary>
-        /// Student Major Id
+        /// Major id this student belong to
         /// </summary>
         public string MajorId { get; set; }
     }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace FTask.Api.ViewModels.SemesterViewModels
 {
@@ -8,24 +9,33 @@ namespace FTask.Api.ViewModels.SemesterViewModels
     public class SemesterAddViewModel
     {
         /// <summary>
-        /// Semester Id
+        /// Semester Id, not null, max length =10
         /// </summary>
+        [Required]
+        [StringLength(10)]
         public string SemesterId { get; set; }
+
         /// <summary>
-        /// Semester Name
+        /// Semester Name, not null, max length = 50
         /// </summary>
+        [Required]
+        [StringLength(50)]
         public string SemesterName { get; set; }
+
         /// <summary>
         /// The begin day of semester
         /// </summary>
         public DateTime? StartDate { get; set; }
+
         /// <summary>
         /// The end day of semester
         /// </summary>
         public DateTime? EndDate { get; set; }
+
         /// <summary>
-        /// Status: done or not
+        /// Is Semester complete, not null
         /// </summary>
-        public int? Status { get; set; }
+        [Required]
+        public bool IsComplete { get; set; }
     }
 }

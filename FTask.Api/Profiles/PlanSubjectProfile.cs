@@ -4,8 +4,14 @@ using FTask.Data.Models;
 
 namespace FTask.Api.Profiles
 {
+    /// <summary>
+    /// Plan Subject mapper profile
+    /// </summary>
     public class PlanSubjectProfile :Profile
     {
+        /// <summary>
+        /// Constructor Mapper from Source --> Target
+        /// </summary>
         public PlanSubjectProfile()
         {
             CreateMap<PlanSubject, PlanSubjectReadViewModel>();

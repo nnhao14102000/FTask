@@ -9,6 +9,7 @@
         /// Major Id
         /// </summary>
         public string MajorId { get; set; }
+
         /// <summary>
         /// Major name
         /// </summary>

@@ -1,4 +1,6 @@
-﻿namespace FTask.Api.ViewModels.SubjectGroupViewModels
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace FTask.Api.ViewModels.SubjectGroupViewModels
 {
     /// <summary>
     /// Subject add model
@@ -6,8 +8,10 @@
     public class SubjectGroupAddViewModel
     {
         /// <summary>
-        /// Subject group name
+        /// Subject group name, not null, max length = 50
         /// </summary>
+        [Required]
+        [StringLength(50)]
         public string SubjectGroupName { get; set; }
     }
 }

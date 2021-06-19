@@ -9,6 +9,7 @@
         /// Subject group Id
         /// </summary>
         public int SubjectGroupId { get; set; }
+
         /// <summary>
         /// Subject group name
         /// </summary>
