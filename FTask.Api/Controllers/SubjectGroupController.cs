@@ -22,7 +22,7 @@ namespace FTask.Api.Controllers
         private readonly ISubjectGroupService _subjectGroupService;
 
         /// <summary>
-        /// Constructor DI AutoMapper and Subject group service
+        /// Constructor DI AutoMapper and subject group service
         /// </summary>
         /// <param name="mapper"></param>
         /// <param name="SubjectGroupService"></param>
@@ -33,7 +33,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// Get all Subject group, allow search by name | api version v1
+        /// API version 1 | Get all subject groups, allow search by name 
         /// </summary>
         /// <param name="subjectGroupParameter"></param>
         /// <returns></returns>
@@ -57,7 +57,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// Get Subject group by ID and it Relevant subject | api version v1
+        /// API version 1 | Get subject group by ID and it Relevant subject 
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -74,7 +74,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// Add a subject group into database | api version v1
+        /// API version 1 | Add a subject group into database 
         /// </summary>
         /// <param name="subjectGroup"></param>
         /// <returns></returns>
@@ -90,7 +90,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// Update Subject group | api version v1
+        /// API version 1 | Update subject group 
         /// </summary>
         /// <param name="id"></param>
         /// <param name="subjectGroup"></param>
@@ -110,7 +110,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// Update Subject group by PATCH method...Allow update a single attribute | api version v1
+        /// API version 1 | Update subject group by PATCH method...Allow update a single attribute 
         /// </summary>
         /// <param name="id"></param>
         /// <param name="patchDoc"></param>
@@ -137,7 +137,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// Remove a Subject group | api version v1
+        /// API version 1 | Remove a subject group 
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>

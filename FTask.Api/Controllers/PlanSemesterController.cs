@@ -33,7 +33,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// Get all PlanSemester, allow search by name | api version v1
+        /// API version 1 | Get all plan semester, allow search by name 
         /// </summary>
         /// <param name="planSemesterParameter"></param>
         /// <returns></returns>
@@ -57,7 +57,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// Get PlanSemester by ID | api version v1
+        /// API version 1 | Get plan semester by ID 
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -74,7 +74,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// Add a PlanSemester into database | api version v1
+        /// API version 1 | Add a plan semester into database 
         /// </summary>
         /// <param name="planSemester"></param>
         /// <returns></returns>
@@ -90,7 +90,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// Update PlanSemester | api version v1
+        /// API version 1 | Update plan semester 
         /// </summary>
         /// <param name="id"></param>
         /// <param name="planSemester"></param>
@@ -110,7 +110,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// Update PlanSemester by PATCH method...Allow update a single attribute | api version v1
+        /// API version 1 | Update plan semester by PATCH method...Allow update a single attribute 
         /// </summary>
         /// <param name="id"></param>
         /// <param name="patchDoc"></param>
@@ -137,7 +137,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// Remove a PlanSemester | api version v1
+        /// API version 1 | Remove a plan semester 
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>

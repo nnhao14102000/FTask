@@ -21,7 +21,7 @@ namespace FTaskAPI.Controllers
         private readonly IMapper _mapper;
         private readonly IMajorService _majorService;
         /// <summary>
-        /// Constructor DI AutoMapper and MajorService | api version v1
+        /// Constructor DI AutoMapper and MajorService
         /// </summary>
         /// <param name="mapper"></param>
         /// <param name="MajorService"></param>
@@ -32,7 +32,7 @@ namespace FTaskAPI.Controllers
         }
 
         /// <summary>
-        /// Get all majors in database, allow search by name | api version v1
+        /// API version 1 | Get all majors in database, allow search by name
         /// </summary>
         /// <param name="majorParameter"></param>
         /// <returns></returns>
@@ -56,7 +56,7 @@ namespace FTaskAPI.Controllers
         }
 
         /// <summary>
-        /// Get major and relevant student in this major by ID | api version v1
+        /// API version 1 | Get major and relevant student in this major by ID
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -73,7 +73,7 @@ namespace FTaskAPI.Controllers
         }
 
         /// <summary>
-        /// Add new major into database | api version v1
+        /// API version 1 | Add new major into database 
         /// </summary>
         /// <param name="major"></param>
         /// <returns></returns>
@@ -95,7 +95,7 @@ namespace FTaskAPI.Controllers
         }
 
         /// <summary>
-        /// Update infomation of a major | api version v1
+        /// API version 1 | Update infomation of a major 
         /// </summary>
         /// <param name="id"></param>
         /// <param name="major"></param>
@@ -115,7 +115,7 @@ namespace FTaskAPI.Controllers
         }
 
         /// <summary>
-        /// Update major by PATCH method...Allow update a single attribute | api version v1
+        /// API version 1 | Update major by PATCH method...Allow update a single attribute 
         /// </summary>
         /// <param name="id"></param>
         /// <param name="patchDoc"></param>
@@ -142,7 +142,7 @@ namespace FTaskAPI.Controllers
         }
 
         /// <summary>
-        /// Remove a major | api version v1
+        /// API version 1 | Remove a major 
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>

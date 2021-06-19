@@ -11,7 +11,7 @@ using System.Collections.Generic;
 namespace FTask.Api.Controllers
 {
     /// <summary>
-    /// Task Category controller
+    /// TaskCategory controller
     /// </summary>
     [ApiController]
     [Route("api/v{version:apiVersion}/task-category")]
@@ -22,7 +22,7 @@ namespace FTask.Api.Controllers
         private readonly ITaskCategoryService _taskCategoryService;
 
         /// <summary>
-        /// Constructor DI AutoMapper and Task Category service
+        /// Constructor DI AutoMapper and task category service
         /// </summary>
         /// <param name="mapper"></param>
         /// <param name="taskCategoryService"></param>
@@ -33,7 +33,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// Get all Task Category, allow search by name | api version v1
+        /// API version 1 | Get all task category, allow search by name 
         /// </summary>
         /// <param name="taskCategoryParameter"></param>
         /// <returns></returns>
@@ -57,7 +57,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// Get Task Category by ID | api version v1
+        /// API version 1 | Get task category by ID 
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -74,7 +74,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// Add a Task Category into database | api version v1
+        /// API version 1 | Add a task category into database 
         /// </summary>
         /// <param name="taskCategory"></param>
         /// <returns></returns>
@@ -90,7 +90,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// Update Task Category | api version v1
+        /// API version 1 | Update task category
         /// </summary>
         /// <param name="id"></param>
         /// <param name="taskCategory"></param>
@@ -110,7 +110,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// Update Task Category by PATCH method...Allow update a single attribute | api version v1
+        /// API version 1 | Update task category by PATCH method...Allow update a single attribute 
         /// </summary>
         /// <param name="id"></param>
         /// <param name="patchDoc"></param>
@@ -137,7 +137,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// Remove a Task Category | api version v1
+        /// API version 1 | Remove a task category
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>

@@ -23,7 +23,7 @@ namespace FTaskAPI.Controllers
         private readonly IStudentService _studentService;
 
         /// <summary>
-        /// Constructor DI AutoMapper and Student service
+        /// API version 1 | Constructor DI AutoMapper and student service
         /// </summary>
         /// <param name="mapper"></param>
         /// <param name="studentService"></param>
@@ -34,7 +34,7 @@ namespace FTaskAPI.Controllers
         }
 
         /// <summary>
-        /// Get all student, allow search by name, filter by Major Id | api version v1
+        /// API version 1 | Get all students, allow search by name, filter by major Id 
         /// </summary>
         /// <param name="studentParameters"></param>
         /// <returns></returns>
@@ -58,7 +58,7 @@ namespace FTaskAPI.Controllers
         }
 
         /// <summary>
-        /// Get student by student ID | api version v1
+        /// API version 1 | Get student by student ID 
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -75,7 +75,7 @@ namespace FTaskAPI.Controllers
         }
 
         /// <summary>
-        /// Get student by student Email | api version v1.1
+        /// API version 1.1 | Get student by student email
         /// </summary>
         /// <param name="email"></param>
         /// <returns></returns>
@@ -92,7 +92,7 @@ namespace FTaskAPI.Controllers
         }
 
         /// <summary>
-        /// Add a new student | api version v1
+        /// API version 1 | Add a new student 
         /// </summary>
         /// <param name="student"></param>
         /// <returns></returns>
@@ -114,7 +114,7 @@ namespace FTaskAPI.Controllers
         }
 
         /// <summary>
-        /// Update student | api version v1
+        /// API version 1 | Update student 
         /// </summary>
         /// <param name="id"></param>
         /// <param name="student"></param>
@@ -134,7 +134,7 @@ namespace FTaskAPI.Controllers
         }
 
         /// <summary>
-        /// Update student by PATCH method...Allow update a single attribute | api version v1
+        /// API version 1 | Update student by PATCH method...Allow update a single attribute 
         /// </summary>
         /// <param name="id"></param>
         /// <param name="patchDoc"></param>
@@ -161,7 +161,7 @@ namespace FTaskAPI.Controllers
         }
 
         /// <summary>
-        /// Remove student | api version v1
+        /// API version 1 | Remove student 
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>

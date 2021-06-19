@@ -33,7 +33,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// Get all PlanTopic, allow search by name | api version v1
+        /// API version 1 | Get all plan topic, allow search by name 
         /// </summary>
         /// <param name="planTopicParameter"></param>
         /// <returns></returns>
@@ -57,7 +57,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// Get PlanTopic by ID | api version v1
+        /// API version 1 | Get plan topic by ID 
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -74,7 +74,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// Add a PlanTopic into database | api version v1
+        /// API version 1 | Add a plan topic into database 
         /// </summary>
         /// <param name="planTopic"></param>
         /// <returns></returns>
@@ -90,7 +90,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// Update PlanTopic | api version v1
+        /// API version 1 | Update plan topic 
         /// </summary>
         /// <param name="id"></param>
         /// <param name="planTopic"></param>
@@ -110,7 +110,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// Update PlanTopic by PATCH method...Allow update a single attribute | api version v1
+        /// API version 1 | Update plan topic by PATCH method...Allow update a single attribute 
         /// </summary>
         /// <param name="id"></param>
         /// <param name="patchDoc"></param>
@@ -137,7 +137,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// Remove a PlanTopic | api version v1
+        /// API version 1 | Remove a plan topic 
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>

@@ -11,7 +11,7 @@ using System.Collections.Generic;
 namespace FTask.Api.Controllers
 {
     /// <summary>
-    /// Task Category controller
+    /// Topic controller
     /// </summary>
     [ApiController]
     [Route("api/v{version:apiVersion}/topic")]
@@ -22,7 +22,7 @@ namespace FTask.Api.Controllers
         private readonly ITopicService _topicService;
 
         /// <summary>
-        /// Constructor DI AutoMapper and Topic service
+        /// Constructor DI AutoMapper and topic service
         /// </summary>
         /// <param name="mapper"></param>
         /// <param name="topicService"></param>
@@ -33,7 +33,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// Get all Topic, allow search by name | api version v1
+        /// API version 1 | Get all topics, allow search by name
         /// </summary>
         /// <param name="topicParameter"></param>
         /// <returns></returns>
@@ -57,7 +57,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// Get Task Category by ID | api version v1
+        /// API version 1 | Get topic by ID
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -74,7 +74,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// Add a Topic into database | api version v1
+        /// API version 1 | Add a topic into database
         /// </summary>
         /// <param name="topic"></param>
         /// <returns></returns>
@@ -90,7 +90,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// Update Topic | api version v1
+        /// API version 1 | Update topic
         /// </summary>
         /// <param name="id"></param>
         /// <param name="topic"></param>
@@ -110,7 +110,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// Update Task Category by PATCH method...Allow update a single attribute | api version v1
+        /// API version 1 | Update topic by PATCH method...Allow update a single attribute
         /// </summary>
         /// <param name="id"></param>
         /// <param name="patchDoc"></param>
@@ -137,7 +137,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// Remove a Task Category | api version v1
+        /// API version 1 | Remove a topic
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
