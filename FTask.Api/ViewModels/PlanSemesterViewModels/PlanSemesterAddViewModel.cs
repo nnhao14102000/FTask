@@ -8,6 +8,6 @@ namespace FTask.Api.ViewModels.PlanSemesterViewModels
         public string StudentId { get; set; }
         public string SemesterId { get; set; }
         public DateTime CreateDate { get; set; } = DateTime.Now;
-        public bool Status { get; set; } = false;
+        public bool IsComplete { get; set; } = false;
     }
 }

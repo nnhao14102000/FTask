@@ -10,7 +10,7 @@ namespace FTask.Api.ViewModels.TaskViewModels
         public int EffortTime { get; set; } = 0;
         public DateTime? DueDate { get; set; }
         public int Priority { get; set; } = 0;
-        public bool Status { get; set; } = false;
+        public bool IsComplete { get; set; } = false;
         public int PlanTopic { get; set; }
         public int TaskCategoryId { get; set; }
     }

@@ -17,7 +17,7 @@ namespace FTask.Data.Models
         public string StudentId { get; set; }
         public string SemesterId { get; set; }
         public DateTime CreateDate { get; set; }
-        public bool Status { get; set; }
+        public bool IsComplete { get; set; }
 
         public virtual Semester Semester { get; set; }
         public virtual Student Student { get; set; }

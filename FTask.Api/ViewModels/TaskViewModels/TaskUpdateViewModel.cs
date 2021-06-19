@@ -9,6 +9,6 @@ namespace FTask.Api.ViewModels.TaskViewModels
         public int EffortTime { get; set; }
         public DateTime? DueDate { get; set; }
         public int Priority { get; set; }
-        public bool Status { get; set; }
+        public bool IsComplete { get; set; }
     }
 }
