@@ -23,7 +23,7 @@
             <param name="majorParameter"></param>
             <returns></returns>
         </member>
-        <member name="M:FTaskAPI.Controllers.MajorController.GetMajorByMajorId(System.String)">
+        <member name="M:FTaskAPI.Controllers.MajorController.GetMajorInDetailByMajorId(System.String)">
             <summary>
             API version 1 | Get major and relevant student in this major by ID
             </summary>

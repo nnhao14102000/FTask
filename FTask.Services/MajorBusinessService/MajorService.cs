@@ -49,6 +49,22 @@ namespace FTask.Services.MajorBusinessService
             }
         }
 
+        public Major GetMajorInDetailByMajorId(string id)
+        {
+            _log.LogInformation($"Search major {id}...");
+            var major = _majorRepository.GetMajorInDetailByMajorId(id);
+            if (major is null)
+            {
+                _log.LogInformation($"Can not found major {id}...");
+                return null;
+            }
+            else
+            {
+                _log.LogInformation($"Found success major {id}...");
+                return major;
+            }
+        }
+
         public void AddMajor(Major major)
         {
             _log.LogInformation($"Add major {major.MajorId} into database...");

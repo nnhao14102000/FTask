@@ -8,5 +8,6 @@ namespace FTask.Data.Repositories.IRepository
     {
         PagedList<Major> GetMajors(MajorParameters majorParameters);
         Major GetMajorByMajorId(string id);
+        Major GetMajorInDetailByMajorId(string id);
     }
 }

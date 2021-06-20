@@ -17,7 +17,13 @@ namespace FTask.Data.Repositories
 
         public Major GetMajorByMajorId(string id)
         {
-            var major = FindByCondition(major 
+            return FindByCondition(major 
+                => major.MajorId.Equals(id)).FirstOrDefault();
+        }
+
+        public Major GetMajorInDetailByMajorId(string id)
+        {
+            var major = FindByCondition(major
                 => major.MajorId.Equals(id)).FirstOrDefault();
 
             context.Entry(major)

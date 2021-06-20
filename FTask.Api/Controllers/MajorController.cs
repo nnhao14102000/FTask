@@ -60,11 +60,11 @@ namespace FTaskAPI.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpGet("{id}", Name = "GetMajorByMajorId")]
+        [HttpGet("{id}", Name = "GetMajorInDetailByMajorId")]
         [MapToApiVersion("1.0")]
-        public ActionResult<MajorReadDetailViewModel> GetMajorByMajorId(string id)
+        public ActionResult<MajorReadDetailViewModel> GetMajorInDetailByMajorId(string id)
         {
-            var major = _majorService.GetMajorByMajorId(id);
+            var major = _majorService.GetMajorInDetailByMajorId(id);
             if (major is not null)
             {
                 return Ok(_mapper.Map<MajorReadDetailViewModel>(major));
@@ -91,7 +91,7 @@ namespace FTaskAPI.Controllers
             _majorService.AddMajor(majorModel);
             var majorReadModel = _mapper.Map<MajorReadViewModel>(majorModel);
 
-            return CreatedAtRoute(nameof(GetMajorByMajorId), new { id = majorReadModel.MajorId }, majorReadModel);
+            return CreatedAtRoute(nameof(GetMajorInDetailByMajorId), new { id = majorReadModel.MajorId }, majorReadModel);
         }
 
         /// <summary>
