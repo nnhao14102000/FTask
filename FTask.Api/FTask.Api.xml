@@ -1710,6 +1710,21 @@
             Task category id this task belong to
             </summary>
         </member>
+        <member name="T:FTask.Api.ViewModels.TaskViewModels.TaskReadViewModel">
+            <summary>
+            Task Read View Model
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.TaskViewModels.TaskReadViewModel.TaskId">
+            <summary>
+            Task Id
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.TaskViewModels.TaskReadViewModel.TaskDescription">
+            <summary>
+            Task Description
+            </summary>
+        </member>
         <member name="P:FTask.Api.ViewModels.TaskViewModels.TaskReadViewModel.CreateDate">
             <summary>
             Date task created
@@ -1748,6 +1763,16 @@
         <member name="P:FTask.Api.ViewModels.TaskViewModels.TaskReadViewModel.TaskCategoryId">
             <summary>
             Task category id this task belong to
+            </summary>
+        </member>
+        <member name="T:FTask.Api.ViewModels.TaskViewModels.TaskUpdateViewModel">
+            <summary>
+            Task Update view model
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.TaskViewModels.TaskUpdateViewModel.TaskDescription">
+            <summary>
+            Task Description
             </summary>
         </member>
         <member name="P:FTask.Api.ViewModels.TaskViewModels.TaskUpdateViewModel.EstimateTime">

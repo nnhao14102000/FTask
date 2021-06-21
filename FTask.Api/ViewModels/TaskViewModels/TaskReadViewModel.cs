@@ -2,9 +2,21 @@
 
 namespace FTask.Api.ViewModels.TaskViewModels
 {
+    /// <summary>
+    /// Task Read View Model
+    /// </summary>
     public class TaskReadViewModel
     {
+        /// <summary>
+        /// Task Id
+        /// </summary>
         public int TaskId { get; set; }
+
+        /// <summary>
+        /// Task Description
+        /// </summary>
+        public string TaskDescription { get; set; }
+
         /// <summary>
         /// Date task created
         /// </summary>

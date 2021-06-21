@@ -3,8 +3,18 @@ using System.ComponentModel.DataAnnotations;
 
 namespace FTask.Api.ViewModels.TaskViewModels
 {
+    /// <summary>
+    /// Task Update view model
+    /// </summary>
     public class TaskUpdateViewModel
     {
+        /// <summary>
+        /// Task Description
+        /// </summary>
+        [Required]
+        [StringLength(200)]
+        public string TaskDescription { get; set; }
+
         /// <summary>
         /// Estimate complete time
         /// </summary>

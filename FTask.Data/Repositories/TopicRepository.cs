@@ -2,6 +2,7 @@
 using FTask.Data.Models;
 using FTask.Data.Parameters;
 using FTask.Data.Repositories.IRepository;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
 namespace FTask.Data.Repositories
@@ -18,7 +19,7 @@ namespace FTask.Data.Repositories
         {
             var topics = FindAll();
             SearchByName(ref topics, topicParameters.TopicName);
-            return PagedList<Topic>.ToPagedList(topics.OrderBy(t=>t.TopicName)
+            return PagedList<Topic>.ToPagedList(topics.OrderBy(t=>t.TopicId)
                 , topicParameters.PageNumber, topicParameters.PageSize);
         }
 
@@ -35,7 +36,16 @@ namespace FTask.Data.Repositories
 
         public Topic GetTopicByTopicId(int id)
         {
-            return FindByCondition(topic => topic.TopicId.Equals(id)).FirstOrDefault();
+            var topic = FindByCondition(topic => topic.TopicId.Equals(id)).FirstOrDefault();
+
+            context.Entry(topic)
+                .Collection(t => t.PlanTopics)
+                .Query()
+                .OrderBy(pt => pt.PlanTopicId)
+                .Include(planTopic => planTopic.Tasks)
+                .Load();
+
+            return topic;
         }
     }
 }
