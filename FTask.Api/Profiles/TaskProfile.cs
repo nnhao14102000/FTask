@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using FTask.Api.ViewModels.TaskViewModels;
+using FTask.Api.ViewModels.TopicViewModels;
 using FTask.Data.Models;
 
 namespace FTask.Api.Profiles
@@ -18,6 +19,9 @@ namespace FTask.Api.Profiles
             CreateMap<TaskAddViewModel, Task>();
             CreateMap<TaskUpdateViewModel, Task>();
             CreateMap<Task, TaskUpdateViewModel>();
+
+            // Config for Task in PlanTopic of Topic
+            CreateMap<Task, TasksInTopic>();
         }
     }
 }

@@ -1,11 +1,11 @@
 ﻿using System;
 
-namespace FTask.Api.ViewModels.TaskViewModels
+namespace FTask.Api.ViewModels.TopicViewModels
 {
     /// <summary>
-    /// Task Read View Model
+    /// Task in topic
     /// </summary>
-    public class TaskReadViewModel
+    public class TasksInTopic
     {
         /// <summary>
         /// Task Id
