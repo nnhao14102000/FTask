@@ -8,10 +8,6 @@ namespace FTask.Data.Models
 {
     public partial class FTaskContext : DbContext
     {
-        public FTaskContext()
-        {
-        }
-
         public FTaskContext(DbContextOptions<FTaskContext> options)
             : base(options)
         {
@@ -189,7 +185,7 @@ namespace FTask.Data.Models
 
                 entity.Property(e => e.DueDate).HasColumnType("datetime");
 
-                entity.Property(e => e.TaskDecription)
+                entity.Property(e => e.TaskDescription)
                     .IsRequired()
                     .HasMaxLength(200);
 
@@ -197,13 +193,13 @@ namespace FTask.Data.Models
                     .WithMany(p => p.Tasks)
                     .HasForeignKey(d => d.PlanTopicId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Task__PlanTopicI__5BE2A6F2");
+                    .HasConstraintName("FK_Task_PlanTopic");
 
                 entity.HasOne(d => d.TaskCategory)
                     .WithMany(p => p.Tasks)
                     .HasForeignKey(d => d.TaskCategoryId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Task__TaskCatego__5CD6CB2B");
+                    .HasConstraintName("FK_Task_TaskCategory");
             });
 
             modelBuilder.Entity<TaskCategory>(entity =>

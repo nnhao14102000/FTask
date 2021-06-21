@@ -8,7 +8,7 @@ namespace FTask.Data.Models
     public partial class Task
     {
         public int TaskId { get; set; }
-        public string TaskDecription { get; set; }
+        public string TaskDescription { get; set; }
         public DateTime CreateDate { get; set; }
         public long? EstimateTime { get; set; }
         public long? EffortTime { get; set; }
