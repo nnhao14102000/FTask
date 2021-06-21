@@ -37,7 +37,7 @@ namespace FTask.Data.Repositories
             SearchByName(ref subjectGroups, subjectGroupParameters.SubjectGroupName);
 
             return PagedList<SubjectGroup>
-                .ToPagedList(subjectGroups.OrderBy(sg => sg.SubjectGroupName)
+                .ToPagedList(subjectGroups.OrderBy(sg => sg.SubjectGroupId)
                     , subjectGroupParameters.PageNumber
                     , subjectGroupParameters.PageSize);
         }

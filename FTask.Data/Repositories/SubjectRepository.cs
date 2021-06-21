@@ -2,6 +2,7 @@
 using FTask.Data.Models;
 using FTask.Data.Parameters;
 using FTask.Data.Repositories.IRepository;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
 namespace FTask.Data.Repositories
@@ -18,7 +19,20 @@ namespace FTask.Data.Repositories
         public Subject GetSubjectBySubjecId(string id)
         {
             return FindByCondition(subject 
+                => subject.SubjectId.Equals(id)).OrderBy(s => s.SubjectId).FirstOrDefault();
+        }
+
+        public Subject GetSubjectInDetailBySubjecId(string id)
+        {
+            var subject = FindByCondition(subject
                 => subject.SubjectId.Equals(id)).FirstOrDefault();
+
+            context.Entry(subject)
+                .Collection(s => s.Topics)
+                .Query()
+                .OrderBy(t => t.TopicId)
+                .Load();
+            return subject;
         }
 
         public PagedList<Subject> GetSubjects(SubjectParameters subjectParameters)

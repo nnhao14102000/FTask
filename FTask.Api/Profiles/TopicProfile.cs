@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using FTask.Api.ViewModels.SubjectViewModels;
 using FTask.Api.ViewModels.TopicViewModels;
 using FTask.Data.Models;
 
@@ -19,6 +20,9 @@ namespace FTask.Api.Profiles
             CreateMap<TopicAddViewModel, Topic>();
             CreateMap<TopicUpdateViewModel, Topic>();
             CreateMap<Topic, TopicUpdateViewModel>();
+
+            // Config for topics in subject
+            CreateMap<Topic, TopicsInSubjectReadViewModel>();
         }
     }
 }

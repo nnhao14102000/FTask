@@ -8,6 +8,7 @@ namespace FTask.Services.SubjectBusinessService
     {
         PagedList<Subject> GetAllSubjects(SubjectParameters subjectPrameters);
         Subject GetSubjectBySubjectId(string Id);
+        Subject GetSubjectInDetailBySubjectId(string Id);
         void AddSubject(Subject subject);
         void UpdateSubject(Subject subject);
         void RemoveSubject(Subject subject);

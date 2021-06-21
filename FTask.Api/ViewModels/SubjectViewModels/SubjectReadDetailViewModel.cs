@@ -1,4 +1,6 @@
-﻿namespace FTask.Api.ViewModels.SubjectViewModels
+﻿using System.Collections.Generic;
+
+namespace FTask.Api.ViewModels.SubjectViewModels
 {
     /// <summary>
     /// Read Subject detail model
@@ -24,5 +26,7 @@
         /// Subject groub id this subject belong to
         /// </summary>
         public int SubjectGroupId { get; set; }
+
+        public ICollection<TopicsInSubjectReadViewModel> Topics { get; set; }
     }
 }

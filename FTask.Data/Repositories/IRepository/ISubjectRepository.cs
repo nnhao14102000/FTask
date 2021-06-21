@@ -9,5 +9,6 @@ namespace FTask.Data.Repositories.IRepository
         PagedList<Subject> GetSubjects(SubjectParameters subjectParameters);
 
         Subject GetSubjectBySubjecId(string id);
+        Subject GetSubjectInDetailBySubjecId(string id);
     }
 }

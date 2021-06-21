@@ -198,7 +198,7 @@
             <param name="subjectParameters"></param>
             <returns></returns>
         </member>
-        <member name="M:FTaskAPI.Controllers.SubjectController.GetSubjectBySubjectId(System.String)">
+        <member name="M:FTaskAPI.Controllers.SubjectController.GetSubjectInDetailBySubjectId(System.String)">
             <summary>
             API version 1 | Get subject by Subject ID 
             </summary>
@@ -1588,6 +1588,26 @@
         <member name="P:FTask.Api.ViewModels.SubjectViewModels.SubjectUpdateViewModel.SubjectGroupId">
             <summary>
             Subject groub id this subject belong to, not null
+            </summary>
+        </member>
+        <member name="T:FTask.Api.ViewModels.SubjectViewModels.TopicsInSubjectReadViewModel">
+            <summary>
+            Topics in subject read view model
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.SubjectViewModels.TopicsInSubjectReadViewModel.TopicId">
+            <summary>
+            Topic Id
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.SubjectViewModels.TopicsInSubjectReadViewModel.TopicName">
+            <summary>
+            Topic name
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.SubjectViewModels.TopicsInSubjectReadViewModel.TopicDescription">
+            <summary>
+            Topic description, can be null
             </summary>
         </member>
         <member name="T:FTask.Api.ViewModels.TaskCategoryViewModels.TaskCategoryAddViewModel">

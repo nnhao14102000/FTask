@@ -61,16 +61,18 @@ namespace FTaskAPI.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpGet("{id}", Name = "GetSubjectBySubjectId")]
+        [HttpGet("{id}", Name = "GetSubjectInDetailBySubjectId")]
         [MapToApiVersion("1.0")]
-        public ActionResult<SubjectReadDetailViewModel> GetSubjectBySubjectId(string id)
+        public ActionResult<SubjectReadDetailViewModel> GetSubjectInDetailBySubjectId(string id)
         {
-            var subject = _subjectService.GetSubjectBySubjectId(id);
-            if (subject is not null)
+            var isExisted = _subjectService.GetSubjectBySubjectId(id);
+            if (isExisted is null)
             {
-                return Ok(_mapper.Map<SubjectReadDetailViewModel>(subject));
+                return NotFound();                
             }
-            return NotFound();
+            var subject = _subjectService.GetSubjectInDetailBySubjectId(id);
+            return Ok(_mapper.Map<SubjectReadDetailViewModel>(subject));
+
         }
 
         /// <summary>
@@ -92,7 +94,7 @@ namespace FTaskAPI.Controllers
             _subjectService.AddSubject(subjectModel);
             var SubjectReadModel = _mapper.Map<SubjectReadViewModel>(subjectModel);
 
-            return CreatedAtRoute(nameof(GetSubjectBySubjectId), new { id = SubjectReadModel.SubjectId }, SubjectReadModel);
+            return CreatedAtRoute(nameof(GetSubjectInDetailBySubjectId), new { id = SubjectReadModel.SubjectId }, SubjectReadModel);
         }
 
         /// <summary>

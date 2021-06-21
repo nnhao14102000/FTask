@@ -67,6 +67,22 @@ namespace FTask.Services.SubjectBusinessService
             }
         }
 
+        public Subject GetSubjectInDetailBySubjectId(string Id)
+        {
+            _log.LogInformation($"Search Subject {Id}...");
+            var subject = _subjectRepository.GetSubjectInDetailBySubjecId(Id);
+            if (subject is null)
+            {
+                _log.LogInformation($"Can not found Subject {Id}...");
+                return null;
+            }
+            else
+            {
+                _log.LogInformation($"Found success Subject {Id}...");
+                return subject;
+            }
+        }
+
         public void RemoveSubject(Subject subject)
         {
             _log.LogInformation($"Remove Subject {subject.SubjectId}...");
