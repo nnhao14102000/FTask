@@ -3,6 +3,7 @@ using FTask.Data.Models;
 using FTask.Data.Parameters;
 using FTask.Data.Repositories.IRepository;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Linq;
 
 namespace FTask.Data.Repositories
@@ -38,12 +39,24 @@ namespace FTask.Data.Repositories
         public PagedList<Subject> GetSubjects(SubjectParameters subjectParameters)
         {
             var subjects = FindAll();
+
+            FilterBySubjectGroup(ref subjects, subjectParameters.SubjectGroupId);
             SearchByName(ref subjects, subjectParameters.SubjectName);
 
             return PagedList<Subject>
                 .ToPagedList(subjects.OrderBy(s=> s.SubjectName)
                     , subjectParameters.PageNumber
                     , subjectParameters.PageSize);
+        }
+
+        private void FilterBySubjectGroup(ref IQueryable<Subject> subjects, int subjectGroupId)
+        {
+            if (!subjects.Any() || subjectGroupId == 0)
+            {
+                return;
+            }
+            subjects = subjects
+                .Where(s => s.SubjectGroupId == subjectGroupId);
         }
 
         private void SearchByName(ref IQueryable<Subject> subjects, string subjectName)
