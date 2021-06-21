@@ -1545,6 +1545,11 @@
             Subject groub id this subject belong to
             </summary>
         </member>
+        <member name="P:FTask.Api.ViewModels.SubjectViewModels.SubjectReadDetailViewModel.Topics">
+            <summary>
+            Topics in Subject....
+            </summary>
+        </member>
         <member name="T:FTask.Api.ViewModels.SubjectViewModels.SubjectReadViewModel">
             <summary>
             Read subject model

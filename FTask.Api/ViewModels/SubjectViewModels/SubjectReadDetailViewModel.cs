@@ -27,6 +27,9 @@ namespace FTask.Api.ViewModels.SubjectViewModels
         /// </summary>
         public int SubjectGroupId { get; set; }
 
+        /// <summary>
+        /// Topics in Subject....
+        /// </summary>
         public ICollection<TopicsInSubjectReadViewModel> Topics { get; set; }
     }
 }
