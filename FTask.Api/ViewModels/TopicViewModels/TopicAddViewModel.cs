@@ -18,7 +18,7 @@ namespace FTask.Api.ViewModels.TopicViewModels
         /// Topic description, can be null
         /// </summary>
         [StringLength(200)]
-        public string? TopicDescription { get; set; }
+        public string TopicDescription { get; set; }
 
         /// <summary>
         /// Subject Id

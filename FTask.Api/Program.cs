@@ -1,4 +1,4 @@
-using FTask.Data.Helpers;
+using FTask.Data;
 using FTask.Data.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;

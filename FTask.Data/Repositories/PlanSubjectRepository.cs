@@ -1,7 +1,7 @@
-﻿using FTask.Data.Helpers;
-using FTask.Data.Models;
-using FTask.Data.Parameters;
+﻿using FTask.Data.Models;
 using FTask.Data.Repositories.IRepository;
+using FTask.Shared.Helpers;
+using FTask.Shared.Parameters;
 using System.Linq;
 
 namespace FTask.Data.Repositories
@@ -9,7 +9,7 @@ namespace FTask.Data.Repositories
     public class PlanSubjectRepository : GenericRepository<PlanSubject>, IPlanSubjectRepository
     {
         private FTaskContext context;
-        public PlanSubjectRepository(FTaskContext context): base(context)
+        public PlanSubjectRepository(FTaskContext context) : base(context)
         {
             this.context = context;
         }

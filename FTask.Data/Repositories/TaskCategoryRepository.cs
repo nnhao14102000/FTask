@@ -1,17 +1,16 @@
-﻿using FTask.Data.Helpers;
-using FTask.Data.Models;
-using FTask.Data.Parameters;
+﻿using FTask.Data.Models;
 using FTask.Data.Repositories.IRepository;
-using System;
+using FTask.Shared.Helpers;
+using FTask.Shared.Parameters;
 using System.Linq;
 
 namespace FTask.Data.Repositories
 {
-    public class TaskCategoryRepository : GenericRepository<TaskCategory>, ITaskCategoryRepository 
+    public class TaskCategoryRepository : GenericRepository<TaskCategory>, ITaskCategoryRepository
     {
         private FTaskContext context { get; set; }
 
-        public TaskCategoryRepository(FTaskContext context): base(context)
+        public TaskCategoryRepository(FTaskContext context) : base(context)
         {
             this.context = context;
         }

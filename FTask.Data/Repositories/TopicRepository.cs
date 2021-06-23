@@ -1,7 +1,7 @@
-﻿using FTask.Data.Helpers;
-using FTask.Data.Models;
-using FTask.Data.Parameters;
+﻿using FTask.Data.Models;
 using FTask.Data.Repositories.IRepository;
+using FTask.Shared.Helpers;
+using FTask.Shared.Parameters;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
@@ -10,7 +10,7 @@ namespace FTask.Data.Repositories
     public class TopicRepository : GenericRepository<Topic>, ITopicRepository
     {
         private FTaskContext context { get; set; }
-        public TopicRepository(FTaskContext context) : base (context)
+        public TopicRepository(FTaskContext context) : base(context)
         {
             this.context = context;
         }
@@ -19,7 +19,7 @@ namespace FTask.Data.Repositories
         {
             var topics = FindAll();
             SearchByName(ref topics, topicParameters.TopicName);
-            return PagedList<Topic>.ToPagedList(topics.OrderBy(t=>t.TopicId)
+            return PagedList<Topic>.ToPagedList(topics.OrderBy(t => t.TopicId)
                 , topicParameters.PageNumber, topicParameters.PageSize);
         }
 

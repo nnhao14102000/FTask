@@ -18,6 +18,6 @@
         /// <summary>
         /// Topic description, can be null
         /// </summary>
-        public string? TopicDescription { get; set; }
+        public string TopicDescription { get; set; }
     }
 }

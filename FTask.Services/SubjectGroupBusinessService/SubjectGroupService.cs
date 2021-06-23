@@ -1,7 +1,7 @@
-﻿using FTask.Data.Helpers;
-using FTask.Data.Models;
-using FTask.Data.Parameters;
+﻿using FTask.Data.Models;
 using FTask.Data.Repositories.IRepository;
+using FTask.Shared.Helpers;
+using FTask.Shared.Parameters;
 using Microsoft.Extensions.Logging;
 using System;
 
@@ -29,7 +29,7 @@ namespace FTask.Services.SubjectGroupBusinessService
                     _log.LogInformation($"Add SubjectGroup {subjectGroup.SubjectGroupName} success...");
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 _log.LogInformation($"Add SubjectGroup {subjectGroup.SubjectGroupName} fail with error: {e.Message}");
             }
@@ -100,6 +100,6 @@ namespace FTask.Services.SubjectGroupBusinessService
                 _log.LogError($"Update subjectGroup {subjectGroup.SubjectGroupId} fail with error: {e.Message}");
             }
         }
-      
+
     }
 }

@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using FTask.Api.ViewModels.SubjectViewModels;
 using FTask.Data.Models;
-using FTask.Data.Parameters;
 using FTask.Services.SubjectBusinessService;
+using FTask.Shared.Parameters;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -68,7 +68,7 @@ namespace FTaskAPI.Controllers
             var isExisted = _subjectService.GetSubjectBySubjectId(id);
             if (isExisted is null)
             {
-                return NotFound();                
+                return NotFound();
             }
             var subject = _subjectService.GetSubjectInDetailBySubjectId(id);
             return Ok(_mapper.Map<SubjectReadDetailViewModel>(subject));

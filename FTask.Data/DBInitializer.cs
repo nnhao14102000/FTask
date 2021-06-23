@@ -1,6 +1,6 @@
 ﻿using FTask.Data.Models;
 
-namespace FTask.Data.Helpers
+namespace FTask.Data
 {
     public static class DBInitializer
     {

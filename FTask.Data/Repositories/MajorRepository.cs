@@ -1,7 +1,7 @@
-﻿using FTask.Data.Helpers;
-using FTask.Data.Models;
-using FTask.Data.Parameters;
+﻿using FTask.Data.Models;
 using FTask.Data.Repositories.IRepository;
+using FTask.Shared.Helpers;
+using FTask.Shared.Parameters;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
@@ -17,7 +17,7 @@ namespace FTask.Data.Repositories
 
         public Major GetMajorByMajorId(string id)
         {
-            return FindByCondition(major 
+            return FindByCondition(major
                 => major.MajorId.Equals(id)).FirstOrDefault();
         }
 

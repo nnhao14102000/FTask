@@ -1,6 +1,6 @@
-﻿using FTask.Data.Helpers;
+﻿using FTask.Shared.Helpers;
 
-namespace FTask.Data.Parameters
+namespace FTask.Shared.Parameters
 {
     public class TaskCategoryParameters : QueryStringParameters
     {

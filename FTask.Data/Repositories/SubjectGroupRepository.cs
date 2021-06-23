@@ -1,7 +1,7 @@
-﻿using FTask.Data.Helpers;
-using FTask.Data.Models;
-using FTask.Data.Parameters;
+﻿using FTask.Data.Models;
 using FTask.Data.Repositories.IRepository;
+using FTask.Shared.Helpers;
+using FTask.Shared.Parameters;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
@@ -18,7 +18,7 @@ namespace FTask.Data.Repositories
 
         public SubjectGroup GetSubjectGroupBySubjectGroupId(int Id)
         {
-            var subjectGroup = FindByCondition(subjectGroup 
+            var subjectGroup = FindByCondition(subjectGroup
                 => subjectGroup.SubjectGroupId.Equals(Id)).FirstOrDefault();
 
             context.Entry(subjectGroup)
@@ -44,7 +44,7 @@ namespace FTask.Data.Repositories
 
         private void SearchByName(ref IQueryable<SubjectGroup> subjectGroups, string name)
         {
-            if(!subjectGroups.Any() || string.IsNullOrWhiteSpace(name))
+            if (!subjectGroups.Any() || string.IsNullOrWhiteSpace(name))
             {
                 return;
             }
@@ -53,6 +53,6 @@ namespace FTask.Data.Repositories
                 .Contains(name.Trim().ToLower()));
         }
 
-        
+
     }
 }

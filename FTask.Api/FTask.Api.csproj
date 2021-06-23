@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\FTask.Services\FTask.Services.csproj" />
+    <ProjectReference Include="..\FTask.Shared\FTask.Shared.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,7 +1,7 @@
-﻿using FTask.Data.Helpers;
-using FTask.Data.Models;
-using FTask.Data.Parameters;
+﻿using FTask.Data.Models;
 using FTask.Data.Repositories.IRepository;
+using FTask.Shared.Helpers;
+using FTask.Shared.Parameters;
 using Microsoft.Extensions.Logging;
 using System;
 
@@ -115,6 +115,6 @@ namespace FTask.Services.MajorBusinessService
                 _log.LogError($"Remove major {major.MajorId} fail with error: {e.Message}");
             }
         }
-                
+
     }
 }

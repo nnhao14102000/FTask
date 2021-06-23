@@ -1,9 +1,8 @@
-﻿using FTask.Data.Helpers;
-using FTask.Data.Models;
-using FTask.Data.Parameters;
+﻿using FTask.Data.Models;
 using FTask.Data.Repositories.IRepository;
+using FTask.Shared.Helpers;
+using FTask.Shared.Parameters;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Linq;
 
 namespace FTask.Data.Repositories
@@ -19,7 +18,7 @@ namespace FTask.Data.Repositories
 
         public Subject GetSubjectBySubjecId(string id)
         {
-            return FindByCondition(subject 
+            return FindByCondition(subject
                 => subject.SubjectId.Equals(id)).OrderBy(s => s.SubjectId).FirstOrDefault();
         }
 
@@ -44,7 +43,7 @@ namespace FTask.Data.Repositories
             SearchByName(ref subjects, subjectParameters.SubjectName);
 
             return PagedList<Subject>
-                .ToPagedList(subjects.OrderBy(s=> s.SubjectName)
+                .ToPagedList(subjects.OrderBy(s => s.SubjectName)
                     , subjectParameters.PageNumber
                     , subjectParameters.PageSize);
         }
@@ -66,7 +65,7 @@ namespace FTask.Data.Repositories
                 return;
             }
             subjects = subjects
-                .Where(s=> s.SubjectName.ToLower()
+                .Where(s => s.SubjectName.ToLower()
                 .Contains(subjectName.Trim().ToLower()));
         }
     }

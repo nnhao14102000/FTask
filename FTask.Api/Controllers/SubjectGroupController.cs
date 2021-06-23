@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using FTask.Api.ViewModels.SubjectGroupViewModels;
 using FTask.Data.Models;
-using FTask.Data.Parameters;
 using FTask.Services.SubjectGroupBusinessService;
+using FTask.Shared.Parameters;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -97,7 +97,7 @@ namespace FTask.Api.Controllers
         /// <returns></returns>
         [HttpPut("{id}")]
         [MapToApiVersion("1.0")]
-        public ActionResult UpdateSubjectGroup (int id, SubjectGroupUpdateViewModel subjectGroup)
+        public ActionResult UpdateSubjectGroup(int id, SubjectGroupUpdateViewModel subjectGroup)
         {
             var subjectGroupModel = _subjectGroupService.GetSubjectGroupBySubjectGroupId(id);
             if (subjectGroupModel is null)

@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using FTask.Api.ViewModels.TopicViewModels;
 using FTask.Data.Models;
-using FTask.Data.Parameters;
 using FTask.Services.TopicBusinessService;
+using FTask.Shared.Parameters;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;

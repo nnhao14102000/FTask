@@ -5,13 +5,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 
+
 namespace FTask.Data.Repositories
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
         internal DbSet<T> DbSet;
 
-        private readonly DbContext DbContext ;
+        private readonly DbContext DbContext;
 
         public GenericRepository(DbContext DbContext)
         {
@@ -58,6 +59,6 @@ namespace FTask.Data.Repositories
         public bool SaveChanges()
         {
             return (DbContext.SaveChanges() >= 0);
-        }        
+        }
     }
 }

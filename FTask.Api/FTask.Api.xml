@@ -16,7 +16,7 @@
             <param name="mapper"></param>
             <param name="MajorService"></param>
         </member>
-        <member name="M:FTaskAPI.Controllers.MajorController.GetAllMajors(FTask.Data.Parameters.MajorParameters)">
+        <member name="M:FTaskAPI.Controllers.MajorController.GetAllMajors(FTask.Shared.Parameters.MajorParameters)">
             <summary>
             API version 1 | Get all majors in database, allow search by name
             </summary>
@@ -72,7 +72,7 @@
             <param name="mapper"></param>
             <param name="semesterService"></param>
         </member>
-        <member name="M:FTaskAPI.Controllers.SemesterController.GetAllSemesters(FTask.Data.Parameters.SemesterParameters)">
+        <member name="M:FTaskAPI.Controllers.SemesterController.GetAllSemesters(FTask.Shared.Parameters.SemesterParameters)">
             <summary>
             API version 1 | Get all semesters in database, allow search by name 
             </summary>
@@ -128,7 +128,7 @@
             <param name="mapper"></param>
             <param name="studentService"></param>
         </member>
-        <member name="M:FTaskAPI.Controllers.StudentController.GetAllStudents(FTask.Data.Parameters.StudentParameters)">
+        <member name="M:FTaskAPI.Controllers.StudentController.GetAllStudents(FTask.Shared.Parameters.StudentParameters)">
             <summary>
             API version 1 | Get all students, allow search by name, filter by major Id 
             </summary>
@@ -191,7 +191,7 @@
             <param name="mapper"></param>
             <param name="subjectService"></param>
         </member>
-        <member name="M:FTaskAPI.Controllers.SubjectController.GetAllSubjects(FTask.Data.Parameters.SubjectParameters)">
+        <member name="M:FTaskAPI.Controllers.SubjectController.GetAllSubjects(FTask.Shared.Parameters.SubjectParameters)">
             <summary>
             API version 1 | Get all subjects, allow search by name 
             </summary>
@@ -257,7 +257,7 @@
             <param name="mapper"></param>
             <param name="planSemesterService"></param>
         </member>
-        <member name="M:FTask.Api.Controllers.PlanSemesterController.GetAllPlanSemesters(FTask.Data.Parameters.PlanSemesterParameters)">
+        <member name="M:FTask.Api.Controllers.PlanSemesterController.GetAllPlanSemesters(FTask.Shared.Parameters.PlanSemesterParameters)">
             <summary>
             API version 1 | Get all plan semester, allow search by name 
             </summary>
@@ -313,7 +313,7 @@
             <param name="mapper"></param>
             <param name="planSubjectService"></param>
         </member>
-        <member name="M:FTask.Api.Controllers.PlanSubjectController.GetAllPlanSubjects(FTask.Data.Parameters.PlanSubjectParameters)">
+        <member name="M:FTask.Api.Controllers.PlanSubjectController.GetAllPlanSubjects(FTask.Shared.Parameters.PlanSubjectParameters)">
             <summary>
             API version 1 | Get all plan subjects, allow search by name 
             </summary>
@@ -369,7 +369,7 @@
             <param name="mapper"></param>
             <param name="planTopicService"></param>
         </member>
-        <member name="M:FTask.Api.Controllers.PlanTopicController.GetAllPlanTopics(FTask.Data.Parameters.PlanTopicParameters)">
+        <member name="M:FTask.Api.Controllers.PlanTopicController.GetAllPlanTopics(FTask.Shared.Parameters.PlanTopicParameters)">
             <summary>
             API version 1 | Get all plan topic, allow search by name 
             </summary>
@@ -425,7 +425,7 @@
             <param name="mapper"></param>
             <param name="SubjectGroupService"></param>
         </member>
-        <member name="M:FTask.Api.Controllers.SubjectGroupController.GetAllSubjectGroups(FTask.Data.Parameters.SubjectGroupParameters)">
+        <member name="M:FTask.Api.Controllers.SubjectGroupController.GetAllSubjectGroups(FTask.Shared.Parameters.SubjectGroupParameters)">
             <summary>
             API version 1 | Get all subject groups, allow search by name 
             </summary>
@@ -481,7 +481,7 @@
             <param name="mapper"></param>
             <param name="taskCategoryService"></param>
         </member>
-        <member name="M:FTask.Api.Controllers.TaskCategoryController.GetAllTaskCategorys(FTask.Data.Parameters.TaskCategoryParameters)">
+        <member name="M:FTask.Api.Controllers.TaskCategoryController.GetAllTaskCategorys(FTask.Shared.Parameters.TaskCategoryParameters)">
             <summary>
             API version 1 | Get all task category, allow search by name 
             </summary>
@@ -537,7 +537,7 @@
             <param name="mapper"></param>
             <param name="taskService"></param>
         </member>
-        <member name="M:FTask.Api.Controllers.TaskController.GetAllTasks(FTask.Data.Parameters.TaskParameters)">
+        <member name="M:FTask.Api.Controllers.TaskController.GetAllTasks(FTask.Shared.Parameters.TaskParameters)">
             <summary>
             API version 1 | Get all task, allow search by name
             </summary>
@@ -593,7 +593,7 @@
             <param name="mapper"></param>
             <param name="topicService"></param>
         </member>
-        <member name="M:FTask.Api.Controllers.TopicController.GetAllTopics(FTask.Data.Parameters.TopicParameters)">
+        <member name="M:FTask.Api.Controllers.TopicController.GetAllTopics(FTask.Shared.Parameters.TopicParameters)">
             <summary>
             API version 1 | Get all topics, allow search by name
             </summary>

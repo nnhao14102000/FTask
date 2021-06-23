@@ -1,6 +1,6 @@
-﻿using FTask.Data.Helpers;
-using FTask.Data.Models;
-using FTask.Data.Parameters;
+﻿using FTask.Data.Models;
+using FTask.Shared.Helpers;
+using FTask.Shared.Parameters;
 
 namespace FTask.Services.PlanSemesterBusinessService
 {
