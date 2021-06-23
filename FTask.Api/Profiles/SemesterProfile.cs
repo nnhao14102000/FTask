@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using FTask.Api.ViewModels.SemesterViewModels;
-using FTask.Data.Models;
+using FTask.Database.Models;
 
 namespace FTask.Api.Profiles
 {
@@ -13,7 +13,7 @@ namespace FTask.Api.Profiles
         /// Constructor Mapper from Source --> Target
         /// </summary>
         public SemesterProfile()
-        {            
+        {
             CreateMap<Semester, SemesterReadViewModel>();
             CreateMap<Semester, SemesterReadDetailViewModel>();
             CreateMap<SemesterAddViewModel, Semester>();

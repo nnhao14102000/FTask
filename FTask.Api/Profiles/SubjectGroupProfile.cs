@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using FTask.Api.ViewModels.SubjectGroupViewModels;
-using FTask.Data.Models;
+using FTask.Database.Models;
 
 namespace FTask.Api.Profiles
 {
@@ -20,6 +20,6 @@ namespace FTask.Api.Profiles
             CreateMap<SubjectGroupUpdateViewModel, SubjectGroup>();
             CreateMap<SubjectGroup, SubjectGroupUpdateViewModel>();
         }
-    
+
     }
 }

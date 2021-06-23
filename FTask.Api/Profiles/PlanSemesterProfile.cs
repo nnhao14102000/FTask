@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using FTask.Api.ViewModels.PlanSemesterViewModels;
-using FTask.Data.Models;
+using FTask.Database.Models;
 
 namespace FTask.Api.Profiles
 {

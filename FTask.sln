@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31321.278
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FTask.Data", "FTask.Data\FTask.Data.csproj", "{9DC735E9-92D2-47FC-9338-DBF52E7F183D}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FTask.Services", "FTask.Services\FTask.Services.csproj", "{B7D51AC7-E629-46E5-8B37-5032C4BE8359}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FTask.Api", "FTask.Api\FTask.Api.csproj", "{D1364963-B4D5-48F0-A543-ACBC05AFC801}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FTask.Shared", "FTask.Shared\FTask.Shared.csproj", "{C455E87F-CDDD-43E6-807C-C309E13B7DCF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FTask.Shared", "FTask.Shared\FTask.Shared.csproj", "{C455E87F-CDDD-43E6-807C-C309E13B7DCF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FTask.Database", "FTask.Database\FTask.Database.csproj", "{EC6EB068-5164-46D2-B62F-D1C98A6C7A2A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{9DC735E9-92D2-47FC-9338-DBF52E7F183D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9DC735E9-92D2-47FC-9338-DBF52E7F183D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9DC735E9-92D2-47FC-9338-DBF52E7F183D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9DC735E9-92D2-47FC-9338-DBF52E7F183D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B7D51AC7-E629-46E5-8B37-5032C4BE8359}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B7D51AC7-E629-46E5-8B37-5032C4BE8359}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B7D51AC7-E629-46E5-8B37-5032C4BE8359}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -33,6 +29,10 @@ Global
 		{C455E87F-CDDD-43E6-807C-C309E13B7DCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C455E87F-CDDD-43E6-807C-C309E13B7DCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C455E87F-CDDD-43E6-807C-C309E13B7DCF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC6EB068-5164-46D2-B62F-D1C98A6C7A2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC6EB068-5164-46D2-B62F-D1C98A6C7A2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC6EB068-5164-46D2-B62F-D1C98A6C7A2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC6EB068-5164-46D2-B62F-D1C98A6C7A2A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

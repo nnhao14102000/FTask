@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using FTask.Api.ViewModels.PlanTopicViewModels;
-using FTask.Data.Models;
+using FTask.Database.Models;
 using FTask.Services.PlanTopicBusinessService;
 using FTask.Shared.Parameters;
 using Microsoft.AspNetCore.JsonPatch;

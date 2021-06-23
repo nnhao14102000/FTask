@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using FTask.Api.ViewModels.SubjectGroupViewModels;
 using FTask.Api.ViewModels.SubjectViewModels;
-using FTask.Data.Models;
+using FTask.Database.Models;
 
 namespace FTask.Api.Profiles
 {

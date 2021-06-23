@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FTask.Data\FTask.Data.csproj" />
+    <ProjectReference Include="..\FTask.Database\FTask.Database.csproj" />
     <ProjectReference Include="..\FTask.Shared\FTask.Shared.csproj" />
   </ItemGroup>
 

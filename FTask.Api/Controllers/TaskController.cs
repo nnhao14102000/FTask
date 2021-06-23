@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using FTask.Api.ViewModels.TaskViewModels;
-using FTask.Data.Models;
+using FTask.Database.Models;
 using FTask.Services.TaskBusinessService;
 using FTask.Shared.Parameters;
 using Microsoft.AspNetCore.JsonPatch;

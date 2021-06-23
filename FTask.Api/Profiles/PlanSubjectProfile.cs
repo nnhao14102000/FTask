@@ -1,13 +1,13 @@
 ﻿using AutoMapper;
 using FTask.Api.ViewModels.PlanSubjectViewModels;
-using FTask.Data.Models;
+using FTask.Database.Models;
 
 namespace FTask.Api.Profiles
 {
     /// <summary>
     /// Plan Subject mapper profile
     /// </summary>
-    public class PlanSubjectProfile :Profile
+    public class PlanSubjectProfile : Profile
     {
         /// <summary>
         /// Constructor Mapper from Source --> Target

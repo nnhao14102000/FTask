@@ -1,4 +1,4 @@
-﻿using FTask.Data.Models;
+﻿using FTask.Database.Models;
 using FTask.Shared.Helpers;
 using FTask.Shared.Parameters;
 

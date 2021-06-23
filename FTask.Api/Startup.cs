@@ -1,5 +1,5 @@
-using FTask.Data.Models;
-using FTask.Services.DependencyInjection;
+using FTask.Database.Models;
+using FTask.Services.Helpers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -50,7 +50,7 @@ namespace FTask.Api
                 // Specify the default API Version
                 options.DefaultApiVersion = new ApiVersion(1, 0);
                 // If the client hasn't specified the API version in the request, use the default API version number 
-                options.AssumeDefaultVersionWhenUnspecified = true;                
+                options.AssumeDefaultVersionWhenUnspecified = true;
                 // Advertise the API versions supported for the particular endpoint
                 options.ReportApiVersions = true;
                 options.ApiVersionReader = ApiVersionReader.Combine(
@@ -98,7 +98,7 @@ namespace FTask.Api
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "FTask.Api v1"));
-                
+
             }
 
             //Config for create log file...

@@ -1,5 +1,5 @@
-﻿using FTask.Data.Models;
-using FTask.Data.Repositories.IRepository;
+﻿using FTask.Database.Models;
+using FTask.Database.Repositories.IRepository;
 using FTask.Shared.Helpers;
 using FTask.Shared.Parameters;
 using Microsoft.Extensions.Logging;

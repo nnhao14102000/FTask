@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using FTask.Api.ViewModels.StudentViewModels;
-using FTask.Data.Models;
+using FTask.Database.Models;
 using FTask.Services.StudentBusinessService;
 using FTask.Shared.Parameters;
 using Microsoft.AspNetCore.JsonPatch;
