@@ -1,3 +1,5 @@
+using FTask.AuthDatabase.Data;
+using FTask.AuthServices.Helpers;
 using FTask.Database.Models;
 using FTask.Services.Helpers;
 using Microsoft.AspNetCore.Hosting;
@@ -33,9 +35,11 @@ namespace FTask.Api
                 {
                     var env = services.GetRequiredService<IWebHostEnvironment>();
                     var context = services.GetRequiredService<FTaskContext>();
+                    var authContext = services.GetRequiredService<FTaskAuthDbContext>();
                     if (env.IsStaging() || env.IsDevelopment())
                     {
                         DBInitializer.Initialize(context);
+                        AuthDBInitializer.Initialize(authContext);
                     }
                     if (env.IsProduction())
                     {
@@ -45,7 +49,7 @@ namespace FTask.Api
                 catch (Exception ex)
                 {
                     var logger = services.GetRequiredService<ILogger<Program>>();
-                    logger.LogError(ex, "An error occured creating the CloudDB.");
+                    logger.LogError(ex, "An error occured creating the FTask and FTaskAuthDB databases!.");
                 }
             }
         }

@@ -15,7 +15,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace FTask.Services.Helpers
 {
-    public static class DependencyInjectionResolverGen
+    public static class ServicesInjection
     {
         public static void IntializerDI(this IServiceCollection services)
         {

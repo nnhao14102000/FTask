@@ -1,3 +1,4 @@
+using FTask.AuthDatabase.Data;
 using FTask.Database.Models;
 using FTask.Services.Helpers;
 using Microsoft.AspNetCore.Builder;
@@ -74,7 +75,14 @@ namespace FTask.Api
             // Config to connect with SQL Server
             services.AddDbContext<FTaskContext>(options =>
             {
-                options.UseSqlServer(Configuration.GetConnectionString("Connection"));
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+                options.EnableSensitiveDataLogging(true);
+            });
+
+            // Config to connect with SQL Server Authentication
+            services.AddDbContext<FTaskAuthDbContext>(options =>
+            {
+                options.UseSqlServer(Configuration.GetConnectionString("AuthConnection"));
                 options.EnableSensitiveDataLogging(true);
             });
 

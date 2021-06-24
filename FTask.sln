@@ -9,7 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FTask.Api", "FTask.Api\FTas
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FTask.Shared", "FTask.Shared\FTask.Shared.csproj", "{C455E87F-CDDD-43E6-807C-C309E13B7DCF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FTask.Database", "FTask.Database\FTask.Database.csproj", "{EC6EB068-5164-46D2-B62F-D1C98A6C7A2A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FTask.Database", "FTask.Database\FTask.Database.csproj", "{EC6EB068-5164-46D2-B62F-D1C98A6C7A2A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FTask.AuthDatabase", "FTask.AuthDatabase\FTask.AuthDatabase.csproj", "{85E85323-66F5-4E98-8101-31920A37794D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FTask.AuthServices", "FTask.AuthServices\FTask.AuthServices.csproj", "{F94037BC-DCA7-4C3D-9CDF-B57F35907BEF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +37,14 @@ Global
 		{EC6EB068-5164-46D2-B62F-D1C98A6C7A2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC6EB068-5164-46D2-B62F-D1C98A6C7A2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EC6EB068-5164-46D2-B62F-D1C98A6C7A2A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{85E85323-66F5-4E98-8101-31920A37794D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{85E85323-66F5-4E98-8101-31920A37794D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{85E85323-66F5-4E98-8101-31920A37794D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{85E85323-66F5-4E98-8101-31920A37794D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F94037BC-DCA7-4C3D-9CDF-B57F35907BEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F94037BC-DCA7-4C3D-9CDF-B57F35907BEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F94037BC-DCA7-4C3D-9CDF-B57F35907BEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F94037BC-DCA7-4C3D-9CDF-B57F35907BEF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
