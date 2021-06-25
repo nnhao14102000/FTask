@@ -6,6 +6,7 @@ namespace FTask.AuthServices.Services
     public interface IUserService
     {
         Task<UserManagerResponse> RegisterUserAsync(RegisterModel model);
+        Task<UserManagerResponse> RegisterAdminAsync(RegisterModel model);
         Task<UserManagerResponse> LoginUserAsync(LoginModel model);
     }
 }

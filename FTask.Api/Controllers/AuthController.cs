@@ -17,7 +17,6 @@ namespace FTask.Api.Controllers
             _userService = userService;
         }
 
-        //api/auth/register
         [HttpPost("register")]
         [MapToApiVersion("1.0")]
         public async Task<IActionResult> RegisterAsync([FromBody] RegisterModel model)
@@ -25,6 +24,25 @@ namespace FTask.Api.Controllers
             if (ModelState.IsValid)
             {
                 var result = await _userService.RegisterUserAsync(model);
+
+                if (result.IsSuccess)
+                {
+                    return Ok(result); // status code : 200
+                }
+
+                return BadRequest(result);
+            }
+
+            return BadRequest("Some properties are not valid!");//Status code : 400
+        }
+
+        [HttpPost("admin-register")]
+        [MapToApiVersion("1.0")]
+        public async Task<IActionResult> RegisterAdminAsync([FromBody] RegisterModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var result = await _userService.RegisterAdminAsync(model);
 
                 if (result.IsSuccess)
                 {

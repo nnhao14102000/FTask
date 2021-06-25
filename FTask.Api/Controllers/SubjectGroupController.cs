@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
 using FTask.Api.ViewModels.SubjectGroupViewModels;
+using FTask.AuthDatabase.Models;
 using FTask.Database.Models;
 using FTask.Services.SubjectGroupBusinessService;
 using FTask.Shared.Parameters;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -16,6 +18,7 @@ namespace FTask.Api.Controllers
     [ApiController]
     [Route("api/v{version:apiVersion}/subject-groups")]
     [ApiVersion("1.0")]
+    [Authorize(Roles = UserRoles.Admin + "," + UserRoles.User)]
     public class SubjectGroupController : Controller
     {
         private readonly IMapper _mapper;
@@ -39,6 +42,7 @@ namespace FTask.Api.Controllers
         /// <returns></returns>
         [HttpGet]
         [MapToApiVersion("1.0")]
+        [Authorize(Roles = UserRoles.Admin + "," + UserRoles.User)]
         public ActionResult<IEnumerable<SubjectGroupReadViewModel>> GetAllSubjectGroups([FromQuery] SubjectGroupParameters subjectGroupParameter)
         {
             var subjectGroup = _subjectGroupService.GetAllSubjectGroups(subjectGroupParameter);
@@ -63,6 +67,7 @@ namespace FTask.Api.Controllers
         /// <returns></returns>
         [HttpGet("{id}", Name = "GetSubjectGroupBySubjectGroupId")]
         [MapToApiVersion("1.0")]
+        [Authorize(Roles = UserRoles.Admin + "," + UserRoles.User)]
         public ActionResult<SubjectGroupReadDetailViewModel> GetSubjectGroupBySubjectGroupId(int id)
         {
             var subjectGroup = _subjectGroupService.GetSubjectGroupBySubjectGroupId(id);
@@ -80,6 +85,7 @@ namespace FTask.Api.Controllers
         /// <returns></returns>
         [HttpPost]
         [MapToApiVersion("1.0")]
+        [Authorize(Roles = UserRoles.Admin)]
         public ActionResult<SubjectGroupReadViewModel> AddSubjectGroup(SubjectGroupAddViewModel subjectGroup)
         {
             var subjectGroupModel = _mapper.Map<SubjectGroup>(subjectGroup);
@@ -97,6 +103,7 @@ namespace FTask.Api.Controllers
         /// <returns></returns>
         [HttpPut("{id}")]
         [MapToApiVersion("1.0")]
+        [Authorize(Roles = UserRoles.Admin)]
         public ActionResult UpdateSubjectGroup(int id, SubjectGroupUpdateViewModel subjectGroup)
         {
             var subjectGroupModel = _subjectGroupService.GetSubjectGroupBySubjectGroupId(id);
@@ -117,6 +124,7 @@ namespace FTask.Api.Controllers
         /// <returns></returns>
         [HttpPatch("{id}")]
         [MapToApiVersion("1.0")]
+        [Authorize(Roles = UserRoles.Admin)]
         public ActionResult PartialSubjectGroupUpdate(int id, JsonPatchDocument<SubjectGroupUpdateViewModel> patchDoc)
         {
             var subjectGroupModel = _subjectGroupService.GetSubjectGroupBySubjectGroupId(id);
@@ -143,6 +151,7 @@ namespace FTask.Api.Controllers
         /// <returns></returns>
         [HttpDelete("{id}")]
         [MapToApiVersion("1.0")]
+        [Authorize(Roles = UserRoles.Admin)]
         public ActionResult RemoveSubjectGroup(int id)
         {
             var subjectGroupModel = _subjectGroupService.GetSubjectGroupBySubjectGroupId(id);

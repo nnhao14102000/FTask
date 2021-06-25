@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
 using FTask.Api.ViewModels.SemesterViewModels;
+using FTask.AuthDatabase.Models;
 using FTask.Database.Models;
 using FTask.Services.SemesterBusinessService;
 using FTask.Shared.Parameters;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -16,6 +18,7 @@ namespace FTaskAPI.Controllers
     [ApiController]
     [Route("api/v{version:apiVersion}/semesters")]
     [ApiVersion("1.0")]
+    [Authorize(Roles = UserRoles.Admin + "," + UserRoles.User)]
     public class SemesterController : ControllerBase
     {
         private readonly IMapper _mapper;
@@ -38,6 +41,7 @@ namespace FTaskAPI.Controllers
         /// <returns></returns>
         [HttpGet]
         [MapToApiVersion("1.0")]
+        [Authorize(Roles = UserRoles.Admin + "," + UserRoles.User)]
         public ActionResult<IEnumerable<SemesterReadViewModel>> GetAllSemesters([FromQuery] SemesterParameters semesterParameters)
         {
             var semesters = _semesterService.GetAllSemesters(semesterParameters);
@@ -62,6 +66,7 @@ namespace FTaskAPI.Controllers
         /// <returns></returns>
         [HttpGet("{id}", Name = "GetSemesterBySemesterId")]
         [MapToApiVersion("1.0")]
+        [Authorize(Roles = UserRoles.Admin + "," + UserRoles.User)]
         public ActionResult<SemesterReadDetailViewModel> GetSemesterBySemesterId(string id)
         {
             var semester = _semesterService.GetSemesterBySemesterId(id);
@@ -79,6 +84,7 @@ namespace FTaskAPI.Controllers
         /// <returns></returns>
         [HttpPost]
         [MapToApiVersion("1.0")]
+        [Authorize(Roles = UserRoles.User)]
         public ActionResult<SemesterReadViewModel> AddSemester(SemesterAddViewModel semester)
         {
             var isExisted = _semesterService.GetSemesterBySemesterId(semester.SemesterId);
@@ -102,6 +108,7 @@ namespace FTaskAPI.Controllers
         /// <returns></returns>
         [HttpPut("{id}")]
         [MapToApiVersion("1.0")]
+        [Authorize(Roles = UserRoles.User)]
         public ActionResult UpdateSemester(string id, SemesterUpdateViewModel semester)
         {
             var semesterModel = _semesterService.GetSemesterBySemesterId(id);
@@ -122,6 +129,7 @@ namespace FTaskAPI.Controllers
         /// <returns></returns>
         [HttpPatch("{id}")]
         [MapToApiVersion("1.0")]
+        [Authorize(Roles = UserRoles.User)]
         public ActionResult PartialSemesterUpdate(string id, JsonPatchDocument<SemesterUpdateViewModel> patchDoc)
         {
             var semesterModel = _semesterService.GetSemesterBySemesterId(id);
@@ -148,6 +156,7 @@ namespace FTaskAPI.Controllers
         /// <returns></returns>
         [HttpDelete("{id}")]
         [MapToApiVersion("1.0")]
+        [Authorize(Roles = UserRoles.User)]
         public ActionResult RemoveSemester(string id)
         {
             var semesterModel = _semesterService.GetSemesterBySemesterId(id);

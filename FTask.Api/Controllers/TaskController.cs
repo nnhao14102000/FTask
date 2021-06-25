@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
 using FTask.Api.ViewModels.TaskViewModels;
+using FTask.AuthDatabase.Models;
 using FTask.Database.Models;
 using FTask.Services.TaskBusinessService;
 using FTask.Shared.Parameters;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -16,6 +18,7 @@ namespace FTask.Api.Controllers
     [ApiController]
     [Route("api/v{version:apiVersion}/tasks")]
     [ApiVersion("1.0")]
+    [Authorize(Roles = UserRoles.User)]
     public class TaskController : Controller
     {
         private readonly IMapper _mapper;

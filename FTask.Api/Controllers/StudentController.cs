@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
 using FTask.Api.ViewModels.StudentViewModels;
+using FTask.AuthDatabase.Models;
 using FTask.Database.Models;
 using FTask.Services.StudentBusinessService;
 using FTask.Shared.Parameters;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -17,6 +19,7 @@ namespace FTaskAPI.Controllers
     [Route("api/v{version:apiVersion}/students")]
     [ApiVersion("1.0")]
     [ApiVersion("1.1")]
+    [Authorize(Roles = UserRoles.Admin + "," + UserRoles.User)]
     public class StudentController : ControllerBase
     {
         private readonly IMapper _mapper;
@@ -40,6 +43,7 @@ namespace FTaskAPI.Controllers
         /// <returns></returns>
         [HttpGet]
         [MapToApiVersion("1.0")]
+        [Authorize(Roles = UserRoles.Admin)]
         public ActionResult<IEnumerable<StudentReadViewModel>> GetAllStudents([FromQuery] StudentParameters studentParameters)
         {
             var students = _studentService.GetAllStudents(studentParameters);
@@ -64,6 +68,7 @@ namespace FTaskAPI.Controllers
         /// <returns></returns>
         [HttpGet("{id}", Name = "GetStudentByStudentId")]
         [MapToApiVersion("1.0")]
+        [Authorize(Roles = UserRoles.Admin + "," + UserRoles.User)]
         public ActionResult<StudentReadDetailViewModel> GetStudentByStudentId(string id)
         {
             var student = _studentService.GetStudentByStudentId(id);
@@ -81,6 +86,7 @@ namespace FTaskAPI.Controllers
         /// <returns></returns>
         [HttpGet("{email}", Name = "GetStudentByStudentEmail")]
         [MapToApiVersion("1.1")]
+        [Authorize(Roles = UserRoles.Admin + "," + UserRoles.User)]
         public ActionResult<StudentReadDetailViewModel> GetStudentByStudentEmail(string email)
         {
             var student = _studentService.GetStudentByStudentEmail(email);
@@ -98,6 +104,7 @@ namespace FTaskAPI.Controllers
         /// <returns></returns>
         [HttpPost]
         [MapToApiVersion("1.0")]
+        [Authorize(Roles = UserRoles.Admin)]
         public ActionResult<StudentReadViewModel> AddStudent(StudentAddViewModel student)
         {
             var isExisted = _studentService.GetStudentByStudentId(student.StudentId);
@@ -121,6 +128,7 @@ namespace FTaskAPI.Controllers
         /// <returns></returns>
         [HttpPut("{id}")]
         [MapToApiVersion("1.0")]
+        [Authorize(Roles = UserRoles.Admin + "," + UserRoles.User)]
         public ActionResult UpdateStudent(string id, StudentUpdateViewModel student)
         {
             var studentModel = _studentService.GetStudentByStudentId(id);
@@ -141,6 +149,7 @@ namespace FTaskAPI.Controllers
         /// <returns></returns>
         [HttpPatch("{id}")]
         [MapToApiVersion("1.0")]
+        [Authorize(Roles = UserRoles.Admin + "," + UserRoles.User)]
         public ActionResult PartialStudentUpdate(string id, JsonPatchDocument<StudentUpdateViewModel> patchDoc)
         {
             var studentModel = _studentService.GetStudentByStudentId(id);
@@ -167,6 +176,7 @@ namespace FTaskAPI.Controllers
         /// <returns></returns>
         [HttpDelete("{id}")]
         [MapToApiVersion("1.0")]
+        [Authorize(Roles = UserRoles.Admin)]
         public ActionResult RemoveStudent(string id)
         {
             var studentModel = _studentService.GetStudentByStudentId(id);

@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
 using FTask.Api.ViewModels.PlanSemesterViewModels;
+using FTask.AuthDatabase.Models;
 using FTask.Database.Models;
 using FTask.Services.PlanSemesterBusinessService;
 using FTask.Shared.Parameters;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -16,6 +18,7 @@ namespace FTask.Api.Controllers
     [ApiController]
     [Route("api/v{version:apiVersion}/plan-semester")]
     [ApiVersion("1.0")]
+    [Authorize(Roles = UserRoles.User)]
     public class PlanSemesterController : Controller
     {
         private readonly IMapper _mapper;

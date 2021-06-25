@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
 using FTask.Api.ViewModels.TopicViewModels;
+using FTask.AuthDatabase.Models;
 using FTask.Database.Models;
 using FTask.Services.TopicBusinessService;
 using FTask.Shared.Parameters;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -16,6 +18,7 @@ namespace FTask.Api.Controllers
     [ApiController]
     [Route("api/v{version:apiVersion}/topic")]
     [ApiVersion("1.0")]
+    [Authorize(Roles = UserRoles.Admin + "," + UserRoles.User)]
     public class TopicController : Controller
     {
         private readonly IMapper _mapper;
@@ -39,6 +42,7 @@ namespace FTask.Api.Controllers
         /// <returns></returns>
         [HttpGet]
         [MapToApiVersion("1.0")]
+        [Authorize(Roles = UserRoles.Admin + "," + UserRoles.User)]
         public ActionResult<IEnumerable<TopicReadViewModel>> GetAllTopics([FromQuery] TopicParameters topicParameter)
         {
             var topic = _topicService.GetAllTopics(topicParameter);
@@ -63,6 +67,7 @@ namespace FTask.Api.Controllers
         /// <returns></returns>
         [HttpGet("{id}", Name = "GetTopicByTopicId")]
         [MapToApiVersion("1.0")]
+        [Authorize(Roles = UserRoles.Admin + "," + UserRoles.User)]
         public ActionResult<TopicReadDetailViewModel> GetTopicByTopicId(int id)
         {
             var topic = _topicService.GetTopicByTopicId(id);
@@ -80,6 +85,7 @@ namespace FTask.Api.Controllers
         /// <returns></returns>
         [HttpPost]
         [MapToApiVersion("1.0")]
+        [Authorize(Roles = UserRoles.Admin)]
         public ActionResult<TopicReadViewModel> AddTopic(TopicAddViewModel topic)
         {
             var topicModel = _mapper.Map<Topic>(topic);
@@ -97,6 +103,7 @@ namespace FTask.Api.Controllers
         /// <returns></returns>
         [HttpPut("{id}")]
         [MapToApiVersion("1.0")]
+        [Authorize(Roles = UserRoles.Admin)]
         public ActionResult UpdateTopic(int id, TopicUpdateViewModel topic)
         {
             var topicModel = _topicService.GetTopicByTopicId(id);
@@ -117,6 +124,7 @@ namespace FTask.Api.Controllers
         /// <returns></returns>
         [HttpPatch("{id}")]
         [MapToApiVersion("1.0")]
+        [Authorize(Roles = UserRoles.Admin)]
         public ActionResult PartialTopicUpdate(int id, JsonPatchDocument<TopicUpdateViewModel> patchDoc)
         {
             var topicModel = _topicService.GetTopicByTopicId(id);
@@ -143,6 +151,7 @@ namespace FTask.Api.Controllers
         /// <returns></returns>
         [HttpDelete("{id}")]
         [MapToApiVersion("1.0")]
+        [Authorize(Roles = UserRoles.Admin)]
         public ActionResult RemoveTopic(int id)
         {
             var topicModel = _topicService.GetTopicByTopicId(id);

@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
 using FTask.Api.ViewModels.SubjectViewModels;
+using FTask.AuthDatabase.Models;
 using FTask.Database.Models;
 using FTask.Services.SubjectBusinessService;
 using FTask.Shared.Parameters;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -16,6 +18,7 @@ namespace FTaskAPI.Controllers
     [ApiController]
     [Route("api/v{version:apiVersion}/subjects")]
     [ApiVersion("1.0")]
+    [Authorize(Roles = UserRoles.Admin + "," + UserRoles.User)]
     public class SubjectController : ControllerBase
     {
         private readonly IMapper _mapper;
@@ -39,6 +42,7 @@ namespace FTaskAPI.Controllers
         /// <returns></returns>
         [HttpGet]
         [MapToApiVersion("1.0")]
+        [Authorize(Roles = UserRoles.Admin + "," + UserRoles.User)]
         public ActionResult<IEnumerable<SubjectReadViewModel>> GetAllSubjects([FromQuery] SubjectParameters subjectParameters)
         {
             var subject = _subjectService.GetAllSubjects(subjectParameters);
@@ -63,6 +67,7 @@ namespace FTaskAPI.Controllers
         /// <returns></returns>
         [HttpGet("{id}", Name = "GetSubjectInDetailBySubjectId")]
         [MapToApiVersion("1.0")]
+        [Authorize(Roles = UserRoles.Admin + "," + UserRoles.User)]
         public ActionResult<SubjectReadDetailViewModel> GetSubjectInDetailBySubjectId(string id)
         {
             var isExisted = _subjectService.GetSubjectBySubjectId(id);
@@ -82,6 +87,7 @@ namespace FTaskAPI.Controllers
         /// <returns></returns>
         [HttpPost]
         [MapToApiVersion("1.0")]
+        [Authorize(Roles = UserRoles.Admin)]
         public ActionResult<SubjectReadViewModel> AddSubject(SubjectAddViewModel subject)
         {
             var isExisted = _subjectService.GetSubjectBySubjectId(subject.SubjectId);
@@ -105,6 +111,7 @@ namespace FTaskAPI.Controllers
         /// <returns></returns>
         [HttpPut("{id}")]
         [MapToApiVersion("1.0")]
+        [Authorize(Roles = UserRoles.Admin)]
         public ActionResult UpdateSubject(string id, SubjectUpdateViewModel subject)
         {
             var subjectModel = _subjectService.GetSubjectBySubjectId(id);
@@ -125,6 +132,7 @@ namespace FTaskAPI.Controllers
         /// <returns></returns>
         [HttpPatch("{id}")]
         [MapToApiVersion("1.0")]
+        [Authorize(Roles = UserRoles.Admin)]
         public ActionResult PartialSubjectUpdate(string id, JsonPatchDocument<SubjectUpdateViewModel> patchDoc)
         {
             var subjectModel = _subjectService.GetSubjectBySubjectId(id);
@@ -151,6 +159,7 @@ namespace FTaskAPI.Controllers
         /// <returns></returns>
         [HttpDelete("{id}")]
         [MapToApiVersion("1.0")]
+        [Authorize(Roles = UserRoles.Admin)]
         public ActionResult RemoveSubject(string id)
         {
             var subjectModel = _subjectService.GetSubjectBySubjectId(id);

@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
 using FTask.Api.ViewModels.TaskCategoryViewModels;
+using FTask.AuthDatabase.Models;
 using FTask.Database.Models;
 using FTask.Services.TaskCategoryBusinessService;
 using FTask.Shared.Parameters;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -16,6 +18,7 @@ namespace FTask.Api.Controllers
     [ApiController]
     [Route("api/v{version:apiVersion}/task-category")]
     [ApiVersion("1.0")]
+    [Authorize(Roles = UserRoles.Admin + "," + UserRoles.User)]
     public class TaskCategoryController : Controller
     {
         private readonly IMapper _mapper;
@@ -39,6 +42,7 @@ namespace FTask.Api.Controllers
         /// <returns></returns>
         [HttpGet]
         [MapToApiVersion("1.0")]
+        [Authorize(Roles = UserRoles.Admin + "," + UserRoles.User)]
         public ActionResult<IEnumerable<TaskCategoryReadViewModel>> GetAllTaskCategorys([FromQuery] TaskCategoryParameters taskCategoryParameter)
         {
             var taskCategory = _taskCategoryService.GetAllTaskCategorys(taskCategoryParameter);
@@ -63,6 +67,7 @@ namespace FTask.Api.Controllers
         /// <returns></returns>
         [HttpGet("{id}", Name = "GetTaskCategoryByTaskCategoryId")]
         [MapToApiVersion("1.0")]
+        [Authorize(Roles = UserRoles.Admin + "," + UserRoles.User)]
         public ActionResult<TaskCategoryReadDetailViewModel> GetTaskCategoryByTaskCategoryId(int id)
         {
             var taskCategory = _taskCategoryService.GetTaskCategoryByTaskCategoryId(id);
@@ -80,6 +85,7 @@ namespace FTask.Api.Controllers
         /// <returns></returns>
         [HttpPost]
         [MapToApiVersion("1.0")]
+        [Authorize(Roles = UserRoles.Admin)]
         public ActionResult<TaskCategoryReadViewModel> AddTaskCategory(TaskCategoryAddViewModel taskCategory)
         {
             var taskCategoryModel = _mapper.Map<TaskCategory>(taskCategory);
@@ -97,6 +103,7 @@ namespace FTask.Api.Controllers
         /// <returns></returns>
         [HttpPut("{id}")]
         [MapToApiVersion("1.0")]
+        [Authorize(Roles = UserRoles.Admin)]
         public ActionResult UpdateTaskCategory(int id, TaskCategoryUpdateViewModel taskCategory)
         {
             var taskCategoryModel = _taskCategoryService.GetTaskCategoryByTaskCategoryId(id);
@@ -117,6 +124,7 @@ namespace FTask.Api.Controllers
         /// <returns></returns>
         [HttpPatch("{id}")]
         [MapToApiVersion("1.0")]
+        [Authorize(Roles = UserRoles.Admin)]
         public ActionResult PartialTaskCategoryUpdate(int id, JsonPatchDocument<TaskCategoryUpdateViewModel> patchDoc)
         {
             var taskCategoryModel = _taskCategoryService.GetTaskCategoryByTaskCategoryId(id);
@@ -143,6 +151,7 @@ namespace FTask.Api.Controllers
         /// <returns></returns>
         [HttpDelete("{id}")]
         [MapToApiVersion("1.0")]
+        [Authorize(Roles = UserRoles.Admin)]
         public ActionResult RemoveTaskCategory(int id)
         {
             var taskCategoryModel = _taskCategoryService.GetTaskCategoryByTaskCategoryId(id);
