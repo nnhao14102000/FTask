@@ -4,247 +4,6 @@
         <name>FTask.Api</name>
     </assembly>
     <members>
-        <member name="T:FTaskAPI.Controllers.MajorController">
-            <summary>
-            Major Controller
-            </summary>
-        </member>
-        <member name="M:FTaskAPI.Controllers.MajorController.#ctor(AutoMapper.IMapper,FTask.Services.MajorBusinessService.IMajorService)">
-            <summary>
-            Constructor DI AutoMapper and MajorService
-            </summary>
-            <param name="mapper"></param>
-            <param name="MajorService"></param>
-        </member>
-        <member name="M:FTaskAPI.Controllers.MajorController.GetAllMajors(FTask.Shared.Parameters.MajorParameters)">
-            <summary>
-            API version 1 | Get all majors in database, allow search by name
-            </summary>
-            <param name="majorParameter"></param>
-            <returns></returns>
-        </member>
-        <member name="M:FTaskAPI.Controllers.MajorController.GetMajorInDetailByMajorId(System.String)">
-            <summary>
-            API version 1 | Get major and relevant student in this major by ID
-            </summary>
-            <param name="id"></param>
-            <returns></returns>
-        </member>
-        <member name="M:FTaskAPI.Controllers.MajorController.AddMajor(FTask.Api.ViewModels.MajorViewModels.MajorAddViewModel)">
-            <summary>
-            API version 1 | Add new major into database 
-            </summary>
-            <param name="major"></param>
-            <returns></returns>
-        </member>
-        <member name="M:FTaskAPI.Controllers.MajorController.UpdateMajor(System.String,FTask.Api.ViewModels.MajorViewModels.MajorUpdateViewModel)">
-            <summary>
-            API version 1 | Update infomation of a major 
-            </summary>
-            <param name="id"></param>
-            <param name="major"></param>
-            <returns></returns>
-        </member>
-        <member name="M:FTaskAPI.Controllers.MajorController.PartialMajorUpdate(System.String,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{FTask.Api.ViewModels.MajorViewModels.MajorUpdateViewModel})">
-            <summary>
-            API version 1 | Update major by PATCH method...Allow update a single attribute 
-            </summary>
-            <param name="id"></param>
-            <param name="patchDoc"></param>
-            <returns></returns>
-        </member>
-        <member name="M:FTaskAPI.Controllers.MajorController.RemoveMajor(System.String)">
-            <summary>
-            API version 1 | Remove a major 
-            </summary>
-            <param name="id"></param>
-            <returns></returns>
-        </member>
-        <member name="T:FTaskAPI.Controllers.SemesterController">
-            <summary>
-            Semester Controller
-            </summary>
-        </member>
-        <member name="M:FTaskAPI.Controllers.SemesterController.#ctor(AutoMapper.IMapper,FTask.Services.SemesterBusinessService.ISemesterService)">
-            <summary>
-            Constructor DI AutoMapper and SemesterService
-            </summary>
-            <param name="mapper"></param>
-            <param name="semesterService"></param>
-        </member>
-        <member name="M:FTaskAPI.Controllers.SemesterController.GetAllSemesters(FTask.Shared.Parameters.SemesterParameters)">
-            <summary>
-            API version 1 | Get all semesters in database, allow search by name 
-            </summary>
-            <param name="semesterParameters"></param>
-            <returns></returns>
-        </member>
-        <member name="M:FTaskAPI.Controllers.SemesterController.GetSemesterBySemesterId(System.String)">
-            <summary>
-            API version 1 | Get semester by ID 
-            </summary>
-            <param name="id"></param>
-            <returns></returns>
-        </member>
-        <member name="M:FTaskAPI.Controllers.SemesterController.AddSemester(FTask.Api.ViewModels.SemesterViewModels.SemesterAddViewModel)">
-            <summary>
-            API version 1 | Add new semester into database 
-            </summary>
-            <param name="semester"></param>
-            <returns></returns>
-        </member>
-        <member name="M:FTaskAPI.Controllers.SemesterController.UpdateSemester(System.String,FTask.Api.ViewModels.SemesterViewModels.SemesterUpdateViewModel)">
-            <summary>
-            API version 1 | Update infomation of a semester 
-            </summary>
-            <param name="id"></param>
-            <param name="semester"></param>
-            <returns></returns>
-        </member>
-        <member name="M:FTaskAPI.Controllers.SemesterController.PartialSemesterUpdate(System.String,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{FTask.Api.ViewModels.SemesterViewModels.SemesterUpdateViewModel})">
-            <summary>
-            API version 1 | Update semester by PATCH method...Allow update a single attribute 
-            </summary>
-            <param name="id"></param>
-            <param name="patchDoc"></param>
-            <returns></returns>
-        </member>
-        <member name="M:FTaskAPI.Controllers.SemesterController.RemoveSemester(System.String)">
-            <summary>
-            API version 1 | Remove a semester 
-            </summary>
-            <param name="id"></param>
-            <returns></returns>
-        </member>
-        <member name="T:FTaskAPI.Controllers.StudentController">
-            <summary>
-            Student controller
-            </summary>
-        </member>
-        <member name="M:FTaskAPI.Controllers.StudentController.#ctor(AutoMapper.IMapper,FTask.Services.StudentBusinessService.IStudentService)">
-            <summary>
-            API version 1 | Constructor DI AutoMapper and student service
-            </summary>
-            <param name="mapper"></param>
-            <param name="studentService"></param>
-        </member>
-        <member name="M:FTaskAPI.Controllers.StudentController.GetAllStudents(FTask.Shared.Parameters.StudentParameters)">
-            <summary>
-            API version 1 | Get all students, allow search by name, filter by major Id 
-            </summary>
-            <param name="studentParameters"></param>
-            <returns></returns>
-        </member>
-        <member name="M:FTaskAPI.Controllers.StudentController.GetStudentByStudentId(System.String)">
-            <summary>
-            API version 1 | Get student by student ID 
-            </summary>
-            <param name="id"></param>
-            <returns></returns>
-        </member>
-        <member name="M:FTaskAPI.Controllers.StudentController.GetStudentByStudentEmail(System.String)">
-            <summary>
-            API version 1.1 | Get student by student email
-            </summary>
-            <param name="email"></param>
-            <returns></returns>
-        </member>
-        <member name="M:FTaskAPI.Controllers.StudentController.AddStudent(FTask.Api.ViewModels.StudentViewModels.StudentAddViewModel)">
-            <summary>
-            API version 1 | Add a new student 
-            </summary>
-            <param name="student"></param>
-            <returns></returns>
-        </member>
-        <member name="M:FTaskAPI.Controllers.StudentController.UpdateStudent(System.String,FTask.Api.ViewModels.StudentViewModels.StudentUpdateViewModel)">
-            <summary>
-            API version 1 | Update student 
-            </summary>
-            <param name="id"></param>
-            <param name="student"></param>
-            <returns></returns>
-        </member>
-        <member name="M:FTaskAPI.Controllers.StudentController.PartialStudentUpdate(System.String,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{FTask.Api.ViewModels.StudentViewModels.StudentUpdateViewModel})">
-            <summary>
-            API version 1 | Update student by PATCH method...Allow update a single attribute 
-            </summary>
-            <param name="id"></param>
-            <param name="patchDoc"></param>
-            <returns></returns>
-        </member>
-        <member name="M:FTaskAPI.Controllers.StudentController.RemoveStudent(System.String)">
-            <summary>
-            API version 1 | Remove student 
-            </summary>
-            <param name="id"></param>
-            <returns></returns>
-        </member>
-        <member name="T:FTaskAPI.Controllers.SubjectController">
-            <summary>
-            Subject controller
-            </summary>
-        </member>
-        <member name="M:FTaskAPI.Controllers.SubjectController.#ctor(AutoMapper.IMapper,FTask.Services.SubjectBusinessService.ISubjectService)">
-            <summary>
-            Constructor DI AutoMapper and subject service
-            </summary>
-            <param name="mapper"></param>
-            <param name="subjectService"></param>
-        </member>
-        <member name="M:FTaskAPI.Controllers.SubjectController.GetAllSubjects(FTask.Shared.Parameters.SubjectParameters)">
-            <summary>
-            API version 1 | Get all subjects, allow search by name 
-            </summary>
-            <param name="subjectParameters"></param>
-            <returns></returns>
-        </member>
-        <member name="M:FTaskAPI.Controllers.SubjectController.GetSubjectInDetailBySubjectId(System.String)">
-            <summary>
-            API version 1 | Get subject by Subject ID 
-            </summary>
-            <param name="id"></param>
-            <returns></returns>
-        </member>
-        <member name="M:FTaskAPI.Controllers.SubjectController.AddSubject(FTask.Api.ViewModels.SubjectViewModels.SubjectAddViewModel)">
-            <summary>
-            API version 1 | Add a new subject 
-            </summary>
-            <param name="subject"></param>
-            <returns></returns>
-        </member>
-        <member name="M:FTaskAPI.Controllers.SubjectController.UpdateSubject(System.String,FTask.Api.ViewModels.SubjectViewModels.SubjectUpdateViewModel)">
-            <summary>
-            API version 1 | Update subject 
-            </summary>
-            <param name="id"></param>
-            <param name="subject"></param>
-            <returns></returns>
-        </member>
-        <member name="M:FTaskAPI.Controllers.SubjectController.PartialSubjectUpdate(System.String,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{FTask.Api.ViewModels.SubjectViewModels.SubjectUpdateViewModel})">
-            <summary>
-            API version 1 | Update subject by PATCH method...Allow update a single attribute 
-            </summary>
-            <param name="id"></param>
-            <param name="patchDoc"></param>
-            <returns></returns>
-        </member>
-        <member name="M:FTaskAPI.Controllers.SubjectController.RemoveSubject(System.String)">
-            <summary>
-            API version 1 | Remove subject 
-            </summary>
-            <param name="id"></param>
-            <returns></returns>
-        </member>
-        <member name="T:FTaskAPI.Profiles.StudentProfile">
-            <summary>
-            Student mapping profile
-            </summary>
-        </member>
-        <member name="M:FTaskAPI.Profiles.StudentProfile.#ctor">
-            <summary>
-            Constructor Mapper from Source --> Target
-            </summary>
-        </member>
         <member name="T:FTask.Api.Controllers.PlanSemesterController">
             <summary>
             PlanSemester controller
@@ -1978,6 +1737,247 @@
         <member name="P:FTask.Api.ViewModels.TopicViewModels.TopicUpdateViewModel.SubjectId">
             <summary>
             Subject Id
+            </summary>
+        </member>
+        <member name="T:FTaskAPI.Controllers.MajorController">
+            <summary>
+            Major Controller
+            </summary>
+        </member>
+        <member name="M:FTaskAPI.Controllers.MajorController.#ctor(AutoMapper.IMapper,FTask.Services.MajorBusinessService.IMajorService)">
+            <summary>
+            Constructor DI AutoMapper and MajorService
+            </summary>
+            <param name="mapper"></param>
+            <param name="MajorService"></param>
+        </member>
+        <member name="M:FTaskAPI.Controllers.MajorController.GetAllMajors(FTask.Shared.Parameters.MajorParameters)">
+            <summary>
+            API version 1 | Get all majors in database, allow search by name
+            </summary>
+            <param name="majorParameter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FTaskAPI.Controllers.MajorController.GetMajorInDetailByMajorId(System.String)">
+            <summary>
+            API version 1 | Get major and relevant student in this major by ID
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FTaskAPI.Controllers.MajorController.AddMajor(FTask.Api.ViewModels.MajorViewModels.MajorAddViewModel)">
+            <summary>
+            API version 1 | Add new major into database 
+            </summary>
+            <param name="major"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FTaskAPI.Controllers.MajorController.UpdateMajor(System.String,FTask.Api.ViewModels.MajorViewModels.MajorUpdateViewModel)">
+            <summary>
+            API version 1 | Update infomation of a major 
+            </summary>
+            <param name="id"></param>
+            <param name="major"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FTaskAPI.Controllers.MajorController.PartialMajorUpdate(System.String,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{FTask.Api.ViewModels.MajorViewModels.MajorUpdateViewModel})">
+            <summary>
+            API version 1 | Update major by PATCH method...Allow update a single attribute 
+            </summary>
+            <param name="id"></param>
+            <param name="patchDoc"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FTaskAPI.Controllers.MajorController.RemoveMajor(System.String)">
+            <summary>
+            API version 1 | Remove a major 
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:FTaskAPI.Controllers.SemesterController">
+            <summary>
+            Semester Controller
+            </summary>
+        </member>
+        <member name="M:FTaskAPI.Controllers.SemesterController.#ctor(AutoMapper.IMapper,FTask.Services.SemesterBusinessService.ISemesterService)">
+            <summary>
+            Constructor DI AutoMapper and SemesterService
+            </summary>
+            <param name="mapper"></param>
+            <param name="semesterService"></param>
+        </member>
+        <member name="M:FTaskAPI.Controllers.SemesterController.GetAllSemesters(FTask.Shared.Parameters.SemesterParameters)">
+            <summary>
+            API version 1 | Get all semesters in database, allow search by name 
+            </summary>
+            <param name="semesterParameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FTaskAPI.Controllers.SemesterController.GetSemesterBySemesterId(System.String)">
+            <summary>
+            API version 1 | Get semester by ID 
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FTaskAPI.Controllers.SemesterController.AddSemester(FTask.Api.ViewModels.SemesterViewModels.SemesterAddViewModel)">
+            <summary>
+            API version 1 | Add new semester into database 
+            </summary>
+            <param name="semester"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FTaskAPI.Controllers.SemesterController.UpdateSemester(System.String,FTask.Api.ViewModels.SemesterViewModels.SemesterUpdateViewModel)">
+            <summary>
+            API version 1 | Update infomation of a semester 
+            </summary>
+            <param name="id"></param>
+            <param name="semester"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FTaskAPI.Controllers.SemesterController.PartialSemesterUpdate(System.String,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{FTask.Api.ViewModels.SemesterViewModels.SemesterUpdateViewModel})">
+            <summary>
+            API version 1 | Update semester by PATCH method...Allow update a single attribute 
+            </summary>
+            <param name="id"></param>
+            <param name="patchDoc"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FTaskAPI.Controllers.SemesterController.RemoveSemester(System.String)">
+            <summary>
+            API version 1 | Remove a semester 
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:FTaskAPI.Controllers.StudentController">
+            <summary>
+            Student controller
+            </summary>
+        </member>
+        <member name="M:FTaskAPI.Controllers.StudentController.#ctor(AutoMapper.IMapper,FTask.Services.StudentBusinessService.IStudentService)">
+            <summary>
+            API version 1 | Constructor DI AutoMapper and student service
+            </summary>
+            <param name="mapper"></param>
+            <param name="studentService"></param>
+        </member>
+        <member name="M:FTaskAPI.Controllers.StudentController.GetAllStudents(FTask.Shared.Parameters.StudentParameters)">
+            <summary>
+            API version 1 | Get all students, allow search by name, filter by major Id 
+            </summary>
+            <param name="studentParameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FTaskAPI.Controllers.StudentController.GetStudentByStudentId(System.String)">
+            <summary>
+            API version 1 | Get student by student ID 
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FTaskAPI.Controllers.StudentController.GetStudentByStudentEmail(System.String)">
+            <summary>
+            API version 1.1 | Get student by student email
+            </summary>
+            <param name="email"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FTaskAPI.Controllers.StudentController.AddStudent(FTask.Api.ViewModels.StudentViewModels.StudentAddViewModel)">
+            <summary>
+            API version 1 | Add a new student 
+            </summary>
+            <param name="student"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FTaskAPI.Controllers.StudentController.UpdateStudent(System.String,FTask.Api.ViewModels.StudentViewModels.StudentUpdateViewModel)">
+            <summary>
+            API version 1 | Update student 
+            </summary>
+            <param name="id"></param>
+            <param name="student"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FTaskAPI.Controllers.StudentController.PartialStudentUpdate(System.String,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{FTask.Api.ViewModels.StudentViewModels.StudentUpdateViewModel})">
+            <summary>
+            API version 1 | Update student by PATCH method...Allow update a single attribute 
+            </summary>
+            <param name="id"></param>
+            <param name="patchDoc"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FTaskAPI.Controllers.StudentController.RemoveStudent(System.String)">
+            <summary>
+            API version 1 | Remove student 
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:FTaskAPI.Controllers.SubjectController">
+            <summary>
+            Subject controller
+            </summary>
+        </member>
+        <member name="M:FTaskAPI.Controllers.SubjectController.#ctor(AutoMapper.IMapper,FTask.Services.SubjectBusinessService.ISubjectService)">
+            <summary>
+            Constructor DI AutoMapper and subject service
+            </summary>
+            <param name="mapper"></param>
+            <param name="subjectService"></param>
+        </member>
+        <member name="M:FTaskAPI.Controllers.SubjectController.GetAllSubjects(FTask.Shared.Parameters.SubjectParameters)">
+            <summary>
+            API version 1 | Get all subjects, allow search by name 
+            </summary>
+            <param name="subjectParameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FTaskAPI.Controllers.SubjectController.GetSubjectInDetailBySubjectId(System.String)">
+            <summary>
+            API version 1 | Get subject by Subject ID 
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FTaskAPI.Controllers.SubjectController.AddSubject(FTask.Api.ViewModels.SubjectViewModels.SubjectAddViewModel)">
+            <summary>
+            API version 1 | Add a new subject 
+            </summary>
+            <param name="subject"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FTaskAPI.Controllers.SubjectController.UpdateSubject(System.String,FTask.Api.ViewModels.SubjectViewModels.SubjectUpdateViewModel)">
+            <summary>
+            API version 1 | Update subject 
+            </summary>
+            <param name="id"></param>
+            <param name="subject"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FTaskAPI.Controllers.SubjectController.PartialSubjectUpdate(System.String,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{FTask.Api.ViewModels.SubjectViewModels.SubjectUpdateViewModel})">
+            <summary>
+            API version 1 | Update subject by PATCH method...Allow update a single attribute 
+            </summary>
+            <param name="id"></param>
+            <param name="patchDoc"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FTaskAPI.Controllers.SubjectController.RemoveSubject(System.String)">
+            <summary>
+            API version 1 | Remove subject 
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:FTaskAPI.Profiles.StudentProfile">
+            <summary>
+            Student mapping profile
+            </summary>
+        </member>
+        <member name="M:FTaskAPI.Profiles.StudentProfile.#ctor">
+            <summary>
+            Constructor Mapper from Source --> Target
             </summary>
         </member>
     </members>

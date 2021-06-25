@@ -1,8 +1,11 @@
 using FTask.AuthDatabase.Data;
+using FTask.AuthServices.Helpers;
 using FTask.Database.Models;
 using FTask.Services.Helpers;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.EntityFrameworkCore;
@@ -10,10 +13,12 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json.Serialization;
 using System;
 using System.IO;
+using System.Text;
 
 namespace FTask.Api
 {
@@ -42,6 +47,49 @@ namespace FTask.Api
         /// <param name="services"></param>
         public void ConfigureServices(IServiceCollection services)
         {
+            // Config to connect with SQL Server
+            services.AddDbContext<FTaskContext>(options =>
+            {
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+                options.EnableSensitiveDataLogging(true);
+            });
+
+            // Config to connect with SQL Server Authentication
+            services.AddDbContext<FTaskAuthDbContext>(options =>
+            {
+                options.UseSqlServer(Configuration.GetConnectionString("AuthConnection"));
+                options.EnableSensitiveDataLogging(true);
+            });
+
+            services.AddIdentity<IdentityUser, IdentityRole>(options =>
+            {
+                options.Password.RequireDigit = true;
+                options.Password.RequireLowercase = true;
+                options.Password.RequiredLength = 5;
+            })
+                .AddEntityFrameworkStores<FTaskAuthDbContext>()
+                .AddDefaultTokenProviders();
+
+            services.AddAuthentication(auth =>
+            {
+                auth.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                auth.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(options =>
+            {
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidAudience = Configuration["Authentication:Jwt:Audience"],
+                    ValidIssuer = Configuration["Authentication:Jwt:Issuer"],
+                    RequireExpirationTime = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(
+                        Encoding.UTF8.GetBytes(Configuration["Authentication:Jwt:Key"])),
+                    ValidateIssuerSigningKey = true
+                };
+            });
+
+            //======================================================================================
             services.AddControllers();
             services.AddCors();
 
@@ -72,24 +120,11 @@ namespace FTask.Api
                 c.IncludeXmlComments(filePath);
             });
 
-            // Config to connect with SQL Server
-            services.AddDbContext<FTaskContext>(options =>
-            {
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
-                options.EnableSensitiveDataLogging(true);
-            });
-
-            // Config to connect with SQL Server Authentication
-            services.AddDbContext<FTaskAuthDbContext>(options =>
-            {
-                options.UseSqlServer(Configuration.GetConnectionString("AuthConnection"));
-                options.EnableSensitiveDataLogging(true);
-            });
-
             // Config for AutoMapper...
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             // Register Service...
+            services.InjectAuthServices();
             services.InjectServices();
         }
 

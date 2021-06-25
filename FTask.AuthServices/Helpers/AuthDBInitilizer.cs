@@ -6,10 +6,7 @@ namespace FTask.AuthServices.Helpers
     {
         public static void Initialize(FTaskAuthDbContext context)
         {
-            if (context.Database.EnsureCreated() == false)
-            {
-                context.Database.EnsureCreated();
-            }
+            context.Database.EnsureCreated();
         }
     }
 }

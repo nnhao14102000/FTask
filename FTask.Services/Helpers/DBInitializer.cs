@@ -6,10 +6,7 @@ namespace FTask.Services.Helpers
     {
         public static void Initialize(FTaskContext context)
         {
-            if (context.Database.EnsureCreated() == false)
-            {
-                context.Database.EnsureCreated();
-            }
+            context.Database.EnsureCreated();
         }
     }
 }
