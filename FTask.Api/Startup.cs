@@ -90,7 +90,7 @@ namespace FTask.Api
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             // Register Service...
-            services.IntializerDI();
+            services.InjectServices();
         }
 
         /// <summary>

@@ -17,7 +17,7 @@ namespace FTask.Services.Helpers
 {
     public static class ServicesInjection
     {
-        public static void IntializerDI(this IServiceCollection services)
+        public static void InjectServices(this IServiceCollection services)
         {
             // config for service for student         
             services.AddScoped<IStudentRepository, StudentRepository>();
