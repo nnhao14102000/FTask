@@ -36,7 +36,7 @@ namespace FTaskAPI.Controllers
         }
 
         /// <summary>
-        /// API version 1 | Get all subjects, allow search by name 
+        /// API version 1 | Roles: admin, user | Get all subjects, allow search by name 
         /// </summary>
         /// <param name="subjectParameters"></param>
         /// <returns></returns>
@@ -61,7 +61,7 @@ namespace FTaskAPI.Controllers
         }
 
         /// <summary>
-        /// API version 1 | Get subject by Subject ID 
+        /// API version 1 | Roles: admin, user | Get subject by Subject ID 
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -81,7 +81,7 @@ namespace FTaskAPI.Controllers
         }
 
         /// <summary>
-        /// API version 1 | Add a new subject 
+        /// API version 1 | Roles: admin | Add a new subject 
         /// </summary>
         /// <param name="subject"></param>
         /// <returns></returns>
@@ -104,7 +104,7 @@ namespace FTaskAPI.Controllers
         }
 
         /// <summary>
-        /// API version 1 | Update subject 
+        /// API version 1 | Roles: admin | Update subject 
         /// </summary>
         /// <param name="id"></param>
         /// <param name="subject"></param>
@@ -125,7 +125,7 @@ namespace FTaskAPI.Controllers
         }
 
         /// <summary>
-        /// API version 1 | Update subject by PATCH method...Allow update a single attribute 
+        /// API version 1 | Roles: admin | Update subject by PATCH method...Allow update a single attribute 
         /// </summary>
         /// <param name="id"></param>
         /// <param name="patchDoc"></param>
@@ -153,7 +153,7 @@ namespace FTaskAPI.Controllers
         }
 
         /// <summary>
-        /// API version 1 | Remove subject 
+        /// API version 1 | Roles: admin | Remove subject 
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>

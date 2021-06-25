@@ -16,7 +16,7 @@ namespace FTask.Api.Controllers
     /// TaskCategory controller
     /// </summary>
     [ApiController]
-    [Route("api/v{version:apiVersion}/task-category")]
+    [Route("api/v{version:apiVersion}/task-categories")]
     [ApiVersion("1.0")]
     [Authorize(Roles = UserRoles.Admin + "," + UserRoles.User)]
     public class TaskCategoryController : Controller
@@ -36,7 +36,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// API version 1 | Get all task category, allow search by name 
+        /// API version 1 | Roles: admin, user | Get all task category, allow search by name 
         /// </summary>
         /// <param name="taskCategoryParameter"></param>
         /// <returns></returns>
@@ -61,7 +61,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// API version 1 | Get task category by ID 
+        /// API version 1 | Roles: admin, user | Get task category by ID 
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -79,7 +79,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// API version 1 | Add a task category into database 
+        /// API version 1 | Roles: admin | Add a task category into database 
         /// </summary>
         /// <param name="taskCategory"></param>
         /// <returns></returns>
@@ -96,7 +96,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// API version 1 | Update task category
+        /// API version 1 | Roles: admin | Update task category
         /// </summary>
         /// <param name="id"></param>
         /// <param name="taskCategory"></param>
@@ -117,7 +117,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// API version 1 | Update task category by PATCH method...Allow update a single attribute 
+        /// API version 1 | Roles: admin | Update task category by PATCH method...Allow update a single attribute 
         /// </summary>
         /// <param name="id"></param>
         /// <param name="patchDoc"></param>
@@ -145,7 +145,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// API version 1 | Remove a task category
+        /// API version 1 | Roles: admin | Remove a task category
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>

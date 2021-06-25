@@ -4,6 +4,38 @@
         <name>FTask.Api</name>
     </assembly>
     <members>
+        <member name="T:FTask.Api.Controllers.AuthController">
+            <summary>
+            API version 1 | Authentication controller
+            </summary>
+        </member>
+        <member name="M:FTask.Api.Controllers.AuthController.#ctor(FTask.AuthServices.Services.IUserService)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="userService"></param>
+        </member>
+        <member name="M:FTask.Api.Controllers.AuthController.RegisterAsync(FTask.AuthDatabase.Models.RegisterModel)">
+            <summary>
+            API version 1 | Register for user
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FTask.Api.Controllers.AuthController.RegisterAdminAsync(FTask.AuthDatabase.Models.RegisterModel)">
+            <summary>
+            API version 1 | Register for admin
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FTask.Api.Controllers.AuthController.LoginAsync(FTask.AuthDatabase.Models.LoginModel)">
+            <summary>
+            API version 1 | Login
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
         <member name="T:FTask.Api.Controllers.PlanSemesterController">
             <summary>
             PlanSemester controller
@@ -18,28 +50,28 @@
         </member>
         <member name="M:FTask.Api.Controllers.PlanSemesterController.GetAllPlanSemesters(FTask.Shared.Parameters.PlanSemesterParameters)">
             <summary>
-            API version 1 | Get all plan semester, allow search by name 
+            API version 1 | Roles: user | Get all plan semester, allow search by name 
             </summary>
             <param name="planSemesterParameter"></param>
             <returns></returns>
         </member>
         <member name="M:FTask.Api.Controllers.PlanSemesterController.GetPlanSemesterByPlanSemesterId(System.Int32)">
             <summary>
-            API version 1 | Get plan semester by ID 
+            API version 1 | Roles: user | Get plan semester by ID 
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
         <member name="M:FTask.Api.Controllers.PlanSemesterController.AddPlanSemester(FTask.Api.ViewModels.PlanSemesterViewModels.PlanSemesterAddViewModel)">
             <summary>
-            API version 1 | Add a plan semester into database 
+            API version 1 | Roles: user | Add a plan semester into database 
             </summary>
             <param name="planSemester"></param>
             <returns></returns>
         </member>
         <member name="M:FTask.Api.Controllers.PlanSemesterController.UpdatePlanSemester(System.Int32,FTask.Api.ViewModels.PlanSemesterViewModels.PlanSemesterUpdateViewModel)">
             <summary>
-            API version 1 | Update plan semester 
+            API version 1 | Roles: user | Update plan semester 
             </summary>
             <param name="id"></param>
             <param name="planSemester"></param>
@@ -47,7 +79,7 @@
         </member>
         <member name="M:FTask.Api.Controllers.PlanSemesterController.PartialPlanSemesterUpdate(System.Int32,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{FTask.Api.ViewModels.PlanSemesterViewModels.PlanSemesterUpdateViewModel})">
             <summary>
-            API version 1 | Update plan semester by PATCH method...Allow update a single attribute 
+            API version 1 | Roles: user | Update plan semester by PATCH method...Allow update a single attribute 
             </summary>
             <param name="id"></param>
             <param name="patchDoc"></param>
@@ -55,7 +87,7 @@
         </member>
         <member name="M:FTask.Api.Controllers.PlanSemesterController.RemovePlanSemester(System.Int32)">
             <summary>
-            API version 1 | Remove a plan semester 
+            API version 1 | Roles: user | Remove a plan semester 
             </summary>
             <param name="id"></param>
             <returns></returns>
@@ -74,28 +106,28 @@
         </member>
         <member name="M:FTask.Api.Controllers.PlanSubjectController.GetAllPlanSubjects(FTask.Shared.Parameters.PlanSubjectParameters)">
             <summary>
-            API version 1 | Get all plan subjects, allow search by name 
+            API version 1 | Roles: user | Get all plan subjects, allow search by name 
             </summary>
             <param name="planSubjectParameter"></param>
             <returns></returns>
         </member>
         <member name="M:FTask.Api.Controllers.PlanSubjectController.GetPlanSubjectByPlanSubjectId(System.Int32)">
             <summary>
-            API version 1 | Get plan subject by ID 
+            API version 1 | Roles: user | Get plan subject by ID 
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
         <member name="M:FTask.Api.Controllers.PlanSubjectController.AddPlanSubject(FTask.Api.ViewModels.PlanSubjectViewModels.PlanSubjectAddViewModel)">
             <summary>
-            API version 1 | Add a plan subject into database 
+            API version 1 | Roles: user | Add a plan subject into database 
             </summary>
             <param name="planSubject"></param>
             <returns></returns>
         </member>
         <member name="M:FTask.Api.Controllers.PlanSubjectController.UpdatePlanSubject(System.Int32,FTask.Api.ViewModels.PlanSubjectViewModels.PlanSubjectUpdateViewModel)">
             <summary>
-            API version 1 | Update plan subject 
+            API version 1 | Roles: user | Update plan subject 
             </summary>
             <param name="id"></param>
             <param name="planSubject"></param>
@@ -103,7 +135,7 @@
         </member>
         <member name="M:FTask.Api.Controllers.PlanSubjectController.PartialPlanSubjectUpdate(System.Int32,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{FTask.Api.ViewModels.PlanSubjectViewModels.PlanSubjectUpdateViewModel})">
             <summary>
-            API version 1 | Update plan subject by PATCH method...Allow update a single attribute 
+            API version 1 | Roles: user | Update plan subject by PATCH method...Allow update a single attribute 
             </summary>
             <param name="id"></param>
             <param name="patchDoc"></param>
@@ -111,7 +143,7 @@
         </member>
         <member name="M:FTask.Api.Controllers.PlanSubjectController.RemovePlanSubject(System.Int32)">
             <summary>
-            API version 1 | Remove a plan subject 
+            API version 1 | Roles: user | Remove a plan subject 
             </summary>
             <param name="id"></param>
             <returns></returns>
@@ -130,28 +162,28 @@
         </member>
         <member name="M:FTask.Api.Controllers.PlanTopicController.GetAllPlanTopics(FTask.Shared.Parameters.PlanTopicParameters)">
             <summary>
-            API version 1 | Get all plan topic, allow search by name 
+            API version 1 | Roles: user | Get all plan topic, allow search by name 
             </summary>
             <param name="planTopicParameter"></param>
             <returns></returns>
         </member>
         <member name="M:FTask.Api.Controllers.PlanTopicController.GetPlanTopicByPlanTopicId(System.Int32)">
             <summary>
-            API version 1 | Get plan topic by ID 
+            API version 1 | Roles: user | Get plan topic by ID 
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
         <member name="M:FTask.Api.Controllers.PlanTopicController.AddPlanTopic(FTask.Api.ViewModels.PlanTopicViewModels.PlanTopicAddViewModel)">
             <summary>
-            API version 1 | Add a plan topic into database 
+            API version 1 | Roles: user | Add a plan topic into database 
             </summary>
             <param name="planTopic"></param>
             <returns></returns>
         </member>
         <member name="M:FTask.Api.Controllers.PlanTopicController.UpdatePlanTopic(System.Int32,FTask.Api.ViewModels.PlanTopicViewModels.PlanTopicUpdateViewModel)">
             <summary>
-            API version 1 | Update plan topic 
+            API version 1 | Roles: user | Update plan topic 
             </summary>
             <param name="id"></param>
             <param name="planTopic"></param>
@@ -159,7 +191,7 @@
         </member>
         <member name="M:FTask.Api.Controllers.PlanTopicController.PartialPlanTopicUpdate(System.Int32,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{FTask.Api.ViewModels.PlanTopicViewModels.PlanTopicUpdateViewModel})">
             <summary>
-            API version 1 | Update plan topic by PATCH method...Allow update a single attribute 
+            API version 1 | Roles: user | Update plan topic by PATCH method...Allow update a single attribute 
             </summary>
             <param name="id"></param>
             <param name="patchDoc"></param>
@@ -167,7 +199,7 @@
         </member>
         <member name="M:FTask.Api.Controllers.PlanTopicController.RemovePlanTopic(System.Int32)">
             <summary>
-            API version 1 | Remove a plan topic 
+            API version 1 | Roles: user | Remove a plan topic 
             </summary>
             <param name="id"></param>
             <returns></returns>
@@ -186,28 +218,28 @@
         </member>
         <member name="M:FTask.Api.Controllers.SubjectGroupController.GetAllSubjectGroups(FTask.Shared.Parameters.SubjectGroupParameters)">
             <summary>
-            API version 1 | Get all subject groups, allow search by name 
+            API version 1 | Roles: admin, user | Get all subject groups, allow search by name 
             </summary>
             <param name="subjectGroupParameter"></param>
             <returns></returns>
         </member>
         <member name="M:FTask.Api.Controllers.SubjectGroupController.GetSubjectGroupBySubjectGroupId(System.Int32)">
             <summary>
-            API version 1 | Get subject group by ID and it Relevant subject 
+            API version 1 | Roles: admin, user | Get subject group by ID and it Relevant subject 
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
         <member name="M:FTask.Api.Controllers.SubjectGroupController.AddSubjectGroup(FTask.Api.ViewModels.SubjectGroupViewModels.SubjectGroupAddViewModel)">
             <summary>
-            API version 1 | Add a subject group into database 
+            API version 1 | Roles: admin | Add a subject group into database 
             </summary>
             <param name="subjectGroup"></param>
             <returns></returns>
         </member>
         <member name="M:FTask.Api.Controllers.SubjectGroupController.UpdateSubjectGroup(System.Int32,FTask.Api.ViewModels.SubjectGroupViewModels.SubjectGroupUpdateViewModel)">
             <summary>
-            API version 1 | Update subject group 
+            API version 1 | Roles: admin | Update subject group 
             </summary>
             <param name="id"></param>
             <param name="subjectGroup"></param>
@@ -215,7 +247,7 @@
         </member>
         <member name="M:FTask.Api.Controllers.SubjectGroupController.PartialSubjectGroupUpdate(System.Int32,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{FTask.Api.ViewModels.SubjectGroupViewModels.SubjectGroupUpdateViewModel})">
             <summary>
-            API version 1 | Update subject group by PATCH method...Allow update a single attribute 
+            API version 1 | Roles: admin | Update subject group by PATCH method...Allow update a single attribute 
             </summary>
             <param name="id"></param>
             <param name="patchDoc"></param>
@@ -223,7 +255,7 @@
         </member>
         <member name="M:FTask.Api.Controllers.SubjectGroupController.RemoveSubjectGroup(System.Int32)">
             <summary>
-            API version 1 | Remove a subject group 
+            API version 1 | Roles: admin | Remove a subject group 
             </summary>
             <param name="id"></param>
             <returns></returns>
@@ -242,28 +274,28 @@
         </member>
         <member name="M:FTask.Api.Controllers.TaskCategoryController.GetAllTaskCategorys(FTask.Shared.Parameters.TaskCategoryParameters)">
             <summary>
-            API version 1 | Get all task category, allow search by name 
+            API version 1 | Roles: admin, user | Get all task category, allow search by name 
             </summary>
             <param name="taskCategoryParameter"></param>
             <returns></returns>
         </member>
         <member name="M:FTask.Api.Controllers.TaskCategoryController.GetTaskCategoryByTaskCategoryId(System.Int32)">
             <summary>
-            API version 1 | Get task category by ID 
+            API version 1 | Roles: admin, user | Get task category by ID 
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
         <member name="M:FTask.Api.Controllers.TaskCategoryController.AddTaskCategory(FTask.Api.ViewModels.TaskCategoryViewModels.TaskCategoryAddViewModel)">
             <summary>
-            API version 1 | Add a task category into database 
+            API version 1 | Roles: admin | Add a task category into database 
             </summary>
             <param name="taskCategory"></param>
             <returns></returns>
         </member>
         <member name="M:FTask.Api.Controllers.TaskCategoryController.UpdateTaskCategory(System.Int32,FTask.Api.ViewModels.TaskCategoryViewModels.TaskCategoryUpdateViewModel)">
             <summary>
-            API version 1 | Update task category
+            API version 1 | Roles: admin | Update task category
             </summary>
             <param name="id"></param>
             <param name="taskCategory"></param>
@@ -271,7 +303,7 @@
         </member>
         <member name="M:FTask.Api.Controllers.TaskCategoryController.PartialTaskCategoryUpdate(System.Int32,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{FTask.Api.ViewModels.TaskCategoryViewModels.TaskCategoryUpdateViewModel})">
             <summary>
-            API version 1 | Update task category by PATCH method...Allow update a single attribute 
+            API version 1 | Roles: admin | Update task category by PATCH method...Allow update a single attribute 
             </summary>
             <param name="id"></param>
             <param name="patchDoc"></param>
@@ -279,7 +311,7 @@
         </member>
         <member name="M:FTask.Api.Controllers.TaskCategoryController.RemoveTaskCategory(System.Int32)">
             <summary>
-            API version 1 | Remove a task category
+            API version 1 | Roles: admin | Remove a task category
             </summary>
             <param name="id"></param>
             <returns></returns>
@@ -298,28 +330,28 @@
         </member>
         <member name="M:FTask.Api.Controllers.TaskController.GetAllTasks(FTask.Shared.Parameters.TaskParameters)">
             <summary>
-            API version 1 | Get all task, allow search by name
+            API version 1 | **Roles: user** | Get all task, allow search by name
             </summary>
             <param name="taskParameter"></param>
             <returns></returns>
         </member>
         <member name="M:FTask.Api.Controllers.TaskController.GetTaskByTaskId(System.Int32)">
             <summary>
-            API version 1 | Get task by ID
+            API version 1 | Roles: user | Get task by ID
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
         <member name="M:FTask.Api.Controllers.TaskController.AddTask(FTask.Api.ViewModels.TaskViewModels.TaskAddViewModel)">
             <summary>
-            API version 1 | Add a task into database
+            API version 1 | Roles: user | Add a task into database
             </summary>
             <param name="task"></param>
             <returns></returns>
         </member>
         <member name="M:FTask.Api.Controllers.TaskController.UpdateTask(System.Int32,FTask.Api.ViewModels.TaskViewModels.TaskUpdateViewModel)">
             <summary>
-            API version 1 | Update task
+            API version 1 | Roles: user | Update task
             </summary>
             <param name="id"></param>
             <param name="task"></param>
@@ -327,7 +359,7 @@
         </member>
         <member name="M:FTask.Api.Controllers.TaskController.PartialTaskUpdate(System.Int32,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{FTask.Api.ViewModels.TaskViewModels.TaskUpdateViewModel})">
             <summary>
-            API version 1 | Update task by PATCH method...Allow update a single attribute
+            API version 1 | Roles: user | Update task by PATCH method...Allow update a single attribute
             </summary>
             <param name="id"></param>
             <param name="patchDoc"></param>
@@ -335,7 +367,7 @@
         </member>
         <member name="M:FTask.Api.Controllers.TaskController.RemoveTask(System.Int32)">
             <summary>
-            API version 1 | Remove a task
+            API version 1 | Roles: user | Remove a task
             </summary>
             <param name="id"></param>
             <returns></returns>
@@ -1753,28 +1785,28 @@
         </member>
         <member name="M:FTaskAPI.Controllers.MajorController.GetAllMajors(FTask.Shared.Parameters.MajorParameters)">
             <summary>
-            API version 1 | Get all majors in database, allow search by name
+            API version 1 | Roles: Admin, user | Get all majors in database, allow search by name
             </summary>
             <param name="majorParameter"></param>
             <returns></returns>
         </member>
         <member name="M:FTaskAPI.Controllers.MajorController.GetMajorInDetailByMajorId(System.String)">
             <summary>
-            API version 1 | Get major and relevant student in this major by ID
+            API version 1 | Roles: Admin, user | Get major and relevant student in this major by ID
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
         <member name="M:FTaskAPI.Controllers.MajorController.AddMajor(FTask.Api.ViewModels.MajorViewModels.MajorAddViewModel)">
             <summary>
-            API version 1 | Add new major into database 
+            API version 1 | Roles: Admin | Add new major into database 
             </summary>
             <param name="major"></param>
             <returns></returns>
         </member>
         <member name="M:FTaskAPI.Controllers.MajorController.UpdateMajor(System.String,FTask.Api.ViewModels.MajorViewModels.MajorUpdateViewModel)">
             <summary>
-            API version 1 | Update infomation of a major 
+            API version 1 | Roles: Admin | Update infomation of a major 
             </summary>
             <param name="id"></param>
             <param name="major"></param>
@@ -1782,7 +1814,7 @@
         </member>
         <member name="M:FTaskAPI.Controllers.MajorController.PartialMajorUpdate(System.String,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{FTask.Api.ViewModels.MajorViewModels.MajorUpdateViewModel})">
             <summary>
-            API version 1 | Update major by PATCH method...Allow update a single attribute 
+            API version 1 | Roles: Admin | Update major by PATCH method...Allow update a single attribute 
             </summary>
             <param name="id"></param>
             <param name="patchDoc"></param>
@@ -1790,7 +1822,7 @@
         </member>
         <member name="M:FTaskAPI.Controllers.MajorController.RemoveMajor(System.String)">
             <summary>
-            API version 1 | Remove a major 
+            API version 1 | Roles: Admin | Remove a major 
             </summary>
             <param name="id"></param>
             <returns></returns>
@@ -1809,28 +1841,28 @@
         </member>
         <member name="M:FTaskAPI.Controllers.SemesterController.GetAllSemesters(FTask.Shared.Parameters.SemesterParameters)">
             <summary>
-            API version 1 | Get all semesters in database, allow search by name 
+            API version 1 | Roles: admin, user | Get all semesters in database, allow search by name 
             </summary>
             <param name="semesterParameters"></param>
             <returns></returns>
         </member>
         <member name="M:FTaskAPI.Controllers.SemesterController.GetSemesterBySemesterId(System.String)">
             <summary>
-            API version 1 | Get semester by ID 
+            API version 1 | Roles: admin, user | Get semester by ID 
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
         <member name="M:FTaskAPI.Controllers.SemesterController.AddSemester(FTask.Api.ViewModels.SemesterViewModels.SemesterAddViewModel)">
             <summary>
-            API version 1 | Add new semester into database 
+            API version 1 | Roles: admin | Add new semester into database 
             </summary>
             <param name="semester"></param>
             <returns></returns>
         </member>
         <member name="M:FTaskAPI.Controllers.SemesterController.UpdateSemester(System.String,FTask.Api.ViewModels.SemesterViewModels.SemesterUpdateViewModel)">
             <summary>
-            API version 1 | Update infomation of a semester 
+            API version 1 | Roles: admin | Update infomation of a semester 
             </summary>
             <param name="id"></param>
             <param name="semester"></param>
@@ -1838,7 +1870,7 @@
         </member>
         <member name="M:FTaskAPI.Controllers.SemesterController.PartialSemesterUpdate(System.String,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{FTask.Api.ViewModels.SemesterViewModels.SemesterUpdateViewModel})">
             <summary>
-            API version 1 | Update semester by PATCH method...Allow update a single attribute 
+            API version 1 | Roles: admin | Update semester by PATCH method...Allow update a single attribute 
             </summary>
             <param name="id"></param>
             <param name="patchDoc"></param>
@@ -1846,7 +1878,7 @@
         </member>
         <member name="M:FTaskAPI.Controllers.SemesterController.RemoveSemester(System.String)">
             <summary>
-            API version 1 | Remove a semester 
+            API version 1 | Roles: admin | Remove a semester 
             </summary>
             <param name="id"></param>
             <returns></returns>
@@ -1865,35 +1897,35 @@
         </member>
         <member name="M:FTaskAPI.Controllers.StudentController.GetAllStudents(FTask.Shared.Parameters.StudentParameters)">
             <summary>
-            API version 1 | Get all students, allow search by name, filter by major Id 
+            API version 1 | Roles: admin | Get all students, allow search by name, filter by major Id 
             </summary>
             <param name="studentParameters"></param>
             <returns></returns>
         </member>
         <member name="M:FTaskAPI.Controllers.StudentController.GetStudentByStudentId(System.String)">
             <summary>
-            API version 1 | Get student by student ID 
+            API version 1 | Roles: admin, user | Get student by student ID 
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
         <member name="M:FTaskAPI.Controllers.StudentController.GetStudentByStudentEmail(System.String)">
             <summary>
-            API version 1.1 | Get student by student email
+            API version 1.1 | Roles: admin, user | Get student by student email
             </summary>
             <param name="email"></param>
             <returns></returns>
         </member>
         <member name="M:FTaskAPI.Controllers.StudentController.AddStudent(FTask.Api.ViewModels.StudentViewModels.StudentAddViewModel)">
             <summary>
-            API version 1 | Add a new student 
+            API version 1 | Roles: admin | Add a new student 
             </summary>
             <param name="student"></param>
             <returns></returns>
         </member>
         <member name="M:FTaskAPI.Controllers.StudentController.UpdateStudent(System.String,FTask.Api.ViewModels.StudentViewModels.StudentUpdateViewModel)">
             <summary>
-            API version 1 | Update student 
+            API version 1 | Roles: admin, user | Update student 
             </summary>
             <param name="id"></param>
             <param name="student"></param>
@@ -1901,7 +1933,7 @@
         </member>
         <member name="M:FTaskAPI.Controllers.StudentController.PartialStudentUpdate(System.String,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{FTask.Api.ViewModels.StudentViewModels.StudentUpdateViewModel})">
             <summary>
-            API version 1 | Update student by PATCH method...Allow update a single attribute 
+            API version 1 | Roles: admin, user | Update student by PATCH method...Allow update a single attribute 
             </summary>
             <param name="id"></param>
             <param name="patchDoc"></param>
@@ -1909,7 +1941,7 @@
         </member>
         <member name="M:FTaskAPI.Controllers.StudentController.RemoveStudent(System.String)">
             <summary>
-            API version 1 | Remove student 
+            API version 1 | Roles: admin | Remove student 
             </summary>
             <param name="id"></param>
             <returns></returns>
@@ -1928,28 +1960,28 @@
         </member>
         <member name="M:FTaskAPI.Controllers.SubjectController.GetAllSubjects(FTask.Shared.Parameters.SubjectParameters)">
             <summary>
-            API version 1 | Get all subjects, allow search by name 
+            API version 1 | Roles: admin, user | Get all subjects, allow search by name 
             </summary>
             <param name="subjectParameters"></param>
             <returns></returns>
         </member>
         <member name="M:FTaskAPI.Controllers.SubjectController.GetSubjectInDetailBySubjectId(System.String)">
             <summary>
-            API version 1 | Get subject by Subject ID 
+            API version 1 | Roles: admin, user | Get subject by Subject ID 
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
         <member name="M:FTaskAPI.Controllers.SubjectController.AddSubject(FTask.Api.ViewModels.SubjectViewModels.SubjectAddViewModel)">
             <summary>
-            API version 1 | Add a new subject 
+            API version 1 | Roles: admin | Add a new subject 
             </summary>
             <param name="subject"></param>
             <returns></returns>
         </member>
         <member name="M:FTaskAPI.Controllers.SubjectController.UpdateSubject(System.String,FTask.Api.ViewModels.SubjectViewModels.SubjectUpdateViewModel)">
             <summary>
-            API version 1 | Update subject 
+            API version 1 | Roles: admin | Update subject 
             </summary>
             <param name="id"></param>
             <param name="subject"></param>
@@ -1957,7 +1989,7 @@
         </member>
         <member name="M:FTaskAPI.Controllers.SubjectController.PartialSubjectUpdate(System.String,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{FTask.Api.ViewModels.SubjectViewModels.SubjectUpdateViewModel})">
             <summary>
-            API version 1 | Update subject by PATCH method...Allow update a single attribute 
+            API version 1 | Roles: admin | Update subject by PATCH method...Allow update a single attribute 
             </summary>
             <param name="id"></param>
             <param name="patchDoc"></param>
@@ -1965,7 +1997,7 @@
         </member>
         <member name="M:FTaskAPI.Controllers.SubjectController.RemoveSubject(System.String)">
             <summary>
-            API version 1 | Remove subject 
+            API version 1 | Roles: admin | Remove subject 
             </summary>
             <param name="id"></param>
             <returns></returns>

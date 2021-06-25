@@ -36,7 +36,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// API version 1 | Get all plan semester, allow search by name 
+        /// API version 1 | Roles: user | Get all plan semester, allow search by name 
         /// </summary>
         /// <param name="planSemesterParameter"></param>
         /// <returns></returns>
@@ -60,7 +60,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// API version 1 | Get plan semester by ID 
+        /// API version 1 | Roles: user | Get plan semester by ID 
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -77,7 +77,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// API version 1 | Add a plan semester into database 
+        /// API version 1 | Roles: user | Add a plan semester into database 
         /// </summary>
         /// <param name="planSemester"></param>
         /// <returns></returns>
@@ -93,7 +93,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// API version 1 | Update plan semester 
+        /// API version 1 | Roles: user | Update plan semester 
         /// </summary>
         /// <param name="id"></param>
         /// <param name="planSemester"></param>
@@ -113,7 +113,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// API version 1 | Update plan semester by PATCH method...Allow update a single attribute 
+        /// API version 1 | Roles: user | Update plan semester by PATCH method...Allow update a single attribute 
         /// </summary>
         /// <param name="id"></param>
         /// <param name="patchDoc"></param>
@@ -140,7 +140,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// API version 1 | Remove a plan semester 
+        /// API version 1 | Roles: user | Remove a plan semester 
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>

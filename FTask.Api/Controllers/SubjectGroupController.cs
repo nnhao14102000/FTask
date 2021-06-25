@@ -36,7 +36,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// API version 1 | Get all subject groups, allow search by name 
+        /// API version 1 | Roles: admin, user | Get all subject groups, allow search by name 
         /// </summary>
         /// <param name="subjectGroupParameter"></param>
         /// <returns></returns>
@@ -61,7 +61,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// API version 1 | Get subject group by ID and it Relevant subject 
+        /// API version 1 | Roles: admin, user | Get subject group by ID and it Relevant subject 
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -79,7 +79,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// API version 1 | Add a subject group into database 
+        /// API version 1 | Roles: admin | Add a subject group into database 
         /// </summary>
         /// <param name="subjectGroup"></param>
         /// <returns></returns>
@@ -96,7 +96,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// API version 1 | Update subject group 
+        /// API version 1 | Roles: admin | Update subject group 
         /// </summary>
         /// <param name="id"></param>
         /// <param name="subjectGroup"></param>
@@ -117,7 +117,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// API version 1 | Update subject group by PATCH method...Allow update a single attribute 
+        /// API version 1 | Roles: admin | Update subject group by PATCH method...Allow update a single attribute 
         /// </summary>
         /// <param name="id"></param>
         /// <param name="patchDoc"></param>
@@ -145,7 +145,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// API version 1 | Remove a subject group 
+        /// API version 1 | Roles: admin | Remove a subject group 
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>

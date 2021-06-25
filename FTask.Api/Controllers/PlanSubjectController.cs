@@ -36,7 +36,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// API version 1 | Get all plan subjects, allow search by name 
+        /// API version 1 | Roles: user | Get all plan subjects, allow search by name 
         /// </summary>
         /// <param name="planSubjectParameter"></param>
         /// <returns></returns>
@@ -60,7 +60,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// API version 1 | Get plan subject by ID 
+        /// API version 1 | Roles: user | Get plan subject by ID 
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -77,7 +77,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// API version 1 | Add a plan subject into database 
+        /// API version 1 | Roles: user | Add a plan subject into database 
         /// </summary>
         /// <param name="planSubject"></param>
         /// <returns></returns>
@@ -93,7 +93,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// API version 1 | Update plan subject 
+        /// API version 1 | Roles: user | Update plan subject 
         /// </summary>
         /// <param name="id"></param>
         /// <param name="planSubject"></param>
@@ -113,7 +113,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// API version 1 | Update plan subject by PATCH method...Allow update a single attribute 
+        /// API version 1 | Roles: user | Update plan subject by PATCH method...Allow update a single attribute 
         /// </summary>
         /// <param name="id"></param>
         /// <param name="patchDoc"></param>
@@ -140,7 +140,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// API version 1 | Remove a plan subject 
+        /// API version 1 | Roles: user | Remove a plan subject 
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>

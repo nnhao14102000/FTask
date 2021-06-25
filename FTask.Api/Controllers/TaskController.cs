@@ -36,7 +36,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// API version 1 | Get all task, allow search by name
+        /// API version 1 | Roles: user | Get all task, allow search by name
         /// </summary>
         /// <param name="taskParameter"></param>
         /// <returns></returns>
@@ -60,7 +60,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// API version 1 | Get task by ID
+        /// API version 1 | Roles: user | Get task by ID
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -77,7 +77,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// API version 1 | Add a task into database
+        /// API version 1 | Roles: user | Add a task into database
         /// </summary>
         /// <param name="task"></param>
         /// <returns></returns>
@@ -93,7 +93,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// API version 1 | Update task
+        /// API version 1 | Roles: user | Update task
         /// </summary>
         /// <param name="id"></param>
         /// <param name="task"></param>
@@ -113,7 +113,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// API version 1 | Update task by PATCH method...Allow update a single attribute
+        /// API version 1 | Roles: user | Update task by PATCH method...Allow update a single attribute
         /// </summary>
         /// <param name="id"></param>
         /// <param name="patchDoc"></param>
@@ -140,7 +140,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// API version 1 | Remove a task
+        /// API version 1 | Roles: user | Remove a task
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>

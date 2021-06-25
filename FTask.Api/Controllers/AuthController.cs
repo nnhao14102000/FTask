@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace FTask.Api.Controllers
 {
+    /// <summary>
+    /// API version 1 | Authentication controller
+    /// </summary>
     [ApiController]
     [Route("api/v{version:apiVersion}/auths")]
     [ApiVersion("1.0")]
@@ -12,11 +15,20 @@ namespace FTask.Api.Controllers
     {
         private IUserService _userService;
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="userService"></param>
         public AuthController(IUserService userService)
         {
             _userService = userService;
         }
 
+        /// <summary>
+        /// API version 1 | Register for user
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost("register")]
         [MapToApiVersion("1.0")]
         public async Task<IActionResult> RegisterAsync([FromBody] RegisterModel model)
@@ -36,6 +48,11 @@ namespace FTask.Api.Controllers
             return BadRequest("Some properties are not valid!");//Status code : 400
         }
 
+        /// <summary>
+        /// API version 1 | Register for admin
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost("admin-register")]
         [MapToApiVersion("1.0")]
         public async Task<IActionResult> RegisterAdminAsync([FromBody] RegisterModel model)
@@ -55,6 +72,11 @@ namespace FTask.Api.Controllers
             return BadRequest("Some properties are not valid!");//Status code : 400
         }
 
+        /// <summary>
+        /// API version 1 | Login
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost("login")]
         [MapToApiVersion("1.0")]
         public async Task<IActionResult> LoginAsync([FromBody] LoginModel model)
