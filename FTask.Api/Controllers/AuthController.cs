@@ -94,6 +94,29 @@ namespace FTask.Api.Controllers
 
             return BadRequest("Some properties are not valid");
         }
+
+        /// <summary>
+        /// API version 1 | Login with Google
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpPost("login-google")]
+        [MapToApiVersion("1.0")]
+        public async Task<IActionResult> GoogleLoginAsync([FromBody] ExternalAuthModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var result = await _userService.GoogleExternalLoginAsync(model);
+
+                if (result.IsSuccess)
+                {
+                    return Ok(result);
+                }
+                return BadRequest(result);
+            }
+
+            return BadRequest("Some things going wrong...");
+        }
     }
 }
 

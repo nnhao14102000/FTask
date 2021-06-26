@@ -36,6 +36,13 @@
             <param name="model"></param>
             <returns></returns>
         </member>
+        <member name="M:FTask.Api.Controllers.AuthController.GoogleLoginAsync(FTask.AuthDatabase.Models.ExternalAuthModel)">
+            <summary>
+            API version 1 | Login with Google
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
         <member name="T:FTask.Api.Controllers.PlanSemesterController">
             <summary>
             PlanSemester controller
@@ -330,7 +337,7 @@
         </member>
         <member name="M:FTask.Api.Controllers.TaskController.GetAllTasks(FTask.Shared.Parameters.TaskParameters)">
             <summary>
-            API version 1 | **Roles: user** | Get all task, allow search by name
+            API version 1 | Roles: user | Get all task, allow search by name
             </summary>
             <param name="taskParameter"></param>
             <returns></returns>

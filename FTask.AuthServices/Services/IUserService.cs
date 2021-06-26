@@ -8,5 +8,6 @@ namespace FTask.AuthServices.Services
         Task<UserManagerResponse> RegisterUserAsync(RegisterModel model);
         Task<UserManagerResponse> RegisterAdminAsync(RegisterModel model);
         Task<UserManagerResponse> LoginUserAsync(LoginModel model);
+        Task<UserManagerResponse> GoogleExternalLoginAsync(ExternalAuthModel model);
     }
 }

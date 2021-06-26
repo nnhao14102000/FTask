@@ -11,6 +11,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Google.Apis.Auth" Version="1.52.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\FTask.AuthDatabase\FTask.AuthDatabase.csproj" />
   </ItemGroup>
 
