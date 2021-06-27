@@ -35,7 +35,7 @@
         "ASPNETCORE_ENVIRONMENT": "Production"
       }
     },
-    "CloudApi-Production": {
+    "FTask.Api-Production": {
       "commandName": "Project",
       "dotnetRunMessages": "true",
       "launchBrowser": true,

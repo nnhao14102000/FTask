@@ -9,7 +9,7 @@ services:
       context: .
       dockerfile: FTask.Api/Dockerfile
     ports:
-      - 9090:80
+      - "7000:80"
     # for production env 
     environment:
       - ASPNETCORE_ENVIRONMENT=Production  
@@ -17,7 +17,7 @@ services:
       - sqlserver
 
   sqlserver:
-    image: "mcr.microsoft.com/mssql/server:2019-latest"
+    image: "mcr.microsoft.com/mssql/server:2017-latest"
     restart: always
     environment:
       ACCEPT_EULA: "Y"
