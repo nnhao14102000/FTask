@@ -1,0 +1,27 @@
+# Please refer https://aka.ms/HTTPSinContainer on how to setup an https developer certificate for your ASP .NET Core service.
+
+version: '3.4'
+
+services:
+  ftaskapi:
+    image: ftaskapi
+    build:
+      context: .
+      dockerfile: FTask.Api/Dockerfile
+    ports:
+      - 9090:80
+    # for production env 
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production  
+    depends_on:
+      - sqlserver
+
+  sqlserver:
+    image: "mcr.microsoft.com/mssql/server:2019-latest"
+    restart: always
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "FTaskPa55w0rd!"
+      MSSQL_PID: "Express"
+    ports:
+      - "7433:1433"

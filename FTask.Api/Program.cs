@@ -43,7 +43,8 @@ namespace FTask.Api
                     }
                     if (env.IsProduction())
                     {
-                        //DBInitializer.Initialize(context);
+                        DBInitializer.Initialize(context);
+                        AuthDBInitializer.Initialize(authContext);
                     }
                 }
                 catch (Exception ex)
