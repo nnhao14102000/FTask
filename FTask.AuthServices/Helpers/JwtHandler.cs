@@ -17,7 +17,7 @@ namespace FTask.AuthServices.Helpers
     {
         private readonly IConfiguration _configuration;
         private readonly IConfigurationSection _jwtSettings;
-        private readonly IConfigurationSection _goolgeSettings;
+        private readonly IConfigurationSection _googleSettings;
         private readonly UserManager<IdentityUser> _userManager;
         private readonly ILogger<JwtHandler> _logger;
         public JwtHandler(IConfiguration configuration, UserManager<IdentityUser> userManager, ILogger<JwtHandler> logger)
@@ -26,7 +26,7 @@ namespace FTask.AuthServices.Helpers
             _configuration = configuration;
             _logger = logger;
             _jwtSettings = _configuration.GetSection("Authentication:Jwt");
-            _goolgeSettings = _configuration.GetSection("GoogleAuthSettings");
+            _googleSettings = _configuration.GetSection("GoogleAuthSettings");
         }
 
         private SigningCredentials GetSigningCredentials()
@@ -85,7 +85,7 @@ namespace FTask.AuthServices.Helpers
             {
                 var settings = new GoogleJsonWebSignature.ValidationSettings()
                 {
-                    Audience = new List<string>() { _goolgeSettings.GetSection("clientId").Value }
+                    Audience = new List<string>() { _googleSettings.GetSection("clientId").Value }
                 };
 
                 var payload = await GoogleJsonWebSignature.ValidateAsync(externalAuth.IdToken, settings);
