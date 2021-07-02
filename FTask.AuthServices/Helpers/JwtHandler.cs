@@ -88,7 +88,7 @@ namespace FTask.AuthServices.Helpers
                     Audience = new List<string>() { _googleSettings.GetSection("clientId").Value }
                 };
 
-                var payload = await GoogleJsonWebSignature.ValidateAsync(externalAuth.IdToken, settings);
+                var payload = await GoogleJsonWebSignature.ValidateAsync(Base64Encode(externalAuth.IdToken), settings);
                 return payload;
             }
             catch (Exception ex)
@@ -96,6 +96,18 @@ namespace FTask.AuthServices.Helpers
                 _logger.LogError("Error with Verify Google token: \n" + ex.Message);
                 return null;
             }
+        }
+
+        public static string Base64Encode(string plainText)
+        {
+            var plainTextBytes = Encoding.UTF8.GetBytes(plainText);
+            return Convert.ToBase64String(plainTextBytes);
+        }
+
+        public static string Base64Decode(string base64EncodedData)
+        {
+            var base64EncodedBytes = Convert.FromBase64String(base64EncodedData);
+            return Encoding.UTF8.GetString(base64EncodedBytes);
         }
     }
 }
