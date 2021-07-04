@@ -1,0 +1,29 @@
+﻿using AutoMapper;
+using FTask.Api.ViewModels.PlanTopicViewModels;
+using FTask.Api.ViewModels.TopicViewModels;
+using FTask.Database.Models;
+
+namespace FTask.Api.Profiles
+{
+    /// <summary>
+    /// Plan topic mapper profile
+    /// </summary>
+    public class PlanTopicProfile : Profile
+    {
+        /// <summary>
+        /// Constructor Mapper from Source --> Target
+        /// </summary>
+        public PlanTopicProfile()
+        {
+            CreateMap<PlanTopic, PlanTopicReadViewModel>();
+            CreateMap<PlanTopic, PlanTopicReadDetailViewModel>();
+            CreateMap<PlanTopicAddViewModel, PlanTopic>();
+            CreateMap<PlanTopicUpdateViewModel, PlanTopic>();
+            CreateMap<PlanTopic, PlanTopicUpdateViewModel>();
+
+            // Config mapper for PlanTopics in Topic
+            CreateMap<PlanTopic, PlansInTopicReadViewModel>();
+
+        }
+    }
+}

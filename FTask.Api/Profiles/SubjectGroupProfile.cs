@@ -1,20 +1,25 @@
 ﻿using AutoMapper;
 using FTask.Api.ViewModels.SubjectGroupViewModels;
-using FTask.Data.Models;
+using FTask.Database.Models;
 
 namespace FTask.Api.Profiles
 {
+    /// <summary>
+    /// Subject group mapping profile
+    /// </summary>
     public class SubjectGroupProfile : Profile
     {
+        /// <summary>
+        /// Constructor Mapper from Source --> Target
+        /// </summary>
         public SubjectGroupProfile()
         {
-            // Mapper from Source --> Target
             CreateMap<SubjectGroup, SubjectGroupReadViewModel>();
             CreateMap<SubjectGroup, SubjectGroupReadDetailViewModel>();
             CreateMap<SubjectGroupAddViewModel, SubjectGroup>();
             CreateMap<SubjectGroupUpdateViewModel, SubjectGroup>();
             CreateMap<SubjectGroup, SubjectGroupUpdateViewModel>();
         }
-    
+
     }
 }

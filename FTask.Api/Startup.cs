@@ -1,11 +1,11 @@
-using FTask.Data.Models;
-using FTask.Data.Repositories;
-using FTask.Data.Repositories.IRepository;
-using FTask.Services.MajorService;
-using FTask.Services.StudentService;
-using FTask.Services.SubjectGroupService;
+using FTask.AuthDatabase.Data;
+using FTask.AuthServices.Helpers;
+using FTask.Database.Models;
+using FTask.Services.Helpers;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.EntityFrameworkCore;
@@ -13,26 +13,88 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json.Serialization;
 using System;
+using System.IO;
+using System.Text;
 
 namespace FTask.Api
 {
+    /// <summary>
+    /// Config service and middleware
+    /// </summary>
     public class Startup
     {
+        /// <summary>
+        /// Constructor 
+        /// </summary>
+        /// <param name="configuration"></param>
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
 
+        /// <summary>
+        /// Get configuration from appsettings files
+        /// </summary>
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+        /// <summary>
+        /// This method gets called by the runtime. Use this method to add services to the container.
+        /// </summary>
+        /// <param name="services"></param>
         public void ConfigureServices(IServiceCollection services)
         {
+            // Config to connect with SQL Server
+            services.AddDbContext<FTaskContext>(options =>
+            {
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+                options.EnableSensitiveDataLogging(true);
+            });
 
+            // Config to connect with SQL Server Authentication
+            services.AddDbContext<FTaskAuthDbContext>(options =>
+            {
+                options.UseSqlServer(Configuration.GetConnectionString("AuthConnection"));
+                options.EnableSensitiveDataLogging(true);
+            });
+
+            services.AddIdentity<IdentityUser, IdentityRole>(options =>
+            {
+                options.Password.RequireDigit = true;
+                options.Password.RequireLowercase = true;
+                options.Password.RequiredLength = 5;
+            })
+                .AddEntityFrameworkStores<FTaskAuthDbContext>()
+                .AddDefaultTokenProviders();
+
+            services.AddAuthentication(auth =>
+            {
+                auth.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                auth.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                auth.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(options =>
+            {
+                options.SaveToken = true;
+                options.RequireHttpsMetadata = false;
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidAudience = Configuration["Authentication:Jwt:Audience"],
+                    ValidIssuer = Configuration["Authentication:Jwt:Issuer"],
+                    RequireExpirationTime = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(
+                        Encoding.UTF8.GetBytes(Configuration["Authentication:Jwt:Key"])),
+                    ValidateIssuerSigningKey = true
+                };
+            });
+
+            //======================================================================================
             services.AddControllers();
+            services.AddCors();
 
             // Add API Versioning to the service container
             services.AddApiVersioning(options =>
@@ -40,14 +102,15 @@ namespace FTask.Api
                 // Specify the default API Version
                 options.DefaultApiVersion = new ApiVersion(1, 0);
                 // If the client hasn't specified the API version in the request, use the default API version number 
-                options.AssumeDefaultVersionWhenUnspecified = true;                
+                options.AssumeDefaultVersionWhenUnspecified = true;
                 // Advertise the API versions supported for the particular endpoint
                 options.ReportApiVersions = true;
                 options.ApiVersionReader = ApiVersionReader.Combine(
                     new MediaTypeApiVersionReader("version"),
-                    new HeaderApiVersionReader("X-Version"));
+                    new HeaderApiVersionReader("api-version"));
             });
 
+            // Setting json for PATCH Api...
             services.AddControllers().AddNewtonsoftJson(s =>
             {
                 s.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
@@ -56,32 +119,47 @@ namespace FTask.Api
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "FTask.Api", Version = "v1" });
-            });
+                var securitySchema = new OpenApiSecurityScheme
+                {
+                    Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
+                    Name = "Authorization",
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.Http,
+                    Scheme = "bearer",
+                    Reference = new OpenApiReference
+                    {
+                        Type = ReferenceType.SecurityScheme,
+                        Id = "Bearer"
+                    }
+                };
 
-            // Config to connect with SQL Server
-            services.AddDbContext<FTaskContext>(options =>
-            {
-                options.UseSqlServer(Configuration.GetConnectionString("Connection"));
-                options.EnableSensitiveDataLogging(true);
+                c.AddSecurityDefinition("Bearer", securitySchema);
+
+                var securityRequirement = new OpenApiSecurityRequirement
+                {
+                    { securitySchema, new[] { "Bearer" } }
+                };
+
+                c.AddSecurityRequirement(securityRequirement);
+
+                var filePath = Path.Combine(System.AppContext.BaseDirectory, "FTask.Api.xml");
+                c.IncludeXmlComments(filePath);
             });
 
             // Config for AutoMapper...
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-            // config for service for student         
-            services.AddScoped<IStudentRepository, StudentRepository>();
-            services.AddScoped<IStudentService, StudentService>();
-
-            // config for service for major         
-            services.AddScoped<IMajorRepository, MajorRepository>();
-            services.AddScoped<IMajorService, MajorService>();
-
-            // config for service for SubjectGroup         
-            services.AddScoped<ISubjectGroupRepository, SubjectGroupRepository>();
-            services.AddScoped<ISubjectGroupService, SubjectGroupService>();
+            // Register Service...
+            services.InjectAuthServices();
+            services.InjectServices();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        /// <summary>
+        /// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        /// </summary>
+        /// <param name="app"></param>
+        /// <param name="env"></param>
+        /// <param name="loggerFactory"></param>
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
             if (env.IsDevelopment())
@@ -89,6 +167,7 @@ namespace FTask.Api
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "FTask.Api v1"));
+
             }
 
             //Config for create log file...
@@ -96,12 +175,14 @@ namespace FTask.Api
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
+            app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
         }
     }
 }
