@@ -1,5 +1,4 @@
 ﻿using FTask.AuthDatabase.Models;
-using Google.Apis.Auth;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
@@ -79,35 +78,11 @@ namespace FTask.AuthServices.Helpers
             return result;
         }
 
-        public async Task<GoogleJsonWebSignature.Payload> VerifyGoogleToken(ExternalAuthModel externalAuth)
+        public JwtPayload PayloadInfo(string idToken)
         {
-            try
-            {
-                var settings = new GoogleJsonWebSignature.ValidationSettings()
-                {
-                    Audience = new List<string>() { _googleSettings.GetSection("clientId").Value }
-                };
-
-                var payload = await GoogleJsonWebSignature.ValidateAsync(Base64Encode(externalAuth.IdToken), settings);
-                return payload;
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError("Error with Verify Google token: \n" + ex.Message);
-                return null;
-            }
-        }
-
-        public static string Base64Encode(string plainText)
-        {
-            var plainTextBytes = Encoding.UTF8.GetBytes(plainText);
-            return Convert.ToBase64String(plainTextBytes);
-        }
-
-        public static string Base64Decode(string base64EncodedData)
-        {
-            var base64EncodedBytes = Convert.FromBase64String(base64EncodedData);
-            return Encoding.UTF8.GetString(base64EncodedBytes);
+            var jwtToken = new JwtSecurityToken(idToken);
+            JwtPayload payload = jwtToken.Payload;
+            return payload;
         }
     }
 }

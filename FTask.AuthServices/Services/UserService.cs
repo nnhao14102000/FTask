@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace FTask.AuthServices.Services
 {
@@ -141,7 +142,6 @@ namespace FTask.AuthServices.Services
 
             if (result.Succeeded)
             {
-                // TODO: Send a confirmation Email
                 return new UserManagerResponse
                 {
                     Message = "User created successfully!",
@@ -160,7 +160,8 @@ namespace FTask.AuthServices.Services
 
         public async Task<UserManagerResponse> GoogleExternalLoginAsync(ExternalAuthModel model)
         {
-            var payload = await _jwtHandler.VerifyGoogleToken(model);
+            var payload = _jwtHandler.PayloadInfo(model.IdToken);
+            
             if (payload is null)
             {
                 return new UserManagerResponse
@@ -170,12 +171,13 @@ namespace FTask.AuthServices.Services
                 };
             }
 
-            var info = new UserLoginInfo(model.Provider, payload.Subject, model.Provider);
-
+            var info = new UserLoginInfo(model.Provider, payload.Sub, model.Provider);
             var user = await _userManager.FindByLoginAsync(info.LoginProvider, info.ProviderKey);
+
             if (user is null)
             {
-                user = await _userManager.FindByEmailAsync(payload.Email);
+
+                user = await _userManager.FindByEmailAsync(payload["email"].ToString());
                 await _userManager.CreateAsync(user);
 
                 if (!await _roleManager.RoleExistsAsync(UserRoles.User))

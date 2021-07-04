@@ -11,11 +11,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Google.Apis.Auth" Version="1.52.0" />
+    <ProjectReference Include="..\FTask.AuthDatabase\FTask.AuthDatabase.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FTask.AuthDatabase\FTask.AuthDatabase.csproj" />
+    <PackageReference Include="FirebaseAdmin" Version="2.2.0" />
   </ItemGroup>
 
 </Project>
