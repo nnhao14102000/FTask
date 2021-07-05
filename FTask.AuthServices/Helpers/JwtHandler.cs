@@ -1,7 +1,5 @@
-﻿using FTask.AuthDatabase.Models;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
@@ -16,16 +14,12 @@ namespace FTask.AuthServices.Helpers
     {
         private readonly IConfiguration _configuration;
         private readonly IConfigurationSection _jwtSettings;
-        private readonly IConfigurationSection _googleSettings;
         private readonly UserManager<IdentityUser> _userManager;
-        private readonly ILogger<JwtHandler> _logger;
-        public JwtHandler(IConfiguration configuration, UserManager<IdentityUser> userManager, ILogger<JwtHandler> logger)
+        public JwtHandler(IConfiguration configuration, UserManager<IdentityUser> userManager)
         {
             _userManager = userManager;
             _configuration = configuration;
-            _logger = logger;
             _jwtSettings = _configuration.GetSection("Authentication:Jwt");
-            _googleSettings = _configuration.GetSection("GoogleAuthSettings");
         }
 
         private SigningCredentials GetSigningCredentials()
@@ -58,7 +52,7 @@ namespace FTask.AuthServices.Helpers
                 issuer: _jwtSettings.GetSection("Issuer").Value,
                 audience: _jwtSettings.GetSection("Audience").Value,
                 claims: claims,
-                expires: DateTime.Now.AddMinutes(Convert.ToDouble(_jwtSettings.GetSection("expiryInMinutes").Value)),
+                expires: DateTime.Now.AddDays(Convert.ToDouble(_jwtSettings.GetSection("expiryInDays").Value)),
                 signingCredentials: signingCredentials);
 
             return tokenOptions;
@@ -80,9 +74,10 @@ namespace FTask.AuthServices.Helpers
 
         public JwtPayload PayloadInfo(string idToken)
         {
-            var jwtToken = new JwtSecurityToken(idToken);
-            JwtPayload payload = jwtToken.Payload;
-            return payload;
+            var token = idToken;
+            var handler = new JwtSecurityTokenHandler();
+            var tokenData = handler.ReadJwtToken(token);
+            return tokenData.Payload;
         }
     }
 }
