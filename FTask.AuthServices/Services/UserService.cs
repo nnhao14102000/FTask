@@ -141,7 +141,6 @@ namespace FTask.AuthServices.Services
 
             if (result.Succeeded)
             {
-                // TODO: Send a confirmation Email
                 return new UserManagerResponse
                 {
                     Message = "User created successfully!",
@@ -160,7 +159,8 @@ namespace FTask.AuthServices.Services
 
         public async Task<UserManagerResponse> GoogleExternalLoginAsync(ExternalAuthModel model)
         {
-            var payload = await _jwtHandler.VerifyGoogleToken(model);
+            var payload = _jwtHandler.PayloadInfo(model.IdToken);
+
             if (payload is null)
             {
                 return new UserManagerResponse
@@ -170,42 +170,62 @@ namespace FTask.AuthServices.Services
                 };
             }
 
-            var info = new UserLoginInfo(model.Provider, payload.Subject, model.Provider);
+            var info = new UserLoginInfo(model.Provider, payload.Sub, model.Provider);
 
             var user = await _userManager.FindByLoginAsync(info.LoginProvider, info.ProviderKey);
+
             if (user is null)
             {
-                user = await _userManager.FindByEmailAsync(payload.Email);
-                await _userManager.CreateAsync(user);
+                user = await _userManager.FindByEmailAsync(payload["email"].ToString());
 
-                if (!await _roleManager.RoleExistsAsync(UserRoles.User))
-                    await _roleManager.CreateAsync(new IdentityRole(UserRoles.User));
+                if (user is null)
+                {
+                    user = new IdentityUser()
+                    {
+                        Email = payload["email"].ToString(),
+                        UserName = payload["email"].ToString()
+                    };
 
-                await _userManager.AddToRoleAsync(user, UserRoles.User);
-                await _userManager.AddLoginAsync(user, info);
+                    var result = await _userManager.CreateAsync(user);
+
+                    if (!await _roleManager.RoleExistsAsync(UserRoles.User))
+                        await _roleManager.CreateAsync(new IdentityRole(UserRoles.User));
+
+                    if (await _roleManager.RoleExistsAsync(UserRoles.User))
+                    {
+                        await _userManager.AddToRoleAsync(user, UserRoles.User);
+                    }
+                    await _userManager.AddLoginAsync(user, info);
+
+                    if (result.Succeeded)
+                    {
+                        var token = await _jwtHandler.GenerateToken(user);
+                        return new UserManagerResponse
+                        {
+                            Message = token[0],
+                            IsSuccess = true,
+                            ExpireDate = DateTime.Parse(token[1])
+                        };
+                    }
+                }
             }
             else
             {
                 await _userManager.AddLoginAsync(user, info);
-            }
-
-            if (user is null)
-            {
+                var token = await _jwtHandler.GenerateToken(user);
                 return new UserManagerResponse
                 {
-                    Message = "Invalid google authentication.",
-                    IsSuccess = false
+                    Message = token[0],
+                    IsSuccess = true,
+                    ExpireDate = DateTime.Parse(token[1])
                 };
             }
 
-            var token = await _jwtHandler.GenerateToken(user);
             return new UserManagerResponse
             {
-                Message = token[0],
-                IsSuccess = true,
-                ExpireDate = DateTime.Parse(token[1])
+                Message = "Invalid google authentication.",
+                IsSuccess = false
             };
-
         }
     }
 }
