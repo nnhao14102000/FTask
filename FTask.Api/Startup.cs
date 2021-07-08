@@ -60,7 +60,8 @@ namespace FTask.Api
                 options.UseSqlServer(Configuration.GetConnectionString("AuthConnection"));
                 options.EnableSensitiveDataLogging(true);
             });
-
+            
+            // Config for Identity==============================================================================================================================
             services.AddIdentity<IdentityUser, IdentityRole>(options =>
             {
                 options.Password.RequireDigit = true;
@@ -92,7 +93,7 @@ namespace FTask.Api
                 };
             });
 
-            //======================================================================================
+            //===================================================================================================================================================
             services.AddControllers();
             services.AddCors();
 
@@ -116,6 +117,7 @@ namespace FTask.Api
                 s.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
             });
 
+            // Config for swagger==============================================================================================================================
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "FTask.Api", Version = "v1" });
@@ -162,7 +164,7 @@ namespace FTask.Api
         /// <param name="loggerFactory"></param>
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
-            if (env.IsDevelopment())
+            if (env.IsDevelopment() || env.IsProduction())
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();

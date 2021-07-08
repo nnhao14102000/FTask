@@ -14,8 +14,4 @@
     <ProjectReference Include="..\FTask.AuthDatabase\FTask.AuthDatabase.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="FirebaseAdmin" Version="2.2.0" />
-  </ItemGroup>
-
 </Project>
