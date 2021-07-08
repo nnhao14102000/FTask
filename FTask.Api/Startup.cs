@@ -85,10 +85,10 @@ namespace FTask.Api
                     ValidateAudience = true,
                     ValidAudience = Configuration["Authentication:Jwt:Audience"],
                     ValidIssuer = Configuration["Authentication:Jwt:Issuer"],
-                    RequireExpirationTime = true,
                     IssuerSigningKey = new SymmetricSecurityKey(
                         Encoding.UTF8.GetBytes(Configuration["Authentication:Jwt:Key"])),
-                    ValidateIssuerSigningKey = true
+                    ValidateIssuerSigningKey = true,
+                    ClockSkew = TimeSpan.Zero
                 };
             });
 
