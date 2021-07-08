@@ -52,7 +52,7 @@ namespace FTask.AuthServices.Helpers
                 issuer: _jwtSettings.GetSection("Issuer").Value,
                 audience: _jwtSettings.GetSection("Audience").Value,
                 claims: claims,
-                expires: DateTime.Now.AddDays(Convert.ToDouble(_jwtSettings.GetSection("expiryInDays").Value)),
+                expires: DateTime.Now.AddMonths(Convert.ToInt32(_jwtSettings.GetSection("expireInMonths").Value)),
                 signingCredentials: signingCredentials);
 
             return tokenOptions;
