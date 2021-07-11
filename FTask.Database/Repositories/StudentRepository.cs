@@ -56,7 +56,7 @@ namespace FTask.Database.Repositories
         public Student GetStudentByStudentEmail(string email)
         {
             return FindByCondition(student
-            => student.StudentEmail.Equals(email)).FirstOrDefault();
+            => student.StudentEmail.ToLower().Equals(email.ToLower())).FirstOrDefault();
         }
     }
 }
