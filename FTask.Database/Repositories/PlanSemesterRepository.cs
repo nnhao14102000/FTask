@@ -2,6 +2,7 @@
 using FTask.Database.Repositories.IRepository;
 using FTask.Shared.Helpers;
 using FTask.Shared.Parameters;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
 namespace FTask.Database.Repositories
@@ -15,7 +16,17 @@ namespace FTask.Database.Repositories
         }
         public PlanSemester GetPlanSemesterByPlanSemesterId(int id)
         {
-            return FindByCondition(ps => ps.PlanSemesterId == id).FirstOrDefault();
+            var planSemester = FindByCondition(ps => ps.PlanSemesterId == id)
+                                    .FirstOrDefault();
+
+            context.Entry(planSemester)
+                .Collection(ps => ps.PlanSubjects)
+                .Query()
+                .OrderBy(ps => ps.PlanSubjectId)
+                .Include(planSubject => planSubject.Subject)
+                .Load();
+
+            return planSemester;
         }
 
         public PagedList<PlanSemester> GetPlanSemesters(PlanSemesterParameters planSemesterParameters)

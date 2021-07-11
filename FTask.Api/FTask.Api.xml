@@ -743,6 +743,51 @@
             Is complete plan in semester, not null 
             </summary>
         </member>
+        <member name="T:FTask.Api.ViewModels.PlanSemesterViewModels.PlanSubjectInPlanSemesterReadViewModel">
+            <summary>
+            Plan Subjects in Plan Semester view model
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.PlanSemesterViewModels.PlanSubjectInPlanSemesterReadViewModel.PlanSubjectId">
+            <summary>
+            Plan subject id
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.PlanSemesterViewModels.PlanSubjectInPlanSemesterReadViewModel.Priority">
+            <summary>
+            Plan subject priority
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.PlanSemesterViewModels.PlanSubjectInPlanSemesterReadViewModel.Progress">
+            <summary>
+            Plan subject progress
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.PlanSemesterViewModels.PlanSubjectInPlanSemesterReadViewModel.CreateDate">
+            <summary>
+            Date plan is created
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.PlanSemesterViewModels.PlanSubjectInPlanSemesterReadViewModel.IsComplete">
+            <summary>
+            Is plan complete
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.PlanSemesterViewModels.PlanSubjectInPlanSemesterReadViewModel.PlanSemesterId">
+            <summary>
+            Plan semester id this plan belong to
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.PlanSemesterViewModels.PlanSubjectInPlanSemesterReadViewModel.SubjectId">
+            <summary>
+            Subject id this plan belong to
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.PlanSemesterViewModels.PlanSubjectInPlanSemesterReadViewModel.Subject">
+            <summary>
+            Subject in Plan Subject
+            </summary>
+        </member>
         <member name="T:FTask.Api.ViewModels.PlanSemesterViewModels.PSReadDetailViewModel">
             <summary>
             Plan semester read detail view models
@@ -776,6 +821,11 @@
         <member name="P:FTask.Api.ViewModels.PlanSemesterViewModels.PSReadDetailViewModel.IsComplete">
             <summary>
             Is plan completed
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.PlanSemesterViewModels.PSReadDetailViewModel.PlanSubjects">
+            <summary>
+            List of Plan Subject of Plan Semester
             </summary>
         </member>
         <member name="T:FTask.Api.ViewModels.PlanSubjectViewModels.PlanSubjectAddViewModel">
