@@ -1023,6 +1023,11 @@
             Topic id this plan belong to
             </summary>
         </member>
+        <member name="P:FTask.Api.ViewModels.PlanTopicViewModels.PlanTopicReadDetailViewModel.Topic">
+            <summary>
+            Topic
+            </summary>
+        </member>
         <member name="P:FTask.Api.ViewModels.PlanTopicViewModels.PlanTopicReadDetailViewModel.PlanSubjectId">
             <summary>
             Plan subject id this plan belong to

@@ -21,6 +21,7 @@ namespace FTask.Database.Repositories
                 .Collection(x => x.PlanTopics)
                 .Query()
                 .OrderBy(x => x.PlanTopicId)
+                .Include(x => x.Topic)
                 .Include(x => x.Tasks)
                 .Load();
             return planSubject;
