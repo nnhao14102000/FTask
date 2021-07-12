@@ -1,13 +1,14 @@
 ﻿using FTask.Api.ViewModels.PlanTopicViewModels;
+using FTask.Api.ViewModels.SubjectViewModels;
 using System;
 using System.Collections.Generic;
 
-namespace FTask.Api.ViewModels.PlanSubjectViewModels
+namespace FTask.Api.ViewModels.PlanSemesterViewModels
 {
     /// <summary>
-    /// Plan subject read detail view model
+    /// Plan Subjects in Plan Semester view model
     /// </summary>
-    public class PlanSubjectReadDetailViewModel
+    public class PlanSubjectInPlanSemesterReadViewModel
     {
         /// <summary>
         /// Plan subject id
@@ -25,27 +26,32 @@ namespace FTask.Api.ViewModels.PlanSubjectViewModels
         public int Progress { get; set; }
 
         /// <summary>
-        /// Plan subject date created
+        /// Date plan is created
         /// </summary>
         public DateTime CreateDate { get; set; }
 
         /// <summary>
-        /// Is plan subject complete
+        /// Is plan complete
         /// </summary>
         public bool IsComplete { get; set; }
 
         /// <summary>
-        /// Plan semester id of that plan subject belong to
+        /// Plan semester id this plan belong to
         /// </summary>
         public int PlanSemesterId { get; set; }
 
         /// <summary>
-        /// Subject id of subject that plan subject belong to
+        /// Subject id this plan belong to
         /// </summary>
         public string SubjectId { get; set; }
 
         /// <summary>
-        /// PlanTopics in PlanSubject
+        /// Subject in Plan Subject
+        /// </summary>
+        public SubjectReadViewModel Subject { get; set; }
+
+        /// <summary>
+        /// PlanTopics in PlanSubject of PlanSemester
         /// </summary>
         public ICollection<PlanTopicReadDetailViewModel> PlanTopics { get; set; }
     }

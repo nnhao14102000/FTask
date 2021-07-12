@@ -90,7 +90,6 @@ namespace FTask.AuthServices.Services
 
             if (result.Succeeded)
             {
-                // TODO: Send a confirmation Email
                 return new UserManagerResponse
                 {
                     Message = "User created successfully!",

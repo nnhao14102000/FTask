@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using FTask.Api.ViewModels.PlanTopicViewModels;
-using FTask.Api.ViewModels.TopicViewModels;
 using FTask.Database.Models;
 
 namespace FTask.Api.Profiles
@@ -20,10 +19,6 @@ namespace FTask.Api.Profiles
             CreateMap<PlanTopicAddViewModel, PlanTopic>();
             CreateMap<PlanTopicUpdateViewModel, PlanTopic>();
             CreateMap<PlanTopic, PlanTopicUpdateViewModel>();
-
-            // Config mapper for PlanTopics in Topic
-            CreateMap<PlanTopic, PlansInTopicReadViewModel>();
-
         }
     }
 }

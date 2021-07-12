@@ -31,7 +31,7 @@ namespace FTask.Api.ViewModels.PlanSemesterViewModels
         /// Date create plan
         /// </summary>
         public DateTime CreateDate { get; set; }
-        
+
         /// <summary>
         /// Is plan completed
         /// </summary>

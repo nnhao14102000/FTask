@@ -48,11 +48,16 @@ namespace FTask.AuthServices.Helpers
 
         private JwtSecurityToken GenerateTokenOptions(SigningCredentials signingCredentials, List<Claim> claims)
         {
+            var iss = _jwtSettings.GetSection("Issuer").Value;
+            var aud = _jwtSettings.GetSection("Audience").Value;
+            var timeExpireInStr = _jwtSettings.GetSection("ExpireInMonths").Value;
+            var timeExpire = Int32.Parse(timeExpireInStr);
+
             var tokenOptions = new JwtSecurityToken(
-                issuer: _jwtSettings.GetSection("Issuer").Value,
-                audience: _jwtSettings.GetSection("Audience").Value,
+                issuer: iss,
+                audience: aud,
                 claims: claims,
-                expires: DateTime.Now.AddMonths(Convert.ToInt32(_jwtSettings.GetSection("expireInMonths").Value)),
+                expires: DateTime.UtcNow.AddMonths(timeExpire),
                 signingCredentials: signingCredentials);
 
             return tokenOptions;

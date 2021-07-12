@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using FTask.Api.ViewModels.PlanSemesterViewModels;
 using FTask.Api.ViewModels.PlanSubjectViewModels;
 using FTask.Database.Models;
 
@@ -19,6 +20,8 @@ namespace FTask.Api.Profiles
             CreateMap<PlanSubjectAddViewModel, PlanSubject>();
             CreateMap<PlanSubjectUpdateViewModel, PlanSubject>();
             CreateMap<PlanSubject, PlanSubjectUpdateViewModel>();
+
+            CreateMap<PlanSubject, PlanSubjectInPlanSemesterReadViewModel>();
 
         }
     }

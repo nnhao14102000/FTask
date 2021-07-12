@@ -743,6 +743,56 @@
             Is complete plan in semester, not null 
             </summary>
         </member>
+        <member name="T:FTask.Api.ViewModels.PlanSemesterViewModels.PlanSubjectInPlanSemesterReadViewModel">
+            <summary>
+            Plan Subjects in Plan Semester view model
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.PlanSemesterViewModels.PlanSubjectInPlanSemesterReadViewModel.PlanSubjectId">
+            <summary>
+            Plan subject id
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.PlanSemesterViewModels.PlanSubjectInPlanSemesterReadViewModel.Priority">
+            <summary>
+            Plan subject priority
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.PlanSemesterViewModels.PlanSubjectInPlanSemesterReadViewModel.Progress">
+            <summary>
+            Plan subject progress
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.PlanSemesterViewModels.PlanSubjectInPlanSemesterReadViewModel.CreateDate">
+            <summary>
+            Date plan is created
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.PlanSemesterViewModels.PlanSubjectInPlanSemesterReadViewModel.IsComplete">
+            <summary>
+            Is plan complete
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.PlanSemesterViewModels.PlanSubjectInPlanSemesterReadViewModel.PlanSemesterId">
+            <summary>
+            Plan semester id this plan belong to
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.PlanSemesterViewModels.PlanSubjectInPlanSemesterReadViewModel.SubjectId">
+            <summary>
+            Subject id this plan belong to
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.PlanSemesterViewModels.PlanSubjectInPlanSemesterReadViewModel.Subject">
+            <summary>
+            Subject in Plan Subject
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.PlanSemesterViewModels.PlanSubjectInPlanSemesterReadViewModel.PlanTopics">
+            <summary>
+            PlanTopics in PlanSubject of PlanSemester
+            </summary>
+        </member>
         <member name="T:FTask.Api.ViewModels.PlanSemesterViewModels.PSReadDetailViewModel">
             <summary>
             Plan semester read detail view models
@@ -776,6 +826,11 @@
         <member name="P:FTask.Api.ViewModels.PlanSemesterViewModels.PSReadDetailViewModel.IsComplete">
             <summary>
             Is plan completed
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.PlanSemesterViewModels.PSReadDetailViewModel.PlanSubjects">
+            <summary>
+            List of Plan Subject of Plan Semester
             </summary>
         </member>
         <member name="T:FTask.Api.ViewModels.PlanSubjectViewModels.PlanSubjectAddViewModel">
@@ -851,6 +906,11 @@
         <member name="P:FTask.Api.ViewModels.PlanSubjectViewModels.PlanSubjectReadDetailViewModel.SubjectId">
             <summary>
             Subject id of subject that plan subject belong to
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.PlanSubjectViewModels.PlanSubjectReadDetailViewModel.PlanTopics">
+            <summary>
+            PlanTopics in PlanSubject
             </summary>
         </member>
         <member name="T:FTask.Api.ViewModels.PlanSubjectViewModels.PlanSubjectReadViewModel">
@@ -966,6 +1026,11 @@
         <member name="P:FTask.Api.ViewModels.PlanTopicViewModels.PlanTopicReadDetailViewModel.PlanSubjectId">
             <summary>
             Plan subject id this plan belong to
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.PlanTopicViewModels.PlanTopicReadDetailViewModel.Tasks">
+            <summary>
+            Tasks  in PlanTopic
             </summary>
         </member>
         <member name="T:FTask.Api.ViewModels.PlanTopicViewModels.PlanTopicReadViewModel">
@@ -1598,91 +1663,6 @@
             Is task complete
             </summary>
         </member>
-        <member name="T:FTask.Api.ViewModels.TopicViewModels.PlansInTopicReadViewModel">
-            <summary>
-            Plan Topics in Topic read view model
-            </summary>
-        </member>
-        <member name="P:FTask.Api.ViewModels.TopicViewModels.PlansInTopicReadViewModel.PlanTopicId">
-            <summary>
-            Plan topic id 
-            </summary>
-        </member>
-        <member name="P:FTask.Api.ViewModels.TopicViewModels.PlansInTopicReadViewModel.Progress">
-            <summary>
-            Plan progress
-            </summary>
-        </member>
-        <member name="P:FTask.Api.ViewModels.TopicViewModels.PlansInTopicReadViewModel.IsComplete">
-            <summary>
-            Is plan commlete
-            </summary>
-        </member>
-        <member name="P:FTask.Api.ViewModels.TopicViewModels.PlansInTopicReadViewModel.PlanSubjectId">
-            <summary>
-            Plan subject id this plan belong to
-            </summary>
-        </member>
-        <member name="P:FTask.Api.ViewModels.TopicViewModels.PlansInTopicReadViewModel.Tasks">
-            <summary>
-            Tasks in topic
-            </summary>
-        </member>
-        <member name="T:FTask.Api.ViewModels.TopicViewModels.TasksInTopic">
-            <summary>
-            Task in topic
-            </summary>
-        </member>
-        <member name="P:FTask.Api.ViewModels.TopicViewModels.TasksInTopic.TaskId">
-            <summary>
-            Task Id
-            </summary>
-        </member>
-        <member name="P:FTask.Api.ViewModels.TopicViewModels.TasksInTopic.TaskDescription">
-            <summary>
-            Task Description
-            </summary>
-        </member>
-        <member name="P:FTask.Api.ViewModels.TopicViewModels.TasksInTopic.CreateDate">
-            <summary>
-            Date task created
-            </summary>
-        </member>
-        <member name="P:FTask.Api.ViewModels.TopicViewModels.TasksInTopic.EstimateTime">
-            <summary>
-            Estimate complete time
-            </summary>
-        </member>
-        <member name="P:FTask.Api.ViewModels.TopicViewModels.TasksInTopic.EffortTime">
-            <summary>
-            Real time completet task
-            </summary>
-        </member>
-        <member name="P:FTask.Api.ViewModels.TopicViewModels.TasksInTopic.DueDate">
-            <summary>
-            Deadline
-            </summary>
-        </member>
-        <member name="P:FTask.Api.ViewModels.TopicViewModels.TasksInTopic.Priority">
-            <summary>
-            Priority of task
-            </summary>
-        </member>
-        <member name="P:FTask.Api.ViewModels.TopicViewModels.TasksInTopic.IsComplete">
-            <summary>
-            Is task complete
-            </summary>
-        </member>
-        <member name="P:FTask.Api.ViewModels.TopicViewModels.TasksInTopic.PlanTopicId">
-            <summary>
-            Plan topic id this task belong to
-            </summary>
-        </member>
-        <member name="P:FTask.Api.ViewModels.TopicViewModels.TasksInTopic.TaskCategoryId">
-            <summary>
-            Task category id this task belong to
-            </summary>
-        </member>
         <member name="T:FTask.Api.ViewModels.TopicViewModels.TopicAddViewModel">
             <summary>
             Topic add view model
@@ -1726,11 +1706,6 @@
         <member name="P:FTask.Api.ViewModels.TopicViewModels.TopicReadDetailViewModel.SubjectId">
             <summary>
             Subject Id
-            </summary>
-        </member>
-        <member name="P:FTask.Api.ViewModels.TopicViewModels.TopicReadDetailViewModel.PlanTopics">
-            <summary>
-            Plan topics in this topic
             </summary>
         </member>
         <member name="T:FTask.Api.ViewModels.TopicViewModels.TopicReadViewModel">

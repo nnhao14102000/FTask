@@ -2,6 +2,7 @@
 using FTask.Database.Repositories.IRepository;
 using FTask.Shared.Helpers;
 using FTask.Shared.Parameters;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
 namespace FTask.Database.Repositories
@@ -15,15 +16,39 @@ namespace FTask.Database.Repositories
         }
         public PlanSemester GetPlanSemesterByPlanSemesterId(int id)
         {
-            return FindByCondition(ps => ps.PlanSemesterId == id).FirstOrDefault();
+            var planSemester = FindByCondition(ps => ps.PlanSemesterId == id)
+                                    .FirstOrDefault();
+
+            context.Entry(planSemester)
+                .Collection(ps => ps.PlanSubjects)
+                .Query()
+                .OrderBy(ps => ps.PlanSubjectId)
+                .Include(planSubject => planSubject.Subject)
+                .Include(planSubject => planSubject.PlanTopics)
+                    .ThenInclude(planTopic => planTopic.Tasks)
+                .Load();
+
+            return planSemester;
         }
 
         public PagedList<PlanSemester> GetPlanSemesters(PlanSemesterParameters planSemesterParameters)
         {
             var planSemesters = FindAll();
+            GetByStudentId(ref planSemesters, planSemesterParameters.StudentId);
             SearchByName(ref planSemesters, planSemesterParameters.PlanSemesterName);
             return PagedList<PlanSemester>
                 .ToPagedList(planSemesters, planSemesterParameters.PageNumber, planSemesterParameters.PageSize);
+        }
+
+        private void GetByStudentId(ref IQueryable<PlanSemester> planSemesters, string studentId)
+        {
+            if (!planSemesters.Any() || string.IsNullOrWhiteSpace(studentId))
+            {
+                return;
+            }
+            planSemesters = planSemesters
+                .Where(p => p.StudentId.ToLower()
+                .Contains(studentId.Trim().ToLower()));
         }
 
         private void SearchByName(ref IQueryable<PlanSemester> planSemesters, string planSemesterName)

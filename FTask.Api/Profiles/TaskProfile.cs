@@ -19,9 +19,6 @@ namespace FTask.Api.Profiles
             CreateMap<TaskAddViewModel, Task>();
             CreateMap<TaskUpdateViewModel, Task>();
             CreateMap<Task, TaskUpdateViewModel>();
-
-            // Config for Task in PlanTopic of Topic
-            CreateMap<Task, TasksInTopic>();
         }
     }
 }

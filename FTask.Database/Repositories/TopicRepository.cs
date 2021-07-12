@@ -19,6 +19,7 @@ namespace FTask.Database.Repositories
         {
             var topics = FindAll();
             SearchByName(ref topics, topicParameters.TopicName);
+            SearchBySubjectId(ref topics, topicParameters.SubjectId);
             return PagedList<Topic>.ToPagedList(topics.OrderBy(t => t.TopicId)
                 , topicParameters.PageNumber, topicParameters.PageSize);
         }
@@ -34,18 +35,20 @@ namespace FTask.Database.Repositories
                 .Contains(topicName.Trim().ToLower()));
         }
 
+        private void SearchBySubjectId(ref IQueryable<Topic> topics, string subjectId)
+        {
+            if (!topics.Any() || string.IsNullOrWhiteSpace(subjectId))
+            {
+                return;
+            }
+            topics = topics
+                .Where(t => t.SubjectId.ToLower()
+                .Contains(subjectId.Trim().ToLower()));
+        }
+
         public Topic GetTopicByTopicId(int id)
         {
-            var topic = FindByCondition(topic => topic.TopicId.Equals(id)).FirstOrDefault();
-
-            context.Entry(topic)
-                .Collection(t => t.PlanTopics)
-                .Query()
-                .OrderBy(pt => pt.PlanTopicId)
-                .Include(planTopic => planTopic.Tasks)
-                .Load();
-
-            return topic;
+            return FindByCondition(topic => topic.TopicId.Equals(id)).FirstOrDefault();
         }
     }
 }

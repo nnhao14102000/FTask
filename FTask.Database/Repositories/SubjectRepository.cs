@@ -41,6 +41,7 @@ namespace FTask.Database.Repositories
 
             FilterBySubjectGroup(ref subjects, subjectParameters.SubjectGroupId);
             SearchByName(ref subjects, subjectParameters.SubjectName);
+            SearchById(ref subjects, subjectParameters.SubjectId);
 
             return PagedList<Subject>
                 .ToPagedList(subjects.OrderBy(s => s.SubjectName)
@@ -67,6 +68,16 @@ namespace FTask.Database.Repositories
             subjects = subjects
                 .Where(s => s.SubjectName.ToLower()
                 .Contains(subjectName.Trim().ToLower()));
+        }
+        private void SearchById(ref IQueryable<Subject> subjects, string subjectId)
+        {
+            if (!subjects.Any() || string.IsNullOrWhiteSpace(subjectId))
+            {
+                return;
+            }
+            subjects = subjects
+                .Where(s => s.SubjectId.ToLower()
+                .Contains(subjectId.Trim().ToLower()));
         }
     }
 }

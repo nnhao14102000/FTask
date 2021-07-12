@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace FTask.Api.ViewModels.PlanSemesterViewModels
 {
@@ -36,5 +37,10 @@ namespace FTask.Api.ViewModels.PlanSemesterViewModels
         /// Is plan completed
         /// </summary>
         public bool IsComplete { get; set; }
+
+        /// <summary>
+        /// List of Plan Subject of Plan Semester
+        /// </summary>
+        public ICollection<PlanSubjectInPlanSemesterReadViewModel> PlanSubjects { get; set; }
     }
 }
