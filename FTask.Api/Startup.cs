@@ -60,7 +60,7 @@ namespace FTask.Api
                 options.UseSqlServer(Configuration.GetConnectionString("AuthConnection"));
                 options.EnableSensitiveDataLogging(true);
             });
-            
+
             // Config for Identity==============================================================================================================================
             services.AddIdentity<IdentityUser, IdentityRole>(options =>
             {
@@ -164,12 +164,11 @@ namespace FTask.Api
         /// <param name="loggerFactory"></param>
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
-            if (env.IsDevelopment() || env.IsProduction())
+            if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "FTask.Api v1"));
-
             }
 
             //Config for create log file...
