@@ -20,8 +20,21 @@ namespace FTask.Database.Repositories
 
         public PagedList<Task> GetTasks(TaskParameters taskParameters)
         {
+            var tasks = FindAll();
+            GetByPlanTopicId(ref tasks, taskParameters.PlanTopicId);
+
             return PagedList<Task>
-                .ToPagedList(FindAll(), taskParameters.PageNumber, taskParameters.PageSize);
+                .ToPagedList(tasks, taskParameters.PageNumber, taskParameters.PageSize);
+        }
+
+        private void GetByPlanTopicId(ref IQueryable<Task> tasks, int planTopicId)
+        {
+            if (!tasks.Any() || planTopicId == 0)
+            {
+                return;
+            }
+            tasks = tasks
+                .Where(x => x.PlanTopicId == planTopicId);
         }
     }
 }
