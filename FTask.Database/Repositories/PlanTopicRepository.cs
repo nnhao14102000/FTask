@@ -19,6 +19,11 @@ namespace FTask.Database.Repositories
             var planTopic = FindByCondition(x => x.PlanTopicId == id).FirstOrDefault();
 
             context.Entry(planTopic)
+                .Reference(x => x.Topic)
+                .Query()
+                .Load();
+                
+            context.Entry(planTopic)
                 .Collection(x => x.Tasks)
                 .Query()
                 .OrderBy(x => x.TaskId)
