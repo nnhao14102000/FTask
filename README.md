@@ -23,6 +23,7 @@
 
 ### Or 
 [Docker](https://docs.docker.com/get-docker/)
+
 [Postman](https://www.postman.com/downloads/)
 
 ## Run in local
@@ -54,3 +55,6 @@ Run this command
 - Test API with PostMan
 
 ![Test ](Document\Images\TestApiWithPostMan.png "Test with Postman")
+
+
+#### ©  *Nguyen Nhut Hao 2021/07/12*
