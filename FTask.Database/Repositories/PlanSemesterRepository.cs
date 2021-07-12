@@ -25,6 +25,8 @@ namespace FTask.Database.Repositories
                 .Query()
                 .OrderBy(ps => ps.PlanSubjectId)
                 .Include(planSubject => planSubject.Subject)
+                .Include(planSubject => planSubject.PlanTopics)
+                    .ThenInclude(planTopic => planTopic.Tasks)
                 .Load();
 
             return planSemester;

@@ -48,16 +48,7 @@ namespace FTask.Database.Repositories
 
         public Topic GetTopicByTopicId(int id)
         {
-            var topic = FindByCondition(topic => topic.TopicId.Equals(id)).FirstOrDefault();
-
-            context.Entry(topic)
-                .Collection(t => t.PlanTopics)
-                .Query()
-                .OrderBy(pt => pt.PlanTopicId)
-                .Include(planTopic => planTopic.Tasks)
-                .Load();
-
-            return topic;
+            return FindByCondition(topic => topic.TopicId.Equals(id)).FirstOrDefault();
         }
     }
 }

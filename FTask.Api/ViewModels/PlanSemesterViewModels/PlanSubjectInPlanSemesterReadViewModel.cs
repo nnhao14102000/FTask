@@ -1,5 +1,7 @@
-﻿using FTask.Api.ViewModels.SubjectViewModels;
+﻿using FTask.Api.ViewModels.PlanTopicViewModels;
+using FTask.Api.ViewModels.SubjectViewModels;
 using System;
+using System.Collections.Generic;
 
 namespace FTask.Api.ViewModels.PlanSemesterViewModels
 {
@@ -47,5 +49,10 @@ namespace FTask.Api.ViewModels.PlanSemesterViewModels
         /// Subject in Plan Subject
         /// </summary>
         public SubjectReadViewModel Subject { get; set; }
+
+        /// <summary>
+        /// PlanTopics in PlanSubject of PlanSemester
+        /// </summary>
+        public ICollection<PlanTopicReadDetailViewModel> PlanTopics { get; set; }
     }
 }

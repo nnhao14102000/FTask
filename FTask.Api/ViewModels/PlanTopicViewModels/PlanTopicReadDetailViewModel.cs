@@ -1,4 +1,7 @@
-﻿namespace FTask.Api.ViewModels.PlanTopicViewModels
+﻿using FTask.Api.ViewModels.TaskViewModels;
+using System.Collections.Generic;
+
+namespace FTask.Api.ViewModels.PlanTopicViewModels
 {
     /// <summary>
     /// Plan topic read detail view model
@@ -29,5 +32,10 @@
         /// Plan subject id this plan belong to
         /// </summary>
         public int PlanSubjectId { get; set; }
+
+        /// <summary>
+        /// Tasks  in PlanTopic
+        /// </summary>
+        public ICollection<TaskReadViewModel> Tasks { get; set; }
     }
 }

@@ -26,10 +26,5 @@ namespace FTask.Api.ViewModels.TopicViewModels
         /// Subject Id
         /// </summary>
         public string SubjectId { get; set; }
-
-        /// <summary>
-        /// Plan topics in this topic
-        /// </summary>
-        public ICollection<PlansInTopicReadViewModel> PlanTopics { get; set; }
     }
 }
