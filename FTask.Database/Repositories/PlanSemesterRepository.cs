@@ -3,7 +3,6 @@ using FTask.Database.Repositories.IRepository;
 using FTask.Shared.Helpers;
 using FTask.Shared.Parameters;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Linq;
 
 namespace FTask.Database.Repositories

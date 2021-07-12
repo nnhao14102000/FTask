@@ -2,6 +2,7 @@
 using FTask.Database.Repositories.IRepository;
 using FTask.Shared.Helpers;
 using FTask.Shared.Parameters;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
 namespace FTask.Database.Repositories
@@ -15,7 +16,14 @@ namespace FTask.Database.Repositories
         }
         public PlanSubject GetPlanSubjectByPlanSubjectId(int id)
         {
-            return FindByCondition(x => x.PlanSubjectId == id).FirstOrDefault();
+            var planSubject = FindByCondition(x => x.PlanSubjectId == id).FirstOrDefault();
+            context.Entry(planSubject)
+                .Collection(x => x.PlanTopics)
+                .Query()
+                .OrderBy(x => x.PlanTopicId)
+                .Include(x => x.Tasks)
+                .Load();
+            return planSubject;
         }
 
         public PagedList<PlanSubject> GetPlanSubjects(PlanSubjectParameters planSubjectParameters)
@@ -26,8 +34,10 @@ namespace FTask.Database.Repositories
                 .ToPagedList(planSubjects, planSubjectParameters.PageNumber, planSubjectParameters.PageSize);
         }
 
-        private void GetByPlanSemesterId(ref IQueryable<PlanSubject> planSubjects, int planSemesterId){
-            if(!planSubjects.Any() || planSemesterId == 0){
+        private void GetByPlanSemesterId(ref IQueryable<PlanSubject> planSubjects, int planSemesterId)
+        {
+            if (!planSubjects.Any() || planSemesterId == 0)
+            {
                 return;
             }
             planSubjects = planSubjects

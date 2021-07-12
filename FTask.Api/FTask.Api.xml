@@ -908,6 +908,11 @@
             Subject id of subject that plan subject belong to
             </summary>
         </member>
+        <member name="P:FTask.Api.ViewModels.PlanSubjectViewModels.PlanSubjectReadDetailViewModel.PlanTopics">
+            <summary>
+            PlanTopics in PlanSubject
+            </summary>
+        </member>
         <member name="T:FTask.Api.ViewModels.PlanSubjectViewModels.PlanSubjectReadViewModel">
             <summary>
             Plan subject read view model

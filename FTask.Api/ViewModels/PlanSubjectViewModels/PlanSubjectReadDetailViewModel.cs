@@ -1,4 +1,6 @@
-﻿using System;
+﻿using FTask.Api.ViewModels.PlanTopicViewModels;
+using System;
+using System.Collections.Generic;
 
 namespace FTask.Api.ViewModels.PlanSubjectViewModels
 {
@@ -41,5 +43,10 @@ namespace FTask.Api.ViewModels.PlanSubjectViewModels
         /// Subject id of subject that plan subject belong to
         /// </summary>
         public string SubjectId { get; set; }
+
+        /// <summary>
+        /// PlanTopics in PlanSubject
+        /// </summary>
+        public ICollection<PlanTopicReadDetailViewModel> PlanTopics { get; set; }
     }
 }
