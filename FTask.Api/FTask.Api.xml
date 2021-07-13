@@ -1653,6 +1653,11 @@
             Estimate complete time
             </summary>
         </member>
+        <member name="P:FTask.Api.ViewModels.TaskViewModels.TaskUpdateViewModel.EffortTime">
+            <summary>
+            EffortTime complete time
+            </summary>
+        </member>
         <member name="P:FTask.Api.ViewModels.TaskViewModels.TaskUpdateViewModel.DueDate">
             <summary>
             Deadline
