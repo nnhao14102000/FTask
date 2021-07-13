@@ -1,6 +1,6 @@
 [![FTask of branch hao](https://github.com/nnhao14102000/FTask/actions/workflows/hao-ci-cd.yaml/badge.svg)](https://github.com/nnhao14102000/FTask/actions/workflows/hao-ci-cd.yaml)
 
-# FTask
+# FTask - Task Management
 
 ## Technology and tools
 
@@ -22,9 +22,8 @@
 2. [Microsoft SQL Server](https://www.microsoft.com/en-us/sql-server/sql-server-downloads)
 
 ### Or 
-[Docker](https://docs.docker.com/get-docker/)
-
-[Postman](https://www.postman.com/downloads/)
+1. [Docker](https://docs.docker.com/get-docker/)
+2. [Postman](https://www.postman.com/downloads/)
 
 ## Run in local
 You just run project, ... Database will be automatic create 
