@@ -56,5 +56,10 @@ namespace FTask.Api.ViewModels.TaskViewModels
         /// Task category id this task belong to
         /// </summary>
         public int TaskCategoryId { get; set; }
+
+        /// <summary>
+        /// Task category
+        /// </summary>
+        public TaskCategoryViewModels.TaskCategoryReadDetailViewModel TaskCategory {get;set;}
     }
 }

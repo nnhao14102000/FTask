@@ -1638,6 +1638,11 @@
             Task category id this task belong to
             </summary>
         </member>
+        <member name="P:FTask.Api.ViewModels.TaskViewModels.TaskReadViewModel.TaskCategory">
+            <summary>
+            Task category
+            </summary>
+        </member>
         <member name="T:FTask.Api.ViewModels.TaskViewModels.TaskUpdateViewModel">
             <summary>
             Task Update view model

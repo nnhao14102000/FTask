@@ -2,6 +2,7 @@
 using FTask.Database.Repositories.IRepository;
 using FTask.Shared.Helpers;
 using FTask.Shared.Parameters;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
 namespace FTask.Database.Repositories
@@ -15,14 +16,26 @@ namespace FTask.Database.Repositories
         }
         public Task GetTaskByTaskId(int id)
         {
-            return FindByCondition(x => x.TaskId == id).FirstOrDefault();
+            var task = FindByCondition(x => x.TaskId == id).FirstOrDefault();
+            context.Entry(task)
+                .Reference(x => x.TaskCategory)
+                .Query()
+                .Load();
+
+            return task;
         }
 
         public PagedList<Task> GetTasks(TaskParameters taskParameters)
         {
             var tasks = FindAll();
             GetByPlanTopicId(ref tasks, taskParameters.PlanTopicId);
-
+            foreach (var item in tasks)
+            {
+                context.Entry(item)
+                    .Reference(x => x.TaskCategory)
+                    .Query()
+                    .Load();
+            }
             return PagedList<Task>
                 .ToPagedList(tasks, taskParameters.PageNumber, taskParameters.PageSize);
         }
