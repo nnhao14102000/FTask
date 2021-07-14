@@ -55,5 +55,21 @@ Run this command
 
 ![Test ](https://github.com/nnhao14102000/FTask/blob/hao/Document/Images/TestApiWithPostMan.png?raw=true "Test with Postman")
 
+## Database 
+
+1. FTask Database 
+
+![Diagram ](https://github.com/nnhao14102000/FTask/blob/hao/Document/Images/FTaskDBDiagram.png?raw=true "FTask Database Diagram")
+
+2. FTask Authentication Database (Support by Microsoft Identity)
+
+![Diagram ](https://github.com/nnhao14102000/FTask/blob/hao/Document/Images/FTaskAuthDBDiagram.png?raw=true "FTask Auth Database Diagram")
+
+### Note
+
+1. After all requirement satisfy, just run as instruction, database will automatic create
+
+2. Or If you want have a Database with full data, We support a script of FTask database in FTask.Database project
+
 
 #### ©  *Nguyen Nhut Hao 2021/07/12*
