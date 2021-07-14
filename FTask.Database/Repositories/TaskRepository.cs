@@ -29,6 +29,7 @@ namespace FTask.Database.Repositories
         {
             var tasks = FindAll();
             GetByPlanTopicId(ref tasks, taskParameters.PlanTopicId);
+            Sort(ref tasks);
             foreach (var item in tasks)
             {
                 context.Entry(item)
@@ -48,6 +49,16 @@ namespace FTask.Database.Repositories
             }
             tasks = tasks
                 .Where(x => x.PlanTopicId == planTopicId);
+        }
+
+        private void Sort(ref IQueryable<Task> tasks)
+        {
+            if (!tasks.Any())
+            {
+                return;
+            }
+            tasks = tasks
+                .OrderByDescending(x => x.CreateDate);
         }
     }
 }
