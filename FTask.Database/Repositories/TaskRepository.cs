@@ -30,21 +30,11 @@ namespace FTask.Database.Repositories
         public PagedList<Task> GetTasks(TaskParameters taskParameters)
         {
             var tasks = FindAll();
-            var options = taskParameters.SortOptions;
-
+            
             SearchByValue(ref tasks, taskParameters.TaskSearchValue);
-            GetByPlanTopicId(ref tasks, taskParameters.PlanTopicId);
-
-            switch (options)
-            {
-                case Types.HighestPriority: 
-                    SortHigherPriority(ref tasks);
-                    break;
-                default: 
-                    SortLatestTask(ref tasks);
-                    break;
-            }
-
+            GetByPlanTopicId(ref tasks, taskParameters.PlanTopicId);            
+            Sort(ref tasks, taskParameters.SortOptions);
+            
             foreach (var item in tasks)
             {
                 context.Entry(item)
@@ -54,6 +44,19 @@ namespace FTask.Database.Repositories
             }
             return PagedList<Task>
                 .ToPagedList(tasks, taskParameters.PageNumber, taskParameters.PageSize);
+        }
+
+        private void Sort(ref IQueryable<Task> tasks, Types? sortOptions)
+        {
+            switch (sortOptions)
+            {
+                case Types.HighestPriority: 
+                    SortHigherPriority(ref tasks);
+                    break;
+                default: 
+                    SortLatestTask(ref tasks);
+                    break;
+            }
         }
 
         private void SortHigherPriority(ref IQueryable<Task> tasks)
