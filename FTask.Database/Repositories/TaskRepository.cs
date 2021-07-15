@@ -3,7 +3,6 @@ using FTask.Database.Repositories.IRepository;
 using FTask.Shared.Helpers;
 using FTask.Shared.Parameters;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Linq;
 using static FTask.Shared.Parameters.TaskParameters;
 
@@ -34,7 +33,7 @@ namespace FTask.Database.Repositories
             SearchByValue(ref tasks, taskParameters.TaskSearchValue);
             GetByPlanTopicId(ref tasks, taskParameters.PlanTopicId);            
             Sort(ref tasks, taskParameters.SortOptions);
-            
+
             foreach (var item in tasks)
             {
                 context.Entry(item)
