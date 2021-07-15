@@ -16,7 +16,7 @@ namespace FTask.Api.Controllers
     /// Topic controller
     /// </summary>
     [ApiController]
-    [Route("api/v{version:apiVersion}/topic")]
+    [Route("api/v{version:apiVersion}/topics")]
     [ApiVersion("1.0")]
     [Authorize(Roles = UserRoles.Admin + "," + UserRoles.User)]
     public class TopicController : Controller
