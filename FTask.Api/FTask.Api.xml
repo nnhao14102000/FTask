@@ -1894,14 +1894,14 @@
         </member>
         <member name="M:FTaskAPI.Controllers.StudentController.GetAllStudents(FTask.Shared.Parameters.StudentParameters)">
             <summary>
-            API version 1 | Roles: admin | Get all students | Support search by name, filter by major Id 
+            API version 1.0 | Roles: admin | Get all students | Support search by name, filter by major Id 
             </summary>
             <param name="studentParameters"></param>
             <returns></returns>
         </member>
         <member name="M:FTaskAPI.Controllers.StudentController.GetStudentByStudentId(System.String)">
             <summary>
-            API version 1 | Roles: admin, user | Get student by student Id 
+            API version 1.0 | Roles: admin, user | Get student by student Id 
             </summary>
             <param name="id"></param>
             <returns></returns>
@@ -1915,14 +1915,14 @@
         </member>
         <member name="M:FTaskAPI.Controllers.StudentController.AddStudent(FTask.Api.ViewModels.StudentViewModels.StudentAddViewModel)">
             <summary>
-            API version 1 | Roles: admin | Add a new student 
+            API version 1.0 | Roles: admin | Add a new student 
             </summary>
             <param name="student"></param>
             <returns></returns>
         </member>
         <member name="M:FTaskAPI.Controllers.StudentController.UpdateStudent(System.String,FTask.Api.ViewModels.StudentViewModels.StudentUpdateViewModel)">
             <summary>
-            API version 1 | Roles: admin, user | Update student 
+            API version 1.0 | Roles: admin, user | Update student 
             </summary>
             <param name="id"></param>
             <param name="student"></param>
@@ -1930,7 +1930,7 @@
         </member>
         <member name="M:FTaskAPI.Controllers.StudentController.PartialStudentUpdate(System.String,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{FTask.Api.ViewModels.StudentViewModels.StudentUpdateViewModel})">
             <summary>
-            API version 1 | Roles: admin, user | Update student | Support update a single attribute 
+            API version 1.0 | Roles: admin, user | Update student | Support update a single attribute 
             </summary>
             <param name="id"></param>
             <param name="patchDoc"></param>
@@ -1938,7 +1938,7 @@
         </member>
         <member name="M:FTaskAPI.Controllers.StudentController.RemoveStudent(System.String)">
             <summary>
-            API version 1 | Roles: admin | Remove student 
+            API version 1.0 | Roles: admin | Remove student 
             </summary>
             <param name="id"></param>
             <returns></returns>

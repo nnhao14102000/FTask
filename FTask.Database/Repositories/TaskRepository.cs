@@ -5,6 +5,7 @@ using FTask.Shared.Parameters;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
+using static FTask.Shared.Parameters.TaskParameters;
 
 namespace FTask.Database.Repositories
 {
@@ -29,10 +30,21 @@ namespace FTask.Database.Repositories
         public PagedList<Task> GetTasks(TaskParameters taskParameters)
         {
             var tasks = FindAll();
+            var options = taskParameters.SortOptions;
+
             SearchByValue(ref tasks, taskParameters.TaskSearchValue);
             GetByPlanTopicId(ref tasks, taskParameters.PlanTopicId);
-            SortHigherPriority(ref tasks);
-            SortLatestTask(ref tasks);
+
+            switch (options)
+            {
+                case Types.HighestPriority: 
+                    SortHigherPriority(ref tasks);
+                    break;
+                default: 
+                    SortLatestTask(ref tasks);
+                    break;
+            }
+
             foreach (var item in tasks)
             {
                 context.Entry(item)
