@@ -39,7 +39,7 @@ namespace FTaskAPI.Controllers
         }
 
         /// <summary>
-        /// API version 1 | Roles: admin | Get all students | Support search by name, filter by major Id 
+        /// API version 1.0 | Roles: admin | Get all students | Support search by name, filter by major Id 
         /// </summary>
         /// <param name="studentParameters"></param>
         /// <returns></returns>
@@ -65,7 +65,7 @@ namespace FTaskAPI.Controllers
         }
 
         /// <summary>
-        /// API version 1 | Roles: admin, user | Get student by student Id 
+        /// API version 1.0 | Roles: admin, user | Get student by student Id 
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -101,7 +101,7 @@ namespace FTaskAPI.Controllers
         }
 
         /// <summary>
-        /// API version 1 | Roles: admin | Add a new student 
+        /// API version 1.0 | Roles: admin | Add a new student 
         /// </summary>
         /// <param name="student"></param>
         /// <returns></returns>
@@ -127,7 +127,7 @@ namespace FTaskAPI.Controllers
         }
 
         /// <summary>
-        /// API version 1 | Roles: admin, user | Update student 
+        /// API version 1.0 | Roles: admin, user | Update student 
         /// </summary>
         /// <param name="id"></param>
         /// <param name="student"></param>
@@ -148,7 +148,7 @@ namespace FTaskAPI.Controllers
         }
 
         /// <summary>
-        /// API version 1 | Roles: admin, user | Update student | Support update a single attribute 
+        /// API version 1.0 | Roles: admin, user | Update student | Support update a single attribute 
         /// </summary>
         /// <param name="id"></param>
         /// <param name="patchDoc"></param>
@@ -177,7 +177,7 @@ namespace FTaskAPI.Controllers
         }
 
         /// <summary>
-        /// API version 1 | Roles: admin | Remove student 
+        /// API version 1.0 | Roles: admin | Remove student 
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
