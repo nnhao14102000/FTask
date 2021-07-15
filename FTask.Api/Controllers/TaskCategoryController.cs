@@ -13,7 +13,7 @@ using System.Collections.Generic;
 namespace FTask.Api.Controllers
 {
     /// <summary>
-    /// TaskCategory controller
+    /// API version 1.0 | Task category controller
     /// </summary>
     [ApiController]
     [Route("api/v{version:apiVersion}/task-categories")]
@@ -25,27 +25,29 @@ namespace FTask.Api.Controllers
         private readonly ITaskCategoryService _taskCategoryService;
 
         /// <summary>
-        /// Constructor DI AutoMapper and task category service
+        /// Constructor inject auto mapper and task category services
         /// </summary>
         /// <param name="mapper"></param>
         /// <param name="taskCategoryService"></param>
-        public TaskCategoryController(IMapper mapper, ITaskCategoryService taskCategoryService)
+        public TaskCategoryController(IMapper mapper, 
+            ITaskCategoryService taskCategoryService)
         {
             _mapper = mapper;
             _taskCategoryService = taskCategoryService;
         }
 
         /// <summary>
-        /// API version 1 | Roles: admin, user | Get all task category, allow search by name 
+        /// API version 1.0 | Roles: admin, user | Get all task categories | Support search by name 
         /// </summary>
         /// <param name="taskCategoryParameter"></param>
         /// <returns></returns>
         [HttpGet]
         [MapToApiVersion("1.0")]
         [Authorize(Roles = UserRoles.Admin + "," + UserRoles.User)]
-        public ActionResult<IEnumerable<TaskCategoryReadViewModel>> GetAllTaskCategorys([FromQuery] TaskCategoryParameters taskCategoryParameter)
+        public ActionResult<IEnumerable<TaskCategoryReadViewModel>> GetAllTaskCategories(
+            [FromQuery] TaskCategoryParameters taskCategoryParameter)
         {
-            var taskCategory = _taskCategoryService.GetAllTaskCategorys(taskCategoryParameter);
+            var taskCategory = _taskCategoryService.GetAllTaskCategories(taskCategoryParameter);
 
             var metaData = new
             {
@@ -61,7 +63,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// API version 1 | Roles: admin, user | Get task category by ID 
+        /// API version 1.0 | Roles: admin, user | Get task category by id 
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -79,7 +81,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// API version 1 | Roles: admin | Add a task category into database 
+        /// API version 1.0 | Roles: admin | Add a task category into database 
         /// </summary>
         /// <param name="taskCategory"></param>
         /// <returns></returns>
@@ -92,11 +94,14 @@ namespace FTask.Api.Controllers
             _taskCategoryService.AddTaskCategory(taskCategoryModel);
             var taskCategoryReadModel = _mapper.Map<TaskCategoryReadViewModel>(taskCategoryModel);
 
-            return CreatedAtRoute(nameof(GetTaskCategoryByTaskCategoryId), new { id = taskCategoryReadModel.TaskCategoryId }, taskCategoryReadModel);
+            return CreatedAtRoute(
+                nameof(GetTaskCategoryByTaskCategoryId), 
+                new { id = taskCategoryReadModel.TaskCategoryId }, taskCategoryReadModel
+            );
         }
 
         /// <summary>
-        /// API version 1 | Roles: admin | Update task category
+        /// API version 1.0 | Roles: admin | Update task category
         /// </summary>
         /// <param name="id"></param>
         /// <param name="taskCategory"></param>
@@ -113,11 +118,11 @@ namespace FTask.Api.Controllers
             }
             _mapper.Map(taskCategory, taskCategoryModel);
             _taskCategoryService.UpdateTaskCategory(taskCategoryModel);
-            return NoContent();
+            return Ok("Update Successfull!");
         }
 
         /// <summary>
-        /// API version 1 | Roles: admin | Update task category by PATCH method...Allow update a single attribute 
+        /// API version 1.0 | Roles: admin | Update task category | Support update a single attribute 
         /// </summary>
         /// <param name="id"></param>
         /// <param name="patchDoc"></param>
@@ -125,7 +130,8 @@ namespace FTask.Api.Controllers
         [HttpPatch("{id}")]
         [MapToApiVersion("1.0")]
         [Authorize(Roles = UserRoles.Admin)]
-        public ActionResult PartialTaskCategoryUpdate(int id, JsonPatchDocument<TaskCategoryUpdateViewModel> patchDoc)
+        public ActionResult PartialTaskCategoryUpdate(int id, 
+            JsonPatchDocument<TaskCategoryUpdateViewModel> patchDoc)
         {
             var taskCategoryModel = _taskCategoryService.GetTaskCategoryByTaskCategoryId(id);
             if (taskCategoryModel is null)
@@ -141,11 +147,11 @@ namespace FTask.Api.Controllers
 
             _mapper.Map(taskCategoryToPatch, taskCategoryModel);
             _taskCategoryService.UpdateTaskCategory(taskCategoryModel);
-            return NoContent();
+            return Ok("Update Successfull!");
         }
 
         /// <summary>
-        /// API version 1 | Roles: admin | Remove a task category
+        /// API version 1.0 | Roles: admin | Remove a task category
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -160,7 +166,7 @@ namespace FTask.Api.Controllers
                 return NotFound();
             }
             _taskCategoryService.RemoveTaskCategory(taskCategoryModel);
-            return NoContent();
+            return Ok("Remove Successfull!");
         }
     }
 }

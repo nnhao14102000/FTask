@@ -3,6 +3,7 @@ using FTask.Database.Repositories.IRepository;
 using FTask.Shared.Helpers;
 using FTask.Shared.Parameters;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Linq;
 
 namespace FTask.Database.Repositories
@@ -28,8 +29,10 @@ namespace FTask.Database.Repositories
         public PagedList<Task> GetTasks(TaskParameters taskParameters)
         {
             var tasks = FindAll();
+            SearchByValue(ref tasks, taskParameters.TaskSearchValue);
             GetByPlanTopicId(ref tasks, taskParameters.PlanTopicId);
-            Sort(ref tasks);
+            SortHigherPriority(ref tasks);
+            SortLatestTask(ref tasks);
             foreach (var item in tasks)
             {
                 context.Entry(item)
@@ -39,6 +42,16 @@ namespace FTask.Database.Repositories
             }
             return PagedList<Task>
                 .ToPagedList(tasks, taskParameters.PageNumber, taskParameters.PageSize);
+        }
+
+        private void SortHigherPriority(ref IQueryable<Task> tasks)
+        {
+            if (!tasks.Any())
+            {
+                return;
+            }            
+            tasks = tasks
+                .OrderByDescending(x => x.Priority);
         }
 
         private void GetByPlanTopicId(ref IQueryable<Task> tasks, int planTopicId)
@@ -51,12 +64,23 @@ namespace FTask.Database.Repositories
                 .Where(x => x.PlanTopicId == planTopicId);
         }
 
-        private void Sort(ref IQueryable<Task> tasks)
+        private void SearchByValue(ref IQueryable<Task> tasks, string searchValue)
+        {
+            if (!tasks.Any() || string.IsNullOrWhiteSpace(searchValue))
+            {
+                return;
+            }
+            tasks = tasks
+                .Where(x => x.TaskDescription.ToLower()
+                                .Contains(searchValue.Trim().ToLower()));
+        }
+
+        private void SortLatestTask(ref IQueryable<Task> tasks)
         {
             if (!tasks.Any())
             {
                 return;
-            }
+            }            
             tasks = tasks
                 .OrderByDescending(x => x.CreateDate);
         }

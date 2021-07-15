@@ -13,7 +13,7 @@ using System.Collections.Generic;
 namespace FTaskAPI.Controllers
 {
     /// <summary>
-    /// Student controller
+    /// API version 1.0 | Student controller
     /// </summary>
     [ApiController]
     [Route("api/v{version:apiVersion}/students")]
@@ -23,28 +23,31 @@ namespace FTaskAPI.Controllers
     public class StudentController : ControllerBase
     {
         private readonly IMapper _mapper;
+
         private readonly IStudentService _studentService;
 
         /// <summary>
-        /// API version 1 | Constructor DI AutoMapper and student service
+        /// API version 1 and 1.1 | Constructor inject auto mapper and student services
         /// </summary>
         /// <param name="mapper"></param>
         /// <param name="studentService"></param>
-        public StudentController(IMapper mapper, IStudentService studentService)
+        public StudentController(IMapper mapper, 
+            IStudentService studentService)
         {
             _mapper = mapper;
             _studentService = studentService;
         }
 
         /// <summary>
-        /// API version 1 | Roles: admin | Get all students, allow search by name, filter by major Id 
+        /// API version 1 | Roles: admin | Get all students | Support search by name, filter by major Id 
         /// </summary>
         /// <param name="studentParameters"></param>
         /// <returns></returns>
         [HttpGet]
         [MapToApiVersion("1.0")]
         [Authorize(Roles = UserRoles.Admin)]
-        public ActionResult<IEnumerable<StudentReadViewModel>> GetAllStudents([FromQuery] StudentParameters studentParameters)
+        public ActionResult<IEnumerable<StudentReadViewModel>> GetAllStudents(
+            [FromQuery] StudentParameters studentParameters)
         {
             var students = _studentService.GetAllStudents(studentParameters);
 
@@ -62,7 +65,7 @@ namespace FTaskAPI.Controllers
         }
 
         /// <summary>
-        /// API version 1 | Roles: admin, user | Get student by student ID 
+        /// API version 1 | Roles: admin, user | Get student by student Id 
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -117,7 +120,10 @@ namespace FTaskAPI.Controllers
             _studentService.AddStudent(studentModel);
             var studentReadModel = _mapper.Map<StudentReadViewModel>(studentModel);
 
-            return CreatedAtRoute(nameof(GetStudentByStudentId), new { id = studentReadModel.StudentId }, studentReadModel);
+            return CreatedAtRoute(
+                nameof(GetStudentByStudentId), 
+                new { id = studentReadModel.StudentId }, studentReadModel
+            );
         }
 
         /// <summary>
@@ -138,11 +144,11 @@ namespace FTaskAPI.Controllers
             }
             _mapper.Map(student, studentModel);
             _studentService.UpdateStudent(studentModel);
-            return NoContent();
+            return Ok("Update Successfull!");
         }
 
         /// <summary>
-        /// API version 1 | Roles: admin, user | Update student by PATCH method...Allow update a single attribute 
+        /// API version 1 | Roles: admin, user | Update student | Support update a single attribute 
         /// </summary>
         /// <param name="id"></param>
         /// <param name="patchDoc"></param>
@@ -150,7 +156,8 @@ namespace FTaskAPI.Controllers
         [HttpPatch("{id}")]
         [MapToApiVersion("1.0")]
         [Authorize(Roles = UserRoles.Admin + "," + UserRoles.User)]
-        public ActionResult PartialStudentUpdate(string id, JsonPatchDocument<StudentUpdateViewModel> patchDoc)
+        public ActionResult PartialStudentUpdate(string id, 
+            JsonPatchDocument<StudentUpdateViewModel> patchDoc)
         {
             var studentModel = _studentService.GetStudentByStudentId(id);
             if (studentModel is null)
@@ -166,7 +173,7 @@ namespace FTaskAPI.Controllers
 
             _mapper.Map(studentToPatch, studentModel);
             _studentService.UpdateStudent(studentModel);
-            return NoContent();
+            return Ok("Update Successfull!");
         }
 
         /// <summary>
@@ -185,7 +192,7 @@ namespace FTaskAPI.Controllers
                 return NotFound();
             }
             _studentService.RemoveStudent(studentModel);
-            return NoContent();
+            return Ok("Remove Successfull!");
         }
 
     }

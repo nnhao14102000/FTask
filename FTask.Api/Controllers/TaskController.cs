@@ -13,7 +13,7 @@ using System.Collections.Generic;
 namespace FTask.Api.Controllers
 {
     /// <summary>
-    /// Task controller
+    /// API version 1.0 | Task controller
     /// </summary>
     [ApiController]
     [Route("api/v{version:apiVersion}/tasks")]
@@ -25,7 +25,7 @@ namespace FTask.Api.Controllers
         private readonly ITaskService _taskService;
 
         /// <summary>
-        /// Constructor DI AutoMapper and task service
+        /// Constructor inject auto mapper and task services
         /// </summary>
         /// <param name="mapper"></param>
         /// <param name="taskService"></param>
@@ -36,13 +36,14 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// API version 1 | Roles: user | Get all task, allow search by name
+        /// API version 1.0 | Roles: user | Get all tasks | Support search by name, get by plan topic Id
         /// </summary>
         /// <param name="taskParameter"></param>
         /// <returns></returns>
         [HttpGet]
         [MapToApiVersion("1.0")]
-        public ActionResult<IEnumerable<TaskReadViewModel>> GetAllTasks([FromQuery] TaskParameters taskParameter)
+        public ActionResult<IEnumerable<TaskReadViewModel>> GetAllTasks(
+            [FromQuery] TaskParameters taskParameter)
         {
             var Task = _taskService.GetAllTasks(taskParameter);
 
@@ -60,7 +61,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// API version 1 | Roles: user | Get task by ID
+        /// API version 1.0 | Roles: user | Get task by Id
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -77,7 +78,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// API version 1 | Roles: user | Add a task into database
+        /// API version 1.0 | Roles: user | Add a task into database
         /// </summary>
         /// <param name="task"></param>
         /// <returns></returns>
@@ -89,11 +90,15 @@ namespace FTask.Api.Controllers
             _taskService.AddTask(taskModel);
             var TaskReadModel = _mapper.Map<TaskReadViewModel>(taskModel);
 
-            return CreatedAtRoute(nameof(GetTaskByTaskId), new { id = TaskReadModel.TaskId }, TaskReadModel);
+            return CreatedAtRoute(
+                nameof(GetTaskByTaskId), 
+                new { id = TaskReadModel.TaskId }, 
+                TaskReadModel
+            );
         }
 
         /// <summary>
-        /// API version 1 | Roles: user | Update task
+        /// API version 1.0 | Roles: user | Update task
         /// </summary>
         /// <param name="id"></param>
         /// <param name="task"></param>
@@ -109,18 +114,19 @@ namespace FTask.Api.Controllers
             }
             _mapper.Map(task, taskModel);
             _taskService.UpdateTask(taskModel);
-            return NoContent();
+            return Ok("Update Successfull!");
         }
 
         /// <summary>
-        /// API version 1 | Roles: user | Update task by PATCH method...Allow update a single attribute
+        /// API version 1.0 | Roles: user | Update task | Support update a single attribute
         /// </summary>
         /// <param name="id"></param>
         /// <param name="patchDoc"></param>
         /// <returns></returns>
         [HttpPatch("{id}")]
         [MapToApiVersion("1.0")]
-        public ActionResult PartialTaskUpdate(int id, JsonPatchDocument<TaskUpdateViewModel> patchDoc)
+        public ActionResult PartialTaskUpdate(int id, 
+            JsonPatchDocument<TaskUpdateViewModel> patchDoc)
         {
             var taskModel = _taskService.GetTaskByTaskId(id);
             if (taskModel is null)
@@ -136,11 +142,11 @@ namespace FTask.Api.Controllers
 
             _mapper.Map(taskToPatch, taskModel);
             _taskService.UpdateTask(taskModel);
-            return NoContent();
+            return Ok("Update Successfull!");
         }
 
         /// <summary>
-        /// API version 1 | Roles: user | Remove a task
+        /// API version 1.0 | Roles: user | Remove a task
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -154,7 +160,7 @@ namespace FTask.Api.Controllers
                 return NotFound();
             }
             _taskService.RemoveTask(taskModel);
-            return NoContent();
+            return Ok("Remove Successfull!");
         }
     }
 }

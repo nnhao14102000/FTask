@@ -13,7 +13,7 @@ using System.Collections.Generic;
 namespace FTask.Api.Controllers
 {
     /// <summary>
-    /// PlanSubject controller
+    /// API version 1.0 | Plan subject controller
     /// </summary>
     [ApiController]
     [Route("api/v{version:apiVersion}/plan-subjects")]
@@ -25,24 +25,26 @@ namespace FTask.Api.Controllers
         private readonly IPlanSubjectService _planSubjectService;
 
         /// <summary>
-        /// Constructor DI AutoMapper and Task Category service
+        /// Constructor inject auto mapper and plan subject services
         /// </summary>
         /// <param name="mapper"></param>
         /// <param name="planSubjectService"></param>
-        public PlanSubjectController(IMapper mapper, IPlanSubjectService planSubjectService)
+        public PlanSubjectController(IMapper mapper, 
+            IPlanSubjectService planSubjectService)
         {
             _mapper = mapper;
             _planSubjectService = planSubjectService;
         }
 
         /// <summary>
-        /// API version 1 | Roles: user | Get all plan subjects, allow search by name 
+        /// API version 1.0 | Roles: user | Get all plan subjects | Support get by plan semester Id
         /// </summary>
         /// <param name="planSubjectParameter"></param>
         /// <returns></returns>
         [HttpGet]
         [MapToApiVersion("1.0")]
-        public ActionResult<IEnumerable<PlanSubjectReadViewModel>> GetAllPlanSubjects([FromQuery] PlanSubjectParameters planSubjectParameter)
+        public ActionResult<IEnumerable<PlanSubjectReadViewModel>> GetAllPlanSubjects(
+            [FromQuery] PlanSubjectParameters planSubjectParameter)
         {
             var PlanSubject = _planSubjectService.GetAllPlanSubjects(planSubjectParameter);
 
@@ -60,7 +62,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// API version 1 | Roles: user | Get plan subject by ID 
+        /// API version 1.0 | Roles: user | Get plan subject by id 
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -77,30 +79,34 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// API version 1 | Roles: user | Add a plan subject into database 
+        /// API version 1.0 | Roles: user | Add a plan subject into database 
         /// </summary>
         /// <param name="planSubject"></param>
         /// <returns></returns>
         [HttpPost]
         [MapToApiVersion("1.0")]
-        public ActionResult<PlanSubjectReadViewModel> AddPlanSubject(PlanSubjectAddViewModel planSubject)
+        public ActionResult<PlanSubjectReadViewModel> AddPlanSubject(
+            PlanSubjectAddViewModel planSubject)
         {
             var planSubjectModel = _mapper.Map<PlanSubject>(planSubject);
             _planSubjectService.AddPlanSubject(planSubjectModel);
             var PlanSubjectReadModel = _mapper.Map<PlanSubjectReadViewModel>(planSubjectModel);
 
-            return CreatedAtRoute(nameof(GetPlanSubjectByPlanSubjectId), new { id = PlanSubjectReadModel.PlanSubjectId }, PlanSubjectReadModel);
+            return CreatedAtRoute(
+                nameof(GetPlanSubjectByPlanSubjectId), 
+                new { id = PlanSubjectReadModel.PlanSubjectId }, PlanSubjectReadModel);
         }
 
         /// <summary>
-        /// API version 1 | Roles: user | Update plan subject 
+        /// API version 1.0 | Roles: user | Update plan subject 
         /// </summary>
         /// <param name="id"></param>
         /// <param name="planSubject"></param>
         /// <returns></returns>
         [HttpPut("{id}")]
         [MapToApiVersion("1.0")]
-        public ActionResult UpdatePlanSubject(int id, PlanSubjectUpdateViewModel planSubject)
+        public ActionResult UpdatePlanSubject(int id, 
+            PlanSubjectUpdateViewModel planSubject)
         {
             var planSubjectModel = _planSubjectService.GetPlanSubjectByPlanSubjectId(id);
             if (planSubjectModel is null)
@@ -109,18 +115,19 @@ namespace FTask.Api.Controllers
             }
             _mapper.Map(planSubject, planSubjectModel);
             _planSubjectService.UpdatePlanSubject(planSubjectModel);
-            return NoContent();
+            return Ok("Update Successfull!");
         }
 
         /// <summary>
-        /// API version 1 | Roles: user | Update plan subject by PATCH method...Allow update a single attribute 
+        /// API version 1.0 | Roles: user | Update plan subject | Support update a single attribute 
         /// </summary>
         /// <param name="id"></param>
         /// <param name="patchDoc"></param>
         /// <returns></returns>
         [HttpPatch("{id}")]
         [MapToApiVersion("1.0")]
-        public ActionResult PartialPlanSubjectUpdate(int id, JsonPatchDocument<PlanSubjectUpdateViewModel> patchDoc)
+        public ActionResult PartialPlanSubjectUpdate(int id, 
+            JsonPatchDocument<PlanSubjectUpdateViewModel> patchDoc)
         {
             var planSubjectModel = _planSubjectService.GetPlanSubjectByPlanSubjectId(id);
             if (planSubjectModel is null)
@@ -136,11 +143,11 @@ namespace FTask.Api.Controllers
 
             _mapper.Map(planSubjectToPatch, planSubjectModel);
             _planSubjectService.UpdatePlanSubject(planSubjectModel);
-            return NoContent();
+            return Ok("Update Successfull!");
         }
 
         /// <summary>
-        /// API version 1 | Roles: user | Remove a plan subject 
+        /// API version 1.0 | Roles: user | Remove a plan subject 
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -154,7 +161,7 @@ namespace FTask.Api.Controllers
                 return NotFound();
             }
             _planSubjectService.RemovePlanSubject(planSubjectModel);
-            return NoContent();
+            return Ok("Remove Successfull!");
         }
     }
 }

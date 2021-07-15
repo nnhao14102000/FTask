@@ -13,7 +13,7 @@ using System.Collections.Generic;
 namespace FTaskAPI.Controllers
 {
     /// <summary>
-    /// Semester Controller
+    /// API version 1.0 | Semester controller
     /// </summary>
     [ApiController]
     [Route("api/v{version:apiVersion}/semesters")]
@@ -22,27 +22,31 @@ namespace FTaskAPI.Controllers
     public class SemesterController : ControllerBase
     {
         private readonly IMapper _mapper;
+        
         private readonly ISemesterService _semesterService;
+
         /// <summary>
-        /// Constructor DI AutoMapper and SemesterService
+        /// Constructor inject auto mapper and semester services
         /// </summary>
         /// <param name="mapper"></param>
         /// <param name="semesterService"></param>
-        public SemesterController(IMapper mapper, ISemesterService semesterService)
+        public SemesterController(IMapper mapper, 
+            ISemesterService semesterService)
         {
             _mapper = mapper;
             _semesterService = semesterService;
         }
 
         /// <summary>
-        /// API version 1 | Roles: admin, user | Get all semesters in database, allow search by name 
+        /// API version 1.0 | Roles: admin, user | Get all semesters in database | Support search by name
         /// </summary>
         /// <param name="semesterParameters"></param>
         /// <returns></returns>
         [HttpGet]
         [MapToApiVersion("1.0")]
         [Authorize(Roles = UserRoles.Admin + "," + UserRoles.User)]
-        public ActionResult<IEnumerable<SemesterReadViewModel>> GetAllSemesters([FromQuery] SemesterParameters semesterParameters)
+        public ActionResult<IEnumerable<SemesterReadViewModel>> GetAllSemesters(
+            [FromQuery] SemesterParameters semesterParameters)
         {
             var semesters = _semesterService.GetAllSemesters(semesterParameters);
 
@@ -60,7 +64,7 @@ namespace FTaskAPI.Controllers
         }
 
         /// <summary>
-        /// API version 1 | Roles: admin, user | Get semester by ID 
+        /// API version 1.0 | Roles: admin, user | Get semester by Id 
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -78,7 +82,7 @@ namespace FTaskAPI.Controllers
         }
 
         /// <summary>
-        /// API version 1 | Roles: admin | Add new semester into database 
+        /// API version 1.0 | Roles: admin | Add a new semester into database 
         /// </summary>
         /// <param name="semester"></param>
         /// <returns></returns>
@@ -97,11 +101,14 @@ namespace FTaskAPI.Controllers
             _semesterService.AddSemester(semesterModel);
             var semesterReadModel = _mapper.Map<SemesterReadViewModel>(semesterModel);
 
-            return CreatedAtRoute(nameof(GetSemesterBySemesterId), new { id = semesterReadModel.SemesterId }, semesterReadModel);
+            return CreatedAtRoute(
+                nameof(GetSemesterBySemesterId), 
+                new { id = semesterReadModel.SemesterId }, semesterReadModel
+            );
         }
 
         /// <summary>
-        /// API version 1 | Roles: admin | Update infomation of a semester 
+        /// API version 1.0 | Roles: admin | Update infomation of a semester 
         /// </summary>
         /// <param name="id"></param>
         /// <param name="semester"></param>
@@ -118,11 +125,11 @@ namespace FTaskAPI.Controllers
             }
             _mapper.Map(semester, semesterModel);
             _semesterService.UpdateSemester(semesterModel);
-            return NoContent();
+            return Ok("Update Successfull!");
         }
 
         /// <summary>
-        /// API version 1 | Roles: admin | Update semester by PATCH method...Allow update a single attribute 
+        /// API version 1.0 | Roles: admin | Update semester | Support update a single attribute 
         /// </summary>
         /// <param name="id"></param>
         /// <param name="patchDoc"></param>
@@ -130,7 +137,8 @@ namespace FTaskAPI.Controllers
         [HttpPatch("{id}")]
         [MapToApiVersion("1.0")]
         [Authorize(Roles = UserRoles.User)]
-        public ActionResult PartialSemesterUpdate(string id, JsonPatchDocument<SemesterUpdateViewModel> patchDoc)
+        public ActionResult PartialSemesterUpdate(string id, 
+            JsonPatchDocument<SemesterUpdateViewModel> patchDoc)
         {
             var semesterModel = _semesterService.GetSemesterBySemesterId(id);
             if (semesterModel is null)
@@ -146,11 +154,11 @@ namespace FTaskAPI.Controllers
 
             _mapper.Map(semesterToPatch, semesterModel);
             _semesterService.UpdateSemester(semesterModel);
-            return NoContent();
+            return Ok("Update Successfull!");
         }
 
         /// <summary>
-        /// API version 1 | Roles: admin | Remove a semester 
+        /// API version 1.0 | Roles: admin | Remove a semester 
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -165,8 +173,7 @@ namespace FTaskAPI.Controllers
                 return NotFound();
             }
             _semesterService.RemoveSemester(semesterModel);
-            return NoContent();
+            return Ok("Remove Successfull!");
         }
-
     }
 }

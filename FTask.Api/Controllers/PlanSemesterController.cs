@@ -13,7 +13,7 @@ using System.Collections.Generic;
 namespace FTask.Api.Controllers
 {
     /// <summary>
-    /// PlanSemester controller
+    /// API version 1.0 | Plan semester controller
     /// </summary>
     [ApiController]
     [Route("api/v{version:apiVersion}/plan-semester")]
@@ -22,27 +22,30 @@ namespace FTask.Api.Controllers
     public class PlanSemesterController : Controller
     {
         private readonly IMapper _mapper;
+
         private readonly IPlanSemesterService _planSemesterService;
 
         /// <summary>
-        /// Constructor DI AutoMapper and Task Category service
+        /// Constructor inject auto mapper object and plan semester services
         /// </summary>
         /// <param name="mapper"></param>
         /// <param name="planSemesterService"></param>
-        public PlanSemesterController(IMapper mapper, IPlanSemesterService planSemesterService)
+        public PlanSemesterController(IMapper mapper, 
+            IPlanSemesterService planSemesterService)
         {
             _mapper = mapper;
             _planSemesterService = planSemesterService;
         }
 
         /// <summary>
-        /// API version 1 | Roles: user | Get all plan semester, allow search by name 
+        /// API version 1.0 | Roles: user | Get all plan semesters | Support search by plan semester name and get by student Id
         /// </summary>
         /// <param name="planSemesterParameter"></param>
         /// <returns></returns>
         [HttpGet]
         [MapToApiVersion("1.0")]
-        public ActionResult<IEnumerable<PlanSemesterReadViewModel>> GetAllPlanSemesters([FromQuery] PlanSemesterParameters planSemesterParameter)
+        public ActionResult<IEnumerable<PlanSemesterReadViewModel>> GetAllPlanSemesters(
+            [FromQuery] PlanSemesterParameters planSemesterParameter)
         {
             var planSemester = _planSemesterService.GetAllPlanSemesters(planSemesterParameter);
 
@@ -60,7 +63,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// API version 1 | Roles: user | Get plan semester by ID 
+        /// API version 1.0 | Roles: user | Get a plan semester by Id 
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -77,30 +80,35 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// API version 1 | Roles: user | Add a plan semester into database 
+        /// API version 1.0 | Roles: user | Add a plan semester into database 
         /// </summary>
         /// <param name="planSemester"></param>
         /// <returns></returns>
         [HttpPost]
         [MapToApiVersion("1.0")]
-        public ActionResult<PlanSemesterReadViewModel> AddPlanSemester(PlanSemesterAddViewModel planSemester)
+        public ActionResult<PlanSemesterReadViewModel> AddPlanSemester(
+            PlanSemesterAddViewModel planSemester)
         {
             var planSemesterModel = _mapper.Map<PlanSemester>(planSemester);
             _planSemesterService.AddPlanSemester(planSemesterModel);
             var PlanSemesterReadModel = _mapper.Map<PlanSemesterReadViewModel>(planSemesterModel);
 
-            return CreatedAtRoute(nameof(GetPlanSemesterByPlanSemesterId), new { id = PlanSemesterReadModel.PlanSemesterId }, PlanSemesterReadModel);
+            return CreatedAtRoute(
+                nameof(GetPlanSemesterByPlanSemesterId),
+                new { id = PlanSemesterReadModel.PlanSemesterId }, PlanSemesterReadModel
+            );
         }
 
         /// <summary>
-        /// API version 1 | Roles: user | Update plan semester 
+        /// API version 1.0 | Roles: user | Update plan semester 
         /// </summary>
         /// <param name="id"></param>
         /// <param name="planSemester"></param>
         /// <returns></returns>
         [HttpPut("{id}")]
         [MapToApiVersion("1.0")]
-        public ActionResult UpdatePlanSemester(int id, PlanSemesterUpdateViewModel planSemester)
+        public ActionResult UpdatePlanSemester(int id, 
+            PlanSemesterUpdateViewModel planSemester)
         {
             var planSemesterModel = _planSemesterService.GetPlanSemesterByPlanSemesterId(id);
             if (planSemesterModel is null)
@@ -109,18 +117,19 @@ namespace FTask.Api.Controllers
             }
             _mapper.Map(planSemester, planSemesterModel);
             _planSemesterService.UpdatePlanSemester(planSemesterModel);
-            return NoContent();
+            return Ok("Update Successfull!");
         }
 
         /// <summary>
-        /// API version 1 | Roles: user | Update plan semester by PATCH method...Allow update a single attribute 
+        /// API version 1.0 | Roles: user | Update plan semester | Support update single attribute
         /// </summary>
         /// <param name="id"></param>
         /// <param name="patchDoc"></param>
         /// <returns></returns>
         [HttpPatch("{id}")]
         [MapToApiVersion("1.0")]
-        public ActionResult PartialPlanSemesterUpdate(int id, JsonPatchDocument<PlanSemesterUpdateViewModel> patchDoc)
+        public ActionResult PartialPlanSemesterUpdate(int id, 
+            JsonPatchDocument<PlanSemesterUpdateViewModel> patchDoc)
         {
             var planSemesterModel = _planSemesterService.GetPlanSemesterByPlanSemesterId(id);
             if (planSemesterModel is null)
@@ -136,11 +145,11 @@ namespace FTask.Api.Controllers
 
             _mapper.Map(planSemesterToPatch, planSemesterModel);
             _planSemesterService.UpdatePlanSemester(planSemesterModel);
-            return NoContent();
+            return Ok("Update Successfull!");
         }
 
         /// <summary>
-        /// API version 1 | Roles: user | Remove a plan semester 
+        /// API version 1.0 | Roles: user | Remove a plan semester 
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -154,7 +163,7 @@ namespace FTask.Api.Controllers
                 return NotFound();
             }
             _planSemesterService.RemovePlanSemester(planSemesterModel);
-            return NoContent();
+            return Ok("Remove Successfull!");
         }
     }
 }

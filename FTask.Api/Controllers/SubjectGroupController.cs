@@ -13,7 +13,7 @@ using System.Collections.Generic;
 namespace FTask.Api.Controllers
 {
     /// <summary>
-    /// Subject group controller
+    /// API version 1.0 | Subject group controller
     /// </summary>
     [ApiController]
     [Route("api/v{version:apiVersion}/subject-groups")]
@@ -22,28 +22,31 @@ namespace FTask.Api.Controllers
     public class SubjectGroupController : Controller
     {
         private readonly IMapper _mapper;
+
         private readonly ISubjectGroupService _subjectGroupService;
 
         /// <summary>
-        /// Constructor DI AutoMapper and subject group service
+        /// Constructor inject auto mapper and subject group services
         /// </summary>
         /// <param name="mapper"></param>
         /// <param name="SubjectGroupService"></param>
-        public SubjectGroupController(IMapper mapper, ISubjectGroupService SubjectGroupService)
+        public SubjectGroupController(IMapper mapper,
+            ISubjectGroupService SubjectGroupService)
         {
             _mapper = mapper;
             _subjectGroupService = SubjectGroupService;
         }
 
         /// <summary>
-        /// API version 1 | Roles: admin, user | Get all subject groups, allow search by name 
+        /// API version 1.0 | Roles: admin, user | Get all subject groups | Support search by name 
         /// </summary>
         /// <param name="subjectGroupParameter"></param>
         /// <returns></returns>
         [HttpGet]
         [MapToApiVersion("1.0")]
         [Authorize(Roles = UserRoles.Admin + "," + UserRoles.User)]
-        public ActionResult<IEnumerable<SubjectGroupReadViewModel>> GetAllSubjectGroups([FromQuery] SubjectGroupParameters subjectGroupParameter)
+        public ActionResult<IEnumerable<SubjectGroupReadViewModel>> GetAllSubjectGroups(
+            [FromQuery] SubjectGroupParameters subjectGroupParameter)
         {
             var subjectGroup = _subjectGroupService.GetAllSubjectGroups(subjectGroupParameter);
 
@@ -61,7 +64,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// API version 1 | Roles: admin, user | Get subject group by ID and it Relevant subject 
+        /// API version 1.0 | Roles: admin, user | Get subject group by ID and it's relevant subjects
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -79,24 +82,28 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// API version 1 | Roles: admin | Add a subject group into database 
+        /// API version 1.0 | Roles: admin | Add a subject group into database 
         /// </summary>
         /// <param name="subjectGroup"></param>
         /// <returns></returns>
         [HttpPost]
         [MapToApiVersion("1.0")]
         [Authorize(Roles = UserRoles.Admin)]
-        public ActionResult<SubjectGroupReadViewModel> AddSubjectGroup(SubjectGroupAddViewModel subjectGroup)
+        public ActionResult<SubjectGroupReadViewModel> AddSubjectGroup(
+            SubjectGroupAddViewModel subjectGroup)
         {
             var subjectGroupModel = _mapper.Map<SubjectGroup>(subjectGroup);
             _subjectGroupService.AddSubjectGroup(subjectGroupModel);
             var subjectGroupReadModel = _mapper.Map<SubjectGroupReadViewModel>(subjectGroupModel);
 
-            return CreatedAtRoute(nameof(GetSubjectGroupBySubjectGroupId), new { id = subjectGroupReadModel.SubjectGroupId }, subjectGroupReadModel);
+            return CreatedAtRoute(
+                nameof(GetSubjectGroupBySubjectGroupId),
+                new { id = subjectGroupReadModel.SubjectGroupId }, subjectGroupReadModel
+            );
         }
 
         /// <summary>
-        /// API version 1 | Roles: admin | Update subject group 
+        /// API version 1.0 | Roles: admin | Update subject group 
         /// </summary>
         /// <param name="id"></param>
         /// <param name="subjectGroup"></param>
@@ -113,11 +120,11 @@ namespace FTask.Api.Controllers
             }
             _mapper.Map(subjectGroup, subjectGroupModel);
             _subjectGroupService.UpdateSubjectGroup(subjectGroupModel);
-            return NoContent();
+            return Ok("Update Successfull!");
         }
 
         /// <summary>
-        /// API version 1 | Roles: admin | Update subject group by PATCH method...Allow update a single attribute 
+        /// API version 1.0 | Roles: admin | Update subject | Support update a single attribute 
         /// </summary>
         /// <param name="id"></param>
         /// <param name="patchDoc"></param>
@@ -125,7 +132,8 @@ namespace FTask.Api.Controllers
         [HttpPatch("{id}")]
         [MapToApiVersion("1.0")]
         [Authorize(Roles = UserRoles.Admin)]
-        public ActionResult PartialSubjectGroupUpdate(int id, JsonPatchDocument<SubjectGroupUpdateViewModel> patchDoc)
+        public ActionResult PartialSubjectGroupUpdate(int id, 
+            JsonPatchDocument<SubjectGroupUpdateViewModel> patchDoc)
         {
             var subjectGroupModel = _subjectGroupService.GetSubjectGroupBySubjectGroupId(id);
             if (subjectGroupModel is null)
@@ -141,11 +149,11 @@ namespace FTask.Api.Controllers
 
             _mapper.Map(subjectGroupToPatch, subjectGroupModel);
             _subjectGroupService.UpdateSubjectGroup(subjectGroupModel);
-            return NoContent();
+            return Ok("Update Successfull!");
         }
 
         /// <summary>
-        /// API version 1 | Roles: admin | Remove a subject group 
+        /// API version 1.0 | Roles: admin | Remove a subject group 
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -160,7 +168,7 @@ namespace FTask.Api.Controllers
                 return NotFound();
             }
             _subjectGroupService.RemoveSubjectGroup(subjectGroupModel);
-            return NoContent();
+            return Ok("Remove Successfull!");
         }
     }
 }

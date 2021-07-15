@@ -1,5 +1,6 @@
 ﻿using FTask.AuthDatabase.Models;
 using FTask.AuthServices.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -11,12 +12,13 @@ namespace FTask.Api.Controllers
     [ApiController]
     [Route("api/v{version:apiVersion}/auths")]
     [ApiVersion("1.0")]
+    [AllowAnonymous]
     public class AuthController : ControllerBase
     {
         private IUserService _userService;
 
         /// <summary>
-        /// Constructor
+        /// Constructor, inject User authentication service into AuthController
         /// </summary>
         /// <param name="userService"></param>
         public AuthController(IUserService userService)
