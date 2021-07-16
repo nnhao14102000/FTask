@@ -59,9 +59,15 @@ Run this command
 
 ![Run ](https://github.com/nnhao14102000/FTask/blob/hao/Document/Images/DockerRunSuccessDockerDesktop.png?raw=true "Run Docker")
 
-- Test API with PostMan
+4. Test API
 
-![Test ](https://github.com/nnhao14102000/FTask/blob/hao/Document/Images/TestApiWithPostMan.png?raw=true "Test with Postman")
+- With Swagger
+![Test ](https://github.com/nnhao14102000/FTask/blob/hao/Document/Images/TestApiWithPostMan.png?raw=true "Test with Swagger")
+
+
+- With Postman
+
+![Test ](https://github.com/nnhao14102000/FTask/blob/hao/Document/Images/TestApiWithSwagger.png?raw=true "Test with Postman")
 
 ## Database 
 
