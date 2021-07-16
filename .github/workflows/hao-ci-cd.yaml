@@ -40,6 +40,9 @@ jobs:
         run: dotnet build -c Release --no-restore
 
       - name: Publish app 📰
+        env: 
+          ConnectionStrings__DefaultConnection: Server=localhost;Database=FTask;User=sa;Password=FTaskPa55w0rd!
+          ConnectionStrings__AuthConnection: Server=localhost;Database=FTaskAuthDB;User=sa;Password=FTaskPa55w0rd!
         run: dotnet build -c Release -o ./out 
 
       - name: Deploy to Azure Web Apps 🚢
