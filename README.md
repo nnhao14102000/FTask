@@ -86,5 +86,19 @@ Run this command
 Don't worry about that just run again... this error cause be cause the mssql of docker is not stable.
 May be you need run one or two or three times...
 
+4. If you run with VScode, or Visual Studio at local, Notice name of sql server in connection strings
+
+In code `Server=.` I use `.` for every server existed in local
+
+![Name of Server ](https://github.com/nnhao14102000/FTask/blob/hao/Document/Images/ConnectionString.png?raw=true "Name of server")
+
+If have error occur with this server name, may by you replace `.` by `Server=[your server name]`
+
+For example:
+
+![Name ](https://github.com/nnhao14102000/FTask/blob/hao/Document/Images/ServerName.png?raw=true "Server name")
+
+![Name ](https://github.com/nnhao14102000/FTask/blob/hao/Document/Images/NewServerName.png?raw=true "New Server name")
+
 
 #### ©  *Nguyen Nhut Hao 2021/07/12*
