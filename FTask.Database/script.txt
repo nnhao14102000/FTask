@@ -1,6 +1,6 @@
 USE [master]
 GO
-/****** Object:  Database [FTask]    Script Date: 15/07/2021 9:36:50 CH ******/
+/****** Object:  Database [FTask]    Script Date: 16/07/2021 11:05:31 SA ******/
 CREATE DATABASE [FTask]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -80,7 +80,7 @@ ALTER DATABASE [FTask] SET QUERY_STORE = OFF
 GO
 USE [FTask]
 GO
-/****** Object:  Table [dbo].[Major]    Script Date: 15/07/2021 9:36:50 CH ******/
+/****** Object:  Table [dbo].[Major]    Script Date: 16/07/2021 11:05:31 SA ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -94,7 +94,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[PlanSemester]    Script Date: 15/07/2021 9:36:50 CH ******/
+/****** Object:  Table [dbo].[PlanSemester]    Script Date: 16/07/2021 11:05:31 SA ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -112,7 +112,7 @@ CREATE TABLE [dbo].[PlanSemester](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[PlanSubject]    Script Date: 15/07/2021 9:36:50 CH ******/
+/****** Object:  Table [dbo].[PlanSubject]    Script Date: 16/07/2021 11:05:31 SA ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -131,7 +131,7 @@ CREATE TABLE [dbo].[PlanSubject](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[PlanTopic]    Script Date: 15/07/2021 9:36:50 CH ******/
+/****** Object:  Table [dbo].[PlanTopic]    Script Date: 16/07/2021 11:05:31 SA ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -148,7 +148,7 @@ CREATE TABLE [dbo].[PlanTopic](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Semester]    Script Date: 15/07/2021 9:36:50 CH ******/
+/****** Object:  Table [dbo].[Semester]    Script Date: 16/07/2021 11:05:31 SA ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -165,7 +165,7 @@ CREATE TABLE [dbo].[Semester](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Student]    Script Date: 15/07/2021 9:36:50 CH ******/
+/****** Object:  Table [dbo].[Student]    Script Date: 16/07/2021 11:05:31 SA ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -181,7 +181,7 @@ CREATE TABLE [dbo].[Student](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Subject]    Script Date: 15/07/2021 9:36:50 CH ******/
+/****** Object:  Table [dbo].[Subject]    Script Date: 16/07/2021 11:05:31 SA ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -197,7 +197,7 @@ CREATE TABLE [dbo].[Subject](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[SubjectGroup]    Script Date: 15/07/2021 9:36:50 CH ******/
+/****** Object:  Table [dbo].[SubjectGroup]    Script Date: 16/07/2021 11:05:31 SA ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -211,7 +211,7 @@ CREATE TABLE [dbo].[SubjectGroup](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Task]    Script Date: 15/07/2021 9:36:50 CH ******/
+/****** Object:  Table [dbo].[Task]    Script Date: 16/07/2021 11:05:31 SA ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -233,7 +233,7 @@ CREATE TABLE [dbo].[Task](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[TaskCategory]    Script Date: 15/07/2021 9:36:50 CH ******/
+/****** Object:  Table [dbo].[TaskCategory]    Script Date: 16/07/2021 11:05:31 SA ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -247,7 +247,7 @@ CREATE TABLE [dbo].[TaskCategory](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Topic]    Script Date: 15/07/2021 9:36:50 CH ******/
+/****** Object:  Table [dbo].[Topic]    Script Date: 16/07/2021 11:05:31 SA ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -262,6 +262,278 @@ CREATE TABLE [dbo].[Topic](
 	[TopicId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
+GO
+INSERT [dbo].[Major] ([MajorId], [MajorName]) VALUES (N'BBA_FIN', N'Business Administration_Finance')
+GO
+INSERT [dbo].[Major] ([MajorId], [MajorName]) VALUES (N'BBA_IB', N'Business Administration_International Business')
+GO
+INSERT [dbo].[Major] ([MajorId], [MajorName]) VALUES (N'BBA_MC', N'Business Administration_Multimedia communication')
+GO
+INSERT [dbo].[Major] ([MajorId], [MajorName]) VALUES (N'BBA_MKT', N'Business Administration_Marketing')
+GO
+INSERT [dbo].[Major] ([MajorId], [MajorName]) VALUES (N'BEL', N'English Language')
+GO
+INSERT [dbo].[Major] ([MajorId], [MajorName]) VALUES (N'BEN', N'English Language')
+GO
+INSERT [dbo].[Major] ([MajorId], [MajorName]) VALUES (N'BGD', N'	Graphic Design')
+GO
+INSERT [dbo].[Major] ([MajorId], [MajorName]) VALUES (N'BIT_AI', N'Bachelor of Information technology')
+GO
+INSERT [dbo].[Major] ([MajorId], [MajorName]) VALUES (N'BIT_GD', N'Information technology_Digital art designr')
+GO
+INSERT [dbo].[Major] ([MajorId], [MajorName]) VALUES (N'BIT_IA', N'Bachelor of Information technology')
+GO
+INSERT [dbo].[Major] ([MajorId], [MajorName]) VALUES (N'BIT_IoT', N'Bachelor of Information technology')
+GO
+INSERT [dbo].[Major] ([MajorId], [MajorName]) VALUES (N'BIT_IS', N'Bachelor of Information technology')
+GO
+INSERT [dbo].[Major] ([MajorId], [MajorName]) VALUES (N'BIT_SE', N'Bachelor of Information technology ')
+GO
+INSERT [dbo].[Major] ([MajorId], [MajorName]) VALUES (N'BJP', N'Bachelor of Japanese Language')
+GO
+INSERT [dbo].[Major] ([MajorId], [MajorName]) VALUES (N'BKR', N'Bachelor of Korean Language ')
+GO
+INSERT [dbo].[Major] ([MajorId], [MajorName]) VALUES (N'BMC', N'Multimedia Communication')
+GO
+INSERT [dbo].[Major] ([MajorId], [MajorName]) VALUES (N'SBBA_HM', N'Business Adminstration_Hotel Management')
+GO
+INSERT [dbo].[Major] ([MajorId], [MajorName]) VALUES (N'Test3', N'Test again')
+GO
+INSERT [dbo].[Major] ([MajorId], [MajorName]) VALUES (N'TestAuth', N'Testing Authentication')
+GO
+SET IDENTITY_INSERT [dbo].[PlanSemester] ON 
+GO
+INSERT [dbo].[PlanSemester] ([PlanSemesterId], [PlanSemesterName], [StudentId], [SemesterId], [CreateDate], [IsComplete]) VALUES (1, N'OJT', N'SE140129', N'SPR_21', CAST(N'2021-02-10T12:35:39.323' AS DateTime), 1)
+GO
+INSERT [dbo].[PlanSemester] ([PlanSemesterId], [PlanSemesterName], [StudentId], [SemesterId], [CreateDate], [IsComplete]) VALUES (2, N'7th Semester', N'SE140129', N'SUM_21', CAST(N'2021-05-10T12:35:39.323' AS DateTime), 0)
+GO
+SET IDENTITY_INSERT [dbo].[PlanSemester] OFF
+GO
+SET IDENTITY_INSERT [dbo].[PlanSubject] ON 
+GO
+INSERT [dbo].[PlanSubject] ([PlanSubjectId], [Priority], [Progress], [CreateDate], [IsComplete], [PlanSemesterId], [SubjectId]) VALUES (8, 0, 0, CAST(N'2021-07-15T14:24:01.407' AS DateTime), 0, 2, N'SWD391')
+GO
+SET IDENTITY_INSERT [dbo].[PlanSubject] OFF
+GO
+SET IDENTITY_INSERT [dbo].[PlanTopic] ON 
+GO
+INSERT [dbo].[PlanTopic] ([PlanTopicId], [Progress], [IsComplete], [TopicId], [PlanSubjectId]) VALUES (9, 0, 0, 39, 8)
+GO
+SET IDENTITY_INSERT [dbo].[PlanTopic] OFF
+GO
+INSERT [dbo].[Semester] ([SemesterId], [SemesterName], [StartDate], [EndDate], [IsComplete]) VALUES (N'FLL_20', N'Fall 2020', NULL, NULL, 1)
+GO
+INSERT [dbo].[Semester] ([SemesterId], [SemesterName], [StartDate], [EndDate], [IsComplete]) VALUES (N'SPR_21', N'Spring 2021', CAST(N'2021-01-04T00:00:00.000' AS DateTime), CAST(N'2021-04-29T00:00:00.000' AS DateTime), 1)
+GO
+INSERT [dbo].[Semester] ([SemesterId], [SemesterName], [StartDate], [EndDate], [IsComplete]) VALUES (N'SUM_21', N'Summer 2021', CAST(N'2021-05-10T00:00:00.000' AS DateTime), CAST(N'2021-07-23T00:00:00.000' AS DateTime), 0)
+GO
+INSERT [dbo].[Student] ([StudentId], [StudentName], [StudentEmail], [MajorId]) VALUES (N'bj111111', N'Test so mot', N'test1@fpt.edu.vn', N'BJP')
+GO
+INSERT [dbo].[Student] ([StudentId], [StudentName], [StudentEmail], [MajorId]) VALUES (N'bj111112', N'Test so hai', N'test2@fpt.edu.vn', N'BJP')
+GO
+INSERT [dbo].[Student] ([StudentId], [StudentName], [StudentEmail], [MajorId]) VALUES (N'bj111113', N'Test so ba', N'test3@fpt.edu.vn', N'BJP')
+GO
+INSERT [dbo].[Student] ([StudentId], [StudentName], [StudentEmail], [MajorId]) VALUES (N'SA100000', N'Huynh Thanh Nhat', N'Nhathtsa100000@fpt.edu.vn', N'BIT_SE')
+GO
+INSERT [dbo].[Student] ([StudentId], [StudentName], [StudentEmail], [MajorId]) VALUES (N'SA100001', N'Trần Văn Kiên', N'Kientvsa100001@fpt.edu.vn', N'BIT_SE')
+GO
+INSERT [dbo].[Student] ([StudentId], [StudentName], [StudentEmail], [MajorId]) VALUES (N'SA100002', N'Nguyễn Nhật Hào', N'HaoNHsa100002@fpt.edu.vn', N'BIT_SE')
+GO
+INSERT [dbo].[Student] ([StudentId], [StudentName], [StudentEmail], [MajorId]) VALUES (N'SE130059', N'Pham Hà Hoàng Nam', N'NamPHHSE130059@fpt.edu.vn', N'BIT_SE')
+GO
+INSERT [dbo].[Student] ([StudentId], [StudentName], [StudentEmail], [MajorId]) VALUES (N'SE130157', N'Nguyễn Đức Thắng', N'ThangNDSE130157@fpt.edu.vn', N'BIT_SE')
+GO
+INSERT [dbo].[Student] ([StudentId], [StudentName], [StudentEmail], [MajorId]) VALUES (N'SE130221', N'Nguyễn Tấn Sang', N'SangNTSE130221@fpt.edu.vn', N'BIT_SE')
+GO
+INSERT [dbo].[Student] ([StudentId], [StudentName], [StudentEmail], [MajorId]) VALUES (N'SE140026', N'Nguyễn Tấn Sang', N'SangNTSE140026@fpt.edu.vn', N'BIT_SE')
+GO
+INSERT [dbo].[Student] ([StudentId], [StudentName], [StudentEmail], [MajorId]) VALUES (N'SE140108', N'Lê Minh Hiếu', N'HieuLMSE140108@fpt.edu.vn', N'BIT_SE')
+GO
+INSERT [dbo].[Student] ([StudentId], [StudentName], [StudentEmail], [MajorId]) VALUES (N'SE140117', N'Lê Bảo Long', N'LongLBSE140117@fpt.edu.vn', N'BIT_SE')
+GO
+INSERT [dbo].[Student] ([StudentId], [StudentName], [StudentEmail], [MajorId]) VALUES (N'SE140129', N'Đàm Đông Tín', N'TinDDSE140129@fpt.edu.vn', N'BIT_SE')
+GO
+INSERT [dbo].[Student] ([StudentId], [StudentName], [StudentEmail], [MajorId]) VALUES (N'SE140133', N'Vũ Quý Hậu', N'HauVQSE140133@fpt.edu.vn', N'BIT_SE')
+GO
+INSERT [dbo].[Student] ([StudentId], [StudentName], [StudentEmail], [MajorId]) VALUES (N'SE140297', N'Nguyễn Quang Vinh', N'VinhNQSE140297@fpt.edu.vn', N'BIT_SE')
+GO
+INSERT [dbo].[Student] ([StudentId], [StudentName], [StudentEmail], [MajorId]) VALUES (N'SE140329', N'Nguyễn Minh Trí', N'TriNMSE140329@fpt.edu.vn', N'BIT_SE')
+GO
+INSERT [dbo].[Student] ([StudentId], [StudentName], [StudentEmail], [MajorId]) VALUES (N'SE62198', N'Nguyễn Minh Hiếu', N'hieunmse62198@fpt.edu.vn', N'BIT_SE')
+GO
+INSERT [dbo].[Student] ([StudentId], [StudentName], [StudentEmail], [MajorId]) VALUES (N'SE62732', N'Dương Đình Nguyên', N'nguyenddse62732@fpt.edu.vn', N'BIT_SE')
+GO
+INSERT [dbo].[Student] ([StudentId], [StudentName], [StudentEmail], [MajorId]) VALUES (N'SE62733', N'Võ Minh Quân', N'QuanVMSS150380@fpt.edu.vn', N'BIT_SE')
+GO
+INSERT [dbo].[Student] ([StudentId], [StudentName], [StudentEmail], [MajorId]) VALUES (N'SE63295', N'Lê Kha', N'nguyenddse62732@fpt.edu.vn', N'BIT_SE')
+GO
+INSERT [dbo].[Student] ([StudentId], [StudentName], [StudentEmail], [MajorId]) VALUES (N'SE65733', N'Võ Minh Quân', N'QuanVMSS150380@fpt.edu.vn', N'BIT_SE')
+GO
+INSERT [dbo].[Student] ([StudentId], [StudentName], [StudentEmail], [MajorId]) VALUES (N'SS140179', N'Nguyễn Quỳnh Hương', N'HuongNQSS140179@fpt.edu.vn', N'BIT_SE')
+GO
+INSERT [dbo].[Student] ([StudentId], [StudentName], [StudentEmail], [MajorId]) VALUES (N'SS140321', N'Dương Quý Bảo', N'BaoDQSS140321@fpt.edu.vn', N'BIT_SE')
+GO
+INSERT [dbo].[Student] ([StudentId], [StudentName], [StudentEmail], [MajorId]) VALUES (N'SS140367', N'Trần Quốc Bảo', N'BaoTQSS140367@fpt.edu.vn', N'BIT_SE')
+GO
+INSERT [dbo].[Student] ([StudentId], [StudentName], [StudentEmail], [MajorId]) VALUES (N'SS150187', N'Phạm Văn Đạt', N'DatPVSS150187@fpt.edu.vn', N'BIT_SE')
+GO
+INSERT [dbo].[Student] ([StudentId], [StudentName], [StudentEmail], [MajorId]) VALUES (N'SS150324', N'Nguyễn Quốc Khải', N'KhaiNQSS150324@fpt.edu.vn', N'BIT_SE')
+GO
+INSERT [dbo].[Student] ([StudentId], [StudentName], [StudentEmail], [MajorId]) VALUES (N'SS150380', N'Võ Minh Quân', N'QuanVMSS150380@fpt.edu.vn', N'BIT_SE')
+GO
+INSERT [dbo].[Subject] ([SubjectId], [SubjectName], [Source], [SubjectGroupId]) VALUES (N'CEA201', N'Computer Organization and Architecture', NULL, 1)
+GO
+INSERT [dbo].[Subject] ([SubjectId], [SubjectName], [Source], [SubjectGroupId]) VALUES (N'CSD201', N'Data Structure and Algorithm', NULL, 1)
+GO
+INSERT [dbo].[Subject] ([SubjectId], [SubjectName], [Source], [SubjectGroupId]) VALUES (N'EAL201', N'Academic Listening', NULL, 14)
+GO
+INSERT [dbo].[Subject] ([SubjectId], [SubjectName], [Source], [SubjectGroupId]) VALUES (N'ECR201', N'Critical Reading', NULL, 14)
+GO
+INSERT [dbo].[Subject] ([SubjectId], [SubjectName], [Source], [SubjectGroupId]) VALUES (N'ESL101', N'Sociolinguistics', NULL, 14)
+GO
+INSERT [dbo].[Subject] ([SubjectId], [SubjectName], [Source], [SubjectGroupId]) VALUES (N'HCI201', N'Human Computer Interaction', NULL, 13)
+GO
+INSERT [dbo].[Subject] ([SubjectId], [SubjectName], [Source], [SubjectGroupId]) VALUES (N'HCM201', N'Ho Chi Minh Ideology', NULL, 3)
+GO
+INSERT [dbo].[Subject] ([SubjectId], [SubjectName], [Source], [SubjectGroupId]) VALUES (N'ISC301', N'E Commerce ', NULL, 13)
+GO
+INSERT [dbo].[Subject] ([SubjectId], [SubjectName], [Source], [SubjectGroupId]) VALUES (N'JPD111', N'Japanese Language 1.1 - Dekiru', NULL, 10)
+GO
+INSERT [dbo].[Subject] ([SubjectId], [SubjectName], [Source], [SubjectGroupId]) VALUES (N'JPD121', N'Japanese Language 1.2 - Dekiru', NULL, 10)
+GO
+INSERT [dbo].[Subject] ([SubjectId], [SubjectName], [Source], [SubjectGroupId]) VALUES (N'JPD131', N'Japanese Language 1.3 - Dekiru', NULL, 10)
+GO
+INSERT [dbo].[Subject] ([SubjectId], [SubjectName], [Source], [SubjectGroupId]) VALUES (N'JPD141', N'Japanese Language 1.4 - Dekiru', NULL, 10)
+GO
+INSERT [dbo].[Subject] ([SubjectId], [SubjectName], [Source], [SubjectGroupId]) VALUES (N'JPD151', N'Japanese Language 1.5 - Dekiru', NULL, 10)
+GO
+INSERT [dbo].[Subject] ([SubjectId], [SubjectName], [Source], [SubjectGroupId]) VALUES (N'MLN101', N'Principles of Marxism - Leninism', NULL, 3)
+GO
+INSERT [dbo].[Subject] ([SubjectId], [SubjectName], [Source], [SubjectGroupId]) VALUES (N'PRC391', N'Cloud Computing ', NULL, 13)
+GO
+INSERT [dbo].[Subject] ([SubjectId], [SubjectName], [Source], [SubjectGroupId]) VALUES (N'PRF192', N'Programming Fundamentals Using C', NULL, 1)
+GO
+INSERT [dbo].[Subject] ([SubjectId], [SubjectName], [Source], [SubjectGroupId]) VALUES (N'PRJ311', N'Desktop Java Applications', NULL, 1)
+GO
+INSERT [dbo].[Subject] ([SubjectId], [SubjectName], [Source], [SubjectGroupId]) VALUES (N'PRJ321', N'Java Web Application', NULL, 1)
+GO
+INSERT [dbo].[Subject] ([SubjectId], [SubjectName], [Source], [SubjectGroupId]) VALUES (N'PRM391', N'Mobile Programming', NULL, 13)
+GO
+INSERT [dbo].[Subject] ([SubjectId], [SubjectName], [Source], [SubjectGroupId]) VALUES (N'PRN292', N'C# & Dot Net', NULL, 1)
+GO
+INSERT [dbo].[Subject] ([SubjectId], [SubjectName], [Source], [SubjectGroupId]) VALUES (N'PRO192', N'Object-Oriented Paradigm using Java', NULL, 1)
+GO
+INSERT [dbo].[Subject] ([SubjectId], [SubjectName], [Source], [SubjectGroupId]) VALUES (N'SWD391', N'Software Architecture & Design', NULL, 13)
+GO
+INSERT [dbo].[Subject] ([SubjectId], [SubjectName], [Source], [SubjectGroupId]) VALUES (N'SWE102', N'Introduction to Software Engineering', NULL, 13)
+GO
+INSERT [dbo].[Subject] ([SubjectId], [SubjectName], [Source], [SubjectGroupId]) VALUES (N'Test1', N'Testaaa', N'AAA', 16)
+GO
+INSERT [dbo].[Subject] ([SubjectId], [SubjectName], [Source], [SubjectGroupId]) VALUES (N'VNR201', N'Revolutionary line of CPV', NULL, 3)
+GO
+SET IDENTITY_INSERT [dbo].[SubjectGroup] ON 
+GO
+INSERT [dbo].[SubjectGroup] ([SubjectGroupId], [SubjectGroupName]) VALUES (1, N'Computing Fundamentals')
+GO
+INSERT [dbo].[SubjectGroup] ([SubjectGroupId], [SubjectGroupName]) VALUES (2, N'Accounting')
+GO
+INSERT [dbo].[SubjectGroup] ([SubjectGroupId], [SubjectGroupName]) VALUES (3, N'Politics')
+GO
+INSERT [dbo].[SubjectGroup] ([SubjectGroupId], [SubjectGroupName]) VALUES (4, N'Digital Art & Design')
+GO
+INSERT [dbo].[SubjectGroup] ([SubjectGroupId], [SubjectGroupName]) VALUES (5, N'Economics')
+GO
+INSERT [dbo].[SubjectGroup] ([SubjectGroupId], [SubjectGroupName]) VALUES (6, N'Finance')
+GO
+INSERT [dbo].[SubjectGroup] ([SubjectGroupId], [SubjectGroupName]) VALUES (7, N'General Management')
+GO
+INSERT [dbo].[SubjectGroup] ([SubjectGroupId], [SubjectGroupName]) VALUES (8, N'Information Assurance')
+GO
+INSERT [dbo].[SubjectGroup] ([SubjectGroupId], [SubjectGroupName]) VALUES (9, N'International Business')
+GO
+INSERT [dbo].[SubjectGroup] ([SubjectGroupId], [SubjectGroupName]) VALUES (10, N'Japanese')
+GO
+INSERT [dbo].[SubjectGroup] ([SubjectGroupId], [SubjectGroupName]) VALUES (11, N'Marketing')
+GO
+INSERT [dbo].[SubjectGroup] ([SubjectGroupId], [SubjectGroupName]) VALUES (12, N'Mathematics')
+GO
+INSERT [dbo].[SubjectGroup] ([SubjectGroupId], [SubjectGroupName]) VALUES (13, N'Software Engineering')
+GO
+INSERT [dbo].[SubjectGroup] ([SubjectGroupId], [SubjectGroupName]) VALUES (14, N'English')
+GO
+INSERT [dbo].[SubjectGroup] ([SubjectGroupId], [SubjectGroupName]) VALUES (15, N'Multiple Media Communication	')
+GO
+INSERT [dbo].[SubjectGroup] ([SubjectGroupId], [SubjectGroupName]) VALUES (16, N'Test')
+GO
+SET IDENTITY_INSERT [dbo].[SubjectGroup] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Task] ON 
+GO
+INSERT [dbo].[Task] ([TaskId], [TaskDescription], [CreateDate], [EstimateTime], [EffortTime], [DueDate], [Priority], [IsComplete], [PlanTopicId], [TaskCategoryId]) VALUES (8, N'Read Chapter 1 Introduction to Software Architecture', CAST(N'2021-07-15T14:26:17.520' AS DateTime), 4, 1, CAST(N'2021-07-16T14:26:17.520' AS DateTime), 0, 0, 9, 4)
+GO
+SET IDENTITY_INSERT [dbo].[Task] OFF
+GO
+SET IDENTITY_INSERT [dbo].[TaskCategory] ON 
+GO
+INSERT [dbo].[TaskCategory] ([TaskCategoryId], [TaskType]) VALUES (1, N'Assignment')
+GO
+INSERT [dbo].[TaskCategory] ([TaskCategoryId], [TaskType]) VALUES (2, N'Quiz')
+GO
+INSERT [dbo].[TaskCategory] ([TaskCategoryId], [TaskType]) VALUES (3, N'Project')
+GO
+INSERT [dbo].[TaskCategory] ([TaskCategoryId], [TaskType]) VALUES (4, N'Self-Study')
+GO
+SET IDENTITY_INSERT [dbo].[TaskCategory] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Topic] ON 
+GO
+INSERT [dbo].[Topic] ([TopicId], [TopicName], [TopicDescription], [SubjectId]) VALUES (18, N'Basic concepts and computer evolution', N'Explain the general functions and structure of a digital computer. Present an overview of the evolution of computer technology from early digital computers to the latest microprocessors...', N'CEA201')
+GO
+INSERT [dbo].[Topic] ([TopicId], [TopicName], [TopicDescription], [SubjectId]) VALUES (19, N'Performance issues', N'Understand the key performance issues that relate to computer design.Understand the key performance issues that relate to computer design....', N'CEA201')
+GO
+INSERT [dbo].[Topic] ([TopicId], [TopicName], [TopicDescription], [SubjectId]) VALUES (20, N'A Top-LeveL view of computer function and interconnection', N'Understand the basic elements of an instruction cycle and the role of interrupts. Describe the concept of interconnection within a computer system....', N'CEA201')
+GO
+INSERT [dbo].[Topic] ([TopicId], [TopicName], [TopicDescription], [SubjectId]) VALUES (21, N'Cache memory', N'Present an overview of the main characteristics of computer memory systems and the use of a memory hierarchy. Describe the basic concepts and intent of cache memory...', N'CEA201')
+GO
+INSERT [dbo].[Topic] ([TopicId], [TopicName], [TopicDescription], [SubjectId]) VALUES (22, N'Internal memory', N'Present an overview of the principle types of semiconductor main memory. Understand the operation of a basic code that can detect and correct single-bit errors in 8-bit words...', N'CEA201')
+GO
+INSERT [dbo].[Topic] ([TopicId], [TopicName], [TopicDescription], [SubjectId]) VALUES (23, N'External memory', N'Understand the key properties of magnetic disks. Understand the performance issues involved in magnetic disk access. Understand the performance issues involved in magnetic disk access...', N'CEA201')
+GO
+INSERT [dbo].[Topic] ([TopicId], [TopicName], [TopicDescription], [SubjectId]) VALUES (24, N'Input/Output', N'Explain the use of I/O modules as part of a computer organization. Explain the use of I/O modules as part of a computer organization. Present an overview of the operation of direct memory access....', N'CEA201')
+GO
+INSERT [dbo].[Topic] ([TopicId], [TopicName], [TopicDescription], [SubjectId]) VALUES (25, N'Operating System Support', N'Summarize, at a top level, the key functions of an operating system (OS). Discuss the evolution of operating systems for early simple batch systems to modern complex systems....', N'CEA201')
+GO
+INSERT [dbo].[Topic] ([TopicId], [TopicName], [TopicDescription], [SubjectId]) VALUES (26, N'Number system', N'Understand the basic concepts and terminology of positional number systems. Understand the basic concepts and terminology of positional number systems....', N'CEA201')
+GO
+INSERT [dbo].[Topic] ([TopicId], [TopicName], [TopicDescription], [SubjectId]) VALUES (27, N'Computer arithmetric', N'Understand the distinction between the way in which numbers are represented (the binary format) and the algorithms used for the basic arithmetic operations. Explain twos complement representation...', N'CEA201')
+GO
+INSERT [dbo].[Topic] ([TopicId], [TopicName], [TopicDescription], [SubjectId]) VALUES (28, N'Digital Logic', N' Explain twos complement representation. Distinguish among the different types of flip-flops. Use a Karnaugh map to simplify a Boolean expression...', N'CEA201')
+GO
+INSERT [dbo].[Topic] ([TopicId], [TopicName], [TopicDescription], [SubjectId]) VALUES (29, N'Instruction sets: Characteristics and function', N'Present an overview of essential characteristics of machine instructions. Present an overview of essential characteristics of machine instructions....', N'CEA201')
+GO
+INSERT [dbo].[Topic] ([TopicId], [TopicName], [TopicDescription], [SubjectId]) VALUES (30, N'Instruction sets: Addressing modes and formats', N'Describe the various types of addressing modes common in instruction sets. Present an overview of x86 and ARM addressing modes...', N'CEA201')
+GO
+INSERT [dbo].[Topic] ([TopicId], [TopicName], [TopicDescription], [SubjectId]) VALUES (31, N'Processor Structure and Function', N'Distinguish between user-visible and control/status registers, and discuss the purposes of registers in each category. Summarize the instruction cycle....', N'CEA201')
+GO
+INSERT [dbo].[Topic] ([TopicId], [TopicName], [TopicDescription], [SubjectId]) VALUES (32, N'Reduced instruction set computers', N'Provide an overview research results on instruction execution characteristics that motivated the development of the RISC approach. Summarize the key characteristics of RISC machines....', N'CEA201')
+GO
+INSERT [dbo].[Topic] ([TopicId], [TopicName], [TopicDescription], [SubjectId]) VALUES (33, N'Instruction-level parallelism and superscalar processors', N'Explain the difference between superscalar and superpipelined approaches. Define instruction-level parallelism....', N'CEA201')
+GO
+INSERT [dbo].[Topic] ([TopicId], [TopicName], [TopicDescription], [SubjectId]) VALUES (34, N'Parallel processing', N'Summarize the types of parallel processor organizations. Present an overview of design features of symmetric multiprocessors. Understand the issue of cache coherence in a multiple processor system...', N'CEA201')
+GO
+INSERT [dbo].[Topic] ([TopicId], [TopicName], [TopicDescription], [SubjectId]) VALUES (35, N'Multicore computers', N'Understand the hardware performance issues that have driven the move to multicore computers. Understand the software performance issues posed by the use of multithreaded multicore computers....', N'CEA201')
+GO
+INSERT [dbo].[Topic] ([TopicId], [TopicName], [TopicDescription], [SubjectId]) VALUES (36, N'General-Purpose Graphic Processing Units', N'Chapter 19 General-Purpose Graphic Processing Units. Understand the difference between a GPU and a CPU....', N'CEA201')
+GO
+INSERT [dbo].[Topic] ([TopicId], [TopicName], [TopicDescription], [SubjectId]) VALUES (37, N'Chapter 20 Control Unit Operation', N'Explain the concept of micro-operations and define the principal instruction
+cycle phases in terms of micro-operations. Discuss how micro-operations are organized to control a processor....', N'CEA201')
+GO
+INSERT [dbo].[Topic] ([TopicId], [TopicName], [TopicDescription], [SubjectId]) VALUES (38, N'Chapter 21 Microprogrammed Controln', N'Present an overview of the basic concepts of microprogrammed control. Understand the difference between hardwired control and microprogrammed
+control.', N'CEA201')
+GO
+INSERT [dbo].[Topic] ([TopicId], [TopicName], [TopicDescription], [SubjectId]) VALUES (39, N'1 Introduction to Software Architecture', N'Introduce the relationship between software requirements and architecture. Introduce the relationship between architecture styles and architecture...', N'SWD391')
+GO
+SET IDENTITY_INSERT [dbo].[Topic] OFF
 GO
 ALTER TABLE [dbo].[PlanSemester]  WITH CHECK ADD  CONSTRAINT [FK__PlanSemes__Semes__37A5467C] FOREIGN KEY([SemesterId])
 REFERENCES [dbo].[Semester] ([SemesterId])
