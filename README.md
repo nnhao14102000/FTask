@@ -51,6 +51,14 @@ Run this command
 
 ![Run ](https://github.com/nnhao14102000/FTask/blob/hao/Document/Images/RunDocker.png?raw=true "Run Docker")
 
+- If success, in terminal will like this: 
+
+![Success Run Docker ](https://github.com/nnhao14102000/FTask/blob/hao/Document/Images/DockerRunSuccessTerminal.png?raw=true "Run Docker Success view in terminal")
+
+- And in Docker Desktop will like this: 
+
+![Run ](https://github.com/nnhao14102000/FTask/blob/hao/Document/Images/DockerRunSuccessDockerDesktop.png?raw=true "Run Docker")
+
 - Test API with PostMan
 
 ![Test ](https://github.com/nnhao14102000/FTask/blob/hao/Document/Images/TestApiWithPostMan.png?raw=true "Test with Postman")
@@ -70,6 +78,13 @@ Run this command
 1. After all requirement satisfy, just run as instruction, database will automatic create
 
 2. Or If you want have a Database with full data, We support a script of FTask database in FTask.Database project
+
+3. If you use docker, may be when run `docker compose up --build` have this error:
+
+![Docker Error ](https://github.com/nnhao14102000/FTask/blob/hao/Document/Images/DockerErrorSqlDb.png?raw=true "Docker error when run")
+
+Don't worry about that just run again... this error cause be cause the mssql of docker is not stable.
+May be you need run one or two or three times...
 
 
 #### ©  *Nguyen Nhut Hao 2021/07/12*

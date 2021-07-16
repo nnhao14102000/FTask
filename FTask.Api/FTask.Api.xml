@@ -569,7 +569,7 @@
             Get configuration from appsettings files
             </summary>
         </member>
-        <member name="M:FTask.Api.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+        <member name="M:FTask.Api.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
             <summary>
             This method gets called by the runtime. Use this method to add services to the container.
             </summary>

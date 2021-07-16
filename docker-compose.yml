@@ -9,7 +9,7 @@ services:
       context: .
       dockerfile: FTask.Api/Dockerfile
     ports:
-      - "7000:80"
+      - "3955:80"
     # for production env 
     environment:
       - ASPNETCORE_ENVIRONMENT=Production  
