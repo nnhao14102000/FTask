@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using FTask.Api.ViewModels.TaskCategoryViewModels;
 using FTask.AuthDatabase.Models;
+using FTask.Cache;
 using FTask.Database.Models;
 using FTask.Services.TaskCategoryBusinessService;
 using FTask.Shared.Parameters;
@@ -44,6 +45,7 @@ namespace FTask.Api.Controllers
         [HttpGet]
         [MapToApiVersion("1.0")]
         [Authorize(Roles = UserRoles.Admin + "," + UserRoles.User)]
+        [Cached(600)]
         public ActionResult<IEnumerable<TaskCategoryReadViewModel>> GetAllTaskCategories(
             [FromQuery] TaskCategoryParameters taskCategoryParameter)
         {
@@ -70,6 +72,7 @@ namespace FTask.Api.Controllers
         [HttpGet("{id}", Name = "GetTaskCategoryByTaskCategoryId")]
         [MapToApiVersion("1.0")]
         [Authorize(Roles = UserRoles.Admin + "," + UserRoles.User)]
+        [Cached(600)]
         public ActionResult<TaskCategoryReadDetailViewModel> GetTaskCategoryByTaskCategoryId(int id)
         {
             var taskCategory = _taskCategoryService.GetTaskCategoryByTaskCategoryId(id);

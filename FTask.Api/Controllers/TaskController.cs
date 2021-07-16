@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using FTask.Api.ViewModels.TaskViewModels;
 using FTask.AuthDatabase.Models;
+using FTask.Cache;
 using FTask.Database.Models;
 using FTask.Services.TaskBusinessService;
 using FTask.Shared.Parameters;
@@ -42,6 +43,7 @@ namespace FTask.Api.Controllers
         /// <returns></returns>
         [HttpGet]
         [MapToApiVersion("1.0")]
+        [Cached(600)]
         public ActionResult<IEnumerable<TaskReadViewModel>> GetAllTasks(
             [FromQuery] TaskParameters taskParameter)
         {
@@ -67,6 +69,7 @@ namespace FTask.Api.Controllers
         /// <returns></returns>
         [HttpGet("{id}", Name = "GetTaskByTaskId")]
         [MapToApiVersion("1.0")]
+        [Cached(600)]
         public ActionResult<TaskReadViewModel> GetTaskByTaskId(int id)
         {
             var Task = _taskService.GetTaskByTaskId(id);

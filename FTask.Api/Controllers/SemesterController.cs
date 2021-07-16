@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using FTask.Api.ViewModels.SemesterViewModels;
 using FTask.AuthDatabase.Models;
+using FTask.Cache;
 using FTask.Database.Models;
 using FTask.Services.SemesterBusinessService;
 using FTask.Shared.Parameters;
@@ -45,6 +46,7 @@ namespace FTaskAPI.Controllers
         [HttpGet]
         [MapToApiVersion("1.0")]
         [Authorize(Roles = UserRoles.Admin + "," + UserRoles.User)]
+        [Cached(600)]
         public ActionResult<IEnumerable<SemesterReadViewModel>> GetAllSemesters(
             [FromQuery] SemesterParameters semesterParameters)
         {
@@ -71,6 +73,7 @@ namespace FTaskAPI.Controllers
         [HttpGet("{id}", Name = "GetSemesterBySemesterId")]
         [MapToApiVersion("1.0")]
         [Authorize(Roles = UserRoles.Admin + "," + UserRoles.User)]
+        [Cached(600)]
         public ActionResult<SemesterReadDetailViewModel> GetSemesterBySemesterId(string id)
         {
             var semester = _semesterService.GetSemesterBySemesterId(id);

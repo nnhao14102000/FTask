@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using FTask.Api.ViewModels.PlanSubjectViewModels;
 using FTask.AuthDatabase.Models;
+using FTask.Cache;
 using FTask.Database.Models;
 using FTask.Services.PlanSubjectBusinessService;
 using FTask.Shared.Parameters;
@@ -43,6 +44,7 @@ namespace FTask.Api.Controllers
         /// <returns></returns>
         [HttpGet]
         [MapToApiVersion("1.0")]
+        [Cached(600)]
         public ActionResult<IEnumerable<PlanSubjectReadViewModel>> GetAllPlanSubjects(
             [FromQuery] PlanSubjectParameters planSubjectParameter)
         {
@@ -68,6 +70,7 @@ namespace FTask.Api.Controllers
         /// <returns></returns>
         [HttpGet("{id}", Name = "GetPlanSubjectByPlanSubjectId")]
         [MapToApiVersion("1.0")]
+        [Cached(600)]
         public ActionResult<PlanSubjectReadDetailViewModel> GetPlanSubjectByPlanSubjectId(int id)
         {
             var planSubject = _planSubjectService.GetPlanSubjectByPlanSubjectId(id);

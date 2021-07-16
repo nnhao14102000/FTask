@@ -6,7 +6,7 @@
     <members>
         <member name="T:FTask.Api.Controllers.AuthController">
             <summary>
-            API version 1 | Authentication controller
+            API version 1.0 | Authentication controller
             </summary>
         </member>
         <member name="M:FTask.Api.Controllers.AuthController.#ctor(FTask.AuthServices.Services.IUserService)">
@@ -17,28 +17,28 @@
         </member>
         <member name="M:FTask.Api.Controllers.AuthController.RegisterAsync(FTask.AuthDatabase.Models.RegisterModel)">
             <summary>
-            API version 1 | Register for user
+            API version 1.0 | Register for user
             </summary>
             <param name="model"></param>
             <returns></returns>
         </member>
         <member name="M:FTask.Api.Controllers.AuthController.RegisterAdminAsync(FTask.AuthDatabase.Models.RegisterModel)">
             <summary>
-            API version 1 | Register for admin
+            API version 1.0 | Register for admin
             </summary>
             <param name="model"></param>
             <returns></returns>
         </member>
         <member name="M:FTask.Api.Controllers.AuthController.LoginAsync(FTask.AuthDatabase.Models.LoginModel)">
             <summary>
-            API version 1 | Login
+            API version 1.0 | Login
             </summary>
             <param name="model"></param>
             <returns></returns>
         </member>
         <member name="M:FTask.Api.Controllers.AuthController.GoogleLoginAsync(FTask.AuthDatabase.Models.ExternalAuthModel)">
             <summary>
-            API version 1 | Login with Google
+            API version 1.0 | Login with Google
             </summary>
             <param name="model"></param>
             <returns></returns>

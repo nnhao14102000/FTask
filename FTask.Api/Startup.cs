@@ -1,5 +1,6 @@
 using FTask.AuthDatabase.Data;
 using FTask.AuthServices.Helpers;
+using FTask.Cache.Installer;
 using FTask.Database.Models;
 using FTask.Services.Helpers;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -154,6 +155,7 @@ namespace FTask.Api
             // Register Service...
             services.InjectAuthServices();
             services.InjectServices();
+            services.InstallServices(Configuration);
         }
 
         /// <summary>

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using FTask.Api.ViewModels.TopicViewModels;
 using FTask.AuthDatabase.Models;
+using FTask.Cache;
 using FTask.Database.Models;
 using FTask.Services.TopicBusinessService;
 using FTask.Shared.Parameters;
@@ -43,6 +44,7 @@ namespace FTask.Api.Controllers
         [HttpGet]
         [MapToApiVersion("1.0")]
         [Authorize(Roles = UserRoles.Admin + "," + UserRoles.User)]
+        [Cached(600)]
         public ActionResult<IEnumerable<TopicReadViewModel>> GetAllTopics(
             [FromQuery] TopicParameters topicParameter)
         {
@@ -69,6 +71,7 @@ namespace FTask.Api.Controllers
         [HttpGet("{id}", Name = "GetTopicByTopicId")]
         [MapToApiVersion("1.0")]
         [Authorize(Roles = UserRoles.Admin + "," + UserRoles.User)]
+        [Cached(600)]
         public ActionResult<TopicReadDetailViewModel> GetTopicByTopicId(int id)
         {
             var topic = _topicService.GetTopicByTopicId(id);

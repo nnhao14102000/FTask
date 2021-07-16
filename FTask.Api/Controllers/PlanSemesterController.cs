@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using FTask.Api.ViewModels.PlanSemesterViewModels;
 using FTask.AuthDatabase.Models;
+using FTask.Cache;
 using FTask.Database.Models;
 using FTask.Services.PlanSemesterBusinessService;
 using FTask.Shared.Parameters;
@@ -44,6 +45,7 @@ namespace FTask.Api.Controllers
         /// <returns></returns>
         [HttpGet]
         [MapToApiVersion("1.0")]
+        [Cached(600)]
         public ActionResult<IEnumerable<PlanSemesterReadViewModel>> GetAllPlanSemesters(
             [FromQuery] PlanSemesterParameters planSemesterParameter)
         {
@@ -69,6 +71,7 @@ namespace FTask.Api.Controllers
         /// <returns></returns>
         [HttpGet("{id}", Name = "GetPlanSemesterByPlanSemesterId")]
         [MapToApiVersion("1.0")]
+        [Cached(600)]
         public ActionResult<PSReadDetailViewModel> GetPlanSemesterByPlanSemesterId(int id)
         {
             var planSemester = _planSemesterService.GetPlanSemesterByPlanSemesterId(id);
@@ -85,7 +88,7 @@ namespace FTask.Api.Controllers
         /// <param name="planSemester"></param>
         /// <returns></returns>
         [HttpPost]
-        [MapToApiVersion("1.0")]
+        [MapToApiVersion("1.0")]        
         public ActionResult<PlanSemesterReadViewModel> AddPlanSemester(
             PlanSemesterAddViewModel planSemester)
         {

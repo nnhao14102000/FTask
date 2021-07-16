@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using FTask.Api.ViewModels.StudentViewModels;
 using FTask.AuthDatabase.Models;
+using FTask.Cache;
 using FTask.Database.Models;
 using FTask.Services.StudentBusinessService;
 using FTask.Shared.Parameters;
@@ -46,6 +47,7 @@ namespace FTaskAPI.Controllers
         [HttpGet]
         [MapToApiVersion("1.0")]
         [Authorize(Roles = UserRoles.Admin)]
+        [Cached(600)]
         public ActionResult<IEnumerable<StudentReadViewModel>> GetAllStudents(
             [FromQuery] StudentParameters studentParameters)
         {
@@ -72,6 +74,7 @@ namespace FTaskAPI.Controllers
         [HttpGet("{id}", Name = "GetStudentByStudentId")]
         [MapToApiVersion("1.0")]
         [Authorize(Roles = UserRoles.Admin + "," + UserRoles.User)]
+        [Cached(600)]
         public ActionResult<StudentReadDetailViewModel> GetStudentByStudentId(string id)
         {
             var student = _studentService.GetStudentByStudentId(id);

@@ -26,6 +26,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\FTask.AuthServices\FTask.AuthServices.csproj" />
+    <ProjectReference Include="..\FTask.Cache\FTask.Cache.csproj" />
     <ProjectReference Include="..\FTask.Services\FTask.Services.csproj" />
     <ProjectReference Include="..\FTask.Shared\FTask.Shared.csproj" />
   </ItemGroup>

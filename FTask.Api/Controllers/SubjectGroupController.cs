@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using FTask.Api.ViewModels.SubjectGroupViewModels;
 using FTask.AuthDatabase.Models;
+using FTask.Cache;
 using FTask.Database.Models;
 using FTask.Services.SubjectGroupBusinessService;
 using FTask.Shared.Parameters;
@@ -45,6 +46,7 @@ namespace FTask.Api.Controllers
         [HttpGet]
         [MapToApiVersion("1.0")]
         [Authorize(Roles = UserRoles.Admin + "," + UserRoles.User)]
+        [Cached(600)]
         public ActionResult<IEnumerable<SubjectGroupReadViewModel>> GetAllSubjectGroups(
             [FromQuery] SubjectGroupParameters subjectGroupParameter)
         {
@@ -71,6 +73,7 @@ namespace FTask.Api.Controllers
         [HttpGet("{id}", Name = "GetSubjectGroupBySubjectGroupId")]
         [MapToApiVersion("1.0")]
         [Authorize(Roles = UserRoles.Admin + "," + UserRoles.User)]
+        [Cached(600)]
         public ActionResult<SubjectGroupReadDetailViewModel> GetSubjectGroupBySubjectGroupId(int id)
         {
             var subjectGroup = _subjectGroupService.GetSubjectGroupBySubjectGroupId(id);

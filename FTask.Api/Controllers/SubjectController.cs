@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using FTask.Api.ViewModels.SubjectViewModels;
 using FTask.AuthDatabase.Models;
+using FTask.Cache;
 using FTask.Database.Models;
 using FTask.Services.SubjectBusinessService;
 using FTask.Shared.Parameters;
@@ -44,6 +45,7 @@ namespace FTaskAPI.Controllers
         [HttpGet]
         [MapToApiVersion("1.0")]
         [Authorize(Roles = UserRoles.Admin + "," + UserRoles.User)]
+        [Cached(600)]
         public ActionResult<IEnumerable<SubjectReadViewModel>> GetAllSubjects([FromQuery] SubjectParameters subjectParameters)
         {
             var subject = _subjectService.GetAllSubjects(subjectParameters);
@@ -69,6 +71,7 @@ namespace FTaskAPI.Controllers
         [HttpGet("{id}", Name = "GetSubjectInDetailBySubjectId")]
         [MapToApiVersion("1.0")]
         [Authorize(Roles = UserRoles.Admin + "," + UserRoles.User)]
+        [Cached(600)]
         public ActionResult<SubjectReadDetailViewModel> GetSubjectInDetailBySubjectId(string id)
         {
             var isExisted = _subjectService.GetSubjectBySubjectId(id);

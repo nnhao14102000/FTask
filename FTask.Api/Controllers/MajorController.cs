@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using FTask.Api.ViewModels.MajorViewModels;
 using FTask.AuthDatabase.Models;
+using FTask.Cache;
 using FTask.Database.Models;
 using FTask.Services.MajorBusinessService;
 using FTask.Shared.Parameters;
@@ -44,6 +45,7 @@ namespace FTaskAPI.Controllers
         [HttpGet]
         [MapToApiVersion("1.0")]
         [Authorize(Roles = UserRoles.Admin + "," + UserRoles.User)]
+        [Cached(600)]
         public ActionResult<IEnumerable<MajorReadViewModel>> GetAllMajors(
             [FromQuery] MajorParameters majorParameter)
         {
@@ -70,6 +72,7 @@ namespace FTaskAPI.Controllers
         [HttpGet("{id}", Name = "GetMajorInDetailByMajorId")]
         [MapToApiVersion("1.0")]
         [Authorize(Roles = UserRoles.Admin + "," + UserRoles.User)]
+        [Cached(600)]
         public ActionResult<MajorReadDetailViewModel> GetMajorInDetailByMajorId(string id)
         {
             var major = _majorService.GetMajorInDetailByMajorId(id);
@@ -136,7 +139,7 @@ namespace FTaskAPI.Controllers
         [HttpPatch("{id}")]
         [MapToApiVersion("1.0")]
         [Authorize(Roles = UserRoles.Admin)]
-        public ActionResult PartialMajorUpdate(string id, 
+        public ActionResult PartialMajorUpdate(string id,
             JsonPatchDocument<MajorUpdateViewModel> patchDoc)
         {
             var majorModel = _majorService.GetMajorByMajorId(id);
