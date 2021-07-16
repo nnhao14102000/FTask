@@ -1,9 +1,9 @@
-name: FTask of branch hao
+name: FTask of branch kien
 
 on:
   push:
     branch:
-      - hao
+      - kien
 
 jobs:
   build:
