@@ -2,17 +2,35 @@
 
 version: '3.4'
 
-networks: 
-  localdev:
-    name: localdev
+networks:
+  app-tier:
+    driver: bridge
 
-services:
+services: 
+
+  sqlserver:
+    image: "mcr.microsoft.com/mssql/server:2017-latest"
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "FTaskPa55w0rd!"
+      MSSQL_PID: "Express"
+    ports:
+      - "7433:1433"
+    networks:
+      - app-tier
+
+  redis:
+    image: 'bitnami/redis:latest'
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    networks:
+      - app-tier
+
   ftaskapi:
     image: ftaskapi
     build:
       context: .
       dockerfile: FTask.Api/Dockerfile
-    restart: always
     ports:
       - "7000:80"
     # for production env 
@@ -20,24 +38,6 @@ services:
       - ASPNETCORE_ENVIRONMENT=Production  
     depends_on:
       - sqlserver
-      - redis
-    networks: 
-      - localdev
-
-  sqlserver:
-    image: "mcr.microsoft.com/mssql/server:2017-latest"
-    restart: always
-    environment:
-      ACCEPT_EULA: "Y"
-      SA_PASSWORD: "FTaskPa55w0rd!"
-      MSSQL_PID: "Express"
-    ports:
-      - "7433:1433"
-    networks: 
-      - localdev
-
-  redis:
-    image: redis
-    container_name: redis
-    ports: 
-      - "6379:6379"
+      - redis      
+    networks:
+      - app-tier
