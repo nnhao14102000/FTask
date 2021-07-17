@@ -9,14 +9,11 @@ namespace FTask.Database.Repositories.IRepository
     {
         IQueryable<T> FindAll();
         IQueryable<T> FindByCondition(Expression<Func<T, bool>> expression);
-
         void Add(T obj);
         void Update(T obj);
         void Remove(T obj);
-
         void AddRange(IEnumerable<T> entities);
         void RemoveRange(IEnumerable<T> entities);
-
         bool SaveChanges();
     }
 }

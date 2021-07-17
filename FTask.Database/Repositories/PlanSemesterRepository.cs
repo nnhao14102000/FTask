@@ -42,6 +42,8 @@ namespace FTask.Database.Repositories
 
             FilterByIsComplete(ref planSemesters, planSemesterParameters.IsComplete);
 
+            SortLatestPlan(ref planSemesters);
+
             return PagedList<PlanSemester>
                 .ToPagedList(planSemesters, planSemesterParameters.PageNumber, planSemesterParameters.PageSize);
         }
@@ -76,6 +78,16 @@ namespace FTask.Database.Repositories
             planSemesters = planSemesters
                 .Where(p => p.PlanSemesterName.ToLower()
                 .Contains(planSemesterName.Trim().ToLower()));
+        }
+
+        private void SortLatestPlan(ref IQueryable<PlanSemester> plans)
+        {
+            if (!plans.Any())
+            {
+                return;
+            }            
+            plans = plans
+                .OrderByDescending(x => x.CreateDate);
         }
     }
 }
