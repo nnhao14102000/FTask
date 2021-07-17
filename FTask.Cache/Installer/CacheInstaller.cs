@@ -1,6 +1,7 @@
 ﻿using FTask.Cache.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using StackExchange.Redis;
 
 namespace FTask.Cache.Installer
 {
@@ -16,6 +17,9 @@ namespace FTask.Cache.Installer
             {
                 return;
             }
+            // Config for health check
+            services.AddSingleton<IConnectionMultiplexer>(_ => 
+                ConnectionMultiplexer.Connect(redisCacheSettings.ConnectionString));
 
             services.AddStackExchangeRedisCache(options =>
                 options.Configuration = redisCacheSettings.ConnectionString);

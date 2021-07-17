@@ -1,3 +1,5 @@
+using System.Linq;
+using FTask.Api.HealthChecks;
 using FTask.AuthDatabase.Data;
 using FTask.AuthServices.Helpers;
 using FTask.Cache.Installer;
@@ -5,6 +7,7 @@ using FTask.Database.Models;
 using FTask.Services.Helpers;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -20,6 +23,8 @@ using Newtonsoft.Json.Serialization;
 using System;
 using System.IO;
 using System.Text;
+using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
 
 namespace FTask.Api
 {
@@ -61,6 +66,12 @@ namespace FTask.Api
                 options.UseSqlServer(Configuration.GetConnectionString("AuthConnection"));
                 options.EnableSensitiveDataLogging(true);
             });
+
+            // Config for health check
+            services.AddHealthChecks()
+                .AddDbContextCheck<FTaskContext>()
+                .AddDbContextCheck<FTaskAuthDbContext>()
+                .AddCheck<RedisHealthCheck>("Redis");
 
             // Config for Identity==============================================================================================================================
             services.AddIdentity<IdentityUser, IdentityRole>(options =>
@@ -172,8 +183,26 @@ namespace FTask.Api
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "FTask.Api v1"));
             }
+            // Config for Healthcheck
+            app.UseHealthChecks("/health", new HealthCheckOptions{
+                ResponseWriter = async (context, report) => {
+                    context.Response.ContentType = "application/json";
+                    
+                    var response = new HealthcheckResponse{
+                        Status = report.Status.ToString(),
+                        Checks = report.Entries.Select(x => new HealthCheck{
+                            Component = x.Key,
+                            Status = x.Value.Status.ToString(),
+                            Description = x.Value.Description
+                        }),
+                        Duration = report.TotalDuration
+                    };
 
-            //Config for create log file...
+                    await context.Response.WriteAsync(JsonConvert.SerializeObject(response));
+                }
+            });
+
+            // Config for create log file...
             loggerFactory.AddFile(Configuration["Logging:PathFormat"]);
 
             app.UseRouting();
