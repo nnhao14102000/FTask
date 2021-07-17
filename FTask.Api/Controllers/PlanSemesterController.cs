@@ -17,7 +17,7 @@ namespace FTask.Api.Controllers
     /// API version 1.0 | Plan semester controller
     /// </summary>
     [ApiController]
-    [Route("api/v{version:apiVersion}/plan-semester")]
+    [Route("api/v{version:apiVersion}/plan-semesters")]
     [ApiVersion("1.0")]
     [Authorize(Roles = UserRoles.User)]
     public class PlanSemesterController : Controller
