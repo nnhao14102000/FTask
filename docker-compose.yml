@@ -2,12 +2,17 @@
 
 version: '3.4'
 
+networks: 
+  localdev:
+    name: localdev
+
 services:
   ftaskapi:
     image: ftaskapi
     build:
       context: .
       dockerfile: FTask.Api/Dockerfile
+    restart: always
     ports:
       - "7000:80"
     # for production env 
@@ -15,6 +20,9 @@ services:
       - ASPNETCORE_ENVIRONMENT=Production  
     depends_on:
       - sqlserver
+      - redis
+    networks: 
+      - localdev
 
   sqlserver:
     image: "mcr.microsoft.com/mssql/server:2017-latest"
@@ -25,3 +33,11 @@ services:
       MSSQL_PID: "Express"
     ports:
       - "7433:1433"
+    networks: 
+      - localdev
+
+  redis:
+    image: redis
+    container_name: redis
+    ports: 
+      - "6379:6379"

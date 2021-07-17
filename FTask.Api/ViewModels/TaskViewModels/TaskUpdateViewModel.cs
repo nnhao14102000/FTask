@@ -21,6 +21,11 @@ namespace FTask.Api.ViewModels.TaskViewModels
         public int EstimateTime { get; set; } = 0;
 
         /// <summary>
+        /// EffortTime complete time
+        /// </summary>
+        public int EffortTime { get; set; } = 0;
+
+        /// <summary>
         /// Deadline
         /// </summary>
         public DateTime? DueDate { get; set; }

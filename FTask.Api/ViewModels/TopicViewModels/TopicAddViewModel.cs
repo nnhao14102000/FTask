@@ -11,7 +11,7 @@ namespace FTask.Api.ViewModels.TopicViewModels
         /// Topic name
         /// </summary>
         [Required]
-        [StringLength(50)]
+        [StringLength(150)]
         public string TopicName { get; set; }
 
         /// <summary>

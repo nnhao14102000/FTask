@@ -2,6 +2,7 @@
 using FTask.Database.Repositories.IRepository;
 using FTask.Shared.Helpers;
 using FTask.Shared.Parameters;
+using System;
 using System.Linq;
 
 namespace FTask.Database.Repositories
@@ -16,24 +17,37 @@ namespace FTask.Database.Repositories
 
         public PagedList<Student> GetStudents(StudentParameters studentParameters)
         {
-            if (studentParameters.MajorId is null)
-            {
-                var allStudent = FindAll();
-                SearchByName(ref allStudent, studentParameters.StudentName);
+            var students = FindAll();
 
-                return PagedList<Student>
-                    .ToPagedList(allStudent.OrderBy(s => s.StudentName),
-                        studentParameters.PageNumber,
-                        studentParameters.PageSize);
-            }
-
-            var students = FindByCondition(st
-                => st.MajorId.Equals(studentParameters.MajorId));
+            FilterByMajorId(ref students, studentParameters.MajorId);
 
             SearchByName(ref students, studentParameters.StudentName);
 
-            return PagedList<Student>.ToPagedList(students,
+            SearchByStudentId(ref students, studentParameters.StudentId);
+
+            return PagedList<Student>.ToPagedList(students.OrderBy(s => s.StudentId),
                 studentParameters.PageNumber, studentParameters.PageSize);
+        }
+
+        private void SearchByStudentId(ref IQueryable<Student> students, string studentId)
+        {
+            if (!students.Any() || string.IsNullOrWhiteSpace(studentId))
+            {
+                return;
+            }
+            students = students
+                .Where(st => st.StudentId.ToLower()
+                .Contains(studentId.Trim().ToLower()));
+        }
+
+        private void FilterByMajorId(ref IQueryable<Student> students, string majorId)
+        {
+            if (!students.Any() || string.IsNullOrWhiteSpace(majorId))
+            {
+                return;
+            }
+            students = students
+                .Where(s => s.MajorId == majorId);
         }
 
         private void SearchByName(ref IQueryable<Student> students, string name)

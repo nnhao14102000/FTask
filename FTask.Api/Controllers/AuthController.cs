@@ -1,22 +1,24 @@
 ﻿using FTask.AuthDatabase.Models;
 using FTask.AuthServices.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
 namespace FTask.Api.Controllers
 {
     /// <summary>
-    /// API version 1 | Authentication controller
+    /// API version 1.0 | Authentication controller
     /// </summary>
     [ApiController]
     [Route("api/v{version:apiVersion}/auths")]
     [ApiVersion("1.0")]
+    [AllowAnonymous]
     public class AuthController : ControllerBase
     {
         private IUserService _userService;
 
         /// <summary>
-        /// Constructor
+        /// Constructor, inject User authentication service into AuthController
         /// </summary>
         /// <param name="userService"></param>
         public AuthController(IUserService userService)
@@ -25,7 +27,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// API version 1 | Register for user
+        /// API version 1.0 | Register for user
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
@@ -49,7 +51,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// API version 1 | Register for admin
+        /// API version 1.0 | Register for admin
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
@@ -73,7 +75,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// API version 1 | Login
+        /// API version 1.0 | Login
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
@@ -96,7 +98,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// API version 1 | Login with Google
+        /// API version 1.0 | Login with Google
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>

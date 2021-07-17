@@ -1,0 +1,43 @@
+# AuthController
+
+###
+# Register for role user
+POST  http://localhost:3955/api/v1/auths/register
+Content-Type: application/json
+
+{
+    "email": "user@example.com",
+    "password": "Pa55w0rd!",
+    "confirmPassword": "Pa55w0rd!"
+}
+
+###
+# Register for role admin
+POST  http://localhost:3955/api/v1/auths/admin-register
+Content-Type: application/json
+
+{
+    "email": "admin@example.com",
+    "password": "Pa55w0rd!",
+    "confirmPassword": "Pa55w0rd!"
+}
+
+###
+# Login
+POST  http://localhost:3955/api/v1/auths/login
+Content-Type: application/json
+
+{
+    "email": "admin@example.com",
+    "password": "Pa55w0rd!"
+}
+
+###
+# Login with google
+POST  http://localhost:3955/api/v1/auths/login-google
+Content-Type: application/json
+
+{
+  "provider": "google.com",
+  "idToken": "eyJhbGciOiJSUzI1NiIsImtpZCI6ImI2ZjhkNTVkYTUzNGVhOTFjYjJjYjAwZTFhZjRlOGUwY2RlY2E5M2QiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20iLCJhenAiOiIxNzMxMTA2OTU4NTgtdm5iMWpzbXQxNzkxdnNpMjFrYzJwcjB2MHVmbmtuY3MuYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJhdWQiOiIxNzMxMTA2OTU4NTgtOWg3NDNjZ3F1OWFkMGRubDN1cW9nMXIwOHNncGpkazYuYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJzdWIiOiIxMDA2NTMwNzM3MDQ0MDM4Mjk0NzYiLCJlbWFpbCI6Im5uaGFvOWEzQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJuYW1lIjoiSMOgbyBOZ3V54buFbiIsInBpY3R1cmUiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQVRYQUp3akIzbXhkWW1xcG81R0FmQmx3ZUhKVzJMcUM0dlQxeXhObzZWbD1zOTYtYyIsImdpdmVuX25hbWUiOiJIw6BvIiwiZmFtaWx5X25hbWUiOiJOZ3V54buFbiIsImxvY2FsZSI6InZpIiwiaWF0IjoxNjI1MjY2Njc5LCJleHAiOjE2MjUyNzAyNzl9.BANQbmi5uoWw018mWRscY_tGMzdSQmm-qoIQe8D1nzPP_hMHS7RnK5uniuJ5F5UwB0Hri9JIOn2Lboy9rykcg9ubieyNFCGbIjGps6msFamWOX-Sm6TltNnKYgRjehRF2U3Vot0bJpWmUXn7f4xZkDESrSkc_l7Xo_Lwngfp_4es9mRdWSRAKreMA8CBfRPQyBDcKfj4RcqWA11i7zF4RE36xmrmsouCTPMeSgnmkbpa7kcHMgnv4JNrH"
+}

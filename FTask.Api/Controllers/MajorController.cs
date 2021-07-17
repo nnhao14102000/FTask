@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using FTask.Api.ViewModels.MajorViewModels;
 using FTask.AuthDatabase.Models;
+using FTask.Cache;
 using FTask.Database.Models;
 using FTask.Services.MajorBusinessService;
 using FTask.Shared.Parameters;
@@ -13,7 +14,7 @@ using System.Collections.Generic;
 namespace FTaskAPI.Controllers
 {
     /// <summary>
-    /// Major Controller
+    /// API version 1.0 | Major controller
     /// </summary>
     [ApiController]
     [Route("api/v{version:apiVersion}/majors")]
@@ -22,9 +23,11 @@ namespace FTaskAPI.Controllers
     public class MajorController : ControllerBase
     {
         private readonly IMapper _mapper;
+
         private readonly IMajorService _majorService;
+
         /// <summary>
-        /// Constructor DI AutoMapper and MajorService
+        /// Constructor inject auto mapper object and major services
         /// </summary>
         /// <param name="mapper"></param>
         /// <param name="MajorService"></param>
@@ -35,14 +38,16 @@ namespace FTaskAPI.Controllers
         }
 
         /// <summary>
-        /// API version 1 | Roles: Admin, user | Get all majors in database, allow search by name
+        /// API version 1.0 | Roles: admin, user | Get all majors in database | Support search by major name
         /// </summary>
         /// <param name="majorParameter"></param>
         /// <returns></returns>
         [HttpGet]
         [MapToApiVersion("1.0")]
         [Authorize(Roles = UserRoles.Admin + "," + UserRoles.User)]
-        public ActionResult<IEnumerable<MajorReadViewModel>> GetAllMajors([FromQuery] MajorParameters majorParameter)
+        [Cached(600)]
+        public ActionResult<IEnumerable<MajorReadViewModel>> GetAllMajors(
+            [FromQuery] MajorParameters majorParameter)
         {
             var majors = _majorService.GetAllMajors(majorParameter);
 
@@ -60,13 +65,14 @@ namespace FTaskAPI.Controllers
         }
 
         /// <summary>
-        /// API version 1 | Roles: Admin, user | Get major and relevant student in this major by ID
+        /// API version 1.0 | Roles: admin, user | Get major and relevant students in this major by major Id
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}", Name = "GetMajorInDetailByMajorId")]
         [MapToApiVersion("1.0")]
         [Authorize(Roles = UserRoles.Admin + "," + UserRoles.User)]
+        [Cached(600)]
         public ActionResult<MajorReadDetailViewModel> GetMajorInDetailByMajorId(string id)
         {
             var major = _majorService.GetMajorInDetailByMajorId(id);
@@ -78,7 +84,7 @@ namespace FTaskAPI.Controllers
         }
 
         /// <summary>
-        /// API version 1 | Roles: Admin | Add new major into database 
+        /// API version 1.0 | Roles: admin | Add a new major into database 
         /// </summary>
         /// <param name="major"></param>
         /// <returns></returns>
@@ -97,11 +103,14 @@ namespace FTaskAPI.Controllers
             _majorService.AddMajor(majorModel);
             var majorReadModel = _mapper.Map<MajorReadViewModel>(majorModel);
 
-            return CreatedAtRoute(nameof(GetMajorInDetailByMajorId), new { id = majorReadModel.MajorId }, majorReadModel);
+            return CreatedAtRoute(
+                nameof(GetMajorInDetailByMajorId),
+                new { id = majorReadModel.MajorId }, majorReadModel
+            );
         }
 
         /// <summary>
-        /// API version 1 | Roles: Admin | Update infomation of a major 
+        /// API version 1.0 | Roles: Admin | Update infomation of a major 
         /// </summary>
         /// <param name="id"></param>
         /// <param name="major"></param>
@@ -122,7 +131,7 @@ namespace FTaskAPI.Controllers
         }
 
         /// <summary>
-        /// API version 1 | Roles: Admin | Update major by PATCH method...Allow update a single attribute 
+        /// API version 1.0 | Roles: Admin | Update infomation of a major | Support update single attribute
         /// </summary>
         /// <param name="id"></param>
         /// <param name="patchDoc"></param>
@@ -130,7 +139,8 @@ namespace FTaskAPI.Controllers
         [HttpPatch("{id}")]
         [MapToApiVersion("1.0")]
         [Authorize(Roles = UserRoles.Admin)]
-        public ActionResult PartialMajorUpdate(string id, JsonPatchDocument<MajorUpdateViewModel> patchDoc)
+        public ActionResult PartialMajorUpdate(string id,
+            JsonPatchDocument<MajorUpdateViewModel> patchDoc)
         {
             var majorModel = _majorService.GetMajorByMajorId(id);
             if (majorModel is null)
@@ -150,7 +160,7 @@ namespace FTaskAPI.Controllers
         }
 
         /// <summary>
-        /// API version 1 | Roles: Admin | Remove a major 
+        /// API version 1.0 | Roles: Admin | Remove a major 
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>

@@ -3,6 +3,7 @@ using FTask.Database.Repositories.IRepository;
 using FTask.Shared.Helpers;
 using FTask.Shared.Parameters;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Linq;
 
 namespace FTask.Database.Repositories
@@ -19,6 +20,11 @@ namespace FTask.Database.Repositories
             var planTopic = FindByCondition(x => x.PlanTopicId == id).FirstOrDefault();
 
             context.Entry(planTopic)
+                .Reference(x => x.Topic)
+                .Query()
+                .Load();
+                
+            context.Entry(planTopic)
                 .Collection(x => x.Tasks)
                 .Query()
                 .OrderBy(x => x.TaskId)
@@ -30,11 +36,25 @@ namespace FTask.Database.Repositories
         public PagedList<PlanTopic> GetPlanTopics(PlanTopicParameters planTopicParameters)
         {
             var planTopics = FindAll();
+
             GetByPlanSubjectId(ref planTopics, planTopicParameters.PlanSubjectId);
+
             GetByTopicId(ref planTopics, planTopicParameters.TopicId);
+
+            FilterByIsComplete(ref planTopics, planTopicParameters.IsComplete);
 
             return PagedList<PlanTopic>
                 .ToPagedList(planTopics, planTopicParameters.PageNumber, planTopicParameters.PageSize);
+        }
+
+        private void FilterByIsComplete(ref IQueryable<PlanTopic> planTopics, bool? isComplete)
+        {
+            if (!planTopics.Any() || isComplete is null)
+            {
+                return;
+            }
+            planTopics = planTopics
+                    .Where(x => x.IsComplete == isComplete);
         }
 
         private void GetByTopicId(ref IQueryable<PlanTopic> planTopics, int topicId)

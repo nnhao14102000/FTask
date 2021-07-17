@@ -227,7 +227,7 @@ namespace FTask.Database.Models
 
                 entity.Property(e => e.TopicName)
                     .IsRequired()
-                    .HasMaxLength(50);
+                    .HasMaxLength(150);
 
                 entity.HasOne(d => d.Subject)
                     .WithMany(p => p.Topics)

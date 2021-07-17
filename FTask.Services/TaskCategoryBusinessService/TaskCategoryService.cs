@@ -35,7 +35,7 @@ namespace FTask.Services.TaskCategoryBusinessService
             }
         }
 
-        public PagedList<TaskCategory> GetAllTaskCategorys(TaskCategoryParameters taskCategoryPrameters)
+        public PagedList<TaskCategory> GetAllTaskCategories(TaskCategoryParameters taskCategoryPrameters)
         {
             var taskCategory = _taskCategoryRepository.GetTaskCategorys(taskCategoryPrameters);
             if (taskCategory is null)

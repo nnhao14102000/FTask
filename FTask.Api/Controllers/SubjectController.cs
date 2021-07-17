@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using FTask.Api.ViewModels.SubjectViewModels;
 using FTask.AuthDatabase.Models;
+using FTask.Cache;
 using FTask.Database.Models;
 using FTask.Services.SubjectBusinessService;
 using FTask.Shared.Parameters;
@@ -13,7 +14,7 @@ using System.Collections.Generic;
 namespace FTaskAPI.Controllers
 {
     /// <summary>
-    /// Subject controller
+    /// API version 1.0 | Subject controller
     /// </summary>
     [ApiController]
     [Route("api/v{version:apiVersion}/subjects")]
@@ -25,24 +26,26 @@ namespace FTaskAPI.Controllers
         private readonly ISubjectService _subjectService;
 
         /// <summary>
-        /// Constructor DI AutoMapper and subject service
+        /// Constructor inject auto mapper and subject services
         /// </summary>
         /// <param name="mapper"></param>
         /// <param name="subjectService"></param>
-        public SubjectController(IMapper mapper, ISubjectService subjectService)
+        public SubjectController(IMapper mapper, 
+            ISubjectService subjectService)
         {
             _mapper = mapper;
             _subjectService = subjectService;
         }
 
         /// <summary>
-        /// API version 1 | Roles: admin, user | Get all subjects, allow search by name 
+        /// API version 1.0 | Roles: admin, user | Get all subjects | Support search by subject name, subject Id, filter by subject group Id
         /// </summary>
         /// <param name="subjectParameters"></param>
         /// <returns></returns>
         [HttpGet]
         [MapToApiVersion("1.0")]
         [Authorize(Roles = UserRoles.Admin + "," + UserRoles.User)]
+        [Cached(600)]
         public ActionResult<IEnumerable<SubjectReadViewModel>> GetAllSubjects([FromQuery] SubjectParameters subjectParameters)
         {
             var subject = _subjectService.GetAllSubjects(subjectParameters);
@@ -61,13 +64,14 @@ namespace FTaskAPI.Controllers
         }
 
         /// <summary>
-        /// API version 1 | Roles: admin, user | Get subject by Subject ID 
+        /// API version 1.0 | Roles: admin, user | Get subject by subject Id and it's relevant topics
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}", Name = "GetSubjectInDetailBySubjectId")]
         [MapToApiVersion("1.0")]
         [Authorize(Roles = UserRoles.Admin + "," + UserRoles.User)]
+        [Cached(600)]
         public ActionResult<SubjectReadDetailViewModel> GetSubjectInDetailBySubjectId(string id)
         {
             var isExisted = _subjectService.GetSubjectBySubjectId(id);
@@ -81,7 +85,7 @@ namespace FTaskAPI.Controllers
         }
 
         /// <summary>
-        /// API version 1 | Roles: admin | Add a new subject 
+        /// API version 1.0 | Roles: admin | Add a new subject 
         /// </summary>
         /// <param name="subject"></param>
         /// <returns></returns>
@@ -100,11 +104,14 @@ namespace FTaskAPI.Controllers
             _subjectService.AddSubject(subjectModel);
             var SubjectReadModel = _mapper.Map<SubjectReadViewModel>(subjectModel);
 
-            return CreatedAtRoute(nameof(GetSubjectInDetailBySubjectId), new { id = SubjectReadModel.SubjectId }, SubjectReadModel);
+            return CreatedAtRoute(
+                nameof(GetSubjectInDetailBySubjectId), 
+                new { id = SubjectReadModel.SubjectId }, SubjectReadModel
+            );
         }
 
         /// <summary>
-        /// API version 1 | Roles: admin | Update subject 
+        /// API version 1.0 | Roles: admin | Update subject 
         /// </summary>
         /// <param name="id"></param>
         /// <param name="subject"></param>
@@ -121,11 +128,11 @@ namespace FTaskAPI.Controllers
             }
             _mapper.Map(subject, subjectModel);
             _subjectService.UpdateSubject(subjectModel);
-            return NoContent();
+            return Ok("Update Successfull!");
         }
 
         /// <summary>
-        /// API version 1 | Roles: admin | Update subject by PATCH method...Allow update a single attribute 
+        /// API version 1.0 | Roles: admin | Update subject | Support update a single attribute 
         /// </summary>
         /// <param name="id"></param>
         /// <param name="patchDoc"></param>
@@ -133,7 +140,8 @@ namespace FTaskAPI.Controllers
         [HttpPatch("{id}")]
         [MapToApiVersion("1.0")]
         [Authorize(Roles = UserRoles.Admin)]
-        public ActionResult PartialSubjectUpdate(string id, JsonPatchDocument<SubjectUpdateViewModel> patchDoc)
+        public ActionResult PartialSubjectUpdate(string id, 
+            JsonPatchDocument<SubjectUpdateViewModel> patchDoc)
         {
             var subjectModel = _subjectService.GetSubjectBySubjectId(id);
             if (subjectModel is null)
@@ -149,11 +157,11 @@ namespace FTaskAPI.Controllers
 
             _mapper.Map(SubjectToPatch, subjectModel);
             _subjectService.UpdateSubject(subjectModel);
-            return NoContent();
+            return Ok("Update Successfull!");
         }
 
         /// <summary>
-        /// API version 1 | Roles: admin | Remove subject 
+        /// API version 1.0 | Roles: admin | Remove subject 
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -168,7 +176,7 @@ namespace FTaskAPI.Controllers
                 return NotFound();
             }
             _subjectService.RemoveSubject(subjectModel);
-            return NoContent();
+            return Ok("Remove Successfull!");
         }
 
     }

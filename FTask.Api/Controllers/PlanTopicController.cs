@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using FTask.Api.ViewModels.PlanTopicViewModels;
 using FTask.AuthDatabase.Models;
+using FTask.Cache;
 using FTask.Database.Models;
 using FTask.Services.PlanTopicBusinessService;
 using FTask.Shared.Parameters;
@@ -13,7 +14,7 @@ using System.Collections.Generic;
 namespace FTask.Api.Controllers
 {
     /// <summary>
-    /// PlanTopic controller
+    /// API version 1.0 | PlanTopic controller
     /// </summary>
     [ApiController]
     [Route("api/v{version:apiVersion}/plan-topics")]
@@ -25,24 +26,27 @@ namespace FTask.Api.Controllers
         private readonly IPlanTopicService _planTopicService;
 
         /// <summary>
-        /// Constructor DI AutoMapper and Task Category service
+        /// Constructor inject auto mapper and plan topic services
         /// </summary>
         /// <param name="mapper"></param>
         /// <param name="planTopicService"></param>
-        public PlanTopicController(IMapper mapper, IPlanTopicService planTopicService)
+        public PlanTopicController(IMapper mapper, 
+            IPlanTopicService planTopicService)
         {
             _mapper = mapper;
             _planTopicService = planTopicService;
         }
 
         /// <summary>
-        /// API version 1 | Roles: user | Get all plan topic, allow search by name 
+        /// API version 1.0 | Roles: user | Get all plan topics | Support get by plan subject Id, topic Id, filter by it status (is complete)
         /// </summary>
         /// <param name="planTopicParameter"></param>
         /// <returns></returns>
         [HttpGet]
         [MapToApiVersion("1.0")]
-        public ActionResult<IEnumerable<PlanTopicReadViewModel>> GetAllPlanTopics([FromQuery] PlanTopicParameters planTopicParameter)
+        [Cached(600)]
+        public ActionResult<IEnumerable<PlanTopicReadViewModel>> GetAllPlanTopics(
+            [FromQuery] PlanTopicParameters planTopicParameter)
         {
             var planTopic = _planTopicService.GetAllPlanTopics(planTopicParameter);
 
@@ -60,12 +64,13 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// API version 1 | Roles: user | Get plan topic by ID 
+        /// API version 1.0 | Roles: user | Get plan topic by id 
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}", Name = "GetPlanTopicByPlanTopicId")]
         [MapToApiVersion("1.0")]
+        [Cached(600)]
         public ActionResult<PlanTopicReadDetailViewModel> GetPlanTopicByPlanTopicId(int id)
         {
             var planTopic = _planTopicService.GetPlanTopicByPlanTopicId(id);
@@ -77,7 +82,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// API version 1 | Roles: user | Add a plan topic into database 
+        /// API version 1.0 | Roles: user | Add a plan topic into database 
         /// </summary>
         /// <param name="planTopic"></param>
         /// <returns></returns>
@@ -89,11 +94,14 @@ namespace FTask.Api.Controllers
             _planTopicService.AddPlanTopic(planTopicModel);
             var PlanTopicReadModel = _mapper.Map<PlanTopicReadViewModel>(planTopicModel);
 
-            return CreatedAtRoute(nameof(GetPlanTopicByPlanTopicId), new { id = PlanTopicReadModel.PlanTopicId }, PlanTopicReadModel);
+            return CreatedAtRoute(
+                nameof(GetPlanTopicByPlanTopicId), 
+                new { id = PlanTopicReadModel.PlanTopicId }, PlanTopicReadModel
+            );
         }
 
         /// <summary>
-        /// API version 1 | Roles: user | Update plan topic 
+        /// API version 1.0 | Roles: user | Update plan topic 
         /// </summary>
         /// <param name="id"></param>
         /// <param name="planTopic"></param>
@@ -109,18 +117,19 @@ namespace FTask.Api.Controllers
             }
             _mapper.Map(planTopic, planTopicModel);
             _planTopicService.UpdatePlanTopic(planTopicModel);
-            return NoContent();
+            return Ok("Update Successfull!");
         }
 
         /// <summary>
-        /// API version 1 | Roles: user | Update plan topic by PATCH method...Allow update a single attribute 
+        /// API version 1.0 | Roles: user | Update plan topic | Support update a single attribute 
         /// </summary>
         /// <param name="id"></param>
         /// <param name="patchDoc"></param>
         /// <returns></returns>
         [HttpPatch("{id}")]
         [MapToApiVersion("1.0")]
-        public ActionResult PartialPlanTopicUpdate(int id, JsonPatchDocument<PlanTopicUpdateViewModel> patchDoc)
+        public ActionResult PartialPlanTopicUpdate(int id, 
+            JsonPatchDocument<PlanTopicUpdateViewModel> patchDoc)
         {
             var planTopicModel = _planTopicService.GetPlanTopicByPlanTopicId(id);
             if (planTopicModel is null)
@@ -136,11 +145,11 @@ namespace FTask.Api.Controllers
 
             _mapper.Map(planTopicToPatch, planTopicModel);
             _planTopicService.UpdatePlanTopic(planTopicModel);
-            return NoContent();
+            return Ok("Update Successfull!");
         }
 
         /// <summary>
-        /// API version 1 | Roles: user | Remove a plan topic 
+        /// API version 1.0 | Roles: user | Remove a plan topic 
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -154,7 +163,7 @@ namespace FTask.Api.Controllers
                 return NotFound();
             }
             _planTopicService.RemovePlanTopic(planTopicModel);
-            return NoContent();
+            return Ok("Remove Successfull!");
         }
     }
 }

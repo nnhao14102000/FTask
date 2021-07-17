@@ -6,5 +6,6 @@ namespace FTask.Shared.Parameters
     {
         public string MajorId { get; set; }
         public string StudentName { get; set; }
+        public string StudentId { get; set; }
     }
 }

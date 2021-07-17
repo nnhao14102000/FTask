@@ -1,4 +1,5 @@
 ﻿using FTask.Api.ViewModels.TaskViewModels;
+using FTask.Api.ViewModels.TopicViewModels;
 using System.Collections.Generic;
 
 namespace FTask.Api.ViewModels.PlanTopicViewModels
@@ -27,6 +28,11 @@ namespace FTask.Api.ViewModels.PlanTopicViewModels
         /// Topic id this plan belong to
         /// </summary>
         public int TopicId { get; set; }
+
+        /// <summary>
+        /// Topic
+        /// </summary>
+        public TopicReadViewModel Topic { get; set; }
 
         /// <summary>
         /// Plan subject id this plan belong to

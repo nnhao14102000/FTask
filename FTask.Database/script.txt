@@ -1,6 +1,6 @@
 USE [master]
 GO
-/****** Object:  Database [FTask]    Script Date: 12/07/2021 11:52:07 SA ******/
+/****** Object:  Database [FTask]    Script Date: 16/07/2021 11:05:31 SA ******/
 CREATE DATABASE [FTask]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -80,7 +80,7 @@ ALTER DATABASE [FTask] SET QUERY_STORE = OFF
 GO
 USE [FTask]
 GO
-/****** Object:  Table [dbo].[Major]    Script Date: 12/07/2021 11:52:07 SA ******/
+/****** Object:  Table [dbo].[Major]    Script Date: 16/07/2021 11:05:31 SA ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -94,7 +94,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[PlanSemester]    Script Date: 12/07/2021 11:52:07 SA ******/
+/****** Object:  Table [dbo].[PlanSemester]    Script Date: 16/07/2021 11:05:31 SA ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -112,7 +112,7 @@ CREATE TABLE [dbo].[PlanSemester](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[PlanSubject]    Script Date: 12/07/2021 11:52:07 SA ******/
+/****** Object:  Table [dbo].[PlanSubject]    Script Date: 16/07/2021 11:05:31 SA ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -131,7 +131,7 @@ CREATE TABLE [dbo].[PlanSubject](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[PlanTopic]    Script Date: 12/07/2021 11:52:07 SA ******/
+/****** Object:  Table [dbo].[PlanTopic]    Script Date: 16/07/2021 11:05:31 SA ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -148,7 +148,7 @@ CREATE TABLE [dbo].[PlanTopic](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Semester]    Script Date: 12/07/2021 11:52:07 SA ******/
+/****** Object:  Table [dbo].[Semester]    Script Date: 16/07/2021 11:05:31 SA ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -165,7 +165,7 @@ CREATE TABLE [dbo].[Semester](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Student]    Script Date: 12/07/2021 11:52:07 SA ******/
+/****** Object:  Table [dbo].[Student]    Script Date: 16/07/2021 11:05:31 SA ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -181,7 +181,7 @@ CREATE TABLE [dbo].[Student](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Subject]    Script Date: 12/07/2021 11:52:07 SA ******/
+/****** Object:  Table [dbo].[Subject]    Script Date: 16/07/2021 11:05:31 SA ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -197,7 +197,7 @@ CREATE TABLE [dbo].[Subject](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[SubjectGroup]    Script Date: 12/07/2021 11:52:07 SA ******/
+/****** Object:  Table [dbo].[SubjectGroup]    Script Date: 16/07/2021 11:05:31 SA ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -211,7 +211,7 @@ CREATE TABLE [dbo].[SubjectGroup](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Task]    Script Date: 12/07/2021 11:52:07 SA ******/
+/****** Object:  Table [dbo].[Task]    Script Date: 16/07/2021 11:05:31 SA ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -233,7 +233,7 @@ CREATE TABLE [dbo].[Task](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[TaskCategory]    Script Date: 12/07/2021 11:52:07 SA ******/
+/****** Object:  Table [dbo].[TaskCategory]    Script Date: 16/07/2021 11:05:31 SA ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -247,14 +247,14 @@ CREATE TABLE [dbo].[TaskCategory](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Topic]    Script Date: 12/07/2021 11:52:07 SA ******/
+/****** Object:  Table [dbo].[Topic]    Script Date: 16/07/2021 11:05:31 SA ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Topic](
 	[TopicId] [int] IDENTITY(1,1) NOT NULL,
-	[TopicName] [nvarchar](50) NOT NULL,
+	[TopicName] [nvarchar](150) NOT NULL,
 	[TopicDescription] [nvarchar](200) NULL,
 	[SubjectId] [nvarchar](10) NOT NULL,
  CONSTRAINT [PK_Topic] PRIMARY KEY CLUSTERED 
@@ -273,9 +273,7 @@ INSERT [dbo].[Major] ([MajorId], [MajorName]) VALUES (N'BBA_MKT', N'Business Adm
 GO
 INSERT [dbo].[Major] ([MajorId], [MajorName]) VALUES (N'BEL', N'English Language')
 GO
-INSERT [dbo].[Major] ([MajorId], [MajorName]) VALUES (N'BEN', N'English Language')
-GO
-INSERT [dbo].[Major] ([MajorId], [MajorName]) VALUES (N'BGD', N'	Graphic Design')
+INSERT [dbo].[Major] ([MajorId], [MajorName]) VALUES (N'BGD', N'Graphic Design')
 GO
 INSERT [dbo].[Major] ([MajorId], [MajorName]) VALUES (N'BIT_AI', N'Bachelor of Information technology')
 GO
@@ -297,68 +295,14 @@ INSERT [dbo].[Major] ([MajorId], [MajorName]) VALUES (N'BMC', N'Multimedia Commu
 GO
 INSERT [dbo].[Major] ([MajorId], [MajorName]) VALUES (N'SBBA_HM', N'Business Adminstration_Hotel Management')
 GO
-INSERT [dbo].[Major] ([MajorId], [MajorName]) VALUES (N'Test3', N'Test again')
-GO
-INSERT [dbo].[Major] ([MajorId], [MajorName]) VALUES (N'TestAuth', N'Testing Authentication')
-GO
-SET IDENTITY_INSERT [dbo].[PlanSemester] ON 
-GO
-INSERT [dbo].[PlanSemester] ([PlanSemesterId], [PlanSemesterName], [StudentId], [SemesterId], [CreateDate], [IsComplete]) VALUES (1, N'OJT', N'SE140129', N'SPR_21', CAST(N'2021-02-10T12:35:39.323' AS DateTime), 1)
-GO
-INSERT [dbo].[PlanSemester] ([PlanSemesterId], [PlanSemesterName], [StudentId], [SemesterId], [CreateDate], [IsComplete]) VALUES (2, N'7th Semester', N'SE140129', N'SUM_21', CAST(N'2021-05-10T12:35:39.323' AS DateTime), 0)
-GO
-SET IDENTITY_INSERT [dbo].[PlanSemester] OFF
-GO
-SET IDENTITY_INSERT [dbo].[PlanSubject] ON 
-GO
-INSERT [dbo].[PlanSubject] ([PlanSubjectId], [Priority], [Progress], [CreateDate], [IsComplete], [PlanSemesterId], [SubjectId]) VALUES (1, 0, 0, CAST(N'2021-02-10T13:36:59.403' AS DateTime), 0, 1, N'PRM391')
-GO
-INSERT [dbo].[PlanSubject] ([PlanSubjectId], [Priority], [Progress], [CreateDate], [IsComplete], [PlanSemesterId], [SubjectId]) VALUES (2, 0, 0, CAST(N'2021-02-10T13:38:59.403' AS DateTime), 0, 1, N'SWD391')
-GO
-INSERT [dbo].[PlanSubject] ([PlanSubjectId], [Priority], [Progress], [CreateDate], [IsComplete], [PlanSemesterId], [SubjectId]) VALUES (3, 0, 0, CAST(N'2021-05-10T12:36:59.403' AS DateTime), 0, 2, N'PRM391')
-GO
-INSERT [dbo].[PlanSubject] ([PlanSubjectId], [Priority], [Progress], [CreateDate], [IsComplete], [PlanSemesterId], [SubjectId]) VALUES (4, 0, 0, CAST(N'2021-05-10T12:36:59.403' AS DateTime), 0, 2, N'SWD391')
-GO
-INSERT [dbo].[PlanSubject] ([PlanSubjectId], [Priority], [Progress], [CreateDate], [IsComplete], [PlanSemesterId], [SubjectId]) VALUES (5, 0, 0, CAST(N'2021-05-10T12:36:59.403' AS DateTime), 0, 2, N'HCI201')
-GO
-INSERT [dbo].[PlanSubject] ([PlanSubjectId], [Priority], [Progress], [CreateDate], [IsComplete], [PlanSemesterId], [SubjectId]) VALUES (6, 0, 0, CAST(N'2021-05-12T12:36:59.403' AS DateTime), 0, 2, N'ISC301')
-GO
-INSERT [dbo].[PlanSubject] ([PlanSubjectId], [Priority], [Progress], [CreateDate], [IsComplete], [PlanSemesterId], [SubjectId]) VALUES (7, 0, 0, CAST(N'2021-06-21T03:21:10.337' AS DateTime), 0, 2, N'Test1')
-GO
-SET IDENTITY_INSERT [dbo].[PlanSubject] OFF
-GO
-SET IDENTITY_INSERT [dbo].[PlanTopic] ON 
-GO
-INSERT [dbo].[PlanTopic] ([PlanTopicId], [Progress], [IsComplete], [TopicId], [PlanSubjectId]) VALUES (1, 0, 0, 4, 3)
-GO
-INSERT [dbo].[PlanTopic] ([PlanTopicId], [Progress], [IsComplete], [TopicId], [PlanSubjectId]) VALUES (2, 0, 0, 6, 3)
-GO
-INSERT [dbo].[PlanTopic] ([PlanTopicId], [Progress], [IsComplete], [TopicId], [PlanSubjectId]) VALUES (3, 0, 0, 1, 4)
-GO
-INSERT [dbo].[PlanTopic] ([PlanTopicId], [Progress], [IsComplete], [TopicId], [PlanSubjectId]) VALUES (4, 0, 0, 2, 4)
-GO
-INSERT [dbo].[PlanTopic] ([PlanTopicId], [Progress], [IsComplete], [TopicId], [PlanSubjectId]) VALUES (5, 0, 0, 3, 4)
-GO
-INSERT [dbo].[PlanTopic] ([PlanTopicId], [Progress], [IsComplete], [TopicId], [PlanSubjectId]) VALUES (6, 0, 0, 13, 5)
-GO
-INSERT [dbo].[PlanTopic] ([PlanTopicId], [Progress], [IsComplete], [TopicId], [PlanSubjectId]) VALUES (7, 0, 0, 15, 6)
-GO
-INSERT [dbo].[PlanTopic] ([PlanTopicId], [Progress], [IsComplete], [TopicId], [PlanSubjectId]) VALUES (8, 0, 0, 16, 7)
-GO
-SET IDENTITY_INSERT [dbo].[PlanTopic] OFF
-GO
-INSERT [dbo].[Semester] ([SemesterId], [SemesterName], [StartDate], [EndDate], [IsComplete]) VALUES (N'FLL_20', N'Fall 2020', NULL, NULL, 1)
+
+INSERT [dbo].[Semester] ([SemesterId], [SemesterName], [StartDate], [EndDate], [IsComplete]) VALUES (N'FLL_20', N'Fall 2020', CAST(N'2021-01-04T00:00:00.000' AS DateTime), CAST(N'2021-04-29T00:00:00.000' AS DateTime), 1)
 GO
 INSERT [dbo].[Semester] ([SemesterId], [SemesterName], [StartDate], [EndDate], [IsComplete]) VALUES (N'SPR_21', N'Spring 2021', CAST(N'2021-01-04T00:00:00.000' AS DateTime), CAST(N'2021-04-29T00:00:00.000' AS DateTime), 1)
 GO
 INSERT [dbo].[Semester] ([SemesterId], [SemesterName], [StartDate], [EndDate], [IsComplete]) VALUES (N'SUM_21', N'Summer 2021', CAST(N'2021-05-10T00:00:00.000' AS DateTime), CAST(N'2021-07-23T00:00:00.000' AS DateTime), 0)
 GO
-INSERT [dbo].[Student] ([StudentId], [StudentName], [StudentEmail], [MajorId]) VALUES (N'bj111111', N'Test so mot', N'test1@fpt.edu.vn', N'BJP')
-GO
-INSERT [dbo].[Student] ([StudentId], [StudentName], [StudentEmail], [MajorId]) VALUES (N'bj111112', N'Test so hai', N'test2@fpt.edu.vn', N'BJP')
-GO
-INSERT [dbo].[Student] ([StudentId], [StudentName], [StudentEmail], [MajorId]) VALUES (N'bj111113', N'Test so ba', N'test3@fpt.edu.vn', N'BJP')
-GO
+
 INSERT [dbo].[Student] ([StudentId], [StudentName], [StudentEmail], [MajorId]) VALUES (N'SA100000', N'Huynh Thanh Nhat', N'Nhathtsa100000@fpt.edu.vn', N'BIT_SE')
 GO
 INSERT [dbo].[Student] ([StudentId], [StudentName], [StudentEmail], [MajorId]) VALUES (N'SA100001', N'Trần Văn Kiên', N'Kientvsa100001@fpt.edu.vn', N'BIT_SE')
@@ -407,56 +351,8 @@ INSERT [dbo].[Student] ([StudentId], [StudentName], [StudentEmail], [MajorId]) V
 GO
 INSERT [dbo].[Student] ([StudentId], [StudentName], [StudentEmail], [MajorId]) VALUES (N'SS150380', N'Võ Minh Quân', N'QuanVMSS150380@fpt.edu.vn', N'BIT_SE')
 GO
-INSERT [dbo].[Subject] ([SubjectId], [SubjectName], [Source], [SubjectGroupId]) VALUES (N'CEA201', N'Computer Organization and Architecture', NULL, 1)
-GO
-INSERT [dbo].[Subject] ([SubjectId], [SubjectName], [Source], [SubjectGroupId]) VALUES (N'CSD201', N'Data Structure and Algorithm', NULL, 1)
-GO
-INSERT [dbo].[Subject] ([SubjectId], [SubjectName], [Source], [SubjectGroupId]) VALUES (N'EAL201', N'Academic Listening', NULL, 14)
-GO
-INSERT [dbo].[Subject] ([SubjectId], [SubjectName], [Source], [SubjectGroupId]) VALUES (N'ECR201', N'Critical Reading', NULL, 14)
-GO
-INSERT [dbo].[Subject] ([SubjectId], [SubjectName], [Source], [SubjectGroupId]) VALUES (N'ESL101', N'Sociolinguistics', NULL, 14)
-GO
-INSERT [dbo].[Subject] ([SubjectId], [SubjectName], [Source], [SubjectGroupId]) VALUES (N'HCI201', N'Human Computer Interaction', NULL, 13)
-GO
-INSERT [dbo].[Subject] ([SubjectId], [SubjectName], [Source], [SubjectGroupId]) VALUES (N'HCM201', N'Ho Chi Minh Ideology', NULL, 3)
-GO
-INSERT [dbo].[Subject] ([SubjectId], [SubjectName], [Source], [SubjectGroupId]) VALUES (N'ISC301', N'E Commerce ', NULL, 13)
-GO
-INSERT [dbo].[Subject] ([SubjectId], [SubjectName], [Source], [SubjectGroupId]) VALUES (N'JPD111', N'Japanese Language 1.1 - Dekiru', NULL, 10)
-GO
-INSERT [dbo].[Subject] ([SubjectId], [SubjectName], [Source], [SubjectGroupId]) VALUES (N'JPD121', N'Japanese Language 1.2 - Dekiru', NULL, 10)
-GO
-INSERT [dbo].[Subject] ([SubjectId], [SubjectName], [Source], [SubjectGroupId]) VALUES (N'JPD131', N'Japanese Language 1.3 - Dekiru', NULL, 10)
-GO
-INSERT [dbo].[Subject] ([SubjectId], [SubjectName], [Source], [SubjectGroupId]) VALUES (N'JPD141', N'Japanese Language 1.4 - Dekiru', NULL, 10)
-GO
-INSERT [dbo].[Subject] ([SubjectId], [SubjectName], [Source], [SubjectGroupId]) VALUES (N'JPD151', N'Japanese Language 1.5 - Dekiru', NULL, 10)
-GO
-INSERT [dbo].[Subject] ([SubjectId], [SubjectName], [Source], [SubjectGroupId]) VALUES (N'MLN101', N'Principles of Marxism - Leninism', NULL, 3)
-GO
-INSERT [dbo].[Subject] ([SubjectId], [SubjectName], [Source], [SubjectGroupId]) VALUES (N'PRC391', N'Cloud Computing ', NULL, 13)
-GO
-INSERT [dbo].[Subject] ([SubjectId], [SubjectName], [Source], [SubjectGroupId]) VALUES (N'PRF192', N'Programming Fundamentals Using C', NULL, 1)
-GO
-INSERT [dbo].[Subject] ([SubjectId], [SubjectName], [Source], [SubjectGroupId]) VALUES (N'PRJ311', N'Desktop Java Applications', NULL, 1)
-GO
-INSERT [dbo].[Subject] ([SubjectId], [SubjectName], [Source], [SubjectGroupId]) VALUES (N'PRJ321', N'Java Web Application', NULL, 1)
-GO
-INSERT [dbo].[Subject] ([SubjectId], [SubjectName], [Source], [SubjectGroupId]) VALUES (N'PRM391', N'Mobile Programming', NULL, 13)
-GO
-INSERT [dbo].[Subject] ([SubjectId], [SubjectName], [Source], [SubjectGroupId]) VALUES (N'PRN292', N'C# & Dot Net', NULL, 1)
-GO
-INSERT [dbo].[Subject] ([SubjectId], [SubjectName], [Source], [SubjectGroupId]) VALUES (N'PRO192', N'Object-Oriented Paradigm using Java', NULL, 1)
-GO
-INSERT [dbo].[Subject] ([SubjectId], [SubjectName], [Source], [SubjectGroupId]) VALUES (N'SWD391', N'Software Architecture & Design', NULL, 13)
-GO
-INSERT [dbo].[Subject] ([SubjectId], [SubjectName], [Source], [SubjectGroupId]) VALUES (N'SWE102', N'Introduction to Software Engineering', NULL, 13)
-GO
-INSERT [dbo].[Subject] ([SubjectId], [SubjectName], [Source], [SubjectGroupId]) VALUES (N'Test1', N'Testaaa', N'AAA', 16)
-GO
-INSERT [dbo].[Subject] ([SubjectId], [SubjectName], [Source], [SubjectGroupId]) VALUES (N'VNR201', N'Revolutionary line of CPV', NULL, 3)
-GO
+
+
 SET IDENTITY_INSERT [dbo].[SubjectGroup] ON 
 GO
 INSERT [dbo].[SubjectGroup] ([SubjectGroupId], [SubjectGroupName]) VALUES (1, N'Computing Fundamentals')
@@ -489,20 +385,9 @@ INSERT [dbo].[SubjectGroup] ([SubjectGroupId], [SubjectGroupName]) VALUES (14, N
 GO
 INSERT [dbo].[SubjectGroup] ([SubjectGroupId], [SubjectGroupName]) VALUES (15, N'Multiple Media Communication	')
 GO
-INSERT [dbo].[SubjectGroup] ([SubjectGroupId], [SubjectGroupName]) VALUES (16, N'Test')
-GO
 SET IDENTITY_INSERT [dbo].[SubjectGroup] OFF
 GO
-SET IDENTITY_INSERT [dbo].[Task] ON 
-GO
-INSERT [dbo].[Task] ([TaskId], [TaskDescription], [CreateDate], [EstimateTime], [EffortTime], [DueDate], [Priority], [IsComplete], [PlanTopicId], [TaskCategoryId]) VALUES (1, N'Test lai phat nua xem the lao', CAST(N'2021-06-21T04:09:13.557' AS DateTime), 0, 0, NULL, 0, 1, 8, 4)
-GO
-INSERT [dbo].[Task] ([TaskId], [TaskDescription], [CreateDate], [EstimateTime], [EffortTime], [DueDate], [Priority], [IsComplete], [PlanTopicId], [TaskCategoryId]) VALUES (2, N'Test them phat phat nua xem the lao', CAST(N'2021-06-21T04:09:13.557' AS DateTime), 0, 0, NULL, 0, 1, 8, 4)
-GO
-INSERT [dbo].[Task] ([TaskId], [TaskDescription], [CreateDate], [EstimateTime], [EffortTime], [DueDate], [Priority], [IsComplete], [PlanTopicId], [TaskCategoryId]) VALUES (3, N'Test them mot phat nua xem the lao', CAST(N'2021-06-21T04:09:13.557' AS DateTime), 0, 0, NULL, 0, 1, 8, 4)
-GO
-SET IDENTITY_INSERT [dbo].[Task] OFF
-GO
+
 SET IDENTITY_INSERT [dbo].[TaskCategory] ON 
 GO
 INSERT [dbo].[TaskCategory] ([TaskCategoryId], [TaskType]) VALUES (1, N'Assignment')
@@ -515,6 +400,56 @@ INSERT [dbo].[TaskCategory] ([TaskCategoryId], [TaskType]) VALUES (4, N'Self-Stu
 GO
 SET IDENTITY_INSERT [dbo].[TaskCategory] OFF
 GO
+
+INSERT [dbo].[Subject] ([SubjectId], [SubjectName], [Source], [SubjectGroupId]) VALUES (N'PRN292', N'C# & Dot Net', null, 1)
+GO
+INSERT [dbo].[Subject] ([SubjectId], [SubjectName], [Source], [SubjectGroupId]) VALUES (N'CEA201', N'Computer Organization and Architecture', null, 1)
+GO
+INSERT [dbo].[Subject] ([SubjectId], [SubjectName], [Source], [SubjectGroupId]) VALUES (N'CSD201', N'Data Structure and Algorithm', null, 1)
+GO
+INSERT [dbo].[Subject] ([SubjectId], [SubjectName], [Source], [SubjectGroupId]) VALUES (N'PRJ311', N'Desktop Java Applications', null, 1)
+GO
+INSERT [dbo].[Subject] ([SubjectId], [SubjectName], [Source], [SubjectGroupId]) VALUES (N'PRO192', N'Object-Oriented Paradigm using Java', null, 1)
+GO
+INSERT [dbo].[Subject] ([SubjectId], [SubjectName], [Source], [SubjectGroupId]) VALUES (N'PRF192', N'Programming Fundamentals Using C', null, 1)
+GO
+INSERT [dbo].[Subject] ([SubjectId], [SubjectName], [Source], [SubjectGroupId]) VALUES (N'PRJ321', N'Java Web Application', null, 1)
+GO
+INSERT [dbo].[Subject] ([SubjectId], [SubjectName], [Source], [SubjectGroupId]) VALUES (N'MLN101', N'Principles of Marxism - Leninism', null, 3)
+GO
+INSERT [dbo].[Subject] ([SubjectId], [SubjectName], [Source], [SubjectGroupId]) VALUES (N'HCM201', N'Ho Chi Minh Ideology', null, 3)
+GO
+INSERT [dbo].[Subject] ([SubjectId], [SubjectName], [Source], [SubjectGroupId]) VALUES (N'VNR201', N'Revolutionary line of CPV', null, 3)
+GO
+INSERT [dbo].[Subject] ([SubjectId], [SubjectName], [Source], [SubjectGroupId]) VALUES (N'JPD111', N'Japanese Language 1.1 - Dekiru', null, 10)
+GO
+INSERT [dbo].[Subject] ([SubjectId], [SubjectName], [Source], [SubjectGroupId]) VALUES (N'JPD121', N'Japanese Language 1.2 - Dekiru', null, 10)
+GO
+INSERT [dbo].[Subject] ([SubjectId], [SubjectName], [Source], [SubjectGroupId]) VALUES (N'JPD131', N'Japanese Language 1.3 - Dekiru', null, 10)
+GO
+INSERT [dbo].[Subject] ([SubjectId], [SubjectName], [Source], [SubjectGroupId]) VALUES (N'JPD141', N'Japanese Language 1.4 - Dekiru', null, 10)
+GO
+INSERT [dbo].[Subject] ([SubjectId], [SubjectName], [Source], [SubjectGroupId]) VALUES (N'JPD151', N'Japanese Language 1.5 - Dekiru', null, 10)
+GO
+INSERT [dbo].[Subject] ([SubjectId], [SubjectName], [Source], [SubjectGroupId]) VALUES (N'PRC391', N'Cloud Computing ', null, 13)
+GO
+INSERT [dbo].[Subject] ([SubjectId], [SubjectName], [Source], [SubjectGroupId]) VALUES (N'ISC301', N'E Commerce ', null, 13)
+GO
+INSERT [dbo].[Subject] ([SubjectId], [SubjectName], [Source], [SubjectGroupId]) VALUES (N'HCI201', N'Human Computer Interaction', null, 13)
+GO
+INSERT [dbo].[Subject] ([SubjectId], [SubjectName], [Source], [SubjectGroupId]) VALUES (N'SWE102', N'Introduction to Software Engineering', null, 13)
+GO
+INSERT [dbo].[Subject] ([SubjectId], [SubjectName], [Source], [SubjectGroupId]) VALUES (N'SWD391', N'Software Architecture & Design', null, 13)
+GO
+INSERT [dbo].[Subject] ([SubjectId], [SubjectName], [Source], [SubjectGroupId]) VALUES (N'PRM391', N'Mobile Programming', null, 13)
+GO
+INSERT [dbo].[Subject] ([SubjectId], [SubjectName], [Source], [SubjectGroupId]) VALUES (N'ESL101', N'Sociolinguistics', null, 14)
+GO
+INSERT [dbo].[Subject] ([SubjectId], [SubjectName], [Source], [SubjectGroupId]) VALUES (N'EAL201', N'Academic Listening', null, 14)
+GO
+INSERT [dbo].[Subject] ([SubjectId], [SubjectName], [Source], [SubjectGroupId]) VALUES (N'ECR201', N'Critical Reading', null, 14)
+GO
+
 SET IDENTITY_INSERT [dbo].[Topic] ON 
 GO
 INSERT [dbo].[Topic] ([TopicId], [TopicName], [TopicDescription], [SubjectId]) VALUES (1, N'Project', N'Set task for your Project', N'SWD391')
@@ -547,12 +482,81 @@ INSERT [dbo].[Topic] ([TopicId], [TopicName], [TopicDescription], [SubjectId]) V
 GO
 INSERT [dbo].[Topic] ([TopicId], [TopicName], [TopicDescription], [SubjectId]) VALUES (15, N'Chapter 2', N'E-Marketplace: structures, mechanisms, economics, and impacts', N'ISC301')
 GO
-INSERT [dbo].[Topic] ([TopicId], [TopicName], [TopicDescription], [SubjectId]) VALUES (16, N'Tui test nha', N'Test xem xem code co bi loi hay ko', N'Test1')
-GO
-INSERT [dbo].[Topic] ([TopicId], [TopicName], [TopicDescription], [SubjectId]) VALUES (17, N'Tui test phat nua nha', N'Test xem xem code co bi loi hay ko', N'Test1')
-GO
 SET IDENTITY_INSERT [dbo].[Topic] OFF
 GO
+
+SET IDENTITY_INSERT [dbo].[PlanSemester] ON 
+GO
+INSERT [dbo].[PlanSemester] ([PlanSemesterId], [PlanSemesterName], [StudentId], [SemesterId], [CreateDate], [IsComplete]) VALUES (1, N'OJT', N'SE140129', N'SPR_21', CAST(N'2021-02-10T12:35:39.323' AS DateTime), 1)
+GO
+INSERT [dbo].[PlanSemester] ([PlanSemesterId], [PlanSemesterName], [StudentId], [SemesterId], [CreateDate], [IsComplete]) VALUES (2, N'7th Semester', N'SE140129', N'SUM_21', CAST(N'2021-05-10T12:35:39.323' AS DateTime), 0)
+GO
+SET IDENTITY_INSERT [dbo].[PlanSemester] OFF
+GO
+
+SET IDENTITY_INSERT [dbo].[PlanSubject] ON 
+GO
+INSERT [dbo].[PlanSubject] ([PlanSubjectId], [Priority], [Progress], [CreateDate], [IsComplete], [PlanSemesterId], [SubjectId]) VALUES (1, 0, 0, CAST(N'2021-02-10T13:36:59.403' AS DateTime), 0, 1, N'PRM391')
+GO
+INSERT [dbo].[PlanSubject] ([PlanSubjectId], [Priority], [Progress], [CreateDate], [IsComplete], [PlanSemesterId], [SubjectId]) VALUES (2, 0, 0, CAST(N'2021-02-10T13:38:59.403' AS DateTime), 0, 1, N'SWD391')
+GO
+INSERT [dbo].[PlanSubject] ([PlanSubjectId], [Priority], [Progress], [CreateDate], [IsComplete], [PlanSemesterId], [SubjectId]) VALUES (3, 0, 0, CAST(N'2021-05-10T12:36:59.403' AS DateTime), 0, 2, N'PRM391')
+GO
+INSERT [dbo].[PlanSubject] ([PlanSubjectId], [Priority], [Progress], [CreateDate], [IsComplete], [PlanSemesterId], [SubjectId]) VALUES (4, 0, 0, CAST(N'2021-05-10T12:36:59.403' AS DateTime), 0, 2, N'SWD391')
+GO
+INSERT [dbo].[PlanSubject] ([PlanSubjectId], [Priority], [Progress], [CreateDate], [IsComplete], [PlanSemesterId], [SubjectId]) VALUES (5, 0, 0, CAST(N'2021-05-10T12:36:59.403' AS DateTime), 0, 2, N'HCI201')
+GO
+INSERT [dbo].[PlanSubject] ([PlanSubjectId], [Priority], [Progress], [CreateDate], [IsComplete], [PlanSemesterId], [SubjectId]) VALUES (6, 0, 0, CAST(N'2021-05-12T12:36:59.403' AS DateTime), 0, 2, N'ISC301')
+GO
+SET IDENTITY_INSERT [dbo].[PlanSubject] OFF
+GO
+
+SET IDENTITY_INSERT [dbo].[PlanTopic] ON 
+GO
+INSERT [dbo].[PlanTopic] ([PlanTopicId], [Progress], [IsComplete], [TopicId], [PlanSubjectId]) VALUES (1, 0, 0, 4, 3)
+GO
+INSERT [dbo].[PlanTopic] ([PlanTopicId], [Progress], [IsComplete], [TopicId], [PlanSubjectId]) VALUES (2, 0, 0, 6, 3)
+GO
+INSERT [dbo].[PlanTopic] ([PlanTopicId], [Progress], [IsComplete], [TopicId], [PlanSubjectId]) VALUES (3, 0, 0, 1, 4)
+GO
+INSERT [dbo].[PlanTopic] ([PlanTopicId], [Progress], [IsComplete], [TopicId], [PlanSubjectId]) VALUES (4, 0, 0, 2, 4)
+GO
+INSERT [dbo].[PlanTopic] ([PlanTopicId], [Progress], [IsComplete], [TopicId], [PlanSubjectId]) VALUES (5, 0, 0, 3, 4)
+GO
+INSERT [dbo].[PlanTopic] ([PlanTopicId], [Progress], [IsComplete], [TopicId], [PlanSubjectId]) VALUES (6, 0, 0, 13, 5)
+GO
+INSERT [dbo].[PlanTopic] ([PlanTopicId], [Progress], [IsComplete], [TopicId], [PlanSubjectId]) VALUES (7, 0, 0, 15, 6)
+GO
+SET IDENTITY_INSERT [dbo].[PlanTopic] OFF
+GO
+
+SET IDENTITY_INSERT [dbo].[Task] ON 
+GO
+INSERT [dbo].[Task] ([TaskId], [TaskDescription], [CreateDate], [EstimateTime], [EffortTime], [DueDate], [Priority], [IsComplete], [PlanTopicId], [TaskCategoryId]) 
+VALUES (1, N'Design Database', CAST(N'2021-05-12T12:36:59.403' AS DateTime), 50, 10, CAST(N'2021-07-01T12:36:59.403' AS DateTime), 1, 0, 1, 3)
+GO
+INSERT [dbo].[Task] ([TaskId], [TaskDescription], [CreateDate], [EstimateTime], [EffortTime], [DueDate], [Priority], [IsComplete], [PlanTopicId], [TaskCategoryId]) 
+VALUES (2, N'Do Demo', CAST(N'2021-05-12T12:36:59.403' AS DateTime), 50, 10, CAST(N'2021-07-01T12:36:59.403' AS DateTime), 0, 0, 2, 1)
+GO
+INSERT [dbo].[Task] ([TaskId], [TaskDescription], [CreateDate], [EstimateTime], [EffortTime], [DueDate], [Priority], [IsComplete], [PlanTopicId], [TaskCategoryId]) 
+VALUES (3, N'Design Database', CAST(N'2021-05-12T12:36:59.403' AS DateTime), 50, 10, CAST(N'2021-07-01T12:36:59.403' AS DateTime), 1, 0, 3, 3)
+GO
+INSERT [dbo].[Task] ([TaskId], [TaskDescription], [CreateDate], [EstimateTime], [EffortTime], [DueDate], [Priority], [IsComplete], [PlanTopicId], [TaskCategoryId]) 
+VALUES (4, N'Learn Flutter', CAST(N'2021-05-12T12:36:59.403' AS DateTime), 50, 10, CAST(N'2021-07-01T12:36:59.403' AS DateTime), 1, 0, 4, 4)
+GO
+INSERT [dbo].[Task] ([TaskId], [TaskDescription], [CreateDate], [EstimateTime], [EffortTime], [DueDate], [Priority], [IsComplete], [PlanTopicId], [TaskCategoryId]) 
+VALUES (5, N'Create API', CAST(N'2021-05-12T12:36:59.403' AS DateTime), 50, 10, CAST(N'2021-07-01T12:36:59.403' AS DateTime), 1, 0, 5, 3)
+GO
+INSERT [dbo].[Task] ([TaskId], [TaskDescription], [CreateDate], [EstimateTime], [EffortTime], [DueDate], [Priority], [IsComplete], [PlanTopicId], [TaskCategoryId]) 
+VALUES (6, N'Build Project', CAST(N'2021-05-12T12:36:59.403' AS DateTime), 50, 10, CAST(N'2021-07-01T12:36:59.403' AS DateTime), 1, 0, 6, 3)
+GO
+INSERT [dbo].[Task] ([TaskId], [TaskDescription], [CreateDate], [EstimateTime], [EffortTime], [DueDate], [Priority], [IsComplete], [PlanTopicId], [TaskCategoryId]) 
+VALUES (7, N'EduNext Slot 4', CAST(N'2021-05-12T12:36:59.403' AS DateTime), 50, 10, CAST(N'2021-07-01T12:36:59.403' AS DateTime), 0, 0, 7, 1)
+GO
+SET IDENTITY_INSERT [dbo].[Task] OFF
+GO
+
+
 ALTER TABLE [dbo].[PlanSemester]  WITH CHECK ADD  CONSTRAINT [FK__PlanSemes__Semes__37A5467C] FOREIGN KEY([SemesterId])
 REFERENCES [dbo].[Semester] ([SemesterId])
 GO

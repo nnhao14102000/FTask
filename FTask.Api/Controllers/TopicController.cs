@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using FTask.Api.ViewModels.TopicViewModels;
 using FTask.AuthDatabase.Models;
+using FTask.Cache;
 using FTask.Database.Models;
 using FTask.Services.TopicBusinessService;
 using FTask.Shared.Parameters;
@@ -13,10 +14,10 @@ using System.Collections.Generic;
 namespace FTask.Api.Controllers
 {
     /// <summary>
-    /// Topic controller
+    /// API version 1.0 | Topic controller
     /// </summary>
     [ApiController]
-    [Route("api/v{version:apiVersion}/topic")]
+    [Route("api/v{version:apiVersion}/topics")]
     [ApiVersion("1.0")]
     [Authorize(Roles = UserRoles.Admin + "," + UserRoles.User)]
     public class TopicController : Controller
@@ -25,7 +26,7 @@ namespace FTask.Api.Controllers
         private readonly ITopicService _topicService;
 
         /// <summary>
-        /// Constructor DI AutoMapper and topic service
+        /// Constructor inject auto mapper and topic services
         /// </summary>
         /// <param name="mapper"></param>
         /// <param name="topicService"></param>
@@ -36,14 +37,16 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// API version 1 | Get all topics, allow search by name
+        /// API version 1.0 | Get all topics | Support search by name, get by subject Id
         /// </summary>
         /// <param name="topicParameter"></param>
         /// <returns></returns>
         [HttpGet]
         [MapToApiVersion("1.0")]
         [Authorize(Roles = UserRoles.Admin + "," + UserRoles.User)]
-        public ActionResult<IEnumerable<TopicReadViewModel>> GetAllTopics([FromQuery] TopicParameters topicParameter)
+        [Cached(600)]
+        public ActionResult<IEnumerable<TopicReadViewModel>> GetAllTopics(
+            [FromQuery] TopicParameters topicParameter)
         {
             var topic = _topicService.GetAllTopics(topicParameter);
 
@@ -61,13 +64,14 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// API version 1 | Get topic by ID
+        /// API version 1.0 | Get topic by Id
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}", Name = "GetTopicByTopicId")]
         [MapToApiVersion("1.0")]
         [Authorize(Roles = UserRoles.Admin + "," + UserRoles.User)]
+        [Cached(600)]
         public ActionResult<TopicReadDetailViewModel> GetTopicByTopicId(int id)
         {
             var topic = _topicService.GetTopicByTopicId(id);
@@ -79,7 +83,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// API version 1 | Add a topic into database
+        /// API version 1.0 | Add a topic into database
         /// </summary>
         /// <param name="topic"></param>
         /// <returns></returns>
@@ -96,7 +100,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// API version 1 | Update topic
+        /// API version 1.0 | Update topic
         /// </summary>
         /// <param name="id"></param>
         /// <param name="topic"></param>
@@ -113,11 +117,11 @@ namespace FTask.Api.Controllers
             }
             _mapper.Map(topic, topicModel);
             _topicService.UpdateTopic(topicModel);
-            return NoContent();
+            return Ok("Update Successfull!");
         }
 
         /// <summary>
-        /// API version 1 | Update topic by PATCH method...Allow update a single attribute
+        /// API version 1.0 | Update topic | Support update a single attribute
         /// </summary>
         /// <param name="id"></param>
         /// <param name="patchDoc"></param>
@@ -125,7 +129,8 @@ namespace FTask.Api.Controllers
         [HttpPatch("{id}")]
         [MapToApiVersion("1.0")]
         [Authorize(Roles = UserRoles.Admin)]
-        public ActionResult PartialTopicUpdate(int id, JsonPatchDocument<TopicUpdateViewModel> patchDoc)
+        public ActionResult PartialTopicUpdate(int id, 
+            JsonPatchDocument<TopicUpdateViewModel> patchDoc)
         {
             var topicModel = _topicService.GetTopicByTopicId(id);
             if (topicModel is null)
@@ -141,11 +146,11 @@ namespace FTask.Api.Controllers
 
             _mapper.Map(topicToPatch, topicModel);
             _topicService.UpdateTopic(topicModel);
-            return NoContent();
+            return Ok("Update Successfull!");
         }
 
         /// <summary>
-        /// API version 1 | Remove a topic
+        /// API version 1.0 | Remove a topic
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -160,7 +165,7 @@ namespace FTask.Api.Controllers
                 return NotFound();
             }
             _topicService.RemoveTopic(topicModel);
-            return NoContent();
+            return Ok("Remove Successfull!");
         }
     }
 }

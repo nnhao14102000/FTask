@@ -6,7 +6,7 @@ namespace FTask.Services.TaskCategoryBusinessService
 {
     public interface ITaskCategoryService
     {
-        PagedList<TaskCategory> GetAllTaskCategorys(TaskCategoryParameters taskCategoryPrameters);
+        PagedList<TaskCategory> GetAllTaskCategories(TaskCategoryParameters taskCategoryPrameters);
         TaskCategory GetTaskCategoryByTaskCategoryId(int Id);
         void AddTaskCategory(TaskCategory taskCategory);
         void UpdateTaskCategory(TaskCategory taskCategory);

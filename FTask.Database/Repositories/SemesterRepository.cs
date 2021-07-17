@@ -2,6 +2,7 @@
 using FTask.Database.Repositories.IRepository;
 using FTask.Shared.Helpers;
 using FTask.Shared.Parameters;
+using System;
 using System.Linq;
 
 namespace FTask.Database.Repositories
@@ -19,19 +20,30 @@ namespace FTask.Database.Repositories
             var semesters = FindAll();
 
             SearchByName(ref semesters, semesterParameters.SemesterName);
+            FilterByIsComplete(ref semesters, semesterParameters.IsComplete);
 
             return PagedList<Semester>.ToPagedList(semesters,
                 semesterParameters.PageNumber, semesterParameters.PageSize);
         }
 
-        private void SearchByName(ref IQueryable<Semester> semester, string name)
+        private void FilterByIsComplete(ref IQueryable<Semester> semesters, bool? isComplete)
         {
-            if (!semester.Any() || string.IsNullOrWhiteSpace(name))
+            if (!semesters.Any() || isComplete is null)
             {
                 return;
             }
-            semester = semester
-                .Where(st => st.SemesterName.ToLower()
+            semesters = semesters
+                    .Where(x => x.IsComplete == isComplete);
+        }
+
+        private void SearchByName(ref IQueryable<Semester> semesters, string name)
+        {
+            if (!semesters.Any() || string.IsNullOrWhiteSpace(name))
+            {
+                return;
+            }
+            semesters = semesters
+                .Where(x => x.SemesterName.ToLower()
                 .Contains(name.Trim().ToLower()));
         }
 
