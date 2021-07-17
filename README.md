@@ -31,9 +31,12 @@
 ## Run in local
 You just run project, ... Database will be automatic create 
 
-*If use VSCode or Visual Studio to RUN should do this first:*
+*Want use redis to run in local with VSCode and Visual studio should do this:*
 - Start Docker Desktop
 - Open cmd and type: `docker run --name my-redis -p 6379:6379 -d redis` to start redis server in Docker, really easy and fast
+
+*If don't want to use redis*
+- Go go `appsettings.Development.json` file set `RedisCacheSettings` property `enable` from `true` to `false`
 
 1. Run with VSCode
 ![Open Terminal](https://github.com/nnhao14102000/FTask/blob/hao/Document/Images/OpenTerminalInVsCode.png?raw=true "Open Terminal in vscode")
