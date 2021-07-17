@@ -40,7 +40,7 @@ namespace FTaskAPI.Controllers
         }
 
         /// <summary>
-        /// API version 1.0 | Roles: admin | Get all students | Support search by name, filter by major Id 
+        /// API version 1.0 | Roles: admin | Get all students | Support search by name, student Id, filter by major Id 
         /// </summary>
         /// <param name="studentParameters"></param>
         /// <returns></returns>

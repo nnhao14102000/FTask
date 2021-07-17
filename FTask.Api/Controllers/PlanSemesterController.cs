@@ -39,7 +39,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// API version 1.0 | Roles: user | Get all plan semesters | Support search by plan semester name and get by student Id
+        /// API version 1.0 | Roles: user | Get all plan semesters | Support search by plan semester name, get by student Id, filter by it status (is complete)
         /// </summary>
         /// <param name="planSemesterParameter"></param>
         /// <returns></returns>

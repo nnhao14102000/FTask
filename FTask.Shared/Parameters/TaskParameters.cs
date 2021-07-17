@@ -10,5 +10,6 @@ namespace FTask.Shared.Parameters
         public string TaskSearchValue { get; set; }
         public int PlanTopicId { get; set; }
         public Types? SortOptions { get; set; }
+        public bool? IsComplete { get; set; }
     }
 }

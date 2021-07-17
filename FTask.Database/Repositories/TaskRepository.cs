@@ -3,6 +3,7 @@ using FTask.Database.Repositories.IRepository;
 using FTask.Shared.Helpers;
 using FTask.Shared.Parameters;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Linq;
 using static FTask.Shared.Parameters.TaskParameters;
 
@@ -31,7 +32,11 @@ namespace FTask.Database.Repositories
             var tasks = FindAll();
             
             SearchByValue(ref tasks, taskParameters.TaskSearchValue);
-            GetByPlanTopicId(ref tasks, taskParameters.PlanTopicId);            
+
+            GetByPlanTopicId(ref tasks, taskParameters.PlanTopicId); 
+
+            FilterByIsComplete(ref tasks, taskParameters.IsComplete);
+                       
             Sort(ref tasks, taskParameters.SortOptions);
 
             foreach (var item in tasks)
@@ -43,6 +48,16 @@ namespace FTask.Database.Repositories
             }
             return PagedList<Task>
                 .ToPagedList(tasks, taskParameters.PageNumber, taskParameters.PageSize);
+        }
+
+        private void FilterByIsComplete(ref IQueryable<Task> tasks, bool? isComplete)
+        {
+            if (!tasks.Any() || isComplete is null)
+            {
+                return;
+            }
+            tasks = tasks
+                    .Where(x => x.IsComplete == isComplete);
         }
 
         private void Sort(ref IQueryable<Task> tasks, Types? sortOptions)

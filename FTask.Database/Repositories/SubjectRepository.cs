@@ -30,7 +30,7 @@ namespace FTask.Database.Repositories
             context.Entry(subject)
                 .Collection(s => s.Topics)
                 .Query()
-                .OrderBy(t => t.TopicId)
+                .OrderBy(t => t.TopicName)
                 .Load();
             return subject;
         }

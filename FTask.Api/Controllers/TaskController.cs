@@ -37,7 +37,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// API version 1.0 | Roles: user | Get all tasks | Support search by name, get by plan topic Id
+        /// API version 1.0 | Roles: user | Get all tasks | Support search by name, get by plan topic Id, filter by it status (is complete)
         /// </summary>
         /// <param name="taskParameter"></param>
         /// <returns></returns>

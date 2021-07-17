@@ -3,6 +3,7 @@ using FTask.Database.Repositories.IRepository;
 using FTask.Shared.Helpers;
 using FTask.Shared.Parameters;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Linq;
 
 namespace FTask.Database.Repositories
@@ -30,9 +31,23 @@ namespace FTask.Database.Repositories
         public PagedList<PlanSubject> GetPlanSubjects(PlanSubjectParameters planSubjectParameters)
         {
             var planSubjects = FindAll();
+
             GetByPlanSemesterId(ref planSubjects, planSubjectParameters.PlanSemesterId);
+
+            FilterByIsComplete(ref planSubjects, planSubjectParameters.IsComplete);
+
             return PagedList<PlanSubject>
                 .ToPagedList(planSubjects, planSubjectParameters.PageNumber, planSubjectParameters.PageSize);
+        }
+
+        private void FilterByIsComplete(ref IQueryable<PlanSubject> planSubjects, bool? isComplete)
+        {
+            if (!planSubjects.Any() || isComplete is null)
+            {
+                return;
+            }
+            planSubjects = planSubjects
+                    .Where(x => x.IsComplete == isComplete);
         }
 
         private void GetByPlanSemesterId(ref IQueryable<PlanSubject> planSubjects, int planSemesterId)

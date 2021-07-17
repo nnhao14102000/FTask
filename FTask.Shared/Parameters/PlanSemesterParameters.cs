@@ -6,5 +6,6 @@ namespace FTask.Shared.Parameters
     {
         public string PlanSemesterName { get; set; }
         public string StudentId { get; set; }
+        public bool? IsComplete { get; set; }
     }
 }

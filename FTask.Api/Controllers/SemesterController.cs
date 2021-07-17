@@ -39,7 +39,7 @@ namespace FTaskAPI.Controllers
         }
 
         /// <summary>
-        /// API version 1.0 | Roles: admin, user | Get all semesters in database | Support search by name
+        /// API version 1.0 | Roles: admin, user | Get all semesters in database | Support search by name, filter by it status (is complete)
         /// </summary>
         /// <param name="semesterParameters"></param>
         /// <returns></returns>

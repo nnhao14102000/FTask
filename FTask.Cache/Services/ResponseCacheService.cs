@@ -21,7 +21,9 @@ namespace FTask.Cache.Services
                 return;
             }
             var serializedResponse = JsonConvert.SerializeObject(response);
-            await _distributedCache.SetStringAsync(cacheKey, serializedResponse, new DistributedCacheEntryOptions
+            await _distributedCache.SetStringAsync(
+                cacheKey, serializedResponse, 
+                new DistributedCacheEntryOptions
             {
                 AbsoluteExpirationRelativeToNow = timeLive
             });

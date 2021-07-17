@@ -9,24 +9,31 @@
 3. Visual Studio 2019
 4. Git
 5. Docker
-6. Postman for test API
+6. Redis
+7. Postman for test API
 
-## Requirement for local set up
+## Requirement for local set up (Read Note at last if error)
 
 1. [.NET 5 SDK](https://dotnet.microsoft.com/download/dotnet/5.0) 
 2. [Microsoft SQL Server](https://www.microsoft.com/en-us/sql-server/sql-server-downloads)
 3. [Visual studio Code](https://code.visualstudio.com/)
+4. [Docker](https://docs.docker.com/get-docker/) (Use for run redis server)
 
 ### Or
 1. [Visual Studio 2019 ](https://visualstudio.microsoft.com/downloads/)
 2. [Microsoft SQL Server](https://www.microsoft.com/en-us/sql-server/sql-server-downloads)
+3. [Docker](https://docs.docker.com/get-docker/) (Use for run redis server)
 
-### Or 
+### Or (Suggest for both Window and Mac if you just need to take a look for API, use this because need only Docker )
 1. [Docker](https://docs.docker.com/get-docker/)
 2. [Postman](https://www.postman.com/downloads/)
 
 ## Run in local
 You just run project, ... Database will be automatic create 
+
+*If use VSCode or Visual Studio to RUN should do this first:*
+- Start Docker Desktop
+- Open cmd and type: `docker run --name my-redis -p 6379:6379 -d redis` to start redis server in Docker, really easy and fast
 
 1. Run with VSCode
 ![Open Terminal](https://github.com/nnhao14102000/FTask/blob/hao/Document/Images/OpenTerminalInVsCode.png?raw=true "Open Terminal in vscode")

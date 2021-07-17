@@ -57,7 +57,7 @@
         </member>
         <member name="M:FTask.Api.Controllers.PlanSemesterController.GetAllPlanSemesters(FTask.Shared.Parameters.PlanSemesterParameters)">
             <summary>
-            API version 1.0 | Roles: user | Get all plan semesters | Support search by plan semester name and get by student Id
+            API version 1.0 | Roles: user | Get all plan semesters | Support search by plan semester name, get by student Id, filter by it status (is complete)
             </summary>
             <param name="planSemesterParameter"></param>
             <returns></returns>
@@ -113,7 +113,7 @@
         </member>
         <member name="M:FTask.Api.Controllers.PlanSubjectController.GetAllPlanSubjects(FTask.Shared.Parameters.PlanSubjectParameters)">
             <summary>
-            API version 1.0 | Roles: user | Get all plan subjects | Support get by plan semester Id
+            API version 1.0 | Roles: user | Get all plan subjects | Support get by plan semester Id and filter by it status (is complete)
             </summary>
             <param name="planSubjectParameter"></param>
             <returns></returns>
@@ -169,7 +169,7 @@
         </member>
         <member name="M:FTask.Api.Controllers.PlanTopicController.GetAllPlanTopics(FTask.Shared.Parameters.PlanTopicParameters)">
             <summary>
-            API version 1.0 | Roles: user | Get all plan topics | Support get by plan subject Id, topic Id
+            API version 1.0 | Roles: user | Get all plan topics | Support get by plan subject Id, topic Id, filter by it status (is complete)
             </summary>
             <param name="planTopicParameter"></param>
             <returns></returns>
@@ -337,7 +337,7 @@
         </member>
         <member name="M:FTask.Api.Controllers.TaskController.GetAllTasks(FTask.Shared.Parameters.TaskParameters)">
             <summary>
-            API version 1.0 | Roles: user | Get all tasks | Support search by name, get by plan topic Id
+            API version 1.0 | Roles: user | Get all tasks | Support search by name, get by plan topic Id, filter by it status (is complete)
             </summary>
             <param name="taskParameter"></param>
             <returns></returns>
@@ -1838,7 +1838,7 @@
         </member>
         <member name="M:FTaskAPI.Controllers.SemesterController.GetAllSemesters(FTask.Shared.Parameters.SemesterParameters)">
             <summary>
-            API version 1.0 | Roles: admin, user | Get all semesters in database | Support search by name
+            API version 1.0 | Roles: admin, user | Get all semesters in database | Support search by name, filter by it status (is complete)
             </summary>
             <param name="semesterParameters"></param>
             <returns></returns>
@@ -1894,7 +1894,7 @@
         </member>
         <member name="M:FTaskAPI.Controllers.StudentController.GetAllStudents(FTask.Shared.Parameters.StudentParameters)">
             <summary>
-            API version 1.0 | Roles: admin | Get all students | Support search by name, filter by major Id 
+            API version 1.0 | Roles: admin | Get all students | Support search by name, student Id, filter by major Id 
             </summary>
             <param name="studentParameters"></param>
             <returns></returns>

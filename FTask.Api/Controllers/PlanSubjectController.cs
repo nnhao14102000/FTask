@@ -38,7 +38,7 @@ namespace FTask.Api.Controllers
         }
 
         /// <summary>
-        /// API version 1.0 | Roles: user | Get all plan subjects | Support get by plan semester Id
+        /// API version 1.0 | Roles: user | Get all plan subjects | Support get by plan semester Id and filter by it status (is complete)
         /// </summary>
         /// <param name="planSubjectParameter"></param>
         /// <returns></returns>

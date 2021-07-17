@@ -6,5 +6,6 @@ namespace FTask.Shared.Parameters
     {        
         public int PlanSubjectId { get; set; }
         public int TopicId { get; set; }
+        public bool? IsComplete { get; set; }
     }
 }

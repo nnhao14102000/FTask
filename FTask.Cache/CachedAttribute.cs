@@ -33,15 +33,15 @@ namespace FTask.Cache
             var cacheService = context.HttpContext.RequestServices
                                 .GetRequiredService<IResponseCacheService>();
 
-            var cachKey = GeneraCacheKeyFromRequest(context.HttpContext.Request);
+            var cacheKey = GeneraCacheKeyFromRequest(context.HttpContext.Request);
 
-            var cachResponse = await cacheService.GetCachedResponseAsync(cachKey);
+            var cacheResponse = await cacheService.GetCachedResponseAsync(cacheKey);
 
-            if (!string.IsNullOrEmpty(cachResponse))
+            if (!string.IsNullOrEmpty(cacheResponse))
             {
                 var contentResult = new ContentResult
                 {
-                    Content = cachResponse,
+                    Content = cacheResponse,
                     ContentType = "application/json",
                     StatusCode = 200
                 };
@@ -54,7 +54,7 @@ namespace FTask.Cache
             if (executedContext.Result is OkObjectResult okObjectResult)
             {
                 await cacheService.CacheResponseAsync(
-                    cachKey, okObjectResult, TimeSpan.FromSeconds(_timeToLiveSeconds)
+                    cacheKey, okObjectResult.Value, TimeSpan.FromSeconds(_timeToLiveSeconds)
                 );
             }
         }
