@@ -155,7 +155,7 @@ namespace FTask.Api
             // Register Service...
             services.InjectAuthServices();
             services.InjectServices();
-            services.InstallServices(Configuration);
+            services.InstallCacheServices(Configuration);
         }
 
         /// <summary>

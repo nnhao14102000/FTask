@@ -6,7 +6,7 @@ namespace FTask.Cache.Installer
 {
     public static class CacheInstaller
     {
-        public static void InstallServices(this IServiceCollection services, IConfiguration configuration)
+        public static void InstallCacheServices(this IServiceCollection services, IConfiguration configuration)
         {
             var redisCacheSettings = new RedisCacheSettings();
             configuration.GetSection(nameof(RedisCacheSettings)).Bind(redisCacheSettings);
