@@ -166,7 +166,7 @@ namespace FTask.Api
         /// <param name="loggerFactory"></param>
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
-            if (env.IsDevelopment())
+            if (env.IsDevelopment() || env.IsProduction())
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();

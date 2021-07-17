@@ -1,5 +1,6 @@
 FROM mcr.microsoft.com/dotnet/aspnet:5.0 AS base
 WORKDIR /app
+COPY FTask.Api/FTask.Api.xml /app
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src

@@ -61,7 +61,7 @@ Run this command
 
 4. Test API
 
-- With Swagger (Not support if run with Docker)
+- With Swagger (Support both local and docker)
 ![Test ](https://github.com/nnhao14102000/FTask/blob/hao/Document/Images/TestApiWithSwagger.png?raw=true "Test with Swagger")
 
 
