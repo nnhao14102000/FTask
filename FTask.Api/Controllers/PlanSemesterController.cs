@@ -31,7 +31,7 @@ namespace FTask.Api.Controllers
         /// </summary>
         /// <param name="mapper"></param>
         /// <param name="planSemesterService"></param>
-        public PlanSemesterController(IMapper mapper, 
+        public PlanSemesterController(IMapper mapper,
             IPlanSemesterService planSemesterService)
         {
             _mapper = mapper;
@@ -45,6 +45,7 @@ namespace FTask.Api.Controllers
         /// <returns></returns>
         [HttpGet]
         [MapToApiVersion("1.0")]
+        [Cached(60)]
         public ActionResult<IEnumerable<PlanSemesterReadViewModel>> GetAllPlanSemesters(
             [FromQuery] PlanSemesterParameters planSemesterParameter)
         {
@@ -70,6 +71,7 @@ namespace FTask.Api.Controllers
         /// <returns></returns>
         [HttpGet("{id}", Name = "GetPlanSemesterByPlanSemesterId")]
         [MapToApiVersion("1.0")]
+        [Cached(60)]
         public ActionResult<PSReadDetailViewModel> GetPlanSemesterByPlanSemesterId(int id)
         {
             var planSemester = _planSemesterService.GetPlanSemesterByPlanSemesterId(id);
@@ -86,7 +88,7 @@ namespace FTask.Api.Controllers
         /// <param name="planSemester"></param>
         /// <returns></returns>
         [HttpPost]
-        [MapToApiVersion("1.0")]        
+        [MapToApiVersion("1.0")]
         public ActionResult<PlanSemesterReadViewModel> AddPlanSemester(
             PlanSemesterAddViewModel planSemester)
         {
@@ -108,7 +110,7 @@ namespace FTask.Api.Controllers
         /// <returns></returns>
         [HttpPut("{id}")]
         [MapToApiVersion("1.0")]
-        public ActionResult UpdatePlanSemester(int id, 
+        public ActionResult UpdatePlanSemester(int id,
             PlanSemesterUpdateViewModel planSemester)
         {
             var planSemesterModel = _planSemesterService.GetPlanSemesterByPlanSemesterId(id);
@@ -129,7 +131,7 @@ namespace FTask.Api.Controllers
         /// <returns></returns>
         [HttpPatch("{id}")]
         [MapToApiVersion("1.0")]
-        public ActionResult PartialPlanSemesterUpdate(int id, 
+        public ActionResult PartialPlanSemesterUpdate(int id,
             JsonPatchDocument<PlanSemesterUpdateViewModel> patchDoc)
         {
             var planSemesterModel = _planSemesterService.GetPlanSemesterByPlanSemesterId(id);

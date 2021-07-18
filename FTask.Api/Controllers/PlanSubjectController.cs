@@ -30,7 +30,7 @@ namespace FTask.Api.Controllers
         /// </summary>
         /// <param name="mapper"></param>
         /// <param name="planSubjectService"></param>
-        public PlanSubjectController(IMapper mapper, 
+        public PlanSubjectController(IMapper mapper,
             IPlanSubjectService planSubjectService)
         {
             _mapper = mapper;
@@ -44,6 +44,7 @@ namespace FTask.Api.Controllers
         /// <returns></returns>
         [HttpGet]
         [MapToApiVersion("1.0")]
+        [Cached(60)]
         public ActionResult<IEnumerable<PlanSubjectReadViewModel>> GetAllPlanSubjects(
             [FromQuery] PlanSubjectParameters planSubjectParameter)
         {
@@ -69,6 +70,7 @@ namespace FTask.Api.Controllers
         /// <returns></returns>
         [HttpGet("{id}", Name = "GetPlanSubjectByPlanSubjectId")]
         [MapToApiVersion("1.0")]
+        [Cached(60)]
         public ActionResult<PlanSubjectReadDetailViewModel> GetPlanSubjectByPlanSubjectId(int id)
         {
             var planSubject = _planSubjectService.GetPlanSubjectByPlanSubjectId(id);
@@ -94,7 +96,7 @@ namespace FTask.Api.Controllers
             var PlanSubjectReadModel = _mapper.Map<PlanSubjectReadViewModel>(planSubjectModel);
 
             return CreatedAtRoute(
-                nameof(GetPlanSubjectByPlanSubjectId), 
+                nameof(GetPlanSubjectByPlanSubjectId),
                 new { id = PlanSubjectReadModel.PlanSubjectId }, PlanSubjectReadModel);
         }
 
@@ -106,7 +108,7 @@ namespace FTask.Api.Controllers
         /// <returns></returns>
         [HttpPut("{id}")]
         [MapToApiVersion("1.0")]
-        public ActionResult UpdatePlanSubject(int id, 
+        public ActionResult UpdatePlanSubject(int id,
             PlanSubjectUpdateViewModel planSubject)
         {
             var planSubjectModel = _planSubjectService.GetPlanSubjectByPlanSubjectId(id);
@@ -127,7 +129,7 @@ namespace FTask.Api.Controllers
         /// <returns></returns>
         [HttpPatch("{id}")]
         [MapToApiVersion("1.0")]
-        public ActionResult PartialPlanSubjectUpdate(int id, 
+        public ActionResult PartialPlanSubjectUpdate(int id,
             JsonPatchDocument<PlanSubjectUpdateViewModel> patchDoc)
         {
             var planSubjectModel = _planSubjectService.GetPlanSubjectByPlanSubjectId(id);
