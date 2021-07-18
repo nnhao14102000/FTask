@@ -435,6 +435,71 @@
             <param name="id"></param>
             <returns></returns>
         </member>
+        <member name="T:FTask.Api.HealthChecks.HealthCheck">
+            <summary>
+            Health check model
+            </summary>
+        </member>
+        <member name="P:FTask.Api.HealthChecks.HealthCheck.Status">
+            <summary>
+            Status
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:FTask.Api.HealthChecks.HealthCheck.Component">
+            <summary>
+            Name component
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:FTask.Api.HealthChecks.HealthCheck.Description">
+            <summary>
+            Description
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:FTask.Api.HealthChecks.HealthcheckResponse">
+            <summary>
+            Health check response
+            </summary>
+        </member>
+        <member name="P:FTask.Api.HealthChecks.HealthcheckResponse.Status">
+            <summary>
+            Status
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:FTask.Api.HealthChecks.HealthcheckResponse.Checks">
+            <summary>
+            Checks
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:FTask.Api.HealthChecks.HealthcheckResponse.Duration">
+            <summary>
+            Duration of all checks
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:FTask.Api.HealthChecks.RedisHealthCheck">
+            <summary>
+            Redis health check customize
+            </summary>
+        </member>
+        <member name="M:FTask.Api.HealthChecks.RedisHealthCheck.#ctor(StackExchange.Redis.IConnectionMultiplexer)">
+            <summary>
+            Constructor inject IConnectionMultiplexer, connection string of redis
+            </summary>
+            <param name="connectionMultiplexer"></param>
+        </member>
+        <member name="M:FTask.Api.HealthChecks.RedisHealthCheck.CheckHealthAsync(Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckContext,System.Threading.CancellationToken)">
+            <summary>
+            Customize health check
+            </summary>
+            <param name="context"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
         <member name="T:FTask.Api.Profiles.MajorProfile">
             <summary>
             Major mapping profile
