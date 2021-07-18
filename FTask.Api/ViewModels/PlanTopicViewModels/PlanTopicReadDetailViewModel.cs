@@ -20,7 +20,7 @@ namespace FTask.Api.ViewModels.PlanTopicViewModels
         public int Progress { get; set; }
 
         /// <summary>
-        /// Is plan commlete
+        /// Is plan complete
         /// </summary>
         public bool IsComplete { get; set; }
 

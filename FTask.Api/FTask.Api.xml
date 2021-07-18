@@ -973,6 +973,11 @@
             Subject id of subject that plan subject belong to
             </summary>
         </member>
+        <member name="P:FTask.Api.ViewModels.PlanSubjectViewModels.PlanSubjectReadDetailViewModel.Subject">
+            <summary>
+            Subject detail
+            </summary>
+        </member>
         <member name="P:FTask.Api.ViewModels.PlanSubjectViewModels.PlanSubjectReadDetailViewModel.PlanTopics">
             <summary>
             PlanTopics in PlanSubject
@@ -1080,7 +1085,7 @@
         </member>
         <member name="P:FTask.Api.ViewModels.PlanTopicViewModels.PlanTopicReadDetailViewModel.IsComplete">
             <summary>
-            Is plan commlete
+            Is plan complete
             </summary>
         </member>
         <member name="P:FTask.Api.ViewModels.PlanTopicViewModels.PlanTopicReadDetailViewModel.TopicId">
@@ -1475,7 +1480,7 @@
         </member>
         <member name="P:FTask.Api.ViewModels.SubjectViewModels.SubjectReadDetailViewModel.SubjectGroupId">
             <summary>
-            Subject groub id this subject belong to
+            Subject group id this subject belong to
             </summary>
         </member>
         <member name="P:FTask.Api.ViewModels.SubjectViewModels.SubjectReadDetailViewModel.Topics">
@@ -1620,7 +1625,7 @@
         </member>
         <member name="P:FTask.Api.ViewModels.TaskViewModels.TaskAddViewModel.EffortTime">
             <summary>
-            Real time completet task
+            Real time complete task
             </summary>
         </member>
         <member name="P:FTask.Api.ViewModels.TaskViewModels.TaskAddViewModel.DueDate">
