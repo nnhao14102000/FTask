@@ -33,7 +33,7 @@ namespace FTask.Cache
             var cacheService = context.HttpContext.RequestServices
                                 .GetRequiredService<IResponseCacheService>();
 
-            var cacheKey = GeneraCacheKeyFromRequest(context.HttpContext.Request);
+            var cacheKey = GenerateCacheKeyFromRequest(context.HttpContext.Request);
 
             var cacheResponse = await cacheService.GetCachedResponseAsync(cacheKey);
 
@@ -59,7 +59,7 @@ namespace FTask.Cache
             }
         }
 
-        private string GeneraCacheKeyFromRequest(HttpRequest request)
+        private string GenerateCacheKeyFromRequest(HttpRequest request)
         {
             var keyBuilder = new StringBuilder();
             keyBuilder.Append($"{request.Path}");
