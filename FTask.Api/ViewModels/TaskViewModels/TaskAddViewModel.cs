@@ -27,7 +27,7 @@ namespace FTask.Api.ViewModels.TaskViewModels
         public int EstimateTime { get; set; } = 0;
 
         /// <summary>
-        /// Real time completet task
+        /// Real time complete task
         /// </summary>
         public int EffortTime { get; set; } = 0;
 

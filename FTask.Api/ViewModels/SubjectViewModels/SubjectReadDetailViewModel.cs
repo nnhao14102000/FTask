@@ -23,7 +23,7 @@ namespace FTask.Api.ViewModels.SubjectViewModels
         public string Source { get; set; }
 
         /// <summary>
-        /// Subject groub id this subject belong to
+        /// Subject group id this subject belong to
         /// </summary>
         public int SubjectGroupId { get; set; }
 

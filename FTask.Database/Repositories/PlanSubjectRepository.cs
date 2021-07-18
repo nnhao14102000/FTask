@@ -18,13 +18,22 @@ namespace FTask.Database.Repositories
         public PlanSubject GetPlanSubjectByPlanSubjectId(int id)
         {
             var planSubject = FindByCondition(x => x.PlanSubjectId == id).FirstOrDefault();
+
             context.Entry(planSubject)
                 .Collection(x => x.PlanTopics)
                 .Query()
                 .OrderBy(x => x.PlanTopicId)
                 .Include(x => x.Topic)
                 .Include(x => x.Tasks)
+                    .ThenInclude(x => x.TaskCategory)
                 .Load();
+            
+            context.Entry(planSubject)
+                .Reference(x => x.Subject)
+                .Query()
+                .Include(x => x.Topics)
+                .Load();
+                
             return planSubject;
         }
 

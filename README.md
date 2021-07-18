@@ -37,6 +37,7 @@ You just run project, ... Database will be automatic create
 
 *If don't want to use redis*
 - Go go `appsettings.Development.json` file set `RedisCacheSettings` property `enable` from `true` to `false`
+![Disable Redis ](https://github.com/nnhao14102000/FTask/blob/hao/Document/Images/TurnOffRedis.png?raw=true "Disable redis")
 
 1. Run with VSCode
 ![Open Terminal](https://github.com/nnhao14102000/FTask/blob/hao/Document/Images/OpenTerminalInVsCode.png?raw=true "Open Terminal in vscode")

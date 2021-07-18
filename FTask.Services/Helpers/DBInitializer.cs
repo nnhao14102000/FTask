@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Collections.Generic;
+using System;
 using System.Linq;
 using FTask.Database.Models;
 
@@ -12,7 +13,7 @@ namespace FTask.Services.Helpers
             context.Database.EnsureCreated();
 
             // Auto seed data if Majors have no data
-            if(!context.Majors.Any())
+            if (!context.Majors.Any())
             {
                 var majors = new Major[]{
                     new Major{MajorId = "BIT_SE", MajorName = "Bachelor of Software engineer"},
@@ -31,10 +32,10 @@ namespace FTask.Services.Helpers
                 context.AddRange(majors);
                 context.SaveChanges();
 
-            } 
+            }
 
             // Auto seed data if Semesters have no data
-            if(!context.Semesters.Any())
+            if (!context.Semesters.Any())
             {
                 var semesters = new Semester[]{
                     new Semester{SemesterId="FA_20",SemesterName="Fall 2020", StartDate=DateTime.Parse("2020-08-04T00:00:00"), EndDate=DateTime.Parse("2020-11-04T00:00:00"), IsComplete = true},
@@ -45,10 +46,10 @@ namespace FTask.Services.Helpers
                 context.AddRange(semesters);
                 context.SaveChanges();
 
-            } 
+            }
 
             // Auto seed data if Students have no data
-            if(!context.Students.Any())
+            if (!context.Students.Any())
             {
                 var students = new Student[]{
                     new Student{StudentId="SE111111", StudentName="Nguyen Van An", StudentEmail="AnnvSE111111@fpt.edu.vn", MajorId="BIT_SE"},
@@ -68,7 +69,7 @@ namespace FTask.Services.Helpers
             }
 
             // Auto seed data if SubjectGroup have no data
-            if(!context.SubjectGroups.Any())
+            if (!context.SubjectGroups.Any())
             {
                 var subjectGroups = new SubjectGroup[]{
                     new SubjectGroup{SubjectGroupName = "Computing Fundamentals"},
@@ -94,7 +95,7 @@ namespace FTask.Services.Helpers
             }
 
             // Auto seed data if Subjects have no data
-            if(!context.Subjects.Any())
+            if (!context.Subjects.Any())
             {
                 var subjects = new Subject[]{
                     new Subject{SubjectId="ISC301", SubjectName="E-Commerce", Source="...", SubjectGroupId=11},
@@ -110,7 +111,7 @@ namespace FTask.Services.Helpers
             }
 
             // Auto seed data if Topics have no data
-            if(!context.Topics.Any())
+            if (!context.Topics.Any())
             {
                 var topics = new Topic[]{
                     new Topic{TopicName="Chapter 01 Overview of Electronic Commerce", TopicDescription="...", SubjectId="ISC301"},
@@ -238,18 +239,248 @@ namespace FTask.Services.Helpers
             }
 
             // Auto seed data if TaskCategories have no data
-            if(!context.TaskCategories.Any())
+            if (!context.TaskCategories.Any())
             {
                 var taskCategories = new TaskCategory[]{
-                    new TaskCategory{TaskType="Project"},
-                    new TaskCategory{TaskType="Assignment"},
-                    new TaskCategory{TaskType="Quiz"},
                     new TaskCategory{TaskType="Self study"},
+                    new TaskCategory{TaskType="Exercise / Homework"},
+                    new TaskCategory{TaskType="Quiz"},
+                    new TaskCategory{TaskType="Assignment / Project"},
                 };
 
                 context.AddRange(taskCategories);
                 context.SaveChanges();
 
+            }
+
+            // Auto seed data if PlanSemester have no data
+            if (!context.PlanSemesters.Any())
+            {
+                var planSemesters = new PlanSemester[]{
+                    new PlanSemester{
+                        PlanSemesterName="Happy and pass!",
+                        StudentId="SE111111",
+                        SemesterId="SU_21",
+                        CreateDate=DateTime.UtcNow.AddHours(7),
+                        IsComplete=false
+                    },
+                };
+
+                context.AddRange(planSemesters);
+                context.SaveChanges();
+            }
+
+            // Auto seed data if PlanSubject have no data
+            if (!context.PlanSubjects.Any())
+            {
+                var planSubjects = new PlanSubject[]{
+                    new PlanSubject{
+                        Priority = 0,
+                        Progress = 0,
+                        CreateDate = DateTime.UtcNow.AddHours(7),
+                        IsComplete = false,
+                        PlanSemesterId = 1,
+                        SubjectId = "ISC301"
+                    },
+                    new PlanSubject{
+                        Priority = 0,
+                        Progress = 0,
+                        CreateDate = DateTime.UtcNow.AddHours(7),
+                        IsComplete = false,
+                        PlanSemesterId = 1,
+                        SubjectId = "ACC101"
+                    },
+                    new PlanSubject{
+                        Priority = 0,
+                        Progress = 0,
+                        CreateDate = DateTime.UtcNow.AddHours(7),
+                        IsComplete = false,
+                        PlanSemesterId = 1,
+                        SubjectId = "SWD391"
+                    },
+                    new PlanSubject{
+                        Priority = 0,
+                        Progress = 0,
+                        CreateDate = DateTime.UtcNow.AddHours(7),
+                        IsComplete = false,
+                        PlanSemesterId = 1,
+                        SubjectId = "HCI201"
+                    },
+                    new PlanSubject{
+                        Priority = 0,
+                        Progress = 0,
+                        CreateDate = DateTime.UtcNow.AddHours(7),
+                        IsComplete = false,
+                        PlanSemesterId = 1,
+                        SubjectId = "PRM391"
+                    },
+                };
+
+                context.AddRange(planSubjects);
+                context.SaveChanges();
+            }
+
+            // Auto seed data if PlanTopic have no data
+            if (!context.PlanTopics.Any())
+            {
+                List<PlanTopic> planTopics = new List<PlanTopic>();
+
+                var planSubject1 = context.PlanSubjects.Where(x => x.PlanSubjectId == 1).FirstOrDefault();
+                
+                var subject1 = context.Subjects.Where(x => x.SubjectId == planSubject1.SubjectId).FirstOrDefault();
+
+                var topics1 = context.Topics.Where(x => x.SubjectId == subject1.SubjectId).ToArray().OrderBy(x => x.TopicName);
+                
+                var planSubject2 = context.PlanSubjects.Where(x => x.PlanSubjectId == 2).FirstOrDefault();
+                
+                var subject2 = context.Subjects.Where(x => x.SubjectId == planSubject2.SubjectId).FirstOrDefault();
+
+                var topics2 = context.Topics.Where(x => x.SubjectId == subject2.SubjectId).ToArray().OrderBy(x => x.TopicName);
+
+                var planSubject3 = context.PlanSubjects.Where(x => x.PlanSubjectId == 3).FirstOrDefault();
+                
+                var subject3 = context.Subjects.Where(x => x.SubjectId == planSubject3.SubjectId).FirstOrDefault();
+
+                var topics3 = context.Topics.Where(x => x.SubjectId == subject3.SubjectId).ToArray().OrderBy(x => x.TopicName);
+
+                var planSubject4 = context.PlanSubjects.Where(x => x.PlanSubjectId == 4).FirstOrDefault();
+                
+                var subject4 = context.Subjects.Where(x => x.SubjectId == planSubject4.SubjectId).FirstOrDefault();
+
+                var topics4 = context.Topics.Where(x => x.SubjectId == subject4.SubjectId).ToArray().OrderBy(x => x.TopicName);
+
+                var planSubject5 = context.PlanSubjects.Where(x => x.PlanSubjectId == 5).FirstOrDefault();
+                
+                var subject5 = context.Subjects.Where(x => x.SubjectId == planSubject5.SubjectId).FirstOrDefault();
+
+                var topics5 = context.Topics.Where(x => x.SubjectId == subject5.SubjectId).ToArray().OrderBy(x => x.TopicName);                
+
+                if(planSubject1 is not null){
+                    foreach (var item in topics1)
+                    {
+                        var planTopic = new PlanTopic{
+                            Progress = 0,
+                            IsComplete = false,
+                            TopicId = item.TopicId,
+                            PlanSubjectId = planSubject1.PlanSubjectId
+                        };
+
+                        planTopics.Add(planTopic);
+                    }
+                }                 
+
+                if(planSubject2 is not null){
+                    foreach (var item in topics2)
+                    {
+                        var planTopic = new PlanTopic{
+                            Progress = 0,
+                            IsComplete = false,
+                            TopicId = item.TopicId,
+                            PlanSubjectId = planSubject2.PlanSubjectId
+                        };
+
+                        planTopics.Add(planTopic);
+                    }
+                }
+
+                if(planSubject3 is not null){
+                    foreach (var item in topics3)
+                    {
+                        var planTopic = new PlanTopic{
+                            Progress = 0,
+                            IsComplete = false,
+                            TopicId = item.TopicId,
+                            PlanSubjectId = planSubject3.PlanSubjectId
+                        };
+
+                        planTopics.Add(planTopic);
+                    }
+                }
+
+                if(planSubject4 is not null){
+                    foreach (var item in topics4)
+                    {
+                        var planTopic = new PlanTopic{
+                            Progress = 0,
+                            IsComplete = false,
+                            TopicId = item.TopicId,
+                            PlanSubjectId = planSubject4.PlanSubjectId
+                        };
+
+                        planTopics.Add(planTopic);
+                    }
+                } 
+
+                if(planSubject5 is not null){
+                    foreach (var item in topics5)
+                    {
+                        var planTopic = new PlanTopic{
+                            Progress = 0,
+                            IsComplete = false,
+                            TopicId = item.TopicId,
+                            PlanSubjectId = planSubject5.PlanSubjectId
+                        };
+
+                        planTopics.Add(planTopic);
+                    }
+                }
+
+                context.AddRange(planTopics);
+                context.SaveChanges();
+
+            }
+
+            // Auto seed data if Task have no data
+            if (!context.Tasks.Any()){
+                var plantopics = context.PlanTopics.ToArray();
+
+                List<Task> tasks = new List<Task>();
+
+                foreach (var item in plantopics)
+                {
+                    var task1 = new Task{
+                        TaskDescription = "Read at home " + item.Topic.TopicName,
+                        CreateDate = DateTime.UtcNow.AddHours(7),
+                        EstimateTime = 2,
+                        EffortTime = 1,
+                        DueDate = DateTime.UtcNow.AddHours(10),
+                        Priority = 0,
+                        IsComplete = false,
+                        PlanTopicId = item.PlanTopicId,
+                        TaskCategoryId = 1
+                    };
+
+                    var task2 = new Task{
+                        TaskDescription = "Do exercise of " + item.Topic.TopicName,
+                        CreateDate = DateTime.UtcNow.AddHours(11),
+                        EstimateTime = 2,
+                        EffortTime = 1,
+                        DueDate = DateTime.UtcNow.AddHours(14),
+                        Priority = 0,
+                        IsComplete = false,
+                        PlanTopicId = item.PlanTopicId,
+                        TaskCategoryId = 1
+                    };
+
+                    var task3 = new Task{
+                        TaskDescription = "Make quiz of " + item.Topic.TopicName,
+                        CreateDate = DateTime.UtcNow.AddHours(15),
+                        EstimateTime = 2,
+                        EffortTime = 1,
+                        DueDate = DateTime.UtcNow.AddHours(19),
+                        Priority = 1,
+                        IsComplete = false,
+                        PlanTopicId = item.PlanTopicId,
+                        TaskCategoryId = 1
+                    };
+
+                    tasks.Add(task1);
+                    tasks.Add(task2);
+                    tasks.Add(task3);
+                }
+
+                context.AddRange(tasks);
+                context.SaveChanges();
             }
         }
     }
