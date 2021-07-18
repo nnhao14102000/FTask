@@ -215,6 +215,7 @@ namespace FTask.Api
                 endpoints.MapControllers();
             });
             app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+            app.UseHttpsRedirection();
         }
     }
 }
