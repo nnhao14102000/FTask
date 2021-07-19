@@ -58,7 +58,7 @@ namespace FTaskAPI.Controllers
                 subject.HasNext,
                 subject.HasPrevious
             };
-            Response.Headers.Add("Subject-Pagination", JsonConvert.SerializeObject(metaData));
+            Response.Headers.Add("Pagination", JsonConvert.SerializeObject(metaData));
 
             return Ok(_mapper.Map<IEnumerable<SubjectReadViewModel>>(subject));
         }

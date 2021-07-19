@@ -30,7 +30,7 @@ namespace FTask.Api.Controllers
         /// </summary>
         /// <param name="mapper"></param>
         /// <param name="planTopicService"></param>
-        public PlanTopicController(IMapper mapper, 
+        public PlanTopicController(IMapper mapper,
             IPlanTopicService planTopicService)
         {
             _mapper = mapper;
@@ -44,6 +44,7 @@ namespace FTask.Api.Controllers
         /// <returns></returns>
         [HttpGet]
         [MapToApiVersion("1.0")]
+        [Cached(60)]
         public ActionResult<IEnumerable<PlanTopicReadViewModel>> GetAllPlanTopics(
             [FromQuery] PlanTopicParameters planTopicParameter)
         {
@@ -57,7 +58,7 @@ namespace FTask.Api.Controllers
                 planTopic.HasNext,
                 planTopic.HasPrevious
             };
-            Response.Headers.Add("PlanTopic-Pagination", JsonConvert.SerializeObject(metaData));
+            Response.Headers.Add("Pagination", JsonConvert.SerializeObject(metaData));
 
             return Ok(_mapper.Map<IEnumerable<PlanTopicReadViewModel>>(planTopic));
         }
@@ -69,6 +70,7 @@ namespace FTask.Api.Controllers
         /// <returns></returns>
         [HttpGet("{id}", Name = "GetPlanTopicByPlanTopicId")]
         [MapToApiVersion("1.0")]
+        [Cached(60)]
         public ActionResult<PlanTopicReadDetailViewModel> GetPlanTopicByPlanTopicId(int id)
         {
             var planTopic = _planTopicService.GetPlanTopicByPlanTopicId(id);
@@ -93,7 +95,7 @@ namespace FTask.Api.Controllers
             var PlanTopicReadModel = _mapper.Map<PlanTopicReadViewModel>(planTopicModel);
 
             return CreatedAtRoute(
-                nameof(GetPlanTopicByPlanTopicId), 
+                nameof(GetPlanTopicByPlanTopicId),
                 new { id = PlanTopicReadModel.PlanTopicId }, PlanTopicReadModel
             );
         }
@@ -126,7 +128,7 @@ namespace FTask.Api.Controllers
         /// <returns></returns>
         [HttpPatch("{id}")]
         [MapToApiVersion("1.0")]
-        public ActionResult PartialPlanTopicUpdate(int id, 
+        public ActionResult PartialPlanTopicUpdate(int id,
             JsonPatchDocument<PlanTopicUpdateViewModel> patchDoc)
         {
             var planTopicModel = _planTopicService.GetPlanTopicByPlanTopicId(id);

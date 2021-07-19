@@ -59,7 +59,7 @@ namespace FTaskAPI.Controllers
                 majors.HasNext,
                 majors.HasPrevious
             };
-            Response.Headers.Add("Major-Pagination", JsonConvert.SerializeObject(metaData));
+            Response.Headers.Add("Pagination", JsonConvert.SerializeObject(metaData));
 
             return Ok(_mapper.Map<IEnumerable<MajorReadViewModel>>(majors));
         }

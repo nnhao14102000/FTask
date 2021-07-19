@@ -43,6 +43,7 @@ namespace FTask.Api.Controllers
         /// <returns></returns>
         [HttpGet]
         [MapToApiVersion("1.0")]
+        [Cached(60)]
         public ActionResult<IEnumerable<TaskReadViewModel>> GetAllTasks(
             [FromQuery] TaskParameters taskParameter)
         {
@@ -56,7 +57,7 @@ namespace FTask.Api.Controllers
                 Task.HasNext,
                 Task.HasPrevious
             };
-            Response.Headers.Add("Task-Pagination", JsonConvert.SerializeObject(metaData));
+            Response.Headers.Add("Pagination", JsonConvert.SerializeObject(metaData));
 
             return Ok(_mapper.Map<IEnumerable<TaskReadViewModel>>(Task));
         }
@@ -68,6 +69,7 @@ namespace FTask.Api.Controllers
         /// <returns></returns>
         [HttpGet("{id}", Name = "GetTaskByTaskId")]
         [MapToApiVersion("1.0")]
+        [Cached(60)]
         public ActionResult<TaskReadViewModel> GetTaskByTaskId(int id)
         {
             var Task = _taskService.GetTaskByTaskId(id);
@@ -92,8 +94,8 @@ namespace FTask.Api.Controllers
             var TaskReadModel = _mapper.Map<TaskReadViewModel>(taskModel);
 
             return CreatedAtRoute(
-                nameof(GetTaskByTaskId), 
-                new { id = TaskReadModel.TaskId }, 
+                nameof(GetTaskByTaskId),
+                new { id = TaskReadModel.TaskId },
                 TaskReadModel
             );
         }
@@ -126,7 +128,7 @@ namespace FTask.Api.Controllers
         /// <returns></returns>
         [HttpPatch("{id}")]
         [MapToApiVersion("1.0")]
-        public ActionResult PartialTaskUpdate(int id, 
+        public ActionResult PartialTaskUpdate(int id,
             JsonPatchDocument<TaskUpdateViewModel> patchDoc)
         {
             var taskModel = _taskService.GetTaskByTaskId(id);

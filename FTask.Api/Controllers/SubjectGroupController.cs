@@ -60,7 +60,7 @@ namespace FTask.Api.Controllers
                 subjectGroup.HasNext,
                 subjectGroup.HasPrevious
             };
-            Response.Headers.Add("SubjectGroup-Pagination", JsonConvert.SerializeObject(metaData));
+            Response.Headers.Add("Pagination", JsonConvert.SerializeObject(metaData));
 
             return Ok(_mapper.Map<IEnumerable<SubjectGroupReadViewModel>>(subjectGroup));
         }
