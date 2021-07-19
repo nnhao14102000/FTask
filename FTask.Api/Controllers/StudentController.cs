@@ -61,7 +61,7 @@ namespace FTaskAPI.Controllers
                 students.HasNext,
                 students.HasPrevious
             };
-            Response.Headers.Add("Student-Pagination", JsonConvert.SerializeObject(metaData));
+            Response.Headers.Add("Pagination", JsonConvert.SerializeObject(metaData));
 
             return Ok(_mapper.Map<IEnumerable<StudentReadViewModel>>(students));
         }

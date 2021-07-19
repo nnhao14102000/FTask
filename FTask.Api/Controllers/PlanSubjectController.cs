@@ -58,7 +58,7 @@ namespace FTask.Api.Controllers
                 PlanSubject.HasNext,
                 PlanSubject.HasPrevious
             };
-            Response.Headers.Add("PlanSubject-Pagination", JsonConvert.SerializeObject(metaData));
+            Response.Headers.Add("Pagination", JsonConvert.SerializeObject(metaData));
 
             return Ok(_mapper.Map<IEnumerable<PlanSubjectReadViewModel>>(PlanSubject));
         }

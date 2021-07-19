@@ -59,7 +59,7 @@ namespace FTask.Api.Controllers
                 planSemester.HasNext,
                 planSemester.HasPrevious
             };
-            Response.Headers.Add("PlanSemester-Pagination", JsonConvert.SerializeObject(metaData));
+            Response.Headers.Add("Pagination", JsonConvert.SerializeObject(metaData));
 
             return Ok(_mapper.Map<IEnumerable<PlanSemesterReadViewModel>>(planSemester));
         }
