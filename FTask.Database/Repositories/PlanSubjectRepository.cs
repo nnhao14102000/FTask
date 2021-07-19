@@ -24,7 +24,7 @@ namespace FTask.Database.Repositories
                 .Query()
                 .OrderBy(x => x.PlanTopicId)
                 .Include(x => x.Topic)
-                .Include(x => x.Tasks)
+                .Include(x => x.Tasks.OrderByDescending(x => x.CreateDate))
                     .ThenInclude(x => x.TaskCategory)
                 .Load();
             
