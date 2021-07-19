@@ -31,7 +31,7 @@ namespace FTask.Database.Repositories
             context.Entry(planSubject)
                 .Reference(x => x.Subject)
                 .Query()
-                .Include(x => x.Topics)
+                .Include(x => x.Topics.OrderBy(x => x.TopicName))
                 .Load();
                 
             return planSubject;
