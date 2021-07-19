@@ -60,6 +60,14 @@ namespace FTask.Database.Repositories
 
             SortLatestPlan(ref planSemesters);
 
+            foreach (var item in planSemesters)
+            {
+                context.Entry(item)
+                    .Reference(x => x.Semester)
+                    .Query()
+                    .Load();
+            }
+
             return PagedList<PlanSemester>
                 .ToPagedList(planSemesters, planSemesterParameters.PageNumber, planSemesterParameters.PageSize);
         }

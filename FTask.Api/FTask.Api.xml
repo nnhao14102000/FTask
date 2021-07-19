@@ -783,6 +783,12 @@
             Semester id of semester that this plan belong to
             </summary>
         </member>
+        <member name="P:FTask.Api.ViewModels.PlanSemesterViewModels.PlanSemesterReadViewModel.Semester">
+            <summary>
+            Semester info
+            </summary>
+            <value></value>
+        </member>
         <member name="P:FTask.Api.ViewModels.PlanSemesterViewModels.PlanSemesterReadViewModel.CreateDate">
             <summary>
             Date create plan
@@ -1686,7 +1692,7 @@
         </member>
         <member name="P:FTask.Api.ViewModels.TaskViewModels.TaskReadViewModel.EffortTime">
             <summary>
-            Real time completet task
+            Real time complete task
             </summary>
         </member>
         <member name="P:FTask.Api.ViewModels.TaskViewModels.TaskReadViewModel.DueDate">
