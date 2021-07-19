@@ -52,6 +52,11 @@ namespace FTask.Services.Helpers
             if (!context.Students.Any())
             {
                 var students = new Student[]{
+                    new Student{StudentId="SE140742", StudentName="Nguyen Nhut Hao", StudentEmail="HaonnSE140742@fpt.edu.vn", MajorId="BIT_SE"},
+                    new Student{StudentId="SE130720", StudentName="Tran Van Kien", StudentEmail="KientvSE130720@fpt.edu.vn", MajorId="BIT_SE"},
+                    new Student{StudentId="SE140329", StudentName="Nguyen Minh Tri", StudentEmail="TrinmSE140329@fpt.edu.vn", MajorId="BIT_SE"},
+                    new Student{StudentId="SE61637", StudentName="Tran Ngoc Nha", StudentEmail="NhatnSE61637@fpt.edu.vn", MajorId="BIT_SE"},
+
                     new Student{StudentId="SE111111", StudentName="Nguyen Van An", StudentEmail="AnnvSE111111@fpt.edu.vn", MajorId="BIT_SE"},
                     new Student{StudentId="SE222222", StudentName="Nguyen Van Hai", StudentEmail="HainvSE222222@fpt.edu.vn", MajorId="BIT_SE"},
                     new Student{StudentId="SE333333", StudentName="Nguyen Van Binh", StudentEmail="BinhnvSE333333@fpt.edu.vn", MajorId="BIT_SE"},
@@ -103,6 +108,9 @@ namespace FTask.Services.Helpers
                     new Subject{SubjectId="SWD391", SubjectName="Software Architecture and Design", Source="Software architecture design patterns in Java", SubjectGroupId=2},
                     new Subject{SubjectId="HCI201", SubjectName="Human-Computer Interaction", Source="...", SubjectGroupId=2},
                     new Subject{SubjectId="PRM391", SubjectName="Mobile Programming", Source="...", SubjectGroupId=2},
+
+                    new Subject{SubjectId="CEA201", SubjectName="Computer Organization and Architecture", Source="Computer Organization and Architecture 10th", SubjectGroupId=1},
+                    new Subject{SubjectId="CSI101", SubjectName="Introduction to computing", Source="Connecting with Computer Science", SubjectGroupId=1},
                 };
 
                 context.AddRange(subjects);
@@ -231,6 +239,42 @@ namespace FTask.Services.Helpers
                     new Topic{TopicName="11. Publish_HTML5", TopicDescription="...", SubjectId="PRM391"},
                     new Topic{TopicName="12. PhoneGap", TopicDescription="...", SubjectId="PRM391"},
                     new Topic{TopicName="13. SenchaTouch", TopicDescription="...", SubjectId="PRM391"},
+
+                    new Topic{TopicName="L01-chapter01-ComputerHistory", TopicDescription="...", SubjectId="CSI101"},
+                    new Topic{TopicName="L02-chapter02-Software Tools for Techies", TopicDescription="...", SubjectId="CSI101"},
+                    new Topic{TopicName="L03-chapter03-Computer Architecture", TopicDescription="...", SubjectId="CSI101"},
+                    new Topic{TopicName="L04-chapter04-Number Systems", TopicDescription="...", SubjectId="CSI101"},
+                    new Topic{TopicName="L05-chapter05-OS", TopicDescription="...", SubjectId="CSI101"},
+                    new Topic{TopicName="L06-chapter06-Network", TopicDescription="...", SubjectId="CSI101"},
+                    new Topic{TopicName="L07-chapter07-Internet", TopicDescription="...", SubjectId="CSI101"},
+                    new Topic{TopicName="L08-chapter08-Database", TopicDescription="...", SubjectId="CSI101"},
+                    new Topic{TopicName="L09-chapter09-Data Structure", TopicDescription="...", SubjectId="CSI101"},
+                    new Topic{TopicName="L10-chapter10-File structure", TopicDescription="...", SubjectId="CSI101"},
+                    new Topic{TopicName="L11-chapter11-Programming", TopicDescription="...", SubjectId="CSI101"},
+                    new Topic{TopicName="L12-chapter12-Software Engineering", TopicDescription="...", SubjectId="CSI101"},
+                    new Topic{TopicName="L13-chapter13-Security-Ethics", TopicDescription="...", SubjectId="CSI101"},
+                    new Topic{TopicName="L14-Review", TopicDescription="...", SubjectId="CSI101"},
+
+                    new Topic{TopicName="Chapter 01 Basic Concepts and Computer Evolution", TopicDescription="...", SubjectId="CEA201"},
+                    new Topic{TopicName="Chapter 02 Performance Issues", TopicDescription="...", SubjectId="CEA201"},
+                    new Topic{TopicName="Chapter 03 A Top-Level View of Computer Function and Interconnection", TopicDescription="...", SubjectId="CEA201"},
+                    new Topic{TopicName="Chapter 04 Cache Memory", TopicDescription="...", SubjectId="CEA201"},
+                    new Topic{TopicName="Chapter 05 Internal Memory", TopicDescription="...", SubjectId="CEA201"},
+                    new Topic{TopicName="Chapter 06 External Memory", TopicDescription="...", SubjectId="CEA201"},
+                    new Topic{TopicName="Chapter 07 Input/Output", TopicDescription="...", SubjectId="CEA201"},
+                    new Topic{TopicName="Chapter 08 Operating System Support", TopicDescription="...", SubjectId="CEA201"},
+                    new Topic{TopicName="Chapter 09 Number Systems", TopicDescription="...", SubjectId="CEA201"},
+                    new Topic{TopicName="Chapter 10 Computer Arithmetic", TopicDescription="...", SubjectId="CEA201"},
+                    new Topic{TopicName="Chapter 11 Digital Logic", TopicDescription="...", SubjectId="CEA201"},
+                    new Topic{TopicName="Chapter 12 Instruction Sets: Characteristics and Functions", TopicDescription="...", SubjectId="CEA201"},
+                    new Topic{TopicName="Chapter 13 Instruction Sets: Addressing Modes and Formats", TopicDescription="...", SubjectId="CEA201"},
+                    new Topic{TopicName="Chapter 14 Processor Structure and Function", TopicDescription="...", SubjectId="CEA201"},
+                    new Topic{TopicName="Chapter 15 Reduced Instruction Set Computers", TopicDescription="...", SubjectId="CEA201"},
+                    new Topic{TopicName="Chapter 16 Instruction-Level Parallelism and Superscalar Processors", TopicDescription="...", SubjectId="CEA201"},
+                    new Topic{TopicName="Chapter 17 Parallel Processing", TopicDescription="...", SubjectId="CEA201"},
+                    new Topic{TopicName="Chapter 18 Multicore Computers", TopicDescription="...", SubjectId="CEA201"},
+                    new Topic{TopicName="Chapter 19 General-Purpose Graphic Processing Units", TopicDescription="...", SubjectId="CEA201"},
+
                 };
 
                 context.AddRange(topics);
@@ -259,7 +303,28 @@ namespace FTask.Services.Helpers
                 var planSemesters = new PlanSemester[]{
                     new PlanSemester{
                         PlanSemesterName="Happy and pass!",
-                        StudentId="SE111111",
+                        StudentId="SE130720",
+                        SemesterId="SU_21",
+                        CreateDate=DateTime.UtcNow.AddHours(7),
+                        IsComplete=false
+                    },
+                    new PlanSemester{
+                        PlanSemesterName="Let me PASS!!!",
+                        StudentId="SE140742",
+                        SemesterId="SU_21",
+                        CreateDate=DateTime.UtcNow.AddHours(7),
+                        IsComplete=false
+                    },
+                    new PlanSemester{
+                        PlanSemesterName="PASS easy!!!",
+                        StudentId="SE140329",
+                        SemesterId="SU_21",
+                        CreateDate=DateTime.UtcNow.AddHours(7),
+                        IsComplete=false
+                    },
+                    new PlanSemester{
+                        PlanSemesterName="Happy....",
+                        StudentId="SE61637",
                         SemesterId="SU_21",
                         CreateDate=DateTime.UtcNow.AddHours(7),
                         IsComplete=false
@@ -314,6 +379,126 @@ namespace FTask.Services.Helpers
                         PlanSemesterId = 1,
                         SubjectId = "PRM391"
                     },
+                    new PlanSubject{
+                        Priority = 0,
+                        Progress = 0,
+                        CreateDate = DateTime.UtcNow.AddHours(7),
+                        IsComplete = false,
+                        PlanSemesterId = 2,
+                        SubjectId = "ISC301"
+                    },
+                    new PlanSubject{
+                        Priority = 0,
+                        Progress = 0,
+                        CreateDate = DateTime.UtcNow.AddHours(7),
+                        IsComplete = false,
+                        PlanSemesterId = 2,
+                        SubjectId = "ACC101"
+                    },
+                    new PlanSubject{
+                        Priority = 0,
+                        Progress = 0,
+                        CreateDate = DateTime.UtcNow.AddHours(7),
+                        IsComplete = false,
+                        PlanSemesterId = 2,
+                        SubjectId = "SWD391"
+                    },
+                    new PlanSubject{
+                        Priority = 0,
+                        Progress = 0,
+                        CreateDate = DateTime.UtcNow.AddHours(7),
+                        IsComplete = false,
+                        PlanSemesterId = 2,
+                        SubjectId = "HCI201"
+                    },
+                    new PlanSubject{
+                        Priority = 0,
+                        Progress = 0,
+                        CreateDate = DateTime.UtcNow.AddHours(7),
+                        IsComplete = false,
+                        PlanSemesterId = 2,
+                        SubjectId = "PRM391"
+                    },
+                    new PlanSubject{
+                        Priority = 0,
+                        Progress = 0,
+                        CreateDate = DateTime.UtcNow.AddHours(7),
+                        IsComplete = false,
+                        PlanSemesterId = 3,
+                        SubjectId = "ISC301"
+                    },
+                    new PlanSubject{
+                        Priority = 0,
+                        Progress = 0,
+                        CreateDate = DateTime.UtcNow.AddHours(7),
+                        IsComplete = false,
+                        PlanSemesterId = 3,
+                        SubjectId = "ACC101"
+                    },
+                    new PlanSubject{
+                        Priority = 0,
+                        Progress = 0,
+                        CreateDate = DateTime.UtcNow.AddHours(7),
+                        IsComplete = false,
+                        PlanSemesterId = 3,
+                        SubjectId = "SWD391"
+                    },
+                    new PlanSubject{
+                        Priority = 0,
+                        Progress = 0,
+                        CreateDate = DateTime.UtcNow.AddHours(7),
+                        IsComplete = false,
+                        PlanSemesterId = 3,
+                        SubjectId = "HCI201"
+                    },
+                    new PlanSubject{
+                        Priority = 0,
+                        Progress = 0,
+                        CreateDate = DateTime.UtcNow.AddHours(7),
+                        IsComplete = false,
+                        PlanSemesterId = 3,
+                        SubjectId = "PRM391"
+                    },
+                    new PlanSubject{
+                        Priority = 0,
+                        Progress = 0,
+                        CreateDate = DateTime.UtcNow.AddHours(7),
+                        IsComplete = false,
+                        PlanSemesterId = 4,
+                        SubjectId = "ISC301"
+                    },
+                    new PlanSubject{
+                        Priority = 0,
+                        Progress = 0,
+                        CreateDate = DateTime.UtcNow.AddHours(7),
+                        IsComplete = false,
+                        PlanSemesterId = 4,
+                        SubjectId = "ACC101"
+                    },
+                    new PlanSubject{
+                        Priority = 0,
+                        Progress = 0,
+                        CreateDate = DateTime.UtcNow.AddHours(7),
+                        IsComplete = false,
+                        PlanSemesterId = 4,
+                        SubjectId = "SWD391"
+                    },
+                    new PlanSubject{
+                        Priority = 0,
+                        Progress = 0,
+                        CreateDate = DateTime.UtcNow.AddHours(7),
+                        IsComplete = false,
+                        PlanSemesterId = 4,
+                        SubjectId = "HCI201"
+                    },
+                    new PlanSubject{
+                        Priority = 0,
+                        Progress = 0,
+                        CreateDate = DateTime.UtcNow.AddHours(7),
+                        IsComplete = false,
+                        PlanSemesterId = 4,
+                        SubjectId = "PRM391"
+                    },
                 };
 
                 context.AddRange(planSubjects);
@@ -353,7 +538,100 @@ namespace FTask.Services.Helpers
                 
                 var subject5 = context.Subjects.Where(x => x.SubjectId == planSubject5.SubjectId).FirstOrDefault();
 
-                var topics5 = context.Topics.Where(x => x.SubjectId == subject5.SubjectId).ToArray().OrderBy(x => x.TopicName);                
+                var topics5 = context.Topics.Where(x => x.SubjectId == subject5.SubjectId).ToArray().OrderBy(x => x.TopicName);
+
+                // =============================================================================================================
+                var planSubject6 = context.PlanSubjects.Where(x => x.PlanSubjectId == 6).FirstOrDefault();
+                
+                var subject6 = context.Subjects.Where(x => x.SubjectId == planSubject6.SubjectId).FirstOrDefault();
+
+                var topics6 = context.Topics.Where(x => x.SubjectId == subject6.SubjectId).ToArray().OrderBy(x => x.TopicName);
+                
+                var planSubject7 = context.PlanSubjects.Where(x => x.PlanSubjectId == 7).FirstOrDefault();
+                
+                var subject7 = context.Subjects.Where(x => x.SubjectId == planSubject7.SubjectId).FirstOrDefault();
+
+                var topics7 = context.Topics.Where(x => x.SubjectId == subject7.SubjectId).ToArray().OrderBy(x => x.TopicName);
+
+                var planSubject8 = context.PlanSubjects.Where(x => x.PlanSubjectId == 8).FirstOrDefault();
+                
+                var subject8 = context.Subjects.Where(x => x.SubjectId == planSubject8.SubjectId).FirstOrDefault();
+
+                var topics8 = context.Topics.Where(x => x.SubjectId == subject8.SubjectId).ToArray().OrderBy(x => x.TopicName);
+
+                var planSubject9 = context.PlanSubjects.Where(x => x.PlanSubjectId == 9).FirstOrDefault();
+                
+                var subject9 = context.Subjects.Where(x => x.SubjectId == planSubject9.SubjectId).FirstOrDefault();
+
+                var topics9 = context.Topics.Where(x => x.SubjectId == subject9.SubjectId).ToArray().OrderBy(x => x.TopicName);
+
+                var planSubject10 = context.PlanSubjects.Where(x => x.PlanSubjectId == 10).FirstOrDefault();
+                
+                var subject10 = context.Subjects.Where(x => x.SubjectId == planSubject10.SubjectId).FirstOrDefault();
+
+                var topics10 = context.Topics.Where(x => x.SubjectId == subject10.SubjectId).ToArray().OrderBy(x => x.TopicName);
+
+                // =============================================================================================================
+                var planSubject11 = context.PlanSubjects.Where(x => x.PlanSubjectId == 11).FirstOrDefault();
+                
+                var subject11 = context.Subjects.Where(x => x.SubjectId == planSubject11.SubjectId).FirstOrDefault();
+
+                var topics11 = context.Topics.Where(x => x.SubjectId == subject11.SubjectId).ToArray().OrderBy(x => x.TopicName);
+                
+                var planSubject12 = context.PlanSubjects.Where(x => x.PlanSubjectId == 12).FirstOrDefault();
+                
+                var subject12 = context.Subjects.Where(x => x.SubjectId == planSubject12.SubjectId).FirstOrDefault();
+
+                var topics12 = context.Topics.Where(x => x.SubjectId == subject12.SubjectId).ToArray().OrderBy(x => x.TopicName);
+
+                var planSubject13 = context.PlanSubjects.Where(x => x.PlanSubjectId == 13).FirstOrDefault();
+                
+                var subject13 = context.Subjects.Where(x => x.SubjectId == planSubject13.SubjectId).FirstOrDefault();
+
+                var topics13 = context.Topics.Where(x => x.SubjectId == subject13.SubjectId).ToArray().OrderBy(x => x.TopicName);
+
+                var planSubject14 = context.PlanSubjects.Where(x => x.PlanSubjectId == 14).FirstOrDefault();
+                
+                var subject14 = context.Subjects.Where(x => x.SubjectId == planSubject14.SubjectId).FirstOrDefault();
+
+                var topics14 = context.Topics.Where(x => x.SubjectId == subject14.SubjectId).ToArray().OrderBy(x => x.TopicName);
+
+                var planSubject15 = context.PlanSubjects.Where(x => x.PlanSubjectId == 15).FirstOrDefault();
+                
+                var subject15 = context.Subjects.Where(x => x.SubjectId == planSubject15.SubjectId).FirstOrDefault();
+
+                var topics15 = context.Topics.Where(x => x.SubjectId == subject15.SubjectId).ToArray().OrderBy(x => x.TopicName);
+
+                // ================================================================================================================
+                var planSubject16 = context.PlanSubjects.Where(x => x.PlanSubjectId == 16).FirstOrDefault();
+                
+                var subject16 = context.Subjects.Where(x => x.SubjectId == planSubject16.SubjectId).FirstOrDefault();
+
+                var topics16 = context.Topics.Where(x => x.SubjectId == subject16.SubjectId).ToArray().OrderBy(x => x.TopicName);
+                
+                var planSubject17 = context.PlanSubjects.Where(x => x.PlanSubjectId == 17).FirstOrDefault();
+                
+                var subject17 = context.Subjects.Where(x => x.SubjectId == planSubject17.SubjectId).FirstOrDefault();
+
+                var topics17 = context.Topics.Where(x => x.SubjectId == subject17.SubjectId).ToArray().OrderBy(x => x.TopicName);
+
+                var planSubject18 = context.PlanSubjects.Where(x => x.PlanSubjectId == 18).FirstOrDefault();
+                
+                var subject18 = context.Subjects.Where(x => x.SubjectId == planSubject18.SubjectId).FirstOrDefault();
+
+                var topics18 = context.Topics.Where(x => x.SubjectId == subject18.SubjectId).ToArray().OrderBy(x => x.TopicName);
+
+                var planSubject19 = context.PlanSubjects.Where(x => x.PlanSubjectId == 19).FirstOrDefault();
+                
+                var subject19 = context.Subjects.Where(x => x.SubjectId == planSubject19.SubjectId).FirstOrDefault();
+
+                var topics19 = context.Topics.Where(x => x.SubjectId == subject19.SubjectId).ToArray().OrderBy(x => x.TopicName);
+
+                var planSubject20 = context.PlanSubjects.Where(x => x.PlanSubjectId == 20).FirstOrDefault();
+                
+                var subject20 = context.Subjects.Where(x => x.SubjectId == planSubject20.SubjectId).FirstOrDefault();
+
+                var topics20 = context.Topics.Where(x => x.SubjectId == subject20.SubjectId).ToArray().OrderBy(x => x.TopicName);                
 
                 if(planSubject1 is not null){
                     foreach (var item in topics1)
@@ -424,6 +702,219 @@ namespace FTask.Services.Helpers
                         planTopics.Add(planTopic);
                     }
                 }
+
+                // ======================================================================================
+                if(planSubject6 is not null){
+                    foreach (var item in topics6)
+                    {
+                        var planTopic = new PlanTopic{
+                            Progress = 0,
+                            IsComplete = false,
+                            TopicId = item.TopicId,
+                            PlanSubjectId = planSubject6.PlanSubjectId
+                        };
+
+                        planTopics.Add(planTopic);
+                    }
+                }                 
+
+                if(planSubject7 is not null){
+                    foreach (var item in topics7)
+                    {
+                        var planTopic = new PlanTopic{
+                            Progress = 0,
+                            IsComplete = false,
+                            TopicId = item.TopicId,
+                            PlanSubjectId = planSubject7.PlanSubjectId
+                        };
+
+                        planTopics.Add(planTopic);
+                    }
+                }
+
+                if(planSubject8 is not null){
+                    foreach (var item in topics8)
+                    {
+                        var planTopic = new PlanTopic{
+                            Progress = 0,
+                            IsComplete = false,
+                            TopicId = item.TopicId,
+                            PlanSubjectId = planSubject8.PlanSubjectId
+                        };
+
+                        planTopics.Add(planTopic);
+                    }
+                }
+
+                if(planSubject9 is not null){
+                    foreach (var item in topics9)
+                    {
+                        var planTopic = new PlanTopic{
+                            Progress = 0,
+                            IsComplete = false,
+                            TopicId = item.TopicId,
+                            PlanSubjectId = planSubject9.PlanSubjectId
+                        };
+
+                        planTopics.Add(planTopic);
+                    }
+                } 
+
+                if(planSubject10 is not null){
+                    foreach (var item in topics10)
+                    {
+                        var planTopic = new PlanTopic{
+                            Progress = 0,
+                            IsComplete = false,
+                            TopicId = item.TopicId,
+                            PlanSubjectId = planSubject10.PlanSubjectId
+                        };
+
+                        planTopics.Add(planTopic);
+                    }
+                }
+
+                // ===============================================================================================
+                if(planSubject11 is not null){
+                    foreach (var item in topics11)
+                    {
+                        var planTopic = new PlanTopic{
+                            Progress = 0,
+                            IsComplete = false,
+                            TopicId = item.TopicId,
+                            PlanSubjectId = planSubject11.PlanSubjectId
+                        };
+
+                        planTopics.Add(planTopic);
+                    }
+                }                 
+
+                if(planSubject12 is not null){
+                    foreach (var item in topics12)
+                    {
+                        var planTopic = new PlanTopic{
+                            Progress = 0,
+                            IsComplete = false,
+                            TopicId = item.TopicId,
+                            PlanSubjectId = planSubject12.PlanSubjectId
+                        };
+
+                        planTopics.Add(planTopic);
+                    }
+                }
+
+                if(planSubject13 is not null){
+                    foreach (var item in topics13)
+                    {
+                        var planTopic = new PlanTopic{
+                            Progress = 0,
+                            IsComplete = false,
+                            TopicId = item.TopicId,
+                            PlanSubjectId = planSubject13.PlanSubjectId
+                        };
+
+                        planTopics.Add(planTopic);
+                    }
+                }
+
+                if(planSubject14 is not null){
+                    foreach (var item in topics14)
+                    {
+                        var planTopic = new PlanTopic{
+                            Progress = 0,
+                            IsComplete = false,
+                            TopicId = item.TopicId,
+                            PlanSubjectId = planSubject14.PlanSubjectId
+                        };
+
+                        planTopics.Add(planTopic);
+                    }
+                } 
+
+                if(planSubject15 is not null){
+                    foreach (var item in topics15)
+                    {
+                        var planTopic = new PlanTopic{
+                            Progress = 0,
+                            IsComplete = false,
+                            TopicId = item.TopicId,
+                            PlanSubjectId = planSubject15.PlanSubjectId
+                        };
+
+                        planTopics.Add(planTopic);
+                    }
+                }
+                //=======================================================================================================
+                if(planSubject16 is not null){
+                    foreach (var item in topics16)
+                    {
+                        var planTopic = new PlanTopic{
+                            Progress = 0,
+                            IsComplete = false,
+                            TopicId = item.TopicId,
+                            PlanSubjectId = planSubject16.PlanSubjectId
+                        };
+
+                        planTopics.Add(planTopic);
+                    }
+                }                 
+
+                if(planSubject17 is not null){
+                    foreach (var item in topics17)
+                    {
+                        var planTopic = new PlanTopic{
+                            Progress = 0,
+                            IsComplete = false,
+                            TopicId = item.TopicId,
+                            PlanSubjectId = planSubject17.PlanSubjectId
+                        };
+
+                        planTopics.Add(planTopic);
+                    }
+                }
+
+                if(planSubject18 is not null){
+                    foreach (var item in topics18)
+                    {
+                        var planTopic = new PlanTopic{
+                            Progress = 0,
+                            IsComplete = false,
+                            TopicId = item.TopicId,
+                            PlanSubjectId = planSubject18.PlanSubjectId
+                        };
+
+                        planTopics.Add(planTopic);
+                    }
+                }
+
+                if(planSubject19 is not null){
+                    foreach (var item in topics19)
+                    {
+                        var planTopic = new PlanTopic{
+                            Progress = 0,
+                            IsComplete = false,
+                            TopicId = item.TopicId,
+                            PlanSubjectId = planSubject19.PlanSubjectId
+                        };
+
+                        planTopics.Add(planTopic);
+                    }
+                } 
+
+                if(planSubject20 is not null){
+                    foreach (var item in topics20)
+                    {
+                        var planTopic = new PlanTopic{
+                            Progress = 0,
+                            IsComplete = false,
+                            TopicId = item.TopicId,
+                            PlanSubjectId = planSubject20.PlanSubjectId
+                        };
+
+                        planTopics.Add(planTopic);
+                    }
+                }
+
 
                 context.AddRange(planTopics);
                 context.SaveChanges();
