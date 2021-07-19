@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using FTask.Api.ViewModels.SemesterViewModels;
 
 namespace FTask.Api.ViewModels.PlanSemesterViewModels
 {
@@ -27,6 +28,12 @@ namespace FTask.Api.ViewModels.PlanSemesterViewModels
         /// Semester id of semester that this plan belong to
         /// </summary>
         public string SemesterId { get; set; }
+
+        /// <summary>
+        /// Semester info
+        /// </summary>
+        /// <value></value>
+        public SemesterReadDetailViewModel Semester { get; set; }
 
         /// <summary>
         /// Date plan created

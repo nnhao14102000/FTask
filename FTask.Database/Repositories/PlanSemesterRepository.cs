@@ -22,6 +22,11 @@ namespace FTask.Database.Repositories
                                     .FirstOrDefault();
 
             context.Entry(planSemester)
+                .Reference(x => x.Semester)
+                .Query()
+                .Load();
+
+            context.Entry(planSemester)
                 .Collection(ps => ps.PlanSubjects)
                 .Query()
                 .OrderByDescending(ps => ps.CreateDate)

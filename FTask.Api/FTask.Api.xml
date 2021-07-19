@@ -883,6 +883,12 @@
             Semester id of semester that this plan belong to
             </summary>
         </member>
+        <member name="P:FTask.Api.ViewModels.PlanSemesterViewModels.PSReadDetailViewModel.Semester">
+            <summary>
+            Semester info
+            </summary>
+            <value></value>
+        </member>
         <member name="P:FTask.Api.ViewModels.PlanSemesterViewModels.PSReadDetailViewModel.CreateDate">
             <summary>
             Date plan created
