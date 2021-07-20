@@ -20,16 +20,6 @@ namespace FTask.Api.ViewModels.PlanSemesterViewModels
         public string PlanSemesterName { get; set; }
 
         /// <summary>
-        /// Student id of student in this semester
-        /// </summary>
-        public string StudentId { get; set; }
-
-        /// <summary>
-        /// Semester id of semester that this plan belong to
-        /// </summary>
-        public string SemesterId { get; set; }
-
-        /// <summary>
         /// Semester info
         /// </summary>
         /// <value></value>

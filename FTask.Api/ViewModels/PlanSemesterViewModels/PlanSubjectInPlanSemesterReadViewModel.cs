@@ -36,23 +36,8 @@ namespace FTask.Api.ViewModels.PlanSemesterViewModels
         public bool IsComplete { get; set; }
 
         /// <summary>
-        /// Plan semester id this plan belong to
-        /// </summary>
-        public int PlanSemesterId { get; set; }
-
-        /// <summary>
-        /// Subject id this plan belong to
-        /// </summary>
-        public string SubjectId { get; set; }
-
-        /// <summary>
         /// Subject in Plan Subject
         /// </summary>
         public SubjectReadViewModel Subject { get; set; }
-
-        /// <summary>
-        /// PlanTopics in PlanSubject of PlanSemester
-        /// </summary>
-        public ICollection<PlanTopicReadDetailViewModel> PlanTopics { get; set; }
     }
 }

@@ -844,24 +844,9 @@
             Is plan complete
             </summary>
         </member>
-        <member name="P:FTask.Api.ViewModels.PlanSemesterViewModels.PlanSubjectInPlanSemesterReadViewModel.PlanSemesterId">
-            <summary>
-            Plan semester id this plan belong to
-            </summary>
-        </member>
-        <member name="P:FTask.Api.ViewModels.PlanSemesterViewModels.PlanSubjectInPlanSemesterReadViewModel.SubjectId">
-            <summary>
-            Subject id this plan belong to
-            </summary>
-        </member>
         <member name="P:FTask.Api.ViewModels.PlanSemesterViewModels.PlanSubjectInPlanSemesterReadViewModel.Subject">
             <summary>
             Subject in Plan Subject
-            </summary>
-        </member>
-        <member name="P:FTask.Api.ViewModels.PlanSemesterViewModels.PlanSubjectInPlanSemesterReadViewModel.PlanTopics">
-            <summary>
-            PlanTopics in PlanSubject of PlanSemester
             </summary>
         </member>
         <member name="T:FTask.Api.ViewModels.PlanSemesterViewModels.PSReadDetailViewModel">
@@ -877,16 +862,6 @@
         <member name="P:FTask.Api.ViewModels.PlanSemesterViewModels.PSReadDetailViewModel.PlanSemesterName">
             <summary>
             Plan semester name
-            </summary>
-        </member>
-        <member name="P:FTask.Api.ViewModels.PlanSemesterViewModels.PSReadDetailViewModel.StudentId">
-            <summary>
-            Student id of student in this semester
-            </summary>
-        </member>
-        <member name="P:FTask.Api.ViewModels.PlanSemesterViewModels.PSReadDetailViewModel.SemesterId">
-            <summary>
-            Semester id of semester that this plan belong to
             </summary>
         </member>
         <member name="P:FTask.Api.ViewModels.PlanSemesterViewModels.PSReadDetailViewModel.Semester">
@@ -973,16 +948,6 @@
         <member name="P:FTask.Api.ViewModels.PlanSubjectViewModels.PlanSubjectReadDetailViewModel.IsComplete">
             <summary>
             Is plan subject complete
-            </summary>
-        </member>
-        <member name="P:FTask.Api.ViewModels.PlanSubjectViewModels.PlanSubjectReadDetailViewModel.PlanSemesterId">
-            <summary>
-            Plan semester id of that plan subject belong to
-            </summary>
-        </member>
-        <member name="P:FTask.Api.ViewModels.PlanSubjectViewModels.PlanSubjectReadDetailViewModel.SubjectId">
-            <summary>
-            Subject id of subject that plan subject belong to
             </summary>
         </member>
         <member name="P:FTask.Api.ViewModels.PlanSubjectViewModels.PlanSubjectReadDetailViewModel.Subject">

@@ -31,18 +31,6 @@ namespace FTask.Database.Repositories
                 .Query()
                 .OrderByDescending(ps => ps.CreateDate)
                 .Include(planSubject => planSubject.Subject)
-                .Include(planSubject => planSubject.PlanTopics)
-                    .ThenInclude(topic => topic.Topic)
-                .Load();
-
-            context.Entry(planSemester)
-                .Collection(ps => ps.PlanSubjects)
-                .Query()
-                .OrderByDescending(ps => ps.CreateDate)
-                .Include(planSubject => planSubject.Subject)
-                .Include(planSubject => planSubject.PlanTopics)
-                    .ThenInclude(planTopic => planTopic.Tasks)
-                        .ThenInclude(taskCategory => taskCategory.TaskCategory)
                 .Load();
 
             return planSemester;
