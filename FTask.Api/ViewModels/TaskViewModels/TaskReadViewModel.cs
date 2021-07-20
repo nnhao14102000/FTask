@@ -48,16 +48,6 @@ namespace FTask.Api.ViewModels.TaskViewModels
         public bool IsComplete { get; set; } = false;
 
         /// <summary>
-        /// Plan topic id this task belong to
-        /// </summary>
-        public int PlanTopicId { get; set; }
-
-        /// <summary>
-        /// Task category id this task belong to
-        /// </summary>
-        public int TaskCategoryId { get; set; }
-
-        /// <summary>
         /// Task category
         /// </summary>
         public TaskCategoryViewModels.TaskCategoryReadDetailViewModel TaskCategory {get;set;}

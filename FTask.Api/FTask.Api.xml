@@ -1020,6 +1020,54 @@
             Is plan subject complete, not null
             </summary>
         </member>
+        <member name="T:FTask.Api.ViewModels.PlanSubjectViewModels.PlanTopicInPlanSubjectReadModel">
+            <summary>
+            Plan topic in plan subject
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.PlanSubjectViewModels.PlanTopicInPlanSubjectReadModel.PlanTopicId">
+            Plan topic id 
+        </member>
+        <member name="P:FTask.Api.ViewModels.PlanSubjectViewModels.PlanTopicInPlanSubjectReadModel.Progress">
+            <summary>
+            Plan progress
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.PlanSubjectViewModels.PlanTopicInPlanSubjectReadModel.IsComplete">
+            <summary>
+            Is plan complete
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.PlanSubjectViewModels.PlanTopicInPlanSubjectReadModel.Topic">
+            <summary>
+            Topic
+            </summary>
+        </member>
+        <member name="T:FTask.Api.ViewModels.PlanSubjectViewModels.SubjectInPlanSubjectViewModel">
+            <summary>
+            Subject in plan subject
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.PlanSubjectViewModels.SubjectInPlanSubjectViewModel.SubjectId">
+            <summary>
+            Subject Id
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.PlanSubjectViewModels.SubjectInPlanSubjectViewModel.SubjectName">
+            <summary>
+            Subject name
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.PlanSubjectViewModels.SubjectInPlanSubjectViewModel.Source">
+            <summary>
+            Subject source
+            </summary>
+        </member>
+        <member name="P:FTask.Api.ViewModels.PlanSubjectViewModels.SubjectInPlanSubjectViewModel.SubjectGroupId">
+            <summary>
+            Subject group id this subject belong to
+            </summary>
+        </member>
         <member name="T:FTask.Api.ViewModels.PlanTopicViewModels.PlanTopicAddViewModel">
             <summary>
             Plan topic add view model
@@ -1673,16 +1721,6 @@
         <member name="P:FTask.Api.ViewModels.TaskViewModels.TaskReadViewModel.IsComplete">
             <summary>
             Is task complete
-            </summary>
-        </member>
-        <member name="P:FTask.Api.ViewModels.TaskViewModels.TaskReadViewModel.PlanTopicId">
-            <summary>
-            Plan topic id this task belong to
-            </summary>
-        </member>
-        <member name="P:FTask.Api.ViewModels.TaskViewModels.TaskReadViewModel.TaskCategoryId">
-            <summary>
-            Task category id this task belong to
             </summary>
         </member>
         <member name="P:FTask.Api.ViewModels.TaskViewModels.TaskReadViewModel.TaskCategory">

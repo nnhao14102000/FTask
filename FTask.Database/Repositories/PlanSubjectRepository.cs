@@ -23,15 +23,12 @@ namespace FTask.Database.Repositories
                 .Collection(x => x.PlanTopics)
                 .Query()
                 .OrderBy(x => x.PlanTopicId)
-                .Include(x => x.Topic)
-                .Include(x => x.Tasks.OrderByDescending(x => x.CreateDate))
-                    .ThenInclude(x => x.TaskCategory)
+                .Include(x => x.Topic)                
                 .Load();
             
             context.Entry(planSubject)
                 .Reference(x => x.Subject)
                 .Query()
-                .Include(x => x.Topics.OrderBy(x => x.TopicName))
                 .Load();
                 
             return planSubject;

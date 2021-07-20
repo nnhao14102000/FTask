@@ -22,6 +22,8 @@ namespace FTask.Api.Profiles
             CreateMap<PlanSubject, PlanSubjectUpdateViewModel>();
 
             CreateMap<PlanSubject, PlanSubjectInPlanSemesterReadViewModel>();
+            CreateMap<PlanTopic, PlanTopicInPlanSubjectReadModel>();
+            CreateMap<Subject, SubjectInPlanSubjectViewModel>();
 
         }
     }

@@ -38,11 +38,11 @@ namespace FTask.Api.ViewModels.PlanSubjectViewModels
         /// <summary>
         /// Subject detail
         /// </summary>
-        public SubjectReadDetailViewModel Subject { get; set; }
+        public SubjectInPlanSubjectViewModel Subject { get; set; }
 
         /// <summary>
         /// PlanTopics in PlanSubject
         /// </summary>
-        public ICollection<PlanTopicReadDetailViewModel> PlanTopics { get; set; }
+        public ICollection<PlanTopicInPlanSubjectReadModel> PlanTopics { get; set; }
     }
 }
