@@ -24,7 +24,7 @@ namespace FTask.Services.PlanTopicBusinessService
             _planTopicRepository.Add(planTopic);
             try
             {
-                if (_planTopicRepository.SaveChanges())
+                if (_planTopicRepository.SaveChanges(planTopic))
                 {
                     _log.LogInformation($"Add PlanTopic {planTopic.PlanTopicId} success...");
                 }
@@ -35,9 +35,9 @@ namespace FTask.Services.PlanTopicBusinessService
             }
         }
 
-        public PagedList<PlanTopic> GetAllPlanTopics(PlanTopicParameters planTopicPrameters)
+        public PagedList<PlanTopic> GetAllPlanTopics(PlanTopicParameters planTopicParameters)
         {
-            var planTopic = _planTopicRepository.GetPlanTopics(planTopicPrameters);
+            var planTopic = _planTopicRepository.GetPlanTopics(planTopicParameters);
             if (planTopic is null)
             {
                 _log.LogInformation("Have no PlanTopic...");
@@ -73,7 +73,7 @@ namespace FTask.Services.PlanTopicBusinessService
             _planTopicRepository.Remove(planTopic);
             try
             {
-                if (_planTopicRepository.SaveChanges())
+                if (_planTopicRepository.SaveChanges(planTopic))
                 {
                     _log.LogInformation($"Remove PlanTopic {planTopic.PlanTopicId} success...");
                 }
@@ -90,7 +90,7 @@ namespace FTask.Services.PlanTopicBusinessService
             _planTopicRepository.Update(planTopic);
             try
             {
-                if (_planTopicRepository.SaveChanges())
+                if (_planTopicRepository.SaveChanges(planTopic))
                 {
                     _log.LogInformation($"Update PlanTopic {planTopic.PlanTopicId} success...");
                 }

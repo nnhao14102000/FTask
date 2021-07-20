@@ -56,8 +56,9 @@ namespace FTask.Database.Repositories
             DbSet.RemoveRange(entities);
         }
 
-        public bool SaveChanges()
-        {
+        public bool SaveChanges(T obj)
+        {            
+            DbContext.Entry(obj).State = EntityState.Modified;
             return (DbContext.SaveChanges() >= 0);
         }
     }

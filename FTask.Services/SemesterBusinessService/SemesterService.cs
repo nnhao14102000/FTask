@@ -24,7 +24,7 @@ namespace FTask.Services.SemesterBusinessService
             _semesterRepository.Add(semester);
             try
             {
-                if (_semesterRepository.SaveChanges())
+                if (_semesterRepository.SaveChanges(semester))
                 {
                     _log.LogInformation($"Add Semester {semester.SemesterId} success...");
                 }
@@ -72,7 +72,7 @@ namespace FTask.Services.SemesterBusinessService
             _semesterRepository.Remove(semester);
             try
             {
-                if (_semesterRepository.SaveChanges())
+                if (_semesterRepository.SaveChanges(semester))
                 {
                     _log.LogInformation($"Remove semester {semester.SemesterId} success...");
                 }
@@ -89,7 +89,7 @@ namespace FTask.Services.SemesterBusinessService
             _semesterRepository.Update(semester);
             try
             {
-                if (_semesterRepository.SaveChanges())
+                if (_semesterRepository.SaveChanges(semester))
                 {
                     _log.LogInformation($"Update semester {semester.SemesterId} success...");
                 }

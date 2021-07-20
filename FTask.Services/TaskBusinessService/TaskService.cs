@@ -24,7 +24,7 @@ namespace FTask.Services.TaskBusinessService
             _taskRepository.Add(task);
             try
             {
-                if (_taskRepository.SaveChanges())
+                if (_taskRepository.SaveChanges(task))
                 {
                     _log.LogInformation($"Add Task {task.TaskId} success...");
                 }
@@ -35,9 +35,9 @@ namespace FTask.Services.TaskBusinessService
             }
         }
 
-        public PagedList<Task> GetAllTasks(TaskParameters taskPrameters)
+        public PagedList<Task> GetAllTasks(TaskParameters taskParameters)
         {
-            var task = _taskRepository.GetTasks(taskPrameters);
+            var task = _taskRepository.GetTasks(taskParameters);
             if (task is null)
             {
                 _log.LogInformation("Have no Task...");
@@ -73,7 +73,7 @@ namespace FTask.Services.TaskBusinessService
             _taskRepository.Remove(task);
             try
             {
-                if (_taskRepository.SaveChanges())
+                if (_taskRepository.SaveChanges(task))
                 {
                     _log.LogInformation($"Remove Task {task.TaskId} success...");
                 }
@@ -90,7 +90,7 @@ namespace FTask.Services.TaskBusinessService
             _taskRepository.Update(task);
             try
             {
-                if (_taskRepository.SaveChanges())
+                if (_taskRepository.SaveChanges(task))
                 {
                     _log.LogInformation($"Update Task {task.TaskId} success...");
                 }

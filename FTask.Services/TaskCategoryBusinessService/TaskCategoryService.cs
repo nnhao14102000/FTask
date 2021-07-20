@@ -24,7 +24,7 @@ namespace FTask.Services.TaskCategoryBusinessService
             _taskCategoryRepository.Add(taskCategory);
             try
             {
-                if (_taskCategoryRepository.SaveChanges())
+                if (_taskCategoryRepository.SaveChanges(taskCategory))
                 {
                     _log.LogInformation($"Add TaskCategory {taskCategory.TaskType} success...");
                 }
@@ -35,9 +35,9 @@ namespace FTask.Services.TaskCategoryBusinessService
             }
         }
 
-        public PagedList<TaskCategory> GetAllTaskCategories(TaskCategoryParameters taskCategoryPrameters)
+        public PagedList<TaskCategory> GetAllTaskCategories(TaskCategoryParameters taskCategoryParameters)
         {
-            var taskCategory = _taskCategoryRepository.GetTaskCategorys(taskCategoryPrameters);
+            var taskCategory = _taskCategoryRepository.GetTaskCategories(taskCategoryParameters);
             if (taskCategory is null)
             {
                 _log.LogInformation("Have no Task Category...");
@@ -73,7 +73,7 @@ namespace FTask.Services.TaskCategoryBusinessService
             _taskCategoryRepository.Remove(taskCategory);
             try
             {
-                if (_taskCategoryRepository.SaveChanges())
+                if (_taskCategoryRepository.SaveChanges(taskCategory))
                 {
                     _log.LogInformation($"Remove Task Category {taskCategory.TaskCategoryId} success...");
                 }
@@ -90,7 +90,7 @@ namespace FTask.Services.TaskCategoryBusinessService
             _taskCategoryRepository.Update(taskCategory);
             try
             {
-                if (_taskCategoryRepository.SaveChanges())
+                if (_taskCategoryRepository.SaveChanges(taskCategory))
                 {
                     _log.LogInformation($"Update Task Category {taskCategory.TaskCategoryId} success...");
                 }

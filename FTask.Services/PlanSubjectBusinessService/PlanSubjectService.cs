@@ -24,7 +24,7 @@ namespace FTask.Services.PlanSubjectBusinessService
             _planSubjectRepository.Add(planSubject);
             try
             {
-                if (_planSubjectRepository.SaveChanges())
+                if (_planSubjectRepository.SaveChanges(planSubject))
                 {
                     _log.LogInformation($"Add PlanSubject {planSubject.PlanSubjectId} success...");
                 }
@@ -35,9 +35,9 @@ namespace FTask.Services.PlanSubjectBusinessService
             }
         }
 
-        public PagedList<PlanSubject> GetAllPlanSubjects(PlanSubjectParameters planSubjectPrameters)
+        public PagedList<PlanSubject> GetAllPlanSubjects(PlanSubjectParameters planSubjectParameters)
         {
-            var PlanSubject = _planSubjectRepository.GetPlanSubjects(planSubjectPrameters);
+            var PlanSubject = _planSubjectRepository.GetPlanSubjects(planSubjectParameters);
             if (PlanSubject is null)
             {
                 _log.LogInformation("Have no PlanSubject...");
@@ -73,7 +73,7 @@ namespace FTask.Services.PlanSubjectBusinessService
             _planSubjectRepository.Remove(planSubject);
             try
             {
-                if (_planSubjectRepository.SaveChanges())
+                if (_planSubjectRepository.SaveChanges(planSubject))
                 {
                     _log.LogInformation($"Remove PlanSubject {planSubject.PlanSubjectId} success...");
                 }
@@ -90,7 +90,7 @@ namespace FTask.Services.PlanSubjectBusinessService
             _planSubjectRepository.Update(planSubject);
             try
             {
-                if (_planSubjectRepository.SaveChanges())
+                if (_planSubjectRepository.SaveChanges(planSubject))
                 {
                     _log.LogInformation($"Update PlanSubject {planSubject.PlanSubjectId} success...");
                 }

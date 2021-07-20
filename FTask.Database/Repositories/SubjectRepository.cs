@@ -16,13 +16,13 @@ namespace FTask.Database.Repositories
             this.context = context;
         }
 
-        public Subject GetSubjectBySubjecId(string id)
+        public Subject GetSubjectBySubjectId(string id)
         {
             return FindByCondition(subject
                 => subject.SubjectId.Equals(id)).OrderBy(s => s.SubjectId).FirstOrDefault();
         }
 
-        public Subject GetSubjectInDetailBySubjecId(string id)
+        public Subject GetSubjectInDetailBySubjectId(string id)
         {
             var subject = FindByCondition(subject
                 => subject.SubjectId.Equals(id)).FirstOrDefault();

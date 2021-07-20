@@ -55,7 +55,7 @@ namespace FTask.Services.StudentBusinessService
             _studentRepository.Add(student);
             try
             {
-                if (_studentRepository.SaveChanges())
+                if (_studentRepository.SaveChanges(student))
                 {
                     _log.LogInformation($"Add student {student.StudentId} success...");
                 }
@@ -73,7 +73,7 @@ namespace FTask.Services.StudentBusinessService
             _studentRepository.Update(student);
             try
             {
-                if (_studentRepository.SaveChanges())
+                if (_studentRepository.SaveChanges(student))
                 {
                     _log.LogInformation($"Update student {student.StudentId} success...");
                 }
@@ -90,7 +90,7 @@ namespace FTask.Services.StudentBusinessService
             _studentRepository.Remove(student);
             try
             {
-                if (_studentRepository.SaveChanges())
+                if (_studentRepository.SaveChanges(student))
                 {
                     _log.LogInformation($"Remove student {student.StudentId} success...");
                 }

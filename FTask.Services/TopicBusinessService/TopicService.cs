@@ -18,26 +18,26 @@ namespace FTask.Services.TopicBusinessService
             _log = log;
         }
 
-        public void AddTopic(Topic Topic)
+        public void AddTopic(Topic topic)
         {
-            _log.LogInformation($"Add Topic {Topic.TopicName} into database...");
-            _topicRepository.Add(Topic);
+            _log.LogInformation($"Add Topic {topic.TopicName} into database...");
+            _topicRepository.Add(topic);
             try
             {
-                if (_topicRepository.SaveChanges())
+                if (_topicRepository.SaveChanges(topic))
                 {
-                    _log.LogInformation($"Add Topic {Topic.TopicName} success...");
+                    _log.LogInformation($"Add Topic {topic.TopicName} success...");
                 }
             }
             catch (Exception e)
             {
-                _log.LogInformation($"Add Topic {Topic.TopicName} fail with error: {e.Message}");
+                _log.LogInformation($"Add Topic {topic.TopicName} fail with error: {e.Message}");
             }
         }
 
-        public PagedList<Topic> GetAllTopics(TopicParameters topicPrameters)
+        public PagedList<Topic> GetAllTopics(TopicParameters topicParameters)
         {
-            var topic = _topicRepository.GetTopics(topicPrameters);
+            var topic = _topicRepository.GetTopics(topicParameters);
             if (topic is null)
             {
                 _log.LogInformation("Have no Topic...");
@@ -73,7 +73,7 @@ namespace FTask.Services.TopicBusinessService
             _topicRepository.Remove(topic);
             try
             {
-                if (_topicRepository.SaveChanges())
+                if (_topicRepository.SaveChanges(topic))
                 {
                     _log.LogInformation($"Remove Topic {topic.TopicId} success...");
                 }
@@ -90,7 +90,7 @@ namespace FTask.Services.TopicBusinessService
             _topicRepository.Update(topic);
             try
             {
-                if (_topicRepository.SaveChanges())
+                if (_topicRepository.SaveChanges(topic))
                 {
                     _log.LogInformation($"Update Topic {topic.TopicId} success...");
                 }

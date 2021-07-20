@@ -24,7 +24,7 @@ namespace FTask.Services.SubjectBusinessService
             _subjectRepository.Add(subject);
             try
             {
-                if (_subjectRepository.SaveChanges())
+                if (_subjectRepository.SaveChanges(subject))
                 {
                     _log.LogInformation($"Add Subject {subject.SubjectName} success...");
                 }
@@ -54,7 +54,7 @@ namespace FTask.Services.SubjectBusinessService
         public Subject GetSubjectBySubjectId(string Id)
         {
             _log.LogInformation($"Search Subject {Id}...");
-            var subject = _subjectRepository.GetSubjectBySubjecId(Id);
+            var subject = _subjectRepository.GetSubjectBySubjectId(Id);
             if (subject is null)
             {
                 _log.LogInformation($"Can not found Subject {Id}...");
@@ -70,7 +70,7 @@ namespace FTask.Services.SubjectBusinessService
         public Subject GetSubjectInDetailBySubjectId(string Id)
         {
             _log.LogInformation($"Search Subject {Id}...");
-            var subject = _subjectRepository.GetSubjectInDetailBySubjecId(Id);
+            var subject = _subjectRepository.GetSubjectInDetailBySubjectId(Id);
             if (subject is null)
             {
                 _log.LogInformation($"Can not found Subject {Id}...");
@@ -89,7 +89,7 @@ namespace FTask.Services.SubjectBusinessService
             _subjectRepository.Remove(subject);
             try
             {
-                if (_subjectRepository.SaveChanges())
+                if (_subjectRepository.SaveChanges(subject))
                 {
                     _log.LogInformation($"Remove Subject {subject.SubjectId} success...");
                 }
@@ -106,7 +106,7 @@ namespace FTask.Services.SubjectBusinessService
             _subjectRepository.Update(subject);
             try
             {
-                if (_subjectRepository.SaveChanges())
+                if (_subjectRepository.SaveChanges(subject))
                 {
                     _log.LogInformation($"Update Subject {subject.SubjectId} success...");
                 }

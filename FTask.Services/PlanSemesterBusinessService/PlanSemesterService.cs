@@ -24,7 +24,7 @@ namespace FTask.Services.PlanSemesterBusinessService
             _planSemesterRepository.Add(planSemester);
             try
             {
-                if (_planSemesterRepository.SaveChanges())
+                if (_planSemesterRepository.SaveChanges(planSemester))
                 {
                     _log.LogInformation($"Add PlanSemester {planSemester.PlanSemesterName} success...");
                 }
@@ -35,9 +35,9 @@ namespace FTask.Services.PlanSemesterBusinessService
             }
         }
 
-        public PagedList<PlanSemester> GetAllPlanSemesters(PlanSemesterParameters planSemesterPrameters)
+        public PagedList<PlanSemester> GetAllPlanSemesters(PlanSemesterParameters planSemesterParameters)
         {
-            var planSemester = _planSemesterRepository.GetPlanSemesters(planSemesterPrameters);
+            var planSemester = _planSemesterRepository.GetPlanSemesters(planSemesterParameters);
             if (planSemester is null)
             {
                 _log.LogInformation("Have no PlanSemester...");
@@ -73,7 +73,7 @@ namespace FTask.Services.PlanSemesterBusinessService
             _planSemesterRepository.Remove(planSemester);
             try
             {
-                if (_planSemesterRepository.SaveChanges())
+                if (_planSemesterRepository.SaveChanges(planSemester))
                 {
                     _log.LogInformation($"Remove PlanSemester {planSemester.PlanSemesterId} success...");
                 }
@@ -90,7 +90,7 @@ namespace FTask.Services.PlanSemesterBusinessService
             _planSemesterRepository.Update(planSemester);
             try
             {
-                if (_planSemesterRepository.SaveChanges())
+                if (_planSemesterRepository.SaveChanges(planSemester))
                 {
                     _log.LogInformation($"Update PlanSemester {planSemester.PlanSemesterId} success...");
                 }
