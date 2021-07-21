@@ -71,7 +71,7 @@ namespace FTask.Services.MajorBusinessService
             _majorRepository.Add(major);
             try
             {
-                if (_majorRepository.SaveChanges(major))
+                if (_majorRepository.SaveChanges())
                 {
                     _log.LogInformation($"Add major {major.MajorId} success...");
                 }
@@ -88,7 +88,7 @@ namespace FTask.Services.MajorBusinessService
             _majorRepository.Update(major);
             try
             {
-                if (_majorRepository.SaveChanges(major))
+                if (_majorRepository.SaveChanges())
                 {
                     _log.LogInformation($"Update major {major.MajorId} success...");
                 }
@@ -105,7 +105,7 @@ namespace FTask.Services.MajorBusinessService
             _majorRepository.Remove(major);
             try
             {
-                if (_majorRepository.SaveChanges(major))
+                if (_majorRepository.SaveChanges())
                 {
                     _log.LogInformation($"Remove major {major.MajorId} success...");
                 }

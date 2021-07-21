@@ -24,7 +24,7 @@ namespace FTask.Services.SubjectGroupBusinessService
             _subjectGroupRepository.Add(subjectGroup);
             try
             {
-                if (_subjectGroupRepository.SaveChanges(subjectGroup))
+                if (_subjectGroupRepository.SaveChanges())
                 {
                     _log.LogInformation($"Add SubjectGroup {subjectGroup.SubjectGroupName} success...");
                 }
@@ -73,7 +73,7 @@ namespace FTask.Services.SubjectGroupBusinessService
             _subjectGroupRepository.Remove(subjectGroup);
             try
             {
-                if (_subjectGroupRepository.SaveChanges(subjectGroup))
+                if (_subjectGroupRepository.SaveChanges())
                 {
                     _log.LogInformation($"Remove SubjectGroup {subjectGroup.SubjectGroupId} success...");
                 }
@@ -90,7 +90,7 @@ namespace FTask.Services.SubjectGroupBusinessService
             _subjectGroupRepository.Update(subjectGroup);
             try
             {
-                if (_subjectGroupRepository.SaveChanges(subjectGroup))
+                if (_subjectGroupRepository.SaveChanges())
                 {
                     _log.LogInformation($"Update subjectGroup {subjectGroup.SubjectGroupId} success...");
                 }

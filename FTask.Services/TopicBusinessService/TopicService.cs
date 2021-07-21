@@ -24,7 +24,7 @@ namespace FTask.Services.TopicBusinessService
             _topicRepository.Add(topic);
             try
             {
-                if (_topicRepository.SaveChanges(topic))
+                if (_topicRepository.SaveChanges())
                 {
                     _log.LogInformation($"Add Topic {topic.TopicName} success...");
                 }
@@ -73,7 +73,7 @@ namespace FTask.Services.TopicBusinessService
             _topicRepository.Remove(topic);
             try
             {
-                if (_topicRepository.SaveChanges(topic))
+                if (_topicRepository.SaveChanges())
                 {
                     _log.LogInformation($"Remove Topic {topic.TopicId} success...");
                 }
@@ -90,7 +90,7 @@ namespace FTask.Services.TopicBusinessService
             _topicRepository.Update(topic);
             try
             {
-                if (_topicRepository.SaveChanges(topic))
+                if (_topicRepository.SaveChanges())
                 {
                     _log.LogInformation($"Update Topic {topic.TopicId} success...");
                 }

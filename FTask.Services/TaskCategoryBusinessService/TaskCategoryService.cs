@@ -24,7 +24,7 @@ namespace FTask.Services.TaskCategoryBusinessService
             _taskCategoryRepository.Add(taskCategory);
             try
             {
-                if (_taskCategoryRepository.SaveChanges(taskCategory))
+                if (_taskCategoryRepository.SaveChanges())
                 {
                     _log.LogInformation($"Add TaskCategory {taskCategory.TaskType} success...");
                 }
@@ -73,7 +73,7 @@ namespace FTask.Services.TaskCategoryBusinessService
             _taskCategoryRepository.Remove(taskCategory);
             try
             {
-                if (_taskCategoryRepository.SaveChanges(taskCategory))
+                if (_taskCategoryRepository.SaveChanges())
                 {
                     _log.LogInformation($"Remove Task Category {taskCategory.TaskCategoryId} success...");
                 }
@@ -90,7 +90,7 @@ namespace FTask.Services.TaskCategoryBusinessService
             _taskCategoryRepository.Update(taskCategory);
             try
             {
-                if (_taskCategoryRepository.SaveChanges(taskCategory))
+                if (_taskCategoryRepository.SaveChanges())
                 {
                     _log.LogInformation($"Update Task Category {taskCategory.TaskCategoryId} success...");
                 }
