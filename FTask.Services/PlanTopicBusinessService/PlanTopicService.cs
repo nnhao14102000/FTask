@@ -35,9 +35,9 @@ namespace FTask.Services.PlanTopicBusinessService
             }
         }
 
-        public PagedList<PlanTopic> GetAllPlanTopics(PlanTopicParameters planTopicPrameters)
+        public PagedList<PlanTopic> GetAllPlanTopics(PlanTopicParameters planTopicParameters)
         {
-            var planTopic = _planTopicRepository.GetPlanTopics(planTopicPrameters);
+            var planTopic = _planTopicRepository.GetPlanTopics(planTopicParameters);
             if (planTopic is null)
             {
                 _log.LogInformation("Have no PlanTopic...");

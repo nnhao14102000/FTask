@@ -6,7 +6,7 @@ namespace FTask.Database.Repositories.IRepository
 {
     public interface ITaskCategoryRepository : IGenericRepository<TaskCategory>
     {
-        PagedList<TaskCategory> GetTaskCategorys(TaskCategoryParameters taskCategoryParameters);
+        PagedList<TaskCategory> GetTaskCategories(TaskCategoryParameters taskCategoryParameters);
         TaskCategory GetTaskCategoryByTaskCategoryId(int id);
     }
 }

@@ -23,6 +23,7 @@ namespace FTask.Cache.Installer
 
             services.AddStackExchangeRedisCache(options =>
                 options.Configuration = redisCacheSettings.ConnectionString);
+
             services.AddSingleton<IResponseCacheService, ResponseCacheService>();
         }
     }

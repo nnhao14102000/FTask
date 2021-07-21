@@ -1,4 +1,5 @@
-﻿using FTask.Database.Models;
+﻿using System.Security.Cryptography.X509Certificates;
+using FTask.Database.Models;
 using FTask.Database.Repositories.IRepository;
 using FTask.Shared.Helpers;
 using FTask.Shared.Parameters;
@@ -21,12 +22,8 @@ namespace FTask.Database.Repositories
                                     .FirstOrDefault();
 
             context.Entry(planSemester)
-                .Collection(ps => ps.PlanSubjects)
+                .Reference(x => x.Semester)
                 .Query()
-                .OrderByDescending(ps => ps.CreateDate)
-                .Include(planSubject => planSubject.Subject)
-                .Include(planSubject => planSubject.PlanTopics)
-                    .ThenInclude(topic => topic.Topic)
                 .Load();
 
             context.Entry(planSemester)
@@ -34,9 +31,6 @@ namespace FTask.Database.Repositories
                 .Query()
                 .OrderByDescending(ps => ps.CreateDate)
                 .Include(planSubject => planSubject.Subject)
-                .Include(planSubject => planSubject.PlanTopics)
-                    .ThenInclude(planTopic => planTopic.Tasks)
-                        .ThenInclude(taskCategory => taskCategory.TaskCategory)
                 .Load();
 
             return planSemester;
@@ -53,6 +47,14 @@ namespace FTask.Database.Repositories
             FilterByIsComplete(ref planSemesters, planSemesterParameters.IsComplete);
 
             SortLatestPlan(ref planSemesters);
+
+            foreach (var item in planSemesters)
+            {
+                context.Entry(item)
+                    .Reference(x => x.Semester)
+                    .Query()
+                    .Load();
+            }
 
             return PagedList<PlanSemester>
                 .ToPagedList(planSemesters, planSemesterParameters.PageNumber, planSemesterParameters.PageSize);

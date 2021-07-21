@@ -35,9 +35,9 @@ namespace FTask.Services.PlanSubjectBusinessService
             }
         }
 
-        public PagedList<PlanSubject> GetAllPlanSubjects(PlanSubjectParameters planSubjectPrameters)
+        public PagedList<PlanSubject> GetAllPlanSubjects(PlanSubjectParameters planSubjectParameters)
         {
-            var PlanSubject = _planSubjectRepository.GetPlanSubjects(planSubjectPrameters);
+            var PlanSubject = _planSubjectRepository.GetPlanSubjects(planSubjectParameters);
             if (PlanSubject is null)
             {
                 _log.LogInformation("Have no PlanSubject...");

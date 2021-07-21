@@ -57,7 +57,7 @@ namespace FTask.Database.Repositories
         }
 
         public bool SaveChanges()
-        {
+        {            
             return (DbContext.SaveChanges() >= 0);
         }
     }

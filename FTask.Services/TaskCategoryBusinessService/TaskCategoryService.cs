@@ -35,9 +35,9 @@ namespace FTask.Services.TaskCategoryBusinessService
             }
         }
 
-        public PagedList<TaskCategory> GetAllTaskCategories(TaskCategoryParameters taskCategoryPrameters)
+        public PagedList<TaskCategory> GetAllTaskCategories(TaskCategoryParameters taskCategoryParameters)
         {
-            var taskCategory = _taskCategoryRepository.GetTaskCategorys(taskCategoryPrameters);
+            var taskCategory = _taskCategoryRepository.GetTaskCategories(taskCategoryParameters);
             if (taskCategory is null)
             {
                 _log.LogInformation("Have no Task Category...");

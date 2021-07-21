@@ -28,7 +28,7 @@ namespace FTask.Api.ViewModels.TaskViewModels
         public int EstimateTime { get; set; } = 0;
 
         /// <summary>
-        /// Real time completet task
+        /// Real time complete task
         /// </summary>
         public int EffortTime { get; set; } = 0;
 
@@ -46,16 +46,6 @@ namespace FTask.Api.ViewModels.TaskViewModels
         /// Is task complete
         /// </summary>
         public bool IsComplete { get; set; } = false;
-
-        /// <summary>
-        /// Plan topic id this task belong to
-        /// </summary>
-        public int PlanTopicId { get; set; }
-
-        /// <summary>
-        /// Task category id this task belong to
-        /// </summary>
-        public int TaskCategoryId { get; set; }
 
         /// <summary>
         /// Task category

@@ -22,11 +22,11 @@ namespace FTask.Cache.Services
             }
             var serializedResponse = JsonConvert.SerializeObject(response);
             await _distributedCache.SetStringAsync(
-                cacheKey, serializedResponse, 
+                cacheKey, serializedResponse,
                 new DistributedCacheEntryOptions
-            {
-                AbsoluteExpirationRelativeToNow = timeLive
-            });
+                {
+                    AbsoluteExpirationRelativeToNow = timeLive
+                });
         }
 
         public async Task<string> GetCachedResponseAsync(string cacheKey)

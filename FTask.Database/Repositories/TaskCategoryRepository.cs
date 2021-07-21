@@ -20,7 +20,7 @@ namespace FTask.Database.Repositories
             return FindByCondition(tc => tc.TaskCategoryId.Equals(id)).FirstOrDefault();
         }
 
-        public PagedList<TaskCategory> GetTaskCategorys(TaskCategoryParameters taskCategoryParameters)
+        public PagedList<TaskCategory> GetTaskCategories(TaskCategoryParameters taskCategoryParameters)
         {
             var taskCategory = FindAll();
             SearchByName(ref taskCategory, taskCategoryParameters.TaskType);

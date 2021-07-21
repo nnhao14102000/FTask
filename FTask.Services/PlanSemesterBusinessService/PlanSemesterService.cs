@@ -35,9 +35,9 @@ namespace FTask.Services.PlanSemesterBusinessService
             }
         }
 
-        public PagedList<PlanSemester> GetAllPlanSemesters(PlanSemesterParameters planSemesterPrameters)
+        public PagedList<PlanSemester> GetAllPlanSemesters(PlanSemesterParameters planSemesterParameters)
         {
-            var planSemester = _planSemesterRepository.GetPlanSemesters(planSemesterPrameters);
+            var planSemester = _planSemesterRepository.GetPlanSemesters(planSemesterParameters);
             if (planSemester is null)
             {
                 _log.LogInformation("Have no PlanSemester...");

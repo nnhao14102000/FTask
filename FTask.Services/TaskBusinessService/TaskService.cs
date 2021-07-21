@@ -35,9 +35,9 @@ namespace FTask.Services.TaskBusinessService
             }
         }
 
-        public PagedList<Task> GetAllTasks(TaskParameters taskPrameters)
+        public PagedList<Task> GetAllTasks(TaskParameters taskParameters)
         {
-            var task = _taskRepository.GetTasks(taskPrameters);
+            var task = _taskRepository.GetTasks(taskParameters);
             if (task is null)
             {
                 _log.LogInformation("Have no Task...");
