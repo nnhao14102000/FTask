@@ -45,7 +45,7 @@ namespace FTask.Api.Controllers
         /// <returns></returns>
         [HttpGet]
         [MapToApiVersion("1.0")]
-        [Cached(60)]
+        [Cached(600)]
         public ActionResult<IEnumerable<PlanSemesterReadViewModel>> GetAllPlanSemesters(
             [FromQuery] PlanSemesterParameters planSemesterParameter)
         {
@@ -71,7 +71,7 @@ namespace FTask.Api.Controllers
         /// <returns></returns>
         [HttpGet("{id}", Name = "GetPlanSemesterByPlanSemesterId")]
         [MapToApiVersion("1.0")]
-        [Cached(60)]
+        [Cached(600)]
         public ActionResult<PSReadDetailViewModel> GetPlanSemesterByPlanSemesterId(int id)
         {
             var planSemester = _planSemesterService.GetPlanSemesterByPlanSemesterId(id);
