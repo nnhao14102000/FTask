@@ -950,7 +950,7 @@ namespace FTask.Services.Helpers
                         Priority = 0,
                         IsComplete = false,
                         PlanTopicId = item.PlanTopicId,
-                        TaskCategoryId = 1
+                        TaskCategoryId = 2
                     };
 
                     var task3 = new Task{
@@ -962,7 +962,7 @@ namespace FTask.Services.Helpers
                         Priority = 1,
                         IsComplete = false,
                         PlanTopicId = item.PlanTopicId,
-                        TaskCategoryId = 1
+                        TaskCategoryId = 3
                     };
 
                     tasks.Add(task1);
