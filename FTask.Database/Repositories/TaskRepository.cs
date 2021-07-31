@@ -37,7 +37,7 @@ namespace FTask.Database.Repositories
 
             FilterByIsComplete(ref tasks, taskParameters.IsComplete);
                        
-            Sort(ref tasks, taskParameters.SortOptions);
+            Sort(ref tasks, taskParameters.SortWithHighPriority);
 
             foreach (var item in tasks)
             {
@@ -60,11 +60,11 @@ namespace FTask.Database.Repositories
                     .Where(x => x.IsComplete == isComplete);
         }
 
-        private void Sort(ref IQueryable<Task> tasks, Types? sortOptions)
+        private void Sort(ref IQueryable<Task> tasks, bool sortOptions)
         {
             switch (sortOptions)
             {
-                case Types.HighestPriority: 
+                case true:
                     SortHigherPriority(ref tasks);
                     break;
                 default: 

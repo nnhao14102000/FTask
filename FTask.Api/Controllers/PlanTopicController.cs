@@ -44,7 +44,6 @@ namespace FTask.Api.Controllers
         /// <returns></returns>
         [HttpGet]
         [MapToApiVersion("1.0")]
-        [Cached(60)]
         public ActionResult<IEnumerable<PlanTopicReadViewModel>> GetAllPlanTopics(
             [FromQuery] PlanTopicParameters planTopicParameter)
         {
@@ -70,7 +69,6 @@ namespace FTask.Api.Controllers
         /// <returns></returns>
         [HttpGet("{id}", Name = "GetPlanTopicByPlanTopicId")]
         [MapToApiVersion("1.0")]
-        [Cached(60)]
         public ActionResult<PlanTopicReadDetailViewModel> GetPlanTopicByPlanTopicId(int id)
         {
             var planTopic = _planTopicService.GetPlanTopicByPlanTopicId(id);
