@@ -25,6 +25,7 @@ using System.IO;
 using System.Text;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
+using System.Reflection;
 
 namespace FTask.Api
 {
@@ -156,8 +157,9 @@ namespace FTask.Api
 
                 c.AddSecurityRequirement(securityRequirement);
 
-                var filePath = Path.Combine(AppContext.BaseDirectory, "FTask.Api.xml");
-                c.IncludeXmlComments(filePath);
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
             });
 
             // Config for AutoMapper...
