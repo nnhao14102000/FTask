@@ -156,7 +156,7 @@ namespace FTask.Api
 
                 c.AddSecurityRequirement(securityRequirement);
 
-                var filePath = Path.Combine(System.AppContext.BaseDirectory, "FTask.Api.xml");
+                var filePath = Path.Combine(AppContext.BaseDirectory, "FTask.Api.xml");
                 c.IncludeXmlComments(filePath);
             });
 
