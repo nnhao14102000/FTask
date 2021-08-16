@@ -178,7 +178,7 @@ namespace FTask.Api
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
             app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
-            
+
             if (env.IsDevelopment() || env.IsProduction())
             {
                 app.UseDeveloperExceptionPage();
@@ -186,13 +186,17 @@ namespace FTask.Api
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "FTask.Api v1"));
             }
             // Config for Healthcheck
-            app.UseHealthChecks("/health", new HealthCheckOptions{
-                ResponseWriter = async (context, report) => {
+            app.UseHealthChecks("/health", new HealthCheckOptions
+            {
+                ResponseWriter = async (context, report) =>
+                {
                     context.Response.ContentType = "application/json";
-                    
-                    var response = new HealthcheckResponse{
+
+                    var response = new HealthcheckResponse
+                    {
                         Status = report.Status.ToString(),
-                        Checks = report.Entries.Select(x => new HealthCheck{
+                        Checks = report.Entries.Select(x => new HealthCheck
+                        {
                             Component = x.Key,
                             Status = x.Value.Status.ToString(),
                             Description = x.Value.Description
@@ -215,7 +219,7 @@ namespace FTask.Api
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-            });            
+            });
         }
     }
 }
